@@ -1,14 +1,17 @@
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="modules/style.css">
-<title>phpNodeXRai - <?php echo gethostname() ?></title>
-</head>
-<body>
 <?php
 // include config and functions
 require_once($_SERVER["DOCUMENT_ROOT"] . '/modules/config.php');
 require_once($_SERVER["DOCUMENT_ROOT"] . '/modules/functions.php');
+?>
 
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="modules/style.css">
+<title>phpNodeXRai - <?php echo gethostname() ?></title>
+<meta http-equiv="refresh" content="<?php echo $autoRefreshInSeconds; ?>">
+</head>
+<body>
+<?php
 // get curl handle
 $ch = curl_init();
 
@@ -37,6 +40,11 @@ $rpcPeers = getPeers($ch);
 $peers = (array) $rpcPeers->{'peers'};
 $numPeers = count($peers);
 
+// -- Get node account balance from rai_node 
+$rpcNodeAccountBalance = getNodeAccountBalance($ch, $raiNodeAccount);
+$accBalanceMrai = rawToMrai($rpcNodeAccountBalance->{'balance'},4);
+$accPendingMrai = rawToMrai($rpcNodeAccountBalance->{'pending'},4);
+
 // close curl handle
 curl_close($ch);
 ?>
@@ -62,15 +70,27 @@ curl_close($ch);
  </tr>
 </table>
 </div>
+<p></p>
+<div class=float>
+<p class="medium">Node account:</p>
+<p class="medium">
+<a class="medium" href="https://raiblocks.net/account/index.php?acc=<?php print($raiNodeAccount); ?>" target=_blank><?php print($raiNodeAccount); ?></a>
+</p>
+<p class="medium">
+with a balance of <?php echo $accBalanceMrai; ?> XRB (<?php echo $accPendingMrai; ?> XRB pending)
+</p>
+</div>
 
 <p>&nbsp;</p>
 
-<div class=float>
-<p class="small">Donate: <?php print($raiDonationAccount); ?></p>
-</div>
-
 <hr>
-<p align="center" class="small">Get phpNodeXRai on <a href="https://github.com/dbachm123/phpNodeXRai" target="_blank">Github</a></p> 
+<p align="center" class="small" style="color:#cbcdcf">
+Get phpNodeXRai on <a class="small" href="https://github.com/dbachm123/phpNodeXRai" target="_blank" style="color:#cbcdcf">Github</a>
+</p>
+<p align="center" class="small" style="color:#cbcdcf">
+Donations:
+<a class="small" href="https://raiblocks.net/account/index.php?acc=<?php print($raiDonationAccount); ?>" target=_blank style="color:#cbcdcf"><?php print($raiDonationAccount); ?></a>
+</p>
 
 </body>
 </html>

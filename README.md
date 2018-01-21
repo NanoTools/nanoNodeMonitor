@@ -2,7 +2,7 @@
 
 phpNodeXRai is a very basic PHP-based monitor for a RaiBlocks node. It connects to a running node via RPC and displays it's status on a simple webpage:
 
-![phpNodeXRaiImage](https://i.imgur.com/g58Q2hu.png) 
+![phpNodeXRaiImage](https://i.imgur.com/tsavW42.png) 
 
 Currently, the following information is displayed:
 * Current block number
