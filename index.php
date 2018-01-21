@@ -32,6 +32,11 @@ $rpcBlockCount = getBlockCount($ch);
 $currentBlock = $rpcBlockCount->{'count'};
 $uncheckedBlocks = $rpcBlockCount->{'unchecked'};
 
+// -- Get number of peers from rai_node 
+$rpcPeers = getPeers($ch);
+$peers = (array) $rpcPeers->{'peers'};
+$numPeers = count($peers);
+
 // close curl handle
 curl_close($ch);
 ?>
@@ -42,18 +47,30 @@ curl_close($ch);
 <h2>Node <?php print($version) ?> is running on <?php print(gethostname()); ?></h2>
 
 <div class=float>
-<p>Current block: <?php print($currentBlock) ?></p>
-<p># of unchecked blocks: <?php print($uncheckedBlocks) ?></p>
+<table border="0" width="500px">
+ <tr>
+  <td width="80%">Current block:</td>
+  <td width="20%"><?php print($currentBlock) ?> </td>
+ </tr>
+ <tr>
+  <td width="80%">Number of unchecked blocks: </td>
+  <td width="20%"><?php print($uncheckedBlocks) ?></td>
+ </tr>
+ <tr>
+  <td width="80%">Number of peers: </td>
+  <td width="20%"><?php print($numPeers) ?></td>
+ </tr>
+</table>
 </div>
 
 <p>&nbsp;</p>
 
 <div class=float>
-<p>Donate: <?php print($raiDonationAccount); ?></p>
+<p class="small">Donate: <?php print($raiDonationAccount); ?></p>
 </div>
 
 <hr>
-<p align="center">Get phpNodeXRai on <a href="https://github.com/dbachm123/phpNodeXRai" target="_blank">Github</a></p> 
+<p align="center" class="small">Get phpNodeXRai on <a href="https://github.com/dbachm123/phpNodeXRai" target="_blank">Github</a></p> 
 
 </body>
 </html>

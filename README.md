@@ -4,6 +4,11 @@ phpNodeXRai is a very basic PHP-based monitor for a RaiBlocks node. It connects 
 
 ![phpNodeXRaiImage](https://i.imgur.com/e19waKq.png) 
 
+Currently, the following information is displayed:
+* Current block number
+* Number of unchecked blocks
+* Number of peers
+
 
 ## Installation
 

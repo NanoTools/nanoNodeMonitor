@@ -53,6 +53,16 @@ function getBlockCount($ch)
   return postCurl($ch, $data);
 }
 
+// get number of peers
+function getPeers($ch) 
+{
+  // get block count
+  $data = array("action" => "peers");
+
+  // post curl
+  return postCurl($ch, $data);
+}
+
 ?>
 
 
