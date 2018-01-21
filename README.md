@@ -7,6 +7,8 @@ phpNodeXRai is a very basic PHP-based monitor for a RaiBlocks node. It connects 
 
 ## Installation
 
+To use phpNodeXRai, you will need to setup a RaiBlocks node and a webserver on the same machine.
+
 ### Prepare RaiBlocks node
 
 First, enable RPC in the RaiBlocks node by modifying `RaiBlocks/config.json` as follows:
@@ -22,7 +24,7 @@ First, enable RPC in the RaiBlocks node by modifying `RaiBlocks/config.json` as 
     },
 ```
 
-This will enable RPC in the RaiBlocks node over localhost (`127.0.0.1`) without giving public access to the RPC. You can easily test this by calling `curl -g -d '{ "action": "version" }' '127.0.0.1:7076'` on a terminal on your machine. With a working RPC, the RaiBlocks node should respond for example with:
+This will enable RPC in the RaiBlocks node over localhost (`127.0.0.1`) without giving public access to the RPC. You can easily test this by calling `curl -g -d '{ "action": "version" }' '127.0.0.1:7076'` on a terminal on the machine where the RaiBlocks node and the webserver are running. With a working RPC, the RaiBlocks node should respond for example with:
 ```
 {
     "rpc_version": "1",
