@@ -30,6 +30,11 @@ function postCurl($ch, $data)
   return json_decode($resp);
 }
 
+// raw to Mrai
+function rawToMrai($raw, $precision)
+{
+  return round(($raw / 1000000000000000000000000000000.0), $precision);
+}
 
 
 // get version string from rai_node
@@ -58,6 +63,16 @@ function getPeers($ch)
 {
   // get block count
   $data = array("action" => "peers");
+
+  // post curl
+  return postCurl($ch, $data);
+}
+
+// get account balance for rai_node account
+function getNodeAccountBalance($ch, $account) 
+{
+  // get block count
+  $data = array("action" => "account_balance", "account" => $account);
 
   // post curl
   return postCurl($ch, $data);
