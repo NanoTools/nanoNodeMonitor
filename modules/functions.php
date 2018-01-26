@@ -7,6 +7,11 @@ function myError($errorMsg)
   die('<h3>'.$errorMsg.'</h3>');
 }
 
+// check whether php-curl is installed
+function phpCurlAvailable(){
+    return function_exists('curl_version');
+}
+
 // post curl data array
 function postCurl($ch, $data)
 {

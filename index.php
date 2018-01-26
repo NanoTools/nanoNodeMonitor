@@ -12,6 +12,12 @@ require_once($_SERVER["DOCUMENT_ROOT"] . '/modules/functions.php');
 </head>
 <body>
 <?php
+
+if (!phpCurlAvailable())
+{
+  myError('Curl not available. Please install the php-curl package!');
+}
+
 // get curl handle
 $ch = curl_init();
 
