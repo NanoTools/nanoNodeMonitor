@@ -8,7 +8,8 @@ function myError($errorMsg)
 }
 
 // check whether php-curl is installed
-function phpCurlAvailable(){
+function phpCurlAvailable()
+{
     return function_exists('curl_version');
 }
 
