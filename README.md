@@ -8,7 +8,7 @@ Currently, the following information is displayed:
 * Current block number
 * Number of unchecked blocks
 * Number of peers
-
+* Account information of the node's account
 
 ## Installation
 
