@@ -7,7 +7,7 @@ require_once($_SERVER["DOCUMENT_ROOT"] . '/modules/functions.php');
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="modules/style.css">
-<title>phpNodeXRai - <?php echo gethostname() ?></title>
+<title>Nano Node Monitor - <?php echo gethostname() ?></title>
 <meta http-equiv="refresh" content="<?php echo $autoRefreshInSeconds; ?>">
 </head>
 <body>
@@ -56,7 +56,7 @@ curl_close($ch);
 ?>
 
 
-<a href="https://raiblocks.net/" target="_blank"><img align="left" style="margin-right:20px;" src="modules/logo-mini.png" width="100" /></a>
+<a href="https://nano.co/" target="_blank"><img align="left" style="margin-right:20px;" src="modules/logo-mini.png" width="250" /></a>
 
 <h2>Node <?php print($version) ?> is running on <?php print(gethostname()); ?></h2>
 
