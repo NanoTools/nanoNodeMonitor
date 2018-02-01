@@ -56,7 +56,7 @@ curl_close($ch);
 ?>
 
 
-<a href="https://nano.co/" target="_blank"><img align="left" style="margin-right:20px;" src="modules/logo-mini.png" width="250" /></a>
+<a href="https://nano.org/" target="_blank"><img align="left" style="margin-right:20px;" src="modules/logo-mini.png" width="250" /></a>
 
 <h2>Node <?php print($version) ?> is running on <?php print(gethostname()); ?></h2>
 
