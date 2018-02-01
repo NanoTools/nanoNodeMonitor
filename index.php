@@ -80,7 +80,7 @@ curl_close($ch);
 <div class=float>
 <p class="medium">Node account:</p>
 <p class="medium">
-<a class="medium" href="https://raiblocks.net/account/index.php?acc=<?php print($raiNodeAccount); ?>" target=_blank><?php print($raiNodeAccount); ?></a>
+<a class="medium" href="https://www.nanode.co/account/<?php print($raiNodeAccount); ?>" target=_blank><?php print($raiNodeAccount); ?></a>
 </p>
 <p class="medium">
 with a balance of <?php echo $accBalanceMrai; ?> XRB (<?php echo $accPendingMrai; ?> XRB pending)
@@ -95,7 +95,7 @@ Get phpNodeXRai on <a class="small" href="https://github.com/dbachm123/phpNodeXR
 </p>
 <p align="center" class="small" style="color:#cbcdcf">
 Donations:
-<a class="small" href="https://raiblocks.net/account/index.php?acc=<?php print($raiDonationAccount); ?>" target=_blank style="color:#cbcdcf"><?php print($raiDonationAccount); ?></a>
+<a class="small" href="https://www.nanode.co/account/<?php print($raiDonationAccount); ?>" target=_blank style="color:#cbcdcf"><?php print($raiDonationAccount); ?></a>
 </p>
 
 </body>
