@@ -1,5 +1,6 @@
 body { background-color: #0e1121; }
 h1 { color: #eff1f0; font-family: 'Lucida Sans', sans-serif; font-size: 18px; font-weight: 100; line-height: 58px; margin: 0 0 28px; }
+h2 { color: red; font-family: 'Lucida Sans', sans-serif; font-size: 18px; font-weight: 100; line-height: 58px; margin: 0 0 28px; }
 div.float { border-color: #e68634; border-style:solid; border-size:10px; margin:5px; } 
 hr { color: #eff1f0; opacity: 0.2; margin:30px }
 .medium{ color: #eff1f0; font-family: 'Lucida Sans', sans-serif; font-size: 15px; font-weight: 100; line-height: 22px; text-indent: 20px; }

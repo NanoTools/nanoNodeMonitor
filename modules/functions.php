@@ -4,7 +4,7 @@
 // print error and die
 function myError($errorMsg)
 {
-  die('<h3>'.$errorMsg.'</h3>');
+  die('<h2>'.$errorMsg.'</h2>');
 }
 
 // check whether php-curl is installed
