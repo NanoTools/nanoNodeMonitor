@@ -29,21 +29,21 @@ function postCurl($ch, $data)
 
   if (!$resp)
   {
-    myError("RaiBlocks node is not running");
+    myError("Nano node is not running");
   }
 
   // JSON decode and return
   return json_decode($resp);
 }
 
-// raw to Mrai
-function rawToMrai($raw, $precision)
+// raw to Mnano
+function rawToMnano($raw, $precision)
 {
   return round(($raw / 1000000000000000000000000000000.0), $precision);
 }
 
 
-// get version string from rai_node
+// get version string from nano_node
 function getVersion($ch)
 {
   // get version string
@@ -54,7 +54,7 @@ function getVersion($ch)
 }
 
 
-// get block count from rai_node
+// get block count from nano_node
 function getBlockCount($ch) 
 {
   // get block count
@@ -74,14 +74,48 @@ function getPeers($ch)
   return postCurl($ch, $data);
 }
 
-// get account balance for rai_node account
-function getNodeAccountBalance($ch, $account) 
+// get account balance for nano_node account
+function getAccountBalance($ch, $account) 
 {
   // get block count
   $data = array("action" => "account_balance", "account" => $account);
 
   // post curl
   return postCurl($ch, $data);
+}
+
+
+// get representative info for nano_node account
+function getRepresentativeInfo($ch, $account) 
+{
+  // get block count
+  $data = array("action" => "account_info", 
+                "account" => $account, 
+                "representative" => "true", 
+                "weight" => "true");
+
+  // post curl
+  return postCurl($ch, $data);
+}
+
+// get system load average
+function getSystemLoadAvg()
+{
+  return sys_getloadavg ()[0];
+}
+
+// get system memory usage
+function getSystemMemoryUsage(){
+
+  $free = shell_exec('free');
+  $free = (string)trim($free);
+  $free_arr = explode("\n", $free);
+  $mem = explode(" ", $free_arr[1]);
+  $mem = array_filter($mem);
+  $mem = array_merge($mem);
+  $memory_usage = $mem[2]/$mem[1]*100;
+
+  return $memory_usage;
 }
 
 ?>
