@@ -101,7 +101,7 @@ function getRepresentativeInfo($ch, $account)
 // get system load average
 function getSystemLoadAvg()
 {
-  return sys_getloadavg ()[0];
+  return sys_getloadavg ()[2];
 }
 
 // get system memory usage
