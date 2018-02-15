@@ -1,6 +1,5 @@
 <?php
 
-
 // print error and die
 function myError($errorMsg)
 {
@@ -104,19 +103,34 @@ function getSystemLoadAvg()
   return sys_getloadavg ()[2];
 }
 
-// get system memory usage
-function getSystemMemoryUsage(){
+// get current nano price, volume and market cap 
+// from coinmarket cap
 
-  $free = shell_exec('free');
-  $free = (string)trim($free);
-  $free_arr = explode("\n", $free);
-  $mem = explode(" ", $free_arr[1]);
-  $mem = array_filter($mem);
-  $mem = array_merge($mem);
-  $memory_usage = $mem[2]/$mem[1]*100;
+function getNanoInfoFromCMCTicker($cmcTickerUrl)
+{
+  if (empty($cmcTickerUrl))
+  {
+    return array();
+  }
 
-  return $memory_usage;
+  // get nano info from coinmarketcap as JSON
+  $tickerJson = file_get_contents($cmcTickerUrl);
+  if (empty($tickerJson))
+  {
+    return array();
+  }
+
+  // decode and return the entries for nano
+  $jsonDecoded = json_decode($tickerJson); 
+  $keyNano = array_search('raiblocks', array_column($jsonDecoded, 'id'));
+  if (!$keyNano)
+  {
+    return array();
+  }
+
+  return ( $jsonDecoded[$keyNano] );
 }
+
 
 ?>
 

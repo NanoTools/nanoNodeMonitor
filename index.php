@@ -8,7 +8,7 @@ require_once($_SERVER["DOCUMENT_ROOT"] . '/modules/functions.php');
 
 <head>
 <link rel="stylesheet" type="text/css" href="modules/style.css">
-<title>Nano Node Monitor - <?php echo gethostname() ?></title>
+<title>Nano Node Monitor - phpNodeXRai - <?php echo gethostname() ?></title>
 <meta http-equiv="refresh" content="<?php echo $autoRefreshInSeconds; ?>">
 <meta name="format-detection" content="telephone=no">
 </head>
@@ -67,19 +67,66 @@ curl_close($ch);
 ?>
 
 
+
+
+<!-- Nano Market Data Section-->
+
 <a href="https://nano.org/" target="_blank">
-	<img src="modules/logo-mini.png" width="150" alt="Nano Logo"/>
+	<img src="modules/logo-mini.png" width="220" style="float:left; padding-right:25px" alt="Nano Logo"/>
 </a>
 
 
-<h1>Node version <i><?php print($version) ?></i> is running on server <i><?php print(gethostname()); ?></i></h1>
+<?php
 
+// get nano data from coinmarketcap
+$nanoCMCData = getNanoInfoFromCMCTicker($cmcTickerUrl);
+
+// beautify market info to be displayed
+$nanoMarketCapUSD = "$" . number_format( (float) $nanoCMCData->{'market_cap_usd'} / pow(10,9), 2 ) . "B";
+$nanoMarketCapEUR = "€" . number_format( (float) $nanoCMCData->{'market_cap_eur'} / pow(10,9), 2 ) . "B";
+
+$nanoVolumeUSD = "$" . number_format( (float) $nanoCMCData->{'24h_volume_usd'} / pow(10,6), 2 ) . "M";
+$nanoVolumeEUR = "€" . number_format( (float) $nanoCMCData->{'24h_volume_eur'} / pow(10,6), 2 ) . "M";
+
+$nanoPriceUSD = "$" . number_format( (float) $nanoCMCData->{'price_usd'} , 2 );
+$nanoPriceEUR = "€" . number_format( (float) $nanoCMCData->{'price_eur'} , 2 );
+$nanoPriceBTC =       number_format( (float) $nanoCMCData->{'price_btc'} * pow(10,5), 2 ) . "k sat";
+
+$nanoChange24hPercent = number_format( (float) $nanoCMCData->{'percent_change_24h'}, 2 ) . "%";
+$nanoChange7dPercent  = number_format( (float) $nanoCMCData->{'percent_change_7d'}, 2 ) . "%";
+
+if (!empty($nanoCMCData))
+{ // begin nano market data section
+?>
+
+
+ <table class="ticker" style="position:relative; padding-left:15px">
+  <tr>
+   <td><b>Price &nbsp; </b><?php print ($nanoPriceUSD . " | " . $nanoPriceEUR . " | " . $nanoPriceBTC); ?></td>
+   <td><b>Change &nbsp;</b><?php print ($nanoChange24hPercent . " (24h) | " . $nanoChange24hPercent . " (7d)"); ?></td>
+  </tr>
+  <tr>
+   <td><b>Market Cap &nbsp;</b><?php print ($nanoMarketCapUSD . " | " . $nanoMarketCapEUR ); ?></td>
+   <td><b>24h Volume &nbsp; </b><?php print ($nanoVolumeUSD    . " | " . $nanoVolumeEUR    ); ?></td>
+  </tr>
+ </table>
+
+
+<?php
+} // end nano market data section
+?>
+
+<hr>
 
 <!-- Node Info Table -->
 
-<div class="float" style="margin-bottom:3em">	
+<div class="float" style="margin-bottom:3em;">	
 <p class="medium" style="margin-top:0.4em; margin-bottom:1em"><b>Node Info</b></p>
 <table style="margin-left:1em">
+  <tr>
+  <td class="small">Version:</td>
+  <td class="small"><?php print($version) ?></td>
+ </tr>
  <tr>
   <td class="small">Current Block:</td>
   <td class="small"><?php print($currentBlock) ?></td>
@@ -92,6 +139,10 @@ curl_close($ch);
   <td class="small">Number of Peers: </td>
   <td class="small"><?php print($numPeers) ?></td>
  </tr>
+  <tr>
+  <td class="small">Server Name:</td>
+  <td class="small"><?php print(gethostname()) ?></td>
+ </tr>
  <tr>
   <td class="small">System Load Average: </td>
   <td class="small"><?php print(getSystemLoadAvg()); ?></td>
@@ -101,7 +152,9 @@ curl_close($ch);
 
 <!-- Node Account Table -->
 
-<div class="float">
+<hr>
+
+<div class="float" style="margin-bottom:3em"> 
 <p class="medium" style="margin-top:0.4em; margin-bottom:1em"><b>Node Account Info</b></p>
 <table style="margin-left:1em;">
   <tr>
