@@ -103,7 +103,7 @@ if (!empty($nanoCMCData))
  <table class="ticker" style="position:relative; padding-left:15px">
   <tr>
    <td><b>Price &nbsp; </b><?php print ($nanoPriceUSD . " | " . $nanoPriceEUR . " | " . $nanoPriceBTC); ?></td>
-   <td><b>Change &nbsp;</b><?php print ($nanoChange24hPercent . " (24h) | " . $nanoChange24hPercent . " (7d)"); ?></td>
+   <td><b>Change &nbsp;</b><?php print ($nanoChange24hPercent . " (24h) | " . $nanoChange7dPercent . " (7d)"); ?></td>
   </tr>
   <tr>
    <td><b>Market Cap &nbsp;</b><?php print ($nanoMarketCapUSD . " | " . $nanoMarketCapEUR ); ?></td>
