@@ -8,6 +8,9 @@ $autoRefreshInSeconds = 5;
 // coinmarketcap ticker URL for nano
 $cmcTickerUrl = 'https://api.coinmarketcap.com/v1/ticker/?convert=EUR';
 
+// version number
+$versionString = '1.1';
+
 // ----------- Nano Node Variables -----------
 
 // ip address for RPC (default: 127.0.0.1)
