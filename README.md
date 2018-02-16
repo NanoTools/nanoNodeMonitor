@@ -2,7 +2,7 @@
 
 phpNodeXRai is a server-side PHP-based monitor for a Nano node. It connects to a running node via RPC and displays it's status on a simple webpage. Being server-side, it does not expose the RPC interface of the Nano node to the public. 
 
-![phpNodeXRaiImage](https://i.imgur.com/a/562ao.png) 
+![phpNodeXRaiImage](https://i.imgur.com/rBFFALh.png) 
 
 Currently, the following information is displayed:
 * Current block number
