@@ -9,6 +9,6 @@ hr { border-color: #e68634; opacity: 0.2; text-align:left; margin: 30px auto 30p
          -webkit-text-size-adjust: none; -moz-text-size-adjust: none; -ms-text-size-adjust: none}
 .tiny { color: #eff1f0; font-family: 'Lucida Sans', sans-serif; font-size: 12px; font-weight: 100; line-height: 22px; text-indent: 20px; 
         -webkit-text-size-adjust: none; -moz-text-size-adjust: none; -ms-text-size-adjust: none}
-.ticker { border:0px; opacity: 0.8; background-color: #e68634; color: #0e1121; font-family: 'Lucida Sans', sans-serif; font-size: 13px; font-weight: 100; text-indent: 10px; 
+.ticker { border:0px; opacity: 0.8; background-color: #e68634; color: #0e1121; font-family: 'Lucida Sans', sans-serif; font-size: 11px; font-weight: 100; text-indent: 8px; 
         -webkit-text-size-adjust: none; -moz-text-size-adjust: none; -ms-text-size-adjust: none}
 
