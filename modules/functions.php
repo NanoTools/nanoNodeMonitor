@@ -122,7 +122,7 @@ function getNanoInfoFromCMCTicker($cmcTickerUrl)
 
   // decode and return the entries for nano
   $jsonDecoded = json_decode($tickerJson); 
-  $keyNano = array_search('raiblocks', array_column($jsonDecoded, 'id'));
+  $keyNano = array_search('nano', array_column($jsonDecoded, 'id'));
   if (!$keyNano)
   {
     return array();
