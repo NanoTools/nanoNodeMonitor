@@ -17,7 +17,7 @@ Currently, the following information is displayed:
 
 ## Installation
 
-To use phpNodeXRai, you will need to setup a Nano node (either [standalone](https://github.com/nanocurrency/raiblocks/releases) or as a [docker image](https://hub.docker.com/r/brianpugh/raiblocks-docker/)), and a webserver on the same (Linux) machine. See the "Links" section below for tutorials on that. 
+To use phpNodeXRai, you will need to setup a Nano node (either [standalone](https://github.com/nanocurrency/raiblocks/releases) or as a [docker image](https://github.com/nanocurrency/raiblocks/wiki/Docker-node)), and a webserver on the same (Linux) machine. See the "Links" section below for tutorials on that. 
 
 ### Prepare Nano node (without docker)
 
