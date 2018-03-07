@@ -102,7 +102,7 @@ if (!empty($nanoCMCData))
 
   // color values for positive and negative change
   $colorPos = "darkgreen";
-  $colorNeg = "firebrick";
+  $colorNeg = "RGB(100,0,0)";
 
   $nanoChange24hPercentHTMLCol = $colorNeg;
   $nanoChange7dPercentHTMLCol  = $colorNeg;
