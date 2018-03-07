@@ -124,6 +124,7 @@ if (!empty($nanoCMCData))
   // append '%''
   $nanoChange24hPercent = $nanoChange24hPercent . "%";
   $nanoChange7dPercent  = $nanoChange7dPercent . "%";
+  $uptime = getSystemUptime()
 ?>
 
 <!-- Nano Market Data Table -->
@@ -179,6 +180,10 @@ if (!empty($nanoCMCData))
  <tr>
   <td class="small">System Memory Usage: </td>
   <td class="small"><?php print(getSystemAvailMem() . "MB / " . getSystemTotalMem() . "MB"); ?></td>
+ </tr>
+ <tr>
+  <td class="small">System Uptime: </td>
+  <td class="small"><?php print($uptime["days"] . " days, " . $uptime["hours"] . " hours, " . $uptime["mins"] . " minutes and " . $uptime["secs"] . " seconds"); ?></td>
  </tr>
 </table>
 </div>

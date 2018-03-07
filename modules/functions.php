@@ -128,6 +128,22 @@ function getSystemAvailMem()
     return intval(($meminfo["MemTotal"] - $meminfo["MemAvailable"]) / 1024);
 }
 
+// get system uptime array with secs, mins, hours and days
+function getSystemUptime()
+{
+    $str   = file_get_contents('/proc/uptime');
+    $num   = intval($str);
+    $array = array();
+    $array["secs"] = $num % 60;
+    $num = intdiv($num, 60);
+    $array["mins"] = $mins  = $num % 60;
+    $num = (int)($num / 60);
+    $array["hours"] = $num % 24;
+    $num = (int)($num / 24);
+    $array["days"] = $num;
+    return $array;
+}
+
 
 // get current nano price, volume and market cap 
 // from coinmarket cap
