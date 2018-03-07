@@ -124,7 +124,6 @@ if (!empty($nanoCMCData))
   // append '%''
   $nanoChange24hPercent = $nanoChange24hPercent . "%";
   $nanoChange7dPercent  = $nanoChange7dPercent . "%";
-
 ?>
 
 <!-- Nano Market Data Table -->
@@ -176,6 +175,10 @@ if (!empty($nanoCMCData))
  <tr>
   <td class="small">System Load Average: </td>
   <td class="small"><?php print(getSystemLoadAvg()); ?></td>
+ </tr>
+ <tr>
+  <td class="small">System Memory Usage: </td>
+  <td class="small"><?php print(getSystemAvailMem() . "MB / " . getSystemTotalMem() . "MB"); ?></td>
  </tr>
 </table>
 </div>

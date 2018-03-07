@@ -103,6 +103,32 @@ function getSystemLoadAvg()
   return sys_getloadavg ()[2];
 }
 
+// get system memory info
+function getSystemMemInfo() 
+{       
+    $data = explode("\n", file_get_contents("/proc/meminfo"));
+    $meminfo = array();
+    foreach ($data as $line) {
+        list($key, $val) = explode(":", $line);
+        $meminfo[$key] = trim($val);
+    }
+    return $meminfo;
+}
+
+// get system total memory in MB
+function getSystemTotalMem()
+{
+    return intval(getSystemMemInfo()["MemTotal"] / 1024);
+}
+
+// get system used memory in MB
+function getSystemAvailMem()
+{
+    $meminfo = getSystemMemInfo();
+    return intval(($meminfo["MemTotal"] - $meminfo["MemAvailable"]) / 1024);
+}
+
+
 // get current nano price, volume and market cap 
 // from coinmarket cap
 
