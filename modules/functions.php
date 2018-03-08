@@ -13,26 +13,28 @@ function phpCurlAvailable()
 }
 
 // post curl data array
-function postCurl($ch, $data)
+function postCurl($ch, $data, $url, $addHeader)
 {
-  $data_string = json_encode($data);
-  curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
-  curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Content-Type: application/json',
-    'Content-Length: ' . strlen($data_string))
-  );
+    $data_string = json_encode($data);
+    $header = array(
+        'Content-Type: application/json',
+        'Content-Length: ' . strlen($data_string));
+    $header = array_merge($header, $addHeader);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
 
 
-  // Send the request and return response
-  $resp = curl_exec($ch);
+    // Send the request and return response
+    $resp = curl_exec($ch);
 
-  if (!$resp)
-  {
-    myError("Nano node is not running");
-  }
+    if (!$resp)
+    {
+      return False;
+    }
 
-  // JSON decode and return
-  return json_decode($resp);
+    // JSON decode and return
+    return json_decode($resp);
 }
 
 // raw to Mnano
@@ -43,49 +45,53 @@ function rawToMnano($raw, $precision)
 
 
 // get version string from nano_node
-function getVersion($ch)
+function getVersion($ch, $url)
 {
   // get version string
   $data = array("action" => "version");
-
+  
   // post curl
-  return postCurl($ch, $data);
+  $result = postCurl($ch, $data, $url, array());
+  if (!$result) {
+      myError("Node seems offline");
+  }
+  return $result;
 }
 
 
 // get block count from nano_node
-function getBlockCount($ch) 
+function getBlockCount($ch, $url) 
 {
   // get block count
   $data = array("action" => "block_count");
 
   // post curl
-  return postCurl($ch, $data);
+  return postCurl($ch, $data, $url, array());
 }
 
 // get number of peers
-function getPeers($ch) 
+function getPeers($ch, $url) 
 {
   // get block count
   $data = array("action" => "peers");
 
   // post curl
-  return postCurl($ch, $data);
+  return postCurl($ch, $data, $url, array());
 }
 
 // get account balance for nano_node account
-function getAccountBalance($ch, $account) 
+function getAccountBalance($ch, $account, $url) 
 {
   // get block count
   $data = array("action" => "account_balance", "account" => $account);
 
   // post curl
-  return postCurl($ch, $data);
+  return postCurl($ch, $data, $url, array());
 }
 
 
 // get representative info for nano_node account
-function getRepresentativeInfo($ch, $account) 
+function getRepresentativeInfo($ch, $account, $url) 
 {
   // get block count
   $data = array("action" => "account_info", 
@@ -94,7 +100,7 @@ function getRepresentativeInfo($ch, $account)
                 "weight" => "true");
 
   // post curl
-  return postCurl($ch, $data);
+  return postCurl($ch, $data, $url, array());
 }
 
 // get system load average
@@ -171,6 +177,15 @@ function getNanoInfoFromCMCTicker($cmcTickerUrl)
   }
 
   return ( $jsonDecoded[$keyNano] );
+}
+
+
+// get current nanode.co block count
+
+function getNanodeBlockCount($key, $nanodeUrl, $ch)
+{
+    $data = array('action' => 'block_count');
+    return postCurl($ch, $data, $nanodeUrl, array('Authorization: ' . $key));
 }
 
 

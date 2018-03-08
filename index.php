@@ -1,21 +1,5 @@
 <?php
-// include config and functions
-require_once($_SERVER["DOCUMENT_ROOT"] . '/modules/config.php');
-require_once($_SERVER["DOCUMENT_ROOT"] . '/modules/functions.php');
-?>
-
-<!DOCTYPE html>
-
-<head>
-<link rel="stylesheet" type="text/css" href="modules/style.css">
-<title>Nano Node Monitor - phpNodeXRai - <?php echo gethostname() ?></title>
-<meta http-equiv="refresh" content="<?php echo $autoRefreshInSeconds; ?>">
-<meta name="format-detection" content="telephone=no">
-</head>
-
-<body>
-<?php
-
+include('header.php');
 
 // check for curl package
 if (!phpCurlAvailable())
@@ -37,153 +21,90 @@ curl_setopt($ch, CURLOPT_URL, 'http://'.$nanoNodeRPCIP.':'.$nanoNodeRPCPort);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
+$nodeUrl = 'http://'.$nanoNodeRPCIP.':'.$nanoNodeRPCPort;
 // -- Get Version String from nano_node ---------------
-$rpcVersion = getVersion($ch);
+$rpcVersion = getVersion($ch, $nodeUrl);
 $version = $rpcVersion->{'node_vendor'};
 
 // -- Get get current block from nano_node 
-$rpcBlockCount = getBlockCount($ch);
+$rpcBlockCount = getBlockCount($ch, $nodeUrl);
 $currentBlock = $rpcBlockCount->{'count'};
 $uncheckedBlocks = $rpcBlockCount->{'unchecked'};
 
 // -- Get number of peers from nano_node 
-$rpcPeers = getPeers($ch);
+$rpcPeers = getPeers($ch, $nodeUrl);
 $peers = (array) $rpcPeers->{'peers'};
 $numPeers = count($peers);
 
 // -- Get node account balance from nano_node 
-$rpcNodeAccountBalance = getAccountBalance($ch, $nanoNodeAccount);
+$rpcNodeAccountBalance = getAccountBalance($ch, $nanoNodeAccount, $nodeUrl);
 $accBalanceMnano = rawToMnano($rpcNodeAccountBalance->{'balance'},4);
 $accPendingMnano = rawToMnano($rpcNodeAccountBalance->{'pending'},4);
 
 // -- Get representative info for current node from nano_node 
-$rpcNodeRepInfo = getRepresentativeInfo($ch, $nanoNodeAccount);
+$rpcNodeRepInfo = getRepresentativeInfo($ch, $nanoNodeAccount, $nodeUrl);
 $votingWeight = rawToMnano($rpcNodeRepInfo->{'weight'},4);
 $repAccount = $rpcNodeRepInfo->{'representative'};
+
+// -- Get nanode.co block count if possible
+$nanodeBlockCount = getNanodeBlockCount($nanodeKey, "https://api.nanode.co/", $ch);
+if (!$nanodeBlockCount) {
+    $blockDiff = "Could not reach nanode.co API!";
+} else {
+    $blockDiff = $nanodeBlockCount->count - $currentBlock;
+}
 
 
 // close curl handle
 curl_close($ch);
 ?>
+<script language="JavaScript" type="text/javascript">
+setTimeout("location.href = 'index.php'", <?php print( $autoRefreshInSeconds * 1000); ?>); // milliseconds, so 10 seconds = 10000ms
+</script>
 
-
-
-
-<!-- Nano Market Data Section-->
-
-<a href="https://nano.org/" target="_blank">
-	<img src="modules/logo-mini.png" width="220" style="float:left; padding-right:25px" alt="Nano Logo"/>
-</a>
-
-
-<?php
-
-// get nano data from coinmarketcap
-$nanoCMCData = getNanoInfoFromCMCTicker($cmcTickerUrl);
-
-
-if (!empty($nanoCMCData))
-{ // begin nano market data section
-
-  // beautify market info to be displayed
-  $nanoMarketCapUSD = "$" . number_format( (float) $nanoCMCData->{'market_cap_usd'} / pow(10,9), 2 ) . "B";
-  $nanoMarketCapEUR =       number_format( (float) $nanoCMCData->{'market_cap_eur'} / pow(10,9), 2 ) . "B€";
-
-  $nanoVolumeUSD = "$" . number_format( (float) $nanoCMCData->{'24h_volume_usd'} / pow(10,6), 2 ) . "M";
-  $nanoVolumeEUR =       number_format( (float) $nanoCMCData->{'24h_volume_eur'} / pow(10,6), 2 ) . "M€";
-
-  $nanoPriceUSD = "$" . number_format( (float) $nanoCMCData->{'price_usd'} , 2 );
-  $nanoPriceEUR =       number_format( (float) $nanoCMCData->{'price_eur'} , 2 ) . "€";
-  $nanoPriceBTC =       number_format( (float) $nanoCMCData->{'price_btc'} * pow(10,5), 2 ) . "k sat";
-
-  $nanoChange24hPercent = number_format( (float) $nanoCMCData->{'percent_change_24h'}, 2 );
-  $nanoChange7dPercent  = number_format( (float) $nanoCMCData->{'percent_change_7d'}, 2 );
-
-
-  // color values for positive and negative change
-  $colorPos = "darkgreen";
-  $colorNeg = "RGB(100,0,0)";
-
-  $nanoChange24hPercentHTMLCol = $colorNeg;
-  $nanoChange7dPercentHTMLCol  = $colorNeg;
-
-
-  // prepend '+' sign and make it green (hopefully ...)
-  if ( $nanoChange24hPercent > 0)
-  {
-    $nanoChange24hPercent  = "+" . $nanoChange24hPercent;
-    $nanoChange24hPercentHTMLCol = $colorPos;
-  }
-
-  if ( $nanoChange7dPercent > 0)
-  {
-    $nanoChange7dPercent  = "+" . $nanoChange7dPercent;
-    $nanoChange7dPercentHTMLCol = $colorPos;
-  }
-
-  // append '%''
-  $nanoChange24hPercent = $nanoChange24hPercent . "%";
-  $nanoChange7dPercent  = $nanoChange7dPercent . "%";
-  $uptime = getSystemUptime()
-?>
-
-<!-- Nano Market Data Table -->
-
- <table class="ticker" style="position:relative; padding-left:15px; padding-right:15px">
-  <tr>
-   <td><b>Price &nbsp; </b><?php print ($nanoPriceUSD . " | " . $nanoPriceEUR . " | " . $nanoPriceBTC); ?></td>
-   <td><b>Change &nbsp;</b><?php print ("<span style='color:" . $nanoChange24hPercentHTMLCol . "'>" . $nanoChange24hPercent . " (24h)</span> | " 
-                                      . "<span style='color:" . $nanoChange7dPercentHTMLCol  . "'>" . $nanoChange7dPercent .  " (7d)</span>"); ?></td>
-  </tr>
-  <tr>
-   <td><b>Market Cap &nbsp;</b><?php print ($nanoMarketCapUSD . " | " . $nanoMarketCapEUR ); ?></td>
-   <td><b>24h Volume &nbsp; </b><?php print ($nanoVolumeUSD    . " | " . $nanoVolumeEUR    ); ?></td>
-  </tr>
- </table>
-
-
-<?php
-} // end nano market data section
-?>
-
-<hr>
 
 <!-- Node Info Table -->
-
-<div class="float" style="margin-bottom:3em;">	
-<p class="medium" style="margin-top:0.4em; margin-bottom:1em"><b>Node Info</b></p>
-<table style="margin-left:1em">
+<?php $uptime = getSystemUptime(); ?>
+<div class="float">	
+<h2><b>Node Info</b></h2>
+<table class="small">
   <tr>
-  <td class="small">Version:</td>
-  <td class="small"><?php print($version) ?></td>
+  <td>Version:</td>
+  <td><?php print($version) ?></td>
  </tr>
  <tr>
-  <td class="small">Current Block:</td>
-  <td class="small"><?php print($currentBlock) ?></td>
+  <td>Current Block:</td>
+  <td><?php print($currentBlock) ?></td>
  </tr>
  <tr>
-  <td class="small">Number of Unchecked Blocks: </td>
-  <td class="small"><?php print($uncheckedBlocks) ?></td>
+  <td>Number of Unchecked Blocks: </td>
+  <td><?php print($uncheckedBlocks) ?></td>
  </tr>
+<?php if ($nanodeKey) : ?>
  <tr>
-  <td class="small">Number of Peers: </td>
-  <td class="small"><?php print($numPeers) ?></td>
+  <td>Difference to <a href="https://www.nanode.co/">nanode.co</a>:</td>
+  <td><?php print($blockDiff) ?> (If negative this node has more validated blocks.)</td>
+ </tr>
+<?php endif; ?>
+ <tr>
+  <td>Number of Peers: </td>
+  <td><?php print($numPeers) ?></td>
  </tr>
   <tr>
-  <td class="small">Server Name:</td>
-  <td class="small"><?php print(gethostname()) ?></td>
+  <td>Server Name:</td>
+  <td><?php print(gethostname()) ?></td>
  </tr>
  <tr>
-  <td class="small">System Load Average: </td>
-  <td class="small"><?php print(getSystemLoadAvg()); ?></td>
+  <td>System Load Average: </td>
+  <td><?php print(getSystemLoadAvg()); ?></td>
  </tr>
  <tr>
-  <td class="small">System Memory Usage: </td>
-  <td class="small"><?php print(getSystemUsedMem() . "MB / " . getSystemTotalMem() . "MB"); ?></td>
+  <td>System Memory Usage: </td>
+  <td><?php print(getSystemUsedMem() . "MB / " . getSystemTotalMem() . "MB"); ?></td>
  </tr>
  <tr>
-  <td class="small">System Uptime: </td>
-  <td class="small"><?php print($uptime["days"] . " days, " . $uptime["hours"] . " hours, " . $uptime["mins"] . " minutes and " . $uptime["secs"] . " seconds"); ?></td>
+  <td>System Uptime: </td>
+  <td><?php print($uptime["days"] . " days, " . $uptime["hours"] . " hours, " . $uptime["mins"] . " minutes and " . $uptime["secs"] . " seconds"); ?></td>
  </tr>
 </table>
 </div>
@@ -192,42 +113,36 @@ if (!empty($nanoCMCData))
 
 <!-- Node Account Table -->
 
-<div class="float" style="margin-bottom:3em"> 
-<p class="medium" style="margin-top:0.4em; margin-bottom:1em"><b>Node Account Info</b></p>
-<table style="margin-left:1em;">
+<div class="float"> 
+<h2><b>Node Account Info</b></h2>
+<table class="small">
   <tr>
-  <td class="small">Address:</td>
-  <td class="small">
-  	<a class="small" href="https://www.nanode.co/account/<?php print($nanoNodeAccount); ?>" target="_blank"><?php print($nanoNodeAccount); ?></a>
+  <td>Address:</td>
+  <td>
+  	<a href="https://www.nanode.co/account/<?php print($nanoNodeAccount); ?>" target="_blank"><?php print($nanoNodeAccount); ?></a>
   </td> 
  </tr>
  <tr>
-  <td class="small">Balance:</td>
-  <td class="small">
+  <td>Balance:</td>
+  <td>
   	<?php echo $accBalanceMnano; ?> Nano (<?php echo $accPendingMnano; ?> Nano pending)
   </td>
  </tr>
  <tr>
-  <td class="small">Voting Weight:</td>
-  <td class="small"><?php echo $votingWeight; ?> Nano</td>
+  <td>Voting Weight:</td>
+  <td><?php echo $votingWeight; ?> Nano</td>
  </tr>
   <tr>
-  <td class="small">Representative:</td>
-  <td class="small">
-  	<a class="small" href="https://www.nanode.co/account/<?php print($repAccount); ?>" target="_blank"><?php print($repAccount); ?></a>
+  <td>Representative:</td>
+  <td>
+  	<a href="https://www.nanode.co/account/<?php print($repAccount); ?>" target="_blank"><?php print($repAccount); ?></a>
   </td>
  </tr>
  </table>
 </div>
 
-<!-- Footer -->
 
-<hr>
 
-<p class="tiny" style="text-align:left; color:#cbcdcf">phpNodeXRai Version <?php print ($versionString); ?> - Get it on <a class="tiny" href="https://github.com/dbachm123/phpNodeXRai" target="_blank" style="color:#cbcdcf">Github</a></p>
-<p class="tiny" style="text-align:left; color:#cbcdcf">Donations:
-<a class="tiny" href="https://www.nanode.co/account/<?php print($nanoDonationAccount); ?>" target=_blank style="color:#cbcdcf"><?php print($nanoDonationAccount); ?></a>
-</p>
-
-</body>
-</html>
+<?php
+include('footer.php');
+?>

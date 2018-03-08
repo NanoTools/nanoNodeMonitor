@@ -1,0 +1,38 @@
+<?php
+include('header.php');
+include('modules/config.php');
+?>
+<div class="float" style="margin-bottom:3em">
+<p class="medium" style="margin-top:0.4em; margin-bottom:1em"><b>About Me</b></p>
+<div class="aboutme">
+Write something about you.
+</div>
+</div>
+<hr>
+<div class="float" style="margin-bottom:3em">
+<p class="medium" style="margin-top:0.4em; margin-bottom:1em"><b>Why do I run this node?</b></p>
+<div class="aboutme">
+Write something about why you run this node
+</div>
+</div>
+
+<hr>
+
+<div class="float" style="margin-bottom:3em">
+<p class="medium" style="margin-top:0.4em; margin-bottom:1em"><b>Where and how do I run this node?</b></p>
+<div class="aboutme">
+Write something about the technical background of this node.
+</div>
+</div>
+
+<hr>
+<div class="float" style="margin-bottom:3em">
+<p class="medium" style="margin-top:0.4em; margin-bottom:1em"><b>How can you support me?</b></p>
+<div class="aboutme">
+Write something about how the useres can support you.
+</div>
+</div>
+<?php
+include('footer.php');
+?>
+
