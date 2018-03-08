@@ -1,8 +1,12 @@
 <?php
 
+// version number
+$versionString = '1.2';
+
 // print error and die
 function myError($errorMsg)
 {
+  header("HTTP/1.1 503 Service Unavailable");
   die('<h2>'.$errorMsg.'</h2>');
 }
 
@@ -131,7 +135,9 @@ function getNanoInfoFromCMCTicker($cmcTickerUrl)
   return ( $jsonDecoded[$keyNano] );
 }
 
-
-?>
-
-
+function returnJson($data)
+{
+  header('Content-Type: application/json; charset=utf-8');
+  header('Access-Control-Allow-Origin: *');
+  echo json_encode($data);
+}

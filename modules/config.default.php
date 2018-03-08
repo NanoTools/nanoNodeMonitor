@@ -5,12 +5,6 @@
 // autorefresh interval for the status webpage in seconds
 $autoRefreshInSeconds = 5;
 
-// coinmarketcap ticker URL for nano
-$cmcTickerUrl = 'https://api.coinmarketcap.com/v1/ticker/?convert=EUR';
-
-// version number
-$versionString = '1.1';
-
 // ----------- Nano Node Variables -----------
 
 // ip address for RPC (default: 127.0.0.1)
@@ -24,4 +18,3 @@ $nanoNodeAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr8
 
 // donation account
 $nanoDonationAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj';
-?>
