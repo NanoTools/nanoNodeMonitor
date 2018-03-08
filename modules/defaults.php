@@ -5,13 +5,12 @@
 // autorefresh interval for the status webpage in seconds
 $autoRefreshInSeconds = 5;
 
+// a welcome message shown on top
+$welcomeMsg = 'Nano rocks!';
+
 // coinmarketcap market data base and second currency
 $cmcBaseCurrency = "USD"; // e.g. USD, EUR, BTC, ETH
 $cmcSecondaryCurrency = "BTC";
-
-// version number
-$versionString = '1.3';
-
 
 // ----------- Nano Node Variables -----------
 
