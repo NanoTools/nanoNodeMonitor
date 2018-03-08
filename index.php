@@ -80,7 +80,7 @@ setTimeout("location.href = 'index.php'", <?php print( $autoRefreshInSeconds * 1
   <td>Number of Unchecked Blocks: </td>
   <td><?php print($uncheckedBlocks) ?></td>
  </tr>
-<?php if ($blockDiff) : ?>
+<?php if ($nanodeKey) : ?>
  <tr>
   <td>Difference to <a href="https://www.nanode.co/">nanode.co</a>:</td>
   <td><?php print($blockDiff) ?> (If negative this node has more validated blocks.)</td>
@@ -100,7 +100,7 @@ setTimeout("location.href = 'index.php'", <?php print( $autoRefreshInSeconds * 1
  </tr>
  <tr>
   <td>System Memory Usage: </td>
-  <td><?php print(getSystemAvailMem() . "MB / " . getSystemTotalMem() . "MB"); ?></td>
+  <td><?php print(getSystemUsedMem() . "MB / " . getSystemTotalMem() . "MB"); ?></td>
  </tr>
  <tr>
   <td>System Uptime: </td>

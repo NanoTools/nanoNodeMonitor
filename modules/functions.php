@@ -128,7 +128,7 @@ function getSystemTotalMem()
 }
 
 // get system used memory in MB
-function getSystemAvailMem()
+function getSystemUsedMem()
 {
     $meminfo = getSystemMemInfo();
     return intval(($meminfo["MemTotal"] - $meminfo["MemAvailable"]) / 1024);
