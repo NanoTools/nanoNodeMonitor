@@ -9,7 +9,7 @@ $autoRefreshInSeconds = 5;
 $cmcTickerUrl = 'https://api.coinmarketcap.com/v1/ticker/?convert=EUR';
 
 // version number
-$versionString = '1.1';
+$versionString = '1.2';
 
 // ----------- Nano Node Variables -----------
 
