@@ -80,10 +80,12 @@ setTimeout("location.href = 'index.php'", <?php print( $autoRefreshInSeconds * 1
   <td class="small">Number of Unchecked Blocks: </td>
   <td class="small"><?php print($uncheckedBlocks) ?></td>
  </tr>
+<?php if ($blockDiff) : ?>
  <tr>
   <td class="small">Difference to <a class="small" href="https://www.nanode.co/">nanode.co</a>:</td>
   <td class="small"><?php print($blockDiff) ?> (If negative this node has more validated blocks.)</td>
  </tr>
+<?php endif; ?>
  <tr>
   <td class="small">Number of Peers: </td>
   <td class="small"><?php print($numPeers) ?></td>
