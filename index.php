@@ -65,46 +65,46 @@ setTimeout("location.href = 'index.php'", <?php print( $autoRefreshInSeconds * 1
 
 <!-- Node Info Table -->
 <?php $uptime = getSystemUptime(); ?>
-<div class="float" style="margin-bottom:3em;">	
-<p class="medium" style="margin-top:0.4em; margin-bottom:1em"><b>Node Info</b></p>
-<table style="margin-left:1em">
+<div class="float">	
+<h2><b>Node Info</b></h2>
+<table class="small">
   <tr>
-  <td class="small">Version:</td>
-  <td class="small"><?php print($version) ?></td>
+  <td>Version:</td>
+  <td><?php print($version) ?></td>
  </tr>
  <tr>
-  <td class="small">Current Block:</td>
-  <td class="small"><?php print($currentBlock) ?></td>
+  <td>Current Block:</td>
+  <td><?php print($currentBlock) ?></td>
  </tr>
  <tr>
-  <td class="small">Number of Unchecked Blocks: </td>
-  <td class="small"><?php print($uncheckedBlocks) ?></td>
+  <td>Number of Unchecked Blocks: </td>
+  <td><?php print($uncheckedBlocks) ?></td>
  </tr>
 <?php if ($blockDiff) : ?>
  <tr>
-  <td class="small">Difference to <a class="small" href="https://www.nanode.co/">nanode.co</a>:</td>
-  <td class="small"><?php print($blockDiff) ?> (If negative this node has more validated blocks.)</td>
+  <td>Difference to <a href="https://www.nanode.co/">nanode.co</a>:</td>
+  <td><?php print($blockDiff) ?> (If negative this node has more validated blocks.)</td>
  </tr>
 <?php endif; ?>
  <tr>
-  <td class="small">Number of Peers: </td>
-  <td class="small"><?php print($numPeers) ?></td>
+  <td>Number of Peers: </td>
+  <td><?php print($numPeers) ?></td>
  </tr>
   <tr>
-  <td class="small">Server Name:</td>
-  <td class="small"><?php print(gethostname()) ?></td>
+  <td>Server Name:</td>
+  <td><?php print(gethostname()) ?></td>
  </tr>
  <tr>
-  <td class="small">System Load Average: </td>
-  <td class="small"><?php print(getSystemLoadAvg()); ?></td>
+  <td>System Load Average: </td>
+  <td><?php print(getSystemLoadAvg()); ?></td>
  </tr>
  <tr>
-  <td class="small">System Memory Usage: </td>
-  <td class="small"><?php print(getSystemAvailMem() . "MB / " . getSystemTotalMem() . "MB"); ?></td>
+  <td>System Memory Usage: </td>
+  <td><?php print(getSystemAvailMem() . "MB / " . getSystemTotalMem() . "MB"); ?></td>
  </tr>
  <tr>
-  <td class="small">System Uptime: </td>
-  <td class="small"><?php print($uptime["days"] . " days, " . $uptime["hours"] . " hours, " . $uptime["mins"] . " minutes and " . $uptime["secs"] . " seconds"); ?></td>
+  <td>System Uptime: </td>
+  <td><?php print($uptime["days"] . " days, " . $uptime["hours"] . " hours, " . $uptime["mins"] . " minutes and " . $uptime["secs"] . " seconds"); ?></td>
  </tr>
 </table>
 </div>
@@ -113,29 +113,29 @@ setTimeout("location.href = 'index.php'", <?php print( $autoRefreshInSeconds * 1
 
 <!-- Node Account Table -->
 
-<div class="float" style="margin-bottom:3em"> 
-<p class="medium" style="margin-top:0.4em; margin-bottom:1em"><b>Node Account Info</b></p>
-<table style="margin-left:1em;">
+<div class="float"> 
+<h2><b>Node Account Info</b></h2>
+<table class="small">
   <tr>
-  <td class="small">Address:</td>
-  <td class="small">
-  	<a class="small" href="https://www.nanode.co/account/<?php print($nanoNodeAccount); ?>" target="_blank"><?php print($nanoNodeAccount); ?></a>
+  <td>Address:</td>
+  <td>
+  	<a href="https://www.nanode.co/account/<?php print($nanoNodeAccount); ?>" target="_blank"><?php print($nanoNodeAccount); ?></a>
   </td> 
  </tr>
  <tr>
-  <td class="small">Balance:</td>
-  <td class="small">
+  <td>Balance:</td>
+  <td>
   	<?php echo $accBalanceMnano; ?> Nano (<?php echo $accPendingMnano; ?> Nano pending)
   </td>
  </tr>
  <tr>
-  <td class="small">Voting Weight:</td>
-  <td class="small"><?php echo $votingWeight; ?> Nano</td>
+  <td>Voting Weight:</td>
+  <td><?php echo $votingWeight; ?> Nano</td>
  </tr>
   <tr>
-  <td class="small">Representative:</td>
-  <td class="small">
-  	<a class="small" href="https://www.nanode.co/account/<?php print($repAccount); ?>" target="_blank"><?php print($repAccount); ?></a>
+  <td>Representative:</td>
+  <td>
+  	<a href="https://www.nanode.co/account/<?php print($repAccount); ?>" target="_blank"><?php print($repAccount); ?></a>
   </td>
  </tr>
  </table>

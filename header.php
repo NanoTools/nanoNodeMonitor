@@ -18,7 +18,7 @@ require_once($_SERVER["DOCUMENT_ROOT"] . '/modules/functions.php');
 <!-- Nano Market Data Section-->
 
 <a href=<?php print($homeURL); ?>>
-        <img src="modules/logo-mini.png" width="220" style="float:left; padding-right:25px" alt="Nano Logo"/>
+     <img src="modules/logo-mini.png" id="logo" width="220" alt="Nano Logo"/>
 </a>
 
 <?php
@@ -72,7 +72,7 @@ if (!empty($nanoCMCData))
 
 <!-- Nano Market Data Table -->
 
- <table class="ticker" style="position:relative; padding-left:15px; padding-right:15px">
+ <table class="ticker">
   <tr>
    <td><b>Price &nbsp; </b><?php print ($nanoPriceUSD . " | " . $nanoPriceEUR . " | " . $nanoPriceBTC); ?></td>
    <td><b>Change &nbsp;</b><?php print ("<span style='color:" . $nanoChange24hPercentHTMLCol . "'>" . $nanoChange24hPercent . " (24h)</span> | "
