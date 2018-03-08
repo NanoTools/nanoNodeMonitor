@@ -8,7 +8,7 @@ $.get('templates/index.hbs', function (data) {
 }, 'html');
 
 function updateStats(){
-    $.get('api.php')
+    $.get('modules/api.php')
     .done(function (apidata) {
         $('#content').html(template(apidata));
     })

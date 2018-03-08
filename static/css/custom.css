@@ -75,6 +75,8 @@ pre {
     margin: 5em 0
 }
 
+h2 {color:#e68634; margin-top: 50px;}
+
 #footer li {
     float: left;
     margin-right: 1.5em;
@@ -128,3 +130,4 @@ pre {
 .section-tout p {
     margin-bottom: 5em
 }
+
