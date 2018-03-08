@@ -2,20 +2,6 @@
 // include config and functions
 require_once($_SERVER["DOCUMENT_ROOT"] . '/modules/config.php');
 require_once($_SERVER["DOCUMENT_ROOT"] . '/modules/functions.php');
-?>
-
-<!DOCTYPE html>
-
-<head>
-<link rel="stylesheet" type="text/css" href="modules/style.css">
-<title>Nano Node Monitor - phpNodeXRai - <?php echo gethostname() ?></title>
-<meta http-equiv="refresh" content="<?php echo $autoRefreshInSeconds; ?>">
-<meta name="format-detection" content="telephone=no">
-</head>
-
-<body>
-<?php
-
 
 // check for curl package
 if (!phpCurlAvailable())
@@ -23,211 +9,76 @@ if (!phpCurlAvailable())
   myError('Curl not available. Please install the php-curl package!');
 }
 
-// get curl handle
-$ch = curl_init();
-
-if (!$ch)
-{
-  myError('Could not initialize curl!');
-}
-
-// we have a valid curl handle here
-// set some curl options
-curl_setopt($ch, CURLOPT_URL, 'http://'.$nanoNodeRPCIP.':'.$nanoNodeRPCPort);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-// -- Get Version String from nano_node ---------------
-$rpcVersion = getVersion($ch);
-$version = $rpcVersion->{'node_vendor'};
-
-// -- Get get current block from nano_node 
-$rpcBlockCount = getBlockCount($ch);
-$currentBlock = $rpcBlockCount->{'count'};
-$uncheckedBlocks = $rpcBlockCount->{'unchecked'};
-
-// -- Get number of peers from nano_node 
-$rpcPeers = getPeers($ch);
-$peers = (array) $rpcPeers->{'peers'};
-$numPeers = count($peers);
-
-// -- Get node account balance from nano_node 
-$rpcNodeAccountBalance = getAccountBalance($ch, $nanoNodeAccount);
-$accBalanceMnano = rawToMnano($rpcNodeAccountBalance->{'balance'},4);
-$accPendingMnano = rawToMnano($rpcNodeAccountBalance->{'pending'},4);
-
-// -- Get representative info for current node from nano_node 
-$rpcNodeRepInfo = getRepresentativeInfo($ch, $nanoNodeAccount);
-$votingWeight = rawToMnano($rpcNodeRepInfo->{'weight'},4);
-$repAccount = $rpcNodeRepInfo->{'representative'};
-
-
-// close curl handle
-curl_close($ch);
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Nano Node Monitor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="robots" content="noindex" />
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="static/css/custom.css" media="screen">
+  </head>
+  <body>
+    <script>var GLOBAL_REFRESH = <?php print($autoRefreshInSeconds); ?></script>
+    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+      <div class="container">
+        <a href="../" class="navbar-brand">Nano Node Monitor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+          <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.nanode.co/account/<?php print($nanoDonationAccount); ?>" target="_blank">Donate</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://github.com/dbachm123/phpNodeXRai" target="_blank">Source on GitHub</a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
 
 
+    <div class="container">
 
-<!-- Nano Market Data Section-->
+      <div class="page-header mb-3" id="banner">
+        <div class="row">
+          <div class="col-lg-8 col-md-7 col-sm-6">
+            <a href="https://nano.org" target="_blank">
+              <img src="static/img/logo-white.svg" width="220" alt="Nano Logo"/>
+            </a>
+            <p class="lead">Nano Node Monitor</p>
+          </div>
+          <div class="col-lg-4 col-md-5 col-sm-6">
+            <div class="coinmarketcap-currency-widget" data-currencyid="1567" data-base="USD" data-secondary="BTC" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-stats="USD" data-statsticker="false"></div>
+          </div>
+        </div>
+      </div>
 
-<a href="https://nano.org/" target="_blank">
-	<img src="modules/logo-mini.png" width="220" style="float:left; padding-right:25px" alt="Nano Logo"/>
-</a>
+      <div id="content"></div>
 
+      <footer id="footer">
+        <div class="row">
+          <div class="col-lg-12">           
+            <p>Version: <?php print ($versionString); ?></p>
+            <p>Contributors: <a href="https://github.com/dbachm123">dbachm123</a>, <a href="https://github.com/BitDesert">BitDesert</a>, <a href="https://github.com/NiFNi">NiFNi</a></p>
+          </div>
+        </div>
+      </footer>
 
-<?php
+    </div>
 
-// get nano data from coinmarketcap
-$nanoCMCData = getNanoInfoFromCMCTicker($cmcTickerUrl);
-
-
-if (!empty($nanoCMCData))
-{ // begin nano market data section
-
-  // beautify market info to be displayed
-  $nanoMarketCapUSD = "$" . number_format( (float) $nanoCMCData->{'market_cap_usd'} / pow(10,9), 2 ) . "B";
-  $nanoMarketCapEUR =       number_format( (float) $nanoCMCData->{'market_cap_eur'} / pow(10,9), 2 ) . "B€";
-
-  $nanoVolumeUSD = "$" . number_format( (float) $nanoCMCData->{'24h_volume_usd'} / pow(10,6), 2 ) . "M";
-  $nanoVolumeEUR =       number_format( (float) $nanoCMCData->{'24h_volume_eur'} / pow(10,6), 2 ) . "M€";
-
-  $nanoPriceUSD = "$" . number_format( (float) $nanoCMCData->{'price_usd'} , 2 );
-  $nanoPriceEUR =       number_format( (float) $nanoCMCData->{'price_eur'} , 2 ) . "€";
-  $nanoPriceBTC =       number_format( (float) $nanoCMCData->{'price_btc'} * pow(10,5), 2 ) . "k sat";
-
-  $nanoChange24hPercent = number_format( (float) $nanoCMCData->{'percent_change_24h'}, 2 );
-  $nanoChange7dPercent  = number_format( (float) $nanoCMCData->{'percent_change_7d'}, 2 );
-
-
-  // color values for positive and negative change
-  $colorPos = "darkgreen";
-  $colorNeg = "RGB(100,0,0)";
-
-  $nanoChange24hPercentHTMLCol = $colorNeg;
-  $nanoChange7dPercentHTMLCol  = $colorNeg;
-
-
-  // prepend '+' sign and make it green (hopefully ...)
-  if ( $nanoChange24hPercent > 0)
-  {
-    $nanoChange24hPercent  = "+" . $nanoChange24hPercent;
-    $nanoChange24hPercentHTMLCol = $colorPos;
-  }
-
-  if ( $nanoChange7dPercent > 0)
-  {
-    $nanoChange7dPercent  = "+" . $nanoChange7dPercent;
-    $nanoChange7dPercentHTMLCol = $colorPos;
-  }
-
-  // append '%''
-  $nanoChange24hPercent = $nanoChange24hPercent . "%";
-  $nanoChange7dPercent  = $nanoChange7dPercent . "%";
-  $uptime = getSystemUptime()
-?>
-
-<!-- Nano Market Data Table -->
-
- <table class="ticker" style="position:relative; padding-left:15px; padding-right:15px">
-  <tr>
-   <td><b>Price &nbsp; </b><?php print ($nanoPriceUSD . " | " . $nanoPriceEUR . " | " . $nanoPriceBTC); ?></td>
-   <td><b>Change &nbsp;</b><?php print ("<span style='color:" . $nanoChange24hPercentHTMLCol . "'>" . $nanoChange24hPercent . " (24h)</span> | " 
-                                      . "<span style='color:" . $nanoChange7dPercentHTMLCol  . "'>" . $nanoChange7dPercent .  " (7d)</span>"); ?></td>
-  </tr>
-  <tr>
-   <td><b>Market Cap &nbsp;</b><?php print ($nanoMarketCapUSD . " | " . $nanoMarketCapEUR ); ?></td>
-   <td><b>24h Volume &nbsp; </b><?php print ($nanoVolumeUSD    . " | " . $nanoVolumeEUR    ); ?></td>
-  </tr>
- </table>
-
-
-<?php
-} // end nano market data section
-?>
-
-<hr>
-
-<!-- Node Info Table -->
-
-<div class="float" style="margin-bottom:3em;">	
-<p class="medium" style="margin-top:0.4em; margin-bottom:1em"><b>Node Info</b></p>
-<table style="margin-left:1em">
-  <tr>
-  <td class="small">Version:</td>
-  <td class="small"><?php print($version) ?></td>
- </tr>
- <tr>
-  <td class="small">Current Block:</td>
-  <td class="small"><?php print($currentBlock) ?></td>
- </tr>
- <tr>
-  <td class="small">Number of Unchecked Blocks: </td>
-  <td class="small"><?php print($uncheckedBlocks) ?></td>
- </tr>
- <tr>
-  <td class="small">Number of Peers: </td>
-  <td class="small"><?php print($numPeers) ?></td>
- </tr>
-  <tr>
-  <td class="small">Server Name:</td>
-  <td class="small"><?php print(gethostname()) ?></td>
- </tr>
- <tr>
-  <td class="small">System Load Average: </td>
-  <td class="small"><?php print(getSystemLoadAvg()); ?></td>
- </tr>
- <tr>
-  <td class="small">System Memory Usage: </td>
-  <td class="small"><?php print(getSystemUsedMem() . "MB / " . getSystemTotalMem() . "MB"); ?></td>
- </tr>
- <tr>
-  <td class="small">System Uptime: </td>
-  <td class="small"><?php print($uptime["days"] . " days, " . $uptime["hours"] . " hours, " . $uptime["mins"] . " minutes and " . $uptime["secs"] . " seconds"); ?></td>
- </tr>
-</table>
-</div>
-
-<hr>
-
-<!-- Node Account Table -->
-
-<div class="float" style="margin-bottom:3em"> 
-<p class="medium" style="margin-top:0.4em; margin-bottom:1em"><b>Node Account Info</b></p>
-<table style="margin-left:1em;">
-  <tr>
-  <td class="small">Address:</td>
-  <td class="small">
-  	<a class="small" href="https://www.nanode.co/account/<?php print($nanoNodeAccount); ?>" target="_blank"><?php print($nanoNodeAccount); ?></a>
-  </td> 
- </tr>
- <tr>
-  <td class="small">Balance:</td>
-  <td class="small">
-  	<?php echo $accBalanceMnano; ?> Nano (<?php echo $accPendingMnano; ?> Nano pending)
-  </td>
- </tr>
- <tr>
-  <td class="small">Voting Weight:</td>
-  <td class="small"><?php echo $votingWeight; ?> Nano</td>
- </tr>
-  <tr>
-  <td class="small">Representative:</td>
-  <td class="small">
-  	<a class="small" href="https://www.nanode.co/account/<?php print($repAccount); ?>" target="_blank"><?php print($repAccount); ?></a>
-  </td>
- </tr>
- </table>
-</div>
-
-<!-- Footer -->
-
-<hr>
-
-<p class="tiny" style="text-align:left; color:#cbcdcf">phpNodeXRai Version <?php print ($versionString); ?> - Get it on <a class="tiny" href="https://github.com/dbachm123/phpNodeXRai" target="_blank" style="color:#cbcdcf">Github</a></p>
-<p class="tiny" style="text-align:left; color:#cbcdcf">Donations:
-<a class="tiny" href="https://www.nanode.co/account/<?php print($nanoDonationAccount); ?>" target=_blank style="color:#cbcdcf"><?php print($nanoDonationAccount); ?></a>
-</p>
-
-</body>
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/handlebars-v4.0.11.js"></script>
+    <script src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
+    <script src="static/js/index.js"></script>
+  </body>
 </html>

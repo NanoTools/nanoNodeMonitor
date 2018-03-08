@@ -9,7 +9,8 @@ $autoRefreshInSeconds = 5;
 $cmcTickerUrl = 'https://api.coinmarketcap.com/v1/ticker/?convert=EUR';
 
 // version number
-$versionString = '1.2';
+$versionString = '1.3';
+
 
 // ----------- Nano Node Variables -----------
 
@@ -24,4 +25,3 @@ $nanoNodeAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr8
 
 // donation account
 $nanoDonationAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj';
-?>

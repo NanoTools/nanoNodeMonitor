@@ -3,6 +3,7 @@
 // print error and die
 function myError($errorMsg)
 {
+  header("HTTP/1.1 503 Service Unavailable");
   die('<h2>'.$errorMsg.'</h2>');
 }
 
@@ -145,35 +146,10 @@ function getSystemUptime()
 }
 
 
-// get current nano price, volume and market cap 
-// from coinmarket cap
 
-function getNanoInfoFromCMCTicker($cmcTickerUrl)
+function returnJson($data)
 {
-  if (empty($cmcTickerUrl))
-  {
-    return array();
-  }
-
-  // get nano info from coinmarketcap as JSON
-  $tickerJson = file_get_contents($cmcTickerUrl);
-  if (empty($tickerJson))
-  {
-    return array();
-  }
-
-  // decode and return the entries for nano
-  $jsonDecoded = json_decode($tickerJson); 
-  $keyNano = array_search('nano', array_column($jsonDecoded, 'id'));
-  if (!$keyNano)
-  {
-    return array();
-  }
-
-  return ( $jsonDecoded[$keyNano] );
+  header('Content-Type: application/json; charset=utf-8');
+  header('Access-Control-Allow-Origin: *');
+  echo json_encode($data);
 }
-
-
-?>
-
-
