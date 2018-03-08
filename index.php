@@ -179,7 +179,7 @@ if (!empty($nanoCMCData))
  </tr>
  <tr>
   <td class="small">System Memory Usage: </td>
-  <td class="small"><?php print(getSystemAvailMem() . "MB / " . getSystemTotalMem() . "MB"); ?></td>
+  <td class="small"><?php print(getSystemUsedMem() . "MB / " . getSystemTotalMem() . "MB"); ?></td>
  </tr>
  <tr>
   <td class="small">System Uptime: </td>
