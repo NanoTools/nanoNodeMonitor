@@ -1,7 +1,6 @@
 <?php
-// include config and functions
-require_once($_SERVER["DOCUMENT_ROOT"] . '/modules/config.php');
-require_once($_SERVER["DOCUMENT_ROOT"] . '/modules/functions.php');
+// include required files
+require_once(__DIR__ . '/modules/includes.php');
 
 // check for curl package
 if (!phpCurlAvailable())
@@ -53,7 +52,7 @@ $data->votingWeight = rawToMnano($rpcNodeRepInfo->{'weight'},4);
 $data->repAccount = $rpcNodeRepInfo->{'representative'} ?: "";
 
 // -- System uptime & memory info --
-
+$data->systemLoad = getSystemLoadAvg();
 $systemUptime = getSystemUptime();
 $systemUptimeStr = $systemUptime["days"] . " days, " . $systemUptime["hours"] . " hours, " . $systemUptime["mins"] . " minutes";
 $data->systemUptime = $systemUptimeStr;
