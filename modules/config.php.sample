@@ -3,13 +3,20 @@
 // ----------- General Variables -----------
 
 // autorefresh interval for the status webpage in seconds
-$autoRefreshInSeconds = 5;
+$autoRefreshInSeconds = 120;
 
 // coinmarketcap ticker URL for nano
 $cmcTickerUrl = 'https://api.coinmarketcap.com/v1/ticker/?convert=EUR';
 
 // version number
 $versionString = '1.1';
+
+// url where you get redirected when clicking the top left nano icon
+$homeURL = 'https://nano.org';
+
+// nanode.co api key
+$nanodeKey = "";
+
 
 // ----------- Nano Node Variables -----------
 
