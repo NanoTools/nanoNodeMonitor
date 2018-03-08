@@ -57,7 +57,7 @@ if (!phpCurlAvailable())
             <p class="lead">Nano Node Monitor</p>
           </div>
           <div class="col-lg-4 col-md-5 col-sm-6">
-            <div class="coinmarketcap-currency-widget" data-currencyid="1567" data-base="USD" data-secondary="BTC" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-stats="USD" data-statsticker="false"></div>
+            <div class="coinmarketcap-currency-widget" data-currencyid="1567" data-base="<?php print($cmcBaseCurrency); ?>" data-secondary="<?php print($cmcSecondaryCurrency); ?>" data-ticker="true" data-rank="true" data-marketcap="true" data-volume="true" data-stats="USD" data-statsticker="false"></div>
           </div>
         </div>
       </div>

@@ -5,8 +5,9 @@
 // autorefresh interval for the status webpage in seconds
 $autoRefreshInSeconds = 5;
 
-// coinmarketcap ticker URL for nano
-$cmcTickerUrl = 'https://api.coinmarketcap.com/v1/ticker/?convert=EUR';
+// coinmarketcap market data base and second currency
+$cmcBaseCurrency = "USD"; // e.g. USD, EUR, BTC, ETH
+$cmcSecondaryCurrency = "BTC";
 
 // version number
 $versionString = '1.3';
