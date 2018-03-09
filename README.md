@@ -2,13 +2,23 @@
 
 Nano Node Monitor is a server-side PHP-based monitor for a Nano node. It connects to a running node via RPC and displays it's status on a simple webpage. Being server-side, it does not expose the RPC interface of the Nano node to the public. 
 
-![phpNodeXRaiImage](https://i.imgur.com/rBFFALh.png) 
+Here is what it looks like on a desktop computer ...
+
+![phpNodeXRaiImage](https://i.imgur.com/yZtAtTN.png)
+
+
+... and on a mobile device: 
+
+![phpNodeXRaiImage](https://i.imgur.com/GZONaxe.jpg)
 
 Currently, the following information is displayed:
+* Node version
 * Current block number
 * Number of unchecked blocks
 * Number of peers
 * System load
+* System uptime
+* Memory usage
 * Node address
 * Balances
 * Voting weight
@@ -55,7 +65,7 @@ To setup Nano Node Monitor, install a webserver with PHP support first, e.g. Ngi
 In your webserver directory, e.g. `/var/www/html`, execute 
 `git clone https://github.com/dbachm123/nanoNodeMonitor .` (notice the '.' at the end!), so that `index.php` is callable via http://[your-ip-address]/index.php
 
-You will need to modify the IP-address and the port for the RPC in the file `config.php`. For the non-docker Nano node, it should match the corresponding entries in `RaiBlocks/config.json`, e.g.
+In the `modules` folder, create your own config file by executing `cp config.sample.php config.php`. You will need to modify the IP-address and the port for the RPC in the file `config.php`. For the non-docker Nano node, it should match the corresponding entries in `RaiBlocks/config.json`, e.g.
 
 ```
 // ip address for RPC (default: 127.0.0.1)
