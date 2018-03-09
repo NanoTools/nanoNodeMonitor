@@ -1,12 +1,11 @@
 <?php
 
 // include required files
-require_once(__DIR__ . '/modules/includes.php');
+require_once __DIR__.'/modules/includes.php';
 
 // check for curl package
-if (!phpCurlAvailable())
-{
-  myError('Curl not available. Please install the php-curl package!');
+if (!phpCurlAvailable()) {
+    myError('Curl not available. Please install the php-curl package!');
 }
 
 ?>
@@ -25,7 +24,7 @@ if (!phpCurlAvailable())
     <link rel="stylesheet" href="static/css/custom.css" media="screen">
   </head>
   <body>
-    <script>var GLOBAL_REFRESH = <?php print($autoRefreshInSeconds); ?></script>
+    <script>var GLOBAL_REFRESH = <?php echo $autoRefreshInSeconds; ?></script>
     <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
       <div class="container">
         <a href="../" class="navbar-brand">Nano Node Monitor</a>
@@ -36,7 +35,7 @@ if (!phpCurlAvailable())
 
           <ul class="nav navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="https://www.nanode.co/account/<?php print($nanoDonationAccount); ?>" target="_blank">Donate</a>
+              <a class="nav-link" href="https://www.nanode.co/account/<?php echo $nanoDonationAccount; ?>" target="_blank">Donate</a>
             </li>
             <li class="nav-item">
 
@@ -60,10 +59,10 @@ if (!phpCurlAvailable())
             </a>
             <p class="lead">Nano Node Monitor</p>
 
-            <p><?php print($welcomeMsg); ?></p>
+            <p><?php echo $welcomeMsg; ?></p>
           </div>
           <div class="col-lg-4 col-md-5 col-sm-6">
-            <div class="coinmarketcap-currency-widget" data-currencyid="1567" data-base="<?php print($cmcBaseCurrency); ?>" data-secondary="<?php print($cmcSecondaryCurrency); ?>" data-ticker="true" data-rank="false" data-marketcap="false" data-volume="false" data-stats="USD" data-statsticker="false"></div>
+            <div class="coinmarketcap-currency-widget" data-currencyid="1567" data-base="<?php echo $cmcBaseCurrency; ?>" data-secondary="<?php echo $cmcSecondaryCurrency; ?>" data-ticker="true" data-rank="false" data-marketcap="false" data-volume="false" data-stats="USD" data-statsticker="false"></div>
 
           </div>
         </div>
@@ -75,7 +74,7 @@ if (!phpCurlAvailable())
         <div class="row">
           <div class="col-lg-12">           
 
-            <p>Version: <?php print(PROJECT_VERSION); ?></p>
+            <p>Version: <?php echo PROJECT_VERSION; ?></p>
 
             <p>Contributors: <a href="https://github.com/dbachm123">dbachm123</a>, <a href="https://github.com/BitDesert">BitDesert</a>, <a href="https://github.com/NiFNi">NiFNi</a></p>
           </div>
