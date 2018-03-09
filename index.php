@@ -1,4 +1,5 @@
 <?php
+
 // include required files
 require_once(__DIR__ . '/modules/includes.php');
 
@@ -14,7 +15,9 @@ if (!phpCurlAvailable())
 <html lang="en">
   <head>
     <meta charset="utf-8">
+
     <title>Nano Node Monitor</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="robots" content="noindex" />
@@ -36,7 +39,9 @@ if (!phpCurlAvailable())
               <a class="nav-link" href="https://www.nanode.co/account/<?php print($nanoDonationAccount); ?>" target="_blank">Donate</a>
             </li>
             <li class="nav-item">
+
               <a class="nav-link" href="https://github.com/dbachm123/nanoNodeMonitor" target="_blank">Source on GitHub</a>
+
             </li>
           </ul>
 
@@ -54,10 +59,12 @@ if (!phpCurlAvailable())
               <img src="static/img/logo-white.svg" width="220" alt="Nano Logo"/>
             </a>
             <p class="lead">Nano Node Monitor</p>
+
             <p><?php print($welcomeMsg); ?></p>
           </div>
           <div class="col-lg-4 col-md-5 col-sm-6">
             <div class="coinmarketcap-currency-widget" data-currencyid="1567" data-base="<?php print($cmcBaseCurrency); ?>" data-secondary="<?php print($cmcSecondaryCurrency); ?>" data-ticker="true" data-rank="false" data-marketcap="false" data-volume="false" data-stats="USD" data-statsticker="false"></div>
+
           </div>
         </div>
       </div>
@@ -67,7 +74,9 @@ if (!phpCurlAvailable())
       <footer id="footer">
         <div class="row">
           <div class="col-lg-12">           
+
             <p>Version: <?php print(PROJECT_VERSION); ?></p>
+
             <p>Contributors: <a href="https://github.com/dbachm123">dbachm123</a>, <a href="https://github.com/BitDesert">BitDesert</a>, <a href="https://github.com/NiFNi">NiFNi</a></p>
           </div>
         </div>

@@ -66,6 +66,7 @@ function getSystemUptime()
     return $array;
 }
 
+
 // returns JSON data to the client
 function returnJson($data)
 {
