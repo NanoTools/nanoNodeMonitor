@@ -1,6 +1,6 @@
-# phpNodeXRai
+# Nano Node Monitor
 
-phpNodeXRai is a server-side PHP-based monitor for a Nano node. It connects to a running node via RPC and displays it's status on a simple webpage. Being server-side, it does not expose the RPC interface of the Nano node to the public. 
+Nano Node Monitor is a server-side PHP-based monitor for a Nano node. It connects to a running node via RPC and displays it's status on a simple webpage. Being server-side, it does not expose the RPC interface of the Nano node to the public. 
 
 ![phpNodeXRaiImage](https://i.imgur.com/rBFFALh.png) 
 
@@ -17,7 +17,7 @@ Currently, the following information is displayed:
 
 ## Installation
 
-To use phpNodeXRai, you will need to setup a Nano node (either [standalone](https://github.com/nanocurrency/raiblocks/releases) or as a [docker image](https://github.com/nanocurrency/raiblocks/wiki/Docker-node)), and a webserver on the same (Linux) machine. See the "Links" section below for tutorials on that. 
+To use Nano Node Monitor, you will need to setup a Nano node (either [standalone](https://github.com/nanocurrency/raiblocks/releases) or as a [docker image](https://github.com/nanocurrency/raiblocks/wiki/Docker-node)), and a webserver on the same (Linux) machine. See the "Links" section below for tutorials on that. 
 
 ### Prepare Nano node (without docker)
 
@@ -48,12 +48,12 @@ This will enable RPC in the Nano node over localhost (`127.0.0.1`) without givin
 If you are using a docker image for your Nano node, you are most likely either using the [docker image from the nanocurrency github](https://github.com/nanocurrency/raiblocks/wiki/Docker-node) or [Brian Pugh's docker image](https://hub.docker.com/r/brianpugh/raiblocks-docker/). In both, the RPC access is limited to the local machine using either `-p [::1]:7076:7076` or `-p 127.0.0.1:7076:7076`. `[::1]` is the IPV6 address of the local machine; `127.0.0.1` is its IPV4 address. No further action necessary and you can test the RPC interface with the same `curl` command as shown above: `curl -g -d '{ "action": "version" }' '127.0.0.1:7076'` or `curl -g -d '{ "action": "version" }' '[::1]:7076'`, respectively.
 
 
-### Setup phpNodeXRai
+### Setup Nano Node Monitor
 
-To setup phpNodeXRai, install a webserver with PHP support first, e.g. Nginx. Here is a [step-by-step tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-in-ubuntu-16-04) to get Nginx and PHP running on a DigitalOcean droplet with Ubuntu 16.04. You might need to additionally install php7.0-curl, i.e. `sudo apt-get install php7.0-curl`
+To setup Nano Node Monitor, install a webserver with PHP support first, e.g. Nginx. Here is a [step-by-step tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-in-ubuntu-16-04) to get Nginx and PHP running on a DigitalOcean droplet with Ubuntu 16.04. You might need to additionally install php7.0-curl, i.e. `sudo apt-get install php7.0-curl`
 
 In your webserver directory, e.g. `/var/www/html`, execute 
-`git clone https://github.com/dbachm123/phpNodeXRai .` (notice the '.' at the end!), so that `index.php` is callable via http://[your-ip-address]/index.php
+`git clone https://github.com/dbachm123/nanoNodeMonitor .` (notice the '.' at the end!), so that `index.php` is callable via http://[your-ip-address]/index.php
 
 You will need to modify the IP-address and the port for the RPC in the file `config.php`. For the non-docker Nano node, it should match the corresponding entries in `RaiBlocks/config.json`, e.g.
 
@@ -85,7 +85,7 @@ $nanoNodeRPCPort = '7076';
 
 ## Support
 
-Feel free to change your representative to my Nano node `xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj` to support further decentralization within the Nano network. In case of problems, please send an [issue](https://github.com/dbachm123/phpNodeXRai/issues). You might also find me on [r/nanocurrency](https://www.reddit.com/r/nanocurrency/) and [r/nanodev](https://www.reddit.com/r/NanoDev/comments/7x87tu/phpnodexrai_node_monitor_tool_now_with_nano/) on reddit. 
+Feel free to change your representative to my Nano node `xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj` to support further decentralization within the Nano network. In case of problems, please send an [issue](https://github.com/dbachm123/nanoNodeMonitor/issues). You might also find me on [r/nanocurrency](https://www.reddit.com/r/nanocurrency/) and [r/nanodev](https://www.reddit.com/r/NanoDev/comments/7x87tu/phpnodexrai_node_monitor_tool_now_with_nano/) on reddit. 
 
 Donations are welcome to: [xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj](https://www.nanode.co/account/xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj)
 

@@ -5,11 +5,12 @@
 // autorefresh interval for the status webpage in seconds
 $autoRefreshInSeconds = 5;
 
-// coinmarketcap ticker URL for nano
-$cmcTickerUrl = 'https://api.coinmarketcap.com/v1/ticker/?convert=EUR';
+// a welcome message shown on top
+$welcomeMsg = 'Nano rocks!';
 
-// version number
-$versionString = '1.2';
+// coinmarketcap market data base and second currency
+$cmcBaseCurrency = "USD"; // e.g. USD, EUR, BTC, ETH
+$cmcSecondaryCurrency = "BTC";
 
 // ----------- Nano Node Variables -----------
 
@@ -24,4 +25,3 @@ $nanoNodeAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr8
 
 // donation account
 $nanoDonationAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj';
-?>
