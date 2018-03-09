@@ -4,7 +4,7 @@
 function myError($errorMsg)
 {
   header("HTTP/1.1 503 Service Unavailable");
-  die('<h2>'.$errorMsg.'</h2>');
+  die($errorMsg);
 }
 
 // check whether php-curl is installed
