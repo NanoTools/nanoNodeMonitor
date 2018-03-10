@@ -1,4 +1,4 @@
 <?php
 
 // the project version
-define('PROJECT_VERSION', '1.3');
+define('PROJECT_VERSION', '1.3.1');
