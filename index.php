@@ -62,7 +62,7 @@ if (!phpCurlAvailable()) {
             <p><?php echo $welcomeMsg; ?></p>
           </div>
           <div class="col-lg-4 col-md-5 col-sm-6">
-            <div class="coinmarketcap-currency-widget" data-currencyid="1567" data-base="<?php echo $cmcBaseCurrency; ?>" data-secondary="<?php echo $cmcSecondaryCurrency; ?>" data-ticker="true" data-rank="false" data-marketcap="false" data-volume="false" data-stats="USD" data-statsticker="false"></div>
+            <div class="coinmarketcap-currency-widget" data-currencyid="1567" data-base="<?php echo $cmcBaseCurrency; ?>" data-secondary="<?php echo $cmcSecondaryCurrency; ?>" data-ticker="true" data-rank="false" data-marketcap="true" data-volume="true" data-stats="<?php echo $cmcBaseCurrency; ?>" data-statsticker="false"></div>
 
           </div>
         </div>
@@ -72,7 +72,7 @@ if (!phpCurlAvailable()) {
 
       <footer id="footer">
         <div class="row">
-          <div class="col-lg-12">           
+          <div class="col-lg-12"
 
             <p>Version: <?php echo PROJECT_VERSION; ?></p>
 
