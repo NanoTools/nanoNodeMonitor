@@ -1,19 +1,23 @@
 <?php
 
 // FIRST USE
-// Please copy this file as config.php and then edit it
+// Please copy this file as config.php
+// To edit a config uncomment the line
 
 // ----------- General Variables -----------
 
 // autorefresh interval for the status webpage in seconds
 $autoRefreshInSeconds = 5;
 
+// Name of your node (default: your hostname)
+// $nanoNodeName = '';
+
 // a welcome message shown on top
 $welcomeMsg = 'Nano rocks!';
 
 // coinmarketcap market data base and second currency
-$cmcBaseCurrency = "USD"; // e.g. USD, EUR, BTC, ETH
-$cmcSecondaryCurrency = "BTC";
+$cmcBaseCurrency = 'USD'; // e.g. USD, EUR, BTC, ETH
+$cmcSecondaryCurrency = 'BTC';
 
 // ----------- Nano Node Variables -----------
 

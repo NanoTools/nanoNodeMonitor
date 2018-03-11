@@ -5,6 +5,9 @@
 // autorefresh interval for the status webpage in seconds
 $autoRefreshInSeconds = 5;
 
+// name of your node
+$nanoNodeName = gethostname();
+
 // a welcome message shown on top
 $welcomeMsg = 'Nano rocks!';
 
