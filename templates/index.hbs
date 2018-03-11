@@ -2,40 +2,15 @@
 
 <div class="row">
 
-
     <div class="col-lg-3">
         <div class="card text-white bg-primary mb-3">
         <div class="card-header">Version</div>
-        <div class="card-body">
-            <h4 class="card-title">{{version}}</h4>
-        </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3">
-        <div class="card text-white bg-primary mb-3">
-        <div class="card-header">Current Block</div>
-        <div class="card-body">
-            <h4 class="card-title">{{currentBlock}}</h4>
-        </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3">
-        <div class="card text-white bg-primary mb-3">
-        <div class="card-header">Number of Unchecked Blocks</div>
-        <div class="card-body">
-            <h4 class="card-title">{{uncheckedBlocks}}</h4>
-        </div>
-        </div>
-    </div>
-
-    <div class="col-lg-3">
-        <div class="card text-white bg-primary mb-3">
-        <div class="card-header">Number of Peers</div>
-        <div class="card-body">
-            <h4 class="card-title">{{numPeers}}</h4>
-        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Version</strong><span class="float-right">{{version}}</span></li>
+            <li class="list-group-item"><strong>Current Block</strong><span class="float-right">{{currentBlock}}</span></li>
+            <li class="list-group-item"><strong>Unchecked Blocks</strong><span class="float-right">{{uncheckedBlocks}}</span></li>
+            <li class="list-group-item"><strong>Peers</strong><span class="float-right">{{numPeers}}</span></li>
+        </ul>
         </div>
     </div>
 
