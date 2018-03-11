@@ -66,11 +66,15 @@ function getSystemUptime()
     return $array;
 }
 
-
 // returns JSON data to the client
 function returnJson($data)
 {
   header('Content-Type: application/json; charset=utf-8');
   header('Access-Control-Allow-Origin: *');
   echo json_encode($data);
+}
+
+// converts boolean to a string
+function bool2string($boolean){
+    return ($boolean) ? 'true' : 'false';
 }
