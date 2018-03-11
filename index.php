@@ -72,7 +72,7 @@ if (!phpCurlAvailable()) {
 
       <footer id="footer">
         <div class="row">
-          <div class="col-lg-12"
+          <div class="col-lg-12">
 
             <p>Version: <?php echo PROJECT_VERSION; ?></p>
 
