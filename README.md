@@ -4,12 +4,12 @@ Nano Node Monitor is a server-side PHP-based monitor for a Nano node. It connect
 
 Here is what it looks like on a desktop computer ...
 
-![phpNodeXRaiImage](https://i.imgur.com/yZtAtTN.png)
+![Desktop screenshot](https://i.imgur.com/yZtAtTN.png)
 
 
 ... and on a mobile device: 
 
-![phpNodeXRaiImage](https://i.imgur.com/GZONaxe.jpg)
+![Mobile screenshot](https://i.imgur.com/GZONaxe.jpg)
 
 Currently, the following information is displayed:
 * Node version

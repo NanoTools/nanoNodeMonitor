@@ -70,7 +70,7 @@ if (!phpCurlAvailable()) {
             data-rank="<?php echo bool2string($cmcRank); ?>" 
             data-marketcap="<?php echo bool2string($cmcMarketcap); ?>" 
             data-volume="<?php echo bool2string($cmcVolume); ?>" 
-            data-stats="<?php echo bool2string($cmcBaseCurrency); ?>" 
+            data-stats="<?php echo $cmcBaseCurrency; ?>" 
             data-statsticker="<?php echo bool2string($cmcStatsticker); ?>"></div>
 
           </div>
