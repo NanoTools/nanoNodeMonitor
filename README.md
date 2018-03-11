@@ -27,7 +27,7 @@ Currently, the following information is displayed:
 
 ## Installation
 
-To use Nano Node Monitor, you will need to setup a Nano node (either [standalone](https://github.com/nanocurrency/raiblocks/releases) or as a [docker image](https://github.com/nanocurrency/raiblocks/wiki/Docker-node)), and a webserver on the same (Linux) machine. See the "Links" section below for tutorials on that. 
+To use Nano Node Monitor, you will need to setup a Nano node (either [standalone](https://github.com/nanocurrency/raiblocks/releases) or as a [docker image](https://github.com/nanocurrency/raiblocks/wiki/Docker-node)), and a webserver on the same (Linux) machine. See the [Links](#links) section below for tutorials on that. 
 
 ### Prepare Nano node (without docker)
 
@@ -62,7 +62,7 @@ If you are using a docker image for your Nano node, you are most likely either u
 
 To setup Nano Node Monitor, install a webserver with PHP support first, e.g. Nginx. Here is a [step-by-step tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-in-ubuntu-16-04) to get Nginx and PHP running on a DigitalOcean droplet with Ubuntu 16.04. You might need to additionally install php7.0-curl, i.e. `sudo apt-get install php7.0-curl`
 
-In your webserver directory, e.g. `/var/www/html`, execute 
+In your empty webserver directory, e.g. `/var/www/html`, execute 
 `git clone https://github.com/dbachm123/nanoNodeMonitor .` (notice the '.' at the end!), so that `index.php` is callable via http://[your-ip-address]/index.php
 
 In the `modules` folder, create your own config file by executing `cp config.sample.php config.php`. You will need to modify the IP-address and the port for the RPC in the file `config.php`. For the non-docker Nano node, it should match the corresponding entries in `RaiBlocks/config.json`, e.g.
@@ -85,10 +85,12 @@ $nanoNodeRPCIP   = '[::1]';
 $nanoNodeRPCPort = '7076';
 ```
 
+## Updating
+Switch to your installation directory and execute `git pull`.
+
 ## Links
 
-* [How to run your own Nano node on DigitalOcean](https://medium.com/@seanomlor/how-to-run-your-own-raiblocks-node-on-digitalocean-6a5a2492c29b)
-* [Support the Network | Nano](https://1nano.co/support-the-network/)
+* [Installation Nano Node with Docker (1NANO)](https://1nano.co/support-the-network/)
 * [Docker node · nanocurrency/raiblocks Wiki](https://github.com/nanocurrency/raiblocks/wiki/Docker-node)
 * [brianpugh/raiblocks-docker - Docker Hub](https://hub.docker.com/r/brianpugh/raiblocks-docker/)
 
