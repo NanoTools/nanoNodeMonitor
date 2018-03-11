@@ -25,6 +25,12 @@ Currently, the following information is displayed:
 * Representative
 * Market data from coinmarketcap.com 
 
+## Prerequisites
+
+- Running Nano Node with RPC enabled
+- Webserver with PHP
+- PHP-Curl Module
+
 ## Installation
 
 To use Nano Node Monitor, you will need to setup a Nano node (either [standalone](https://github.com/nanocurrency/raiblocks/releases) or as a [docker image](https://github.com/nanocurrency/raiblocks/wiki/Docker-node)), and a webserver on the same (Linux) machine. See the [Links](#links) section below for tutorials on that. 
