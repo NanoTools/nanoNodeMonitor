@@ -3,15 +3,18 @@
 // include required files
 require_once __DIR__.'/modules/includes.php';
 
-// check for curl package
-if (!phpCurlAvailable()) {
-    myError('Curl not available. Please install the php-curl package!');
-}
+session_start();
+
+$_SESSION["addr"]=$nanoDonationAccount;
+$_SESSION["amr"]=1000;
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
+<script src="static/js/jquery-3.3.1.min.js"></script>
+
   <head>
     <meta charset="utf-8">
 
@@ -24,13 +27,12 @@ if (!phpCurlAvailable()) {
     <link rel="stylesheet" href="static/css/custom.css" media="screen">
   </head>
   <body>
-    <script>var GLOBAL_REFRESH = <?php echo $autoRefreshInSeconds; ?></script>
-
 
     <!--- add the navbar -->
     <?php include 'modules/navbar.php'; ?>
-
-    <!-- logo and ticker -->
+   
+    
+    <!--- logo  -->
     <div class="container">
 
       <div class="page-header mb-3" id="banner">
@@ -40,34 +42,50 @@ if (!phpCurlAvailable()) {
               <img src="static/img/logo-white.svg" width="220" alt="Nano Logo"/>
             </a>
             <p class="lead">Nano Node Monitor</p>
-
-            <p><?php echo $welcomeMsg; ?></p>
-          </div>
-          <div class="col-lg-4 col-md-5 col-sm-6">
-            <div class="coinmarketcap-currency-widget" 
-            data-currencyid="1567" 
-            data-base="<?php echo $cmcBaseCurrency; ?>" 
-            data-secondary="<?php echo $cmcSecondaryCurrency; ?>" 
-            data-ticker="<?php echo bool2string($cmcTicker); ?>" 
-            data-rank="<?php echo bool2string($cmcRank); ?>" 
-            data-marketcap="<?php echo bool2string($cmcMarketcap); ?>" 
-            data-volume="<?php echo bool2string($cmcVolume); ?>" 
-            data-stats="<?php echo $cmcBaseCurrency; ?>" 
-            data-statsticker="<?php echo bool2string($cmcStatsticker); ?>"></div>
-
-          </div>
+          </div>          
         </div>
       </div>
 
-      <!-- main content -->
       <div id="content"></div>
 
-      <!--- add the footer -->
+      <h2>Contribute</h2>
+      <p>
+        Contribute by writing awesome code ....
+      </p>
+
+      <h2>Donate</h2>
+
+      <?php
+        $verifyUrl="http://138.197.179.164/bbVerify/paymentconfirmedUrl.php";
+
+        $cancelUrl=(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+      ?>
+
+      
+      <p>
+      Donate <input id="bbAmount" type="number" value="1"/> Nano
+      </p>
+
+      <a id ="bbPaymentUrl" href="https://brainblocks.io/checkout?payment.destination=<?php echo $_SESSION["addr"]; ?>&payment.currency=rai&urls.return=<?php echo $verifyUrl; ?>&urls.cancel=<?php echo $cancelUrl; ?>&payment.amount=" target="_blank"><img src="http://weclipart.com/gimg/FA3D4422FD5CF798/donate-button.png" width=100></a>
+
+      <script>
+      $(function() {
+          $('#bbPaymentUrl').click( function() {
+              window.open($(this).attr('href') + $('#bbAmount').val() * 1000000); // *1000000 --> "Nano" units
+              return false;
+          });
+      });
+
+      </script>
+
+
+      </p>
+
+     <!--- add the footer -->
      <?php include 'modules/footer.php'; ?>
 
     </div>
 
-    <script src="static/js/jquery-3.3.1.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
     <script src="static/js/handlebars-v4.0.11.js"></script>
     <script src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
