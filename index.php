@@ -15,7 +15,7 @@ if (!phpCurlAvailable()) {
   <head>
     <meta charset="utf-8">
 
-    <title>Nano Node Monitor - <?php echo gethostname(); ?></title>
+    <title>Nano Node Monitor - <?php echo $nanoNodeName; ?></title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
