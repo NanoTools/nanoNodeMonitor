@@ -22,7 +22,7 @@ function rawToMnano($raw, $precision)
 // get system load average
 function getSystemLoadAvg()
 {
-  return sys_getloadavg ()[2];
+  return sys_getloadavg()[2];
 }
 
 // get system memory info
@@ -31,7 +31,7 @@ function getSystemMemInfo()
     $data = explode("\n", file_get_contents("/proc/meminfo"));
     $meminfo = array();
     foreach ($data as $line) {
-        list($key, $val) = explode(":", $line);
+        list($key, $val) = explode(':', $line.':');
         $meminfo[$key] = trim($val);
     }
     return $meminfo;
@@ -57,7 +57,7 @@ function getSystemUptime()
     $num   = intval($str);
     $array = array();
     $array["secs"] = $num % 60;
-    $num = intdiv($num, 60);
+    $num = (int)($num / 60);
     $array["mins"] = $mins  = $num % 60;
     $num = (int)($num / 60);
     $array["hours"] = $num % 24;
