@@ -40,14 +40,14 @@ $data->numPeers = count($peers);
 
 // -- Get node account balance from nano_node
 $rpcNodeAccountBalance = getAccountBalance($ch, $nanoNodeAccount);
-$data->accBalanceMnano = rawToMnano($rpcNodeAccountBalance->{'balance'}, 4);
+$data->accBalanceMnano = rawToMnano($rpcNodeAccountBalance->{'balance'}, $nanoPrecision);
 $data->accBalanceRaw = (int) $rpcNodeAccountBalance->{'balance'};
-$data->accPendingMnano = rawToMnano($rpcNodeAccountBalance->{'pending'}, 4);
+$data->accPendingMnano = rawToMnano($rpcNodeAccountBalance->{'pending'}, $nanoPrecision);
 $data->accPendingRaw = (int) $rpcNodeAccountBalance->{'pending'};
 
 // -- Get representative info for current node from nano_node
 $rpcNodeRepInfo = getRepresentativeInfo($ch, $nanoNodeAccount);
-$data->votingWeight = rawToMnano($rpcNodeRepInfo->{'weight'}, 4);
+$data->votingWeight = rawToMnano($rpcNodeRepInfo->{'weight'}, $nanoPrecision);
 $data->repAccount = $rpcNodeRepInfo->{'representative'} ?: '';
 
 // -- System uptime & memory info --

@@ -27,6 +27,9 @@
 // $cmcVolume = FALSE;
 // $cmcStatsticker = FALSE;
 
+// nano precision (balances, voting weight)
+// $nanoPrecision = 4;
+
 // ----------- Nano Node Variables -----------
 
 // ip address for RPC (default: [::1])
