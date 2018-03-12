@@ -30,7 +30,7 @@ $cmcStatsticker = FALSE;
 // ----------- Nano Node Variables -----------
 
 // ip address for RPC (default: 127.0.0.1)
-$nanoNodeRPCIP   = '127.0.0.1';
+$nanoNodeRPCIP   = '[::1]';
 
 // ip address for RPC (default: 7076)
 $nanoNodeRPCPort = '7076';
