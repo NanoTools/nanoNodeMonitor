@@ -5,8 +5,8 @@ require_once __DIR__.'/modules/includes.php';
 
 session_start();
 
-$_SESSION["addr"]=$nanoDonationAccount;
-$_SESSION["amr"]=1000;
+$_SESSION["nanoNodeMonDonationAccount"]=$nanoNodeMonDonationAccount;
+$_SESSION["nanoDonationAccount"]=$nanoDonationAccount;
 
 ?>
 
@@ -57,21 +57,37 @@ $_SESSION["amr"]=1000;
 
       <?php
         $verifyUrl="http://138.197.179.164/bbVerify/paymentconfirmedUrl.php";
-
         $cancelUrl=(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
       ?>
 
-      
-      <p>
-      Donate <input id="bbAmount" type="number" value="1"/> Nano
-      </p>
 
-      <a id ="bbPaymentUrl" href="https://brainblocks.io/checkout?payment.destination=<?php echo $_SESSION["addr"]; ?>&payment.currency=rai&urls.return=<?php echo $verifyUrl; ?>&urls.cancel=<?php echo $cancelUrl; ?>&payment.amount=" target="_blank"><img src="http://weclipart.com/gimg/FA3D4422FD5CF798/donate-button.png" width=100></a>
+      <!-- donate to the maintainer -->      
+      <p>
+      Donate to the maintainer of this Nano node.
+      </p>
+      <a id ="bbPaymentUrlNode" href="https://brainblocks.io/checkout?payment.destination=<?php echo $_SESSION["nanoDonationAccount"]; ?>&payment.currency=rai&urls.return=<?php echo $verifyUrl; ?>&urls.cancel=<?php echo $cancelUrl; ?>&payment.amount=" target="_blank" class="donationButton">Donate</a>
+      <input id="bbAmountNode" type="number" value="1"/> Nano
+
+      <p/>
+
+      <!-- donate to the maintainer -->      
+      <p>
+      Donate to the developers of <a href="https://github.com/dbachm123/nanoNodeMonitor" target="_blank">Nano Node Monitor</a>.
+      </p>
+      <a id ="bbPaymentUrlDev" href="https://brainblocks.io/checkout?payment.destination=<?php echo $_SESSION["nanoNodeMonDonationAccount"]; ?>&payment.currency=rai&urls.return=<?php echo $verifyUrl; ?>&urls.cancel=<?php echo $cancelUrl; ?>&payment.amount=" target="_blank" class="donationButton">Donate</a>
+      <input id="bbAmountDev" type="number" value="1"/> Nano
 
       <script>
       $(function() {
-          $('#bbPaymentUrl').click( function() {
-              window.open($(this).attr('href') + $('#bbAmount').val() * 1000000); // *1000000 --> "Nano" units
+          $('#bbPaymentUrlNode').click( function() {
+              window.open($(this).attr('href') + $('#bbAmountNode').val() * 1000000); // *1000000 --> "Nano" units
+              return false;
+          });
+      });
+
+      $(function() {
+          $('#bbPaymentUrlDev').click( function() {
+              window.open($(this).attr('href') + $('#bbAmountDev').val() * 1000000); // *1000000 --> "Nano" units
               return false;
           });
       });
