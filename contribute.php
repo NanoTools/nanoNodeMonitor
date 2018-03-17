@@ -7,6 +7,7 @@ session_start();
 
 $_SESSION["nanoNodeMonDonationAccount"]=NODEMON_DON_ACCOUNT;
 $_SESSION["nanoDonationAccount"]=$nanoDonationAccount;
+$_SESSION["verifyUrl"]=BB_VERIFY_URL;
 
 ?>
 
@@ -50,20 +51,22 @@ $_SESSION["nanoDonationAccount"]=$nanoDonationAccount;
 
       <h2>Contribute</h2>
       <p>
-        Contribute by writing awesome code ....
+        If you want to contribute to Nano Node Monitor and further improve it, your help is very welcome. Have a look at its <a href="https://github.com/dbachm123/nanoNodeMonitor" target="_blank">GitHub page</a>, browse through open issues, check out the source code, create a branch, develop features, fix some bugs, and open pull requests. Development follows the standard <a href="https://guides.github.com/introduction/flow/" target="_blank">GitHub Flow</a> method.  
       </p>
 
       <h2>Donate</h2>
 
       <?php
-        $verifyUrl="http://138.197.179.164/bbVerify/paymentconfirmedUrl.php";
+        $verifyUrl=$_SESSION["verifyUrl"];
         $cancelUrl=(isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
       ?>
+
+      Donations support the efforts of the Nano community to further decentralize the Nano network by running representative nodes. 
 
 
       <!-- donate to the maintainer -->      
       <p>
-      Donate to the maintainer of this Nano node.
+      Donate to the maintainer of this Nano node to help cover some of its costs. 
       </p>
       <a id ="bbPaymentUrlNode" href="https://brainblocks.io/checkout?payment.destination=<?php echo $_SESSION["nanoDonationAccount"]; ?>&payment.currency=rai&urls.return=<?php echo $verifyUrl; ?>&urls.cancel=<?php echo $cancelUrl; ?>&payment.amount=" target="_blank" class="donationButton">Donate</a>
       <input id="bbAmountNode" type="number" value="1"/> Nano
@@ -73,7 +76,7 @@ $_SESSION["nanoDonationAccount"]=$nanoDonationAccount;
 
       <!-- donate to the maintainer -->      
       <p>
-      Donate to the developers of <a href="https://github.com/dbachm123/nanoNodeMonitor" target="_blank">Nano Node Monitor</a>.
+      Donate to the developers of <a href="https://github.com/dbachm123/nanoNodeMonitor" target="_blank">Nano Node Monitor</a> to support further development.
       </p>
       <a id ="bbPaymentUrlDev" href="https://brainblocks.io/checkout?payment.destination=<?php echo $_SESSION["nanoNodeMonDonationAccount"]; ?>&payment.currency=rai&urls.return=<?php echo $verifyUrl; ?>&urls.cancel=<?php echo $cancelUrl; ?>&payment.amount=" target="_blank" class="donationButton">Donate</a>
       <input id="bbAmountDev" type="number" value="1"/> Nano 

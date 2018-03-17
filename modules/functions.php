@@ -114,9 +114,8 @@ function getLatestReleaseVersion()
         return $versionString[0];
     }
   }
-
+  
   return "";
-
 }
 
 // get a string with information about the 
@@ -127,7 +126,7 @@ function getVersionInformation()
   $currentVersion = PROJECT_VERSION;
   $latestVersion  = getLatestReleaseVersion();
 
-  $versionInfo = "Version : " . $currentVersion;
+  $versionInfo = "Version: " . $currentVersion;
 
   if ( version_compare($currentVersion, $latestVersion) < 0 )
   {

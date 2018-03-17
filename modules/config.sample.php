@@ -2,7 +2,9 @@
 
 // FIRST USE
 // Please copy this file as config.php
-// To edit a config uncomment the line
+
+// To edit a config uncomment the line, otherwise
+// defaults will be used for each variable. 
 
 // ----------- General Variables -----------
 
@@ -35,8 +37,8 @@
 // ip address for RPC (default: 7076)
 // $nanoNodeRPCPort = '7076';
 
-// node account
+// account of this node 
 // $nanoNodeAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj'; 
 
-// donation account for this node
+// donation account for maintaining this node
 // $nanoDonationAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj';
