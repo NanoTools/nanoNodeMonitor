@@ -34,17 +34,22 @@ $_SESSION["verifyUrl"]=BB_VERIFY_URL;
     <?php include 'modules/navbar.php'; ?>
    
     
-    <!--- logo  -->
+ <!-- logo and ticker -->
     <div class="container">
 
       <div class="page-header mb-3" id="banner">
         <div class="row">
-          <div class="col-lg-8 col-md-7 col-sm-6">
+          <div class="col-lg-8 col-md-6 col-sm-6">
             <a href="https://nano.org" target="_blank">
               <img src="static/img/logo-white.svg" width="220" alt="Nano Logo"/>
             </a>
+            <p></p>
             <p class="lead">Nano Node Monitor</p>
-          </div>          
+
+            <p><?php print getVersionInformation(); ?><br>
+            Contributors: <a href="https://github.com/dbachm123">dbachm123</a>, <a href="https://github.com/BitDesert">BitDesert</a>, <a href="https://github.com/NiFNi">NiFNi</a></p>    
+            
+          </div>         
         </div>
       </div>
 
