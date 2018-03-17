@@ -35,15 +35,19 @@ if (!phpCurlAvailable()) {
 
       <div class="page-header mb-3" id="banner">
         <div class="row">
-          <div class="col-lg-8 col-md-7 col-sm-6">
+          <div class="col-lg-8 col-md-6 col-sm-6">
             <a href="https://nano.org" target="_blank">
               <img src="static/img/logo-white.svg" width="220" alt="Nano Logo"/>
             </a>
+           <p></p>
             <p class="lead">Nano Node Monitor</p>
 
+            <p><?php print getVersionInformation(); ?><br>
+            Contributors: <a href="https://github.com/dbachm123">dbachm123</a>, <a href="https://github.com/BitDesert">BitDesert</a>, <a href="https://github.com/NiFNi">NiFNi</a></p>
+    
             <p><?php echo $welcomeMsg; ?></p>
           </div>
-          <div class="col-lg-4 col-md-5 col-sm-6">
+          <div class="col-lg-4 col-md-6 col-sm-6">
             <div class="coinmarketcap-currency-widget" 
             data-currencyid="1567" 
             data-base="<?php echo $cmcBaseCurrency; ?>" 
@@ -54,7 +58,6 @@ if (!phpCurlAvailable()) {
             data-volume="<?php echo bool2string($cmcVolume); ?>" 
             data-stats="<?php echo $cmcBaseCurrency; ?>" 
             data-statsticker="<?php echo bool2string($cmcStatsticker); ?>"></div>
-
           </div>
         </div>
       </div>

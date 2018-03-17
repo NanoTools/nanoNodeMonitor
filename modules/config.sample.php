@@ -42,3 +42,6 @@
 
 // donation account for maintaining this node
 // $nanoDonationAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj';
+
+// number of decimal places to display Nano balances, i.e. 
+// $nanoNumDecimalPlaces = 2;

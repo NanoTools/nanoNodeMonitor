@@ -40,23 +40,25 @@ $data->numPeers = count($peers);
 
 // -- Get node account balance from nano_node
 $rpcNodeAccountBalance = getAccountBalance($ch, $nanoNodeAccount);
-$data->accBalanceMnano = rawToMnano($rpcNodeAccountBalance->{'balance'}, 4);
+$data->accBalanceMnano = rawToMnano($rpcNodeAccountBalance->{'balance'}, $nanoNumDecimalPlaces);
 $data->accBalanceRaw = (int) $rpcNodeAccountBalance->{'balance'};
-$data->accPendingMnano = rawToMnano($rpcNodeAccountBalance->{'pending'}, 4);
+$data->accPendingMnano = rawToMnano($rpcNodeAccountBalance->{'pending'}, $nanoNumDecimalPlaces);
 $data->accPendingRaw = (int) $rpcNodeAccountBalance->{'pending'};
 
 // -- Get representative info for current node from nano_node
 $rpcNodeRepInfo = getRepresentativeInfo($ch, $nanoNodeAccount);
-$data->votingWeight = rawToMnano($rpcNodeRepInfo->{'weight'}, 4);
+$data->votingWeight = rawToMnano($rpcNodeRepInfo->{'weight'}, $nanoNumDecimalPlaces);
 $data->repAccount = $rpcNodeRepInfo->{'representative'} ?: '';
 
 // -- System uptime & memory info --
 $data->systemLoad = getSystemLoadAvg();
 $systemUptime = getSystemUptime();
-$systemUptimeStr = $systemUptime['days'].' days, '.$systemUptime['hours'].' hours, '.$systemUptime['mins'].' minutes';
+$systemUptimeStr = $systemUptime['days'].' days, '.$systemUptime['hours'].' hrs, '.$systemUptime['mins'].' mins';
 $data->systemUptime = $systemUptimeStr;
 $data->usedMem = getSystemUsedMem();
 $data->totalMem = getSystemTotalMem();
+$data->uname = getUname();
+$data->nanoNodeName = $nanoNodeName;
 
 // close curl handle
 curl_close($ch);
