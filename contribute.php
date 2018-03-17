@@ -14,10 +14,11 @@ $_SESSION["verifyUrl"]=BB_VERIFY_URL;
 <!DOCTYPE html>
 <html lang="en">
 
-<script src="static/js/jquery-3.3.1.min.js"></script>
+
 
   <head>
     <meta charset="utf-8">
+    <script src="static/js/jquery-3.3.1.min.js"></script>
 
     <title>Nano Node Monitor - <?php echo $nanoNodeName; ?></title>
 
@@ -97,9 +98,6 @@ $_SESSION["verifyUrl"]=BB_VERIFY_URL;
       });
 
       </script>
-
-
-      </p>
 
      <!--- add the footer -->
      <?php include 'modules/footer.php'; ?>

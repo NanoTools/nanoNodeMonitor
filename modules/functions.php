@@ -114,7 +114,7 @@ function getLatestReleaseVersion()
         return $versionString[0];
     }
   }
-  
+
   return "";
 }
 
@@ -130,11 +130,18 @@ function getVersionInformation()
 
   if ( version_compare($currentVersion, $latestVersion) < 0 )
   {
-    $versionInfo .= ". A new version " . $latestVersion;
-    $versionInfo .= " is available for update at ";
+    $versionInfo .= "<br>A new version " . $latestVersion;
+    $versionInfo .= " is available at ";
     $versionInfo .= "<a href=\"" . PROJECT_URL . "\" target=\"_blank\">GitHub.</a>";
   }
 
   return $versionInfo;
 
+}
+
+// info about operating system
+
+function getUname()
+{
+  return php_uname();
 }

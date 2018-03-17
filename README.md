@@ -4,26 +4,13 @@ Nano Node Monitor is a server-side PHP-based monitor for a Nano node. It connect
 
 Here is what it looks like on a desktop computer ...
 
-![phpNodeXRaiImage](https://i.imgur.com/yZtAtTN.png)
+![phpNodeXRaiImage](https://i.imgur.com/1k5BCfc.png)
 
 
 ... and on a mobile device: 
 
-![phpNodeXRaiImage](https://i.imgur.com/GZONaxe.jpg)
+![phpNodeXRaiImage](https://i.imgur.com/PTSwL69.jpg)
 
-Currently, the following information is displayed:
-* Node version
-* Current block number
-* Number of unchecked blocks
-* Number of peers
-* System load
-* System uptime
-* Memory usage
-* Node address
-* Balances
-* Voting weight
-* Representative
-* Market data from coinmarketcap.com 
 
 ## First Installation
 

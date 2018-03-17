@@ -160,3 +160,15 @@ input[type=number] { /* Nano orange */
     box-sizing: border-box;
     border-radius: 4px;
 } 
+
+.list-group-item:hover {
+    background: #3e444c;
+}
+
+.truncate {  
+  display: block;
+  width: 135px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
