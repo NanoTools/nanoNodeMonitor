@@ -25,30 +25,12 @@ if (!phpCurlAvailable()) {
   </head>
   <body>
     <script>var GLOBAL_REFRESH = <?php echo $autoRefreshInSeconds; ?></script>
-    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
-      <div class="container">
-        <a href="../" class="navbar-brand">Nano Node Monitor</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-
-          <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="https://www.nanode.co/account/<?php echo $nanoDonationAccount; ?>" target="_blank">Donate</a>
-            </li>
-            <li class="nav-item">
-
-              <a class="nav-link" href="https://github.com/dbachm123/nanoNodeMonitor" target="_blank">Source on GitHub</a>
-
-            </li>
-          </ul>
-
-        </div>
-      </div>
-    </div>
 
 
+    <!--- add the navbar -->
+    <?php include 'modules/navbar.php'; ?>
+
+    <!-- logo and ticker -->
     <div class="container">
 
       <div class="page-header mb-3" id="banner">
@@ -77,18 +59,11 @@ if (!phpCurlAvailable()) {
         </div>
       </div>
 
+      <!-- main content -->
       <div id="content"></div>
 
-      <footer id="footer">
-        <div class="row">
-          <div class="col-lg-12">
-
-            <p>Version: <?php echo PROJECT_VERSION; ?></p>
-
-            <p>Contributors: <a href="https://github.com/dbachm123">dbachm123</a>, <a href="https://github.com/BitDesert">BitDesert</a>, <a href="https://github.com/NiFNi">NiFNi</a></p>
-          </div>
-        </div>
-      </footer>
+      <!--- add the footer -->
+     <?php include 'modules/footer.php'; ?>
 
     </div>
 
@@ -97,5 +72,6 @@ if (!phpCurlAvailable()) {
     <script src="static/js/handlebars-v4.0.11.js"></script>
     <script src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
     <script src="static/js/index.js"></script>
+
   </body>
 </html>
