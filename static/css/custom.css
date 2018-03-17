@@ -146,12 +146,9 @@ a.donationButton { /* Nano orange */
     text-decoration: none;
     transition: 0.3s;
     display: inline-block;
-    opacity: 0.6;
 } 
 
-a.donationButton:hover { 
-    opacity: 1
-}
+
 
 input[type=number] { /* Nano orange */
     border: 6px solid #ea882e;

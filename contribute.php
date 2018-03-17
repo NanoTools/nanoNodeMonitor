@@ -68,14 +68,15 @@ $_SESSION["nanoDonationAccount"]=$nanoDonationAccount;
       <a id ="bbPaymentUrlNode" href="https://brainblocks.io/checkout?payment.destination=<?php echo $_SESSION["nanoDonationAccount"]; ?>&payment.currency=rai&urls.return=<?php echo $verifyUrl; ?>&urls.cancel=<?php echo $cancelUrl; ?>&payment.amount=" target="_blank" class="donationButton">Donate</a>
       <input id="bbAmountNode" type="number" value="1"/> Nano
 
-      <p/>
+      <p>&nbsp;</p>
+
 
       <!-- donate to the maintainer -->      
       <p>
       Donate to the developers of <a href="https://github.com/dbachm123/nanoNodeMonitor" target="_blank">Nano Node Monitor</a>.
       </p>
       <a id ="bbPaymentUrlDev" href="https://brainblocks.io/checkout?payment.destination=<?php echo $_SESSION["nanoNodeMonDonationAccount"]; ?>&payment.currency=rai&urls.return=<?php echo $verifyUrl; ?>&urls.cancel=<?php echo $cancelUrl; ?>&payment.amount=" target="_blank" class="donationButton">Donate</a>
-      <input id="bbAmountDev" type="number" value="1"/> Nano
+      <input id="bbAmountDev" type="number" value="1"/> Nano 
 
       <script>
       $(function() {
