@@ -83,7 +83,7 @@ if (!phpCurlAvailable()) {
         <div class="row">
           <div class="col-lg-12">
 
-            <p>Version: <?php echo PROJECT_VERSION; ?></p>
+            <p><?php print getVersionInformation(); ?></p>
 
             <p>Contributors: <a href="https://github.com/dbachm123">dbachm123</a>, <a href="https://github.com/BitDesert">BitDesert</a>, <a href="https://github.com/NiFNi">NiFNi</a></p>
           </div>
@@ -97,5 +97,6 @@ if (!phpCurlAvailable()) {
     <script src="static/js/handlebars-v4.0.11.js"></script>
     <script src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
     <script src="static/js/index.js"></script>
+
   </body>
 </html>
