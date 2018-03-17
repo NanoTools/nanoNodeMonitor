@@ -25,7 +25,7 @@ Currently, the following information is displayed:
 * Representative
 * Market data from coinmarketcap.com 
 
-## Installation
+## First Installation
 
 To use Nano Node Monitor, you will need to setup a Nano node (either [standalone](https://github.com/nanocurrency/raiblocks/releases) or as a [docker image](https://github.com/nanocurrency/raiblocks/wiki/Docker-node)), and a webserver on the same (Linux) machine. See the "Links" section below for tutorials on that. 
 
@@ -84,6 +84,9 @@ $nanoNodeRPCIP   = '[::1]';
 // ip address for RPC (default: 7076)
 $nanoNodeRPCPort = '7076';
 ```
+
+## Updating
+Switch to your installation directory and execute `git pull`.
 
 ## Links
 

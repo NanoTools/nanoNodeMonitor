@@ -5,7 +5,7 @@ require_once __DIR__.'/modules/includes.php';
 
 session_start();
 
-$_SESSION["nanoNodeMonDonationAccount"]=$nanoNodeMonDonationAccount;
+$_SESSION["nanoNodeMonDonationAccount"]=NODEMON_DON_ACCOUNT;
 $_SESSION["nanoDonationAccount"]=$nanoDonationAccount;
 
 ?>
