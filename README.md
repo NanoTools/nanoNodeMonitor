@@ -48,9 +48,6 @@ $nanoNodeRPCPort = '7076';
 ## Updating
 Switch to your installation directory and execute `git pull`.
 
-## Updating
-Switch to your installation directory and execute `git pull`.
-
 ## Links
 
 * [Installation Official Nano Node with Docker (Official Nano Repo Wiki)](https://github.com/nanocurrency/raiblocks/wiki/Docker-node)
