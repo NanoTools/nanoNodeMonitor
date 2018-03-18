@@ -6,26 +6,13 @@ Nano Node Monitor is a server-side PHP-based monitor for a Nano node. It connect
 
 Here is what it looks like on a desktop computer ...
 
-![Desktop screenshot](https://i.imgur.com/yZtAtTN.png)
+![Desktop screenshot](https://i.imgur.com/1k5BCfc.png)
 
 
 ... and on a mobile device: 
 
-![Mobile screenshot](https://i.imgur.com/GZONaxe.jpg)
+![Mobile screenshot](https://i.imgur.com/PTSwL69.jpg)
 
-Currently, the following information is displayed:
-* Node version
-* Current block number
-* Number of unchecked blocks
-* Number of peers
-* System load
-* System uptime
-* Memory usage
-* Node address
-* Balances
-* Voting weight
-* Representative
-* Market data from coinmarketcap.com 
 
 ## Prerequisites
 
@@ -57,6 +44,9 @@ $nanoNodeRPCIP   = '127.0.0.1';
 // ip address for RPC (default: 7076)
 $nanoNodeRPCPort = '7076';
 ```
+
+## Updating
+Switch to your installation directory and execute `git pull`.
 
 ## Updating
 Switch to your installation directory and execute `git pull`.

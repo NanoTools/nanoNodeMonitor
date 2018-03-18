@@ -135,3 +135,40 @@ h2 {
    margin-top: 1em;
    color: #ea882e
 }
+
+a.donationButton { /* Nano orange */
+    background-color: #ea882e;
+    color: #f7f7f9;
+    padding: 8px 16px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+} 
+
+
+
+input[type=number] { /* Nano orange */
+    border: 6px solid #ea882e;
+    color: black; 
+    width: 20%;
+    padding: 5px 5px;
+    font-size: 14px;
+    margin: 4px 2px;
+    box-sizing: border-box;
+    border-radius: 4px;
+} 
+
+.list-group-item:hover {
+    background: #3e444c;
+}
+
+.truncate {  
+  display: block;
+  width: 135px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
