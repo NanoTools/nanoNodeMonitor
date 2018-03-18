@@ -14,10 +14,10 @@ require_once __DIR__.'/modules/includes.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="robots" content="noindex" />
     <link rel="stylesheet" href="static/css/bootstrap.min.css" media="screen">
-    <link rel="stylesheet" href="static/css/custom.css" media="screen">
+    <link rel="stylesheet" href="static/css/custom.css?v=<?php echo PROJECT_VERSION; ?>" media="screen">
   </head>
   <body>
-    <script>var GLOBAL_REFRESH = <?php echo $autoRefreshInSeconds; ?></script>
+    <script>var init = []; var GLOBAL_REFRESH = <?php echo $autoRefreshInSeconds; ?></script>
 
 
     <!--- add the navbar -->
@@ -67,7 +67,8 @@ require_once __DIR__.'/modules/includes.php';
     <script src="static/js/bootstrap.min.js"></script>
     <script src="static/js/handlebars-v4.0.11.js"></script>
     <script src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
-    <script src="static/js/index.js"></script>
+    <script src="static/js/main.js?v=<?php echo PROJECT_VERSION; ?>"></script>
+    <script src="static/js/index.js?v=<?php echo PROJECT_VERSION; ?>"></script>
 
   </body>
 </html>
