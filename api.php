@@ -23,6 +23,8 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 $data = new stdClass();
 $data->nanoNodeAccount = $nanoNodeAccount;
+$data->nanoNodeAccountShort = truncateAddress($data->nanoNodeAccount);
+$data->nanoNodeAccountUrl = getAccountUrl($data->nanoNodeAccount, $blockExplorer);
 
 // -- Get Version String from nano_node ---------------
 $rpcVersion = getVersion($ch);
@@ -49,6 +51,8 @@ $data->accPendingRaw = (int) $rpcNodeAccountBalance->{'pending'};
 $rpcNodeRepInfo = getRepresentativeInfo($ch, $nanoNodeAccount);
 $data->votingWeight = rawToMnano($rpcNodeRepInfo->{'weight'}, $nanoNumDecimalPlaces);
 $data->repAccount = $rpcNodeRepInfo->{'representative'} ?: '';
+$data->repAccountShort = truncateAddress($data->repAccount);
+$data->repAccountUrl = getAccountUrl($data->repAccount, $blockExplorer);
 
 // -- System uptime & memory info --
 $data->systemLoad = getSystemLoadAvg();
