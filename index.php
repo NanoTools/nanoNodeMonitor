@@ -56,7 +56,7 @@ require_once __DIR__.'/modules/includes.php';
       </div>
 
       <!-- main content -->
-      <div id="content"></div>
+      <div id="content"><i class="fas fa-spinner fa-spin fa-3x"></i></div>
 
       <!--- add the footer -->
      <?php include 'modules/footer.php'; ?>
@@ -66,6 +66,7 @@ require_once __DIR__.'/modules/includes.php';
     <script src="static/js/jquery-3.3.1.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
     <script src="static/js/handlebars-v4.0.11.js"></script>
+    <script src="static/js/fontawesome-all.min.js"></script>
     <script src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
     <script src="static/js/main.js?v=<?php echo PROJECT_VERSION; ?>"></script>
     <script src="static/js/index.js?v=<?php echo PROJECT_VERSION; ?>"></script>
