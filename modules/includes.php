@@ -1,5 +1,10 @@
 <?php
 
+// check for curl package
+if (!phpCurlAvailable()) {
+    myError('Curl not available. Please install the php-curl package!');
+}
+
 // checks if the config file got edited
 if(!file_exists(__DIR__ . '/config.php')) {
 	require_once(__DIR__ . '/functions.php');

@@ -1,12 +1,6 @@
 <?php
-
 // include required files
 require_once __DIR__.'/modules/includes.php';
-
-// check for curl package
-if (!phpCurlAvailable()) {
-    myError('Curl not available. Please install the php-curl package!');
-}
 
 // get curl handle
 $ch = curl_init();
