@@ -36,10 +36,10 @@ $nanoNodeRPCIP   = '[::1]';
 $nanoNodeRPCPort = '7076';
 
 // account of this node 
-$nanoNodeAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj'; 
+$nanoNodeAccount = ''; 
 
 // donation account for maintaining this node
-$nanoDonationAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj';
+$nanoDonationAccount = $nanoNodeAccount;
 
 // number of decimal places to display Nano balances, i.e. 
 $nanoNumDecimalPlaces = 2;
@@ -48,3 +48,6 @@ $nanoNumDecimalPlaces = 2;
 
 // Uptimerobot.com API key for external monitoring
 $uptimerobotApiKey = '';
+
+// ----------- Social -----------
+$socials = array();
