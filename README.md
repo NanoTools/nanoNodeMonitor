@@ -50,7 +50,7 @@ If you are using a docker image for your Nano node, you are most likely either u
 To setup Nano Node Monitor, install a webserver with PHP support first, e.g. Nginx. Here is a [step-by-step tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-in-ubuntu-16-04) to get Nginx and PHP running on a DigitalOcean droplet with Ubuntu 16.04. You might need to additionally install php7.0-curl, i.e. `sudo apt-get install php7.0-curl`
 
 In your webserver directory, e.g. `/var/www/html`, execute 
-`git clone https://github.com/dbachm123/nanoNodeMonitor .` (notice the '.' at the end!), so that `index.php` is callable via http://[your-ip-address]/index.php
+`git clone https://github.com/dbachm123/nanoNodeMonitor .` (notice the '.' at the end to install into the current directory), so that `index.php` is callable via `http://[your-ip-address]/index.php`. You can also install into a custom directory by replacing `.` with a directory name of your choice. If no directory is explicitly given, `nanoNodeMonitor` is used as installation directory. 
 
 In the `modules` folder, create your own config file by executing `cp config.sample.php config.php`. You will need to modify the IP-address and the port for the RPC in the file `config.php`. For the non-docker Nano node, it should match the corresponding entries in `RaiBlocks/config.json`, e.g.
 
