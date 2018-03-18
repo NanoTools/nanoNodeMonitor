@@ -43,3 +43,8 @@ $nanoDonationAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9
 
 // number of decimal places to display Nano balances, i.e. 
 $nanoNumDecimalPlaces = 2;
+
+// ----------- Monitoring -----------
+
+// Uptimerobot.com API key for external monitoring
+$uptimerobotApiKey = '';

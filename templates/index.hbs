@@ -53,11 +53,18 @@
   <li class="list-group-item active">
      Hostname
      <span class="float-right">{{nanoNodeName}}</span>
-  </li> 
+  </li>
+  {{#if nodeUptime}}
+  <li class="list-group-item active">
+     Node Uptime
+     <span class="float-right">{{nodeUptime}} %</span>
+  </li>
+  {{else}}
   <li class="list-group-item active">
      Uptime
      <span class="float-right">{{systemUptime}}</span>
-  </li> 
+  </li>
+  {{/if}}
   <li class="list-group-item active">
      Load
      <span class="float-right">{{systemLoad}}</span>

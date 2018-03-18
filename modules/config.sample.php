@@ -45,3 +45,8 @@
 
 // number of decimal places to display Nano balances, i.e. 
 // $nanoNumDecimalPlaces = 2;
+
+// ----------- Monitoring -----------
+
+// Uptimerobot.com API key for external monitoring
+// $uptimerobotApiKey = '';
