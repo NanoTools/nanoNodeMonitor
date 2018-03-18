@@ -42,7 +42,7 @@ if (!phpCurlAvailable()) {
            <p></p>
             <p class="lead">Nano Node Monitor</p>
 
-            <p><?php print getVersionInformation(); ?><br>
+            <p><?php echo getVersionInformation(); ?><br>
             Contributors: <a href="https://github.com/dbachm123">dbachm123</a>, <a href="https://github.com/BitDesert">BitDesert</a>, <a href="https://github.com/NiFNi">NiFNi</a></p>
     
             <p><?php echo $welcomeMsg; ?></p>
