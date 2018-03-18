@@ -30,16 +30,24 @@ $cmcStatsticker = FALSE;
 // ----------- Nano Node Variables -----------
 
 // ip address for RPC (default: 127.0.0.1)
-$nanoNodeRPCIP   = '127.0.0.1';
+$nanoNodeRPCIP   = '[::1]';
 
 // ip address for RPC (default: 7076)
 $nanoNodeRPCPort = '7076';
 
 // account of this node 
-$nanoNodeAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj'; 
+$nanoNodeAccount = ''; 
 
 // donation account for maintaining this node
-$nanoDonationAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj';
+$nanoDonationAccount = $nanoNodeAccount;
 
 // number of decimal places to display Nano balances, i.e. 
 $nanoNumDecimalPlaces = 2;
+
+// ----------- Monitoring -----------
+
+// Uptimerobot.com API key for external monitoring
+$uptimerobotApiKey = '';
+
+// ----------- Social -----------
+$socials = array();

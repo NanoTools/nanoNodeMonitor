@@ -31,8 +31,8 @@
 
 // ----------- Nano Node Variables -----------
 
-// ip address for RPC (default: 127.0.0.1)
-// $nanoNodeRPCIP   = '127.0.0.1';
+// ip address for RPC (default: [::1])
+// $nanoNodeRPCIP   = '[::1]';
 
 // ip address for RPC (default: 7076)
 // $nanoNodeRPCPort = '7076';
@@ -45,3 +45,15 @@
 
 // number of decimal places to display Nano balances, i.e. 
 // $nanoNumDecimalPlaces = 2;
+
+// ----------- Monitoring -----------
+
+// Uptimerobot.com API key for external monitoring
+// Tutorial: https://github.com/nanotools/nanoNodeMonitor/wiki/Uptimerobot-Node-Monitoring
+// $uptimerobotApiKey = '';
+
+// ----------- Social -----------
+
+// Add your social accounts
+// Tutorial: https://github.com/nanotools/nanoNodeMonitor/wiki/Social-Accounts
+// $socials['reddit'] = 'https://www.reddit.com/user/NANOFAN1337/';

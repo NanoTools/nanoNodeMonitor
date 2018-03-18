@@ -145,3 +145,38 @@ function getUname()
 {
   return php_uname();
 }
+
+// get Node Uptime
+function getNodeUptime($apiKey, $uptimeRatio = 30)
+{
+  $curl = curl_init();
+  
+  curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://api.uptimerobot.com/v2/getMonitors",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 5,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => "api_key=$apiKey&format=json&custom_uptime_ratios=$uptimeRatio",
+    CURLOPT_HTTPHEADER => array(
+      "cache-control: no-cache",
+      "content-type: application/x-www-form-urlencoded"
+    ),
+  ));
+  
+  $response = curl_exec($curl);
+  $err = curl_error($curl);
+  
+  curl_close($curl);
+  
+  if ($err) {
+    return "API error";
+  }
+
+  // decode JSON response
+  $response = json_decode($response);
+  
+  return $response->monitors[0]->custom_uptime_ratio;
+}

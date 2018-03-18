@@ -22,3 +22,13 @@ require_once(__DIR__ . '/functions_rpc.php');
 
 // load all other required functions
 require_once(__DIR__ . '/functions.php');
+
+// check for curl package (needs functions)
+if (!phpCurlAvailable()) {
+    myError('Curl not available. Please install the php-curl package!');
+}
+
+// check for curl package (needs functions)
+if (empty($nanoNodeAccount)) {
+    myError('Node Account not set up. Please edit your config!');
+}
