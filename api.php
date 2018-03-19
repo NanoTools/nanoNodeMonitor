@@ -3,11 +3,6 @@
 // include required files
 require_once __DIR__.'/modules/includes.php';
 
-// check for curl package
-if (!phpCurlAvailable()) {
-    myError('Curl not available. Please install the php-curl package!');
-}
-
 // get curl handle
 $ch = curl_init();
 
@@ -59,6 +54,9 @@ $data->usedMem = getSystemUsedMem();
 $data->totalMem = getSystemTotalMem();
 $data->uname = getUname();
 $data->nanoNodeName = $nanoNodeName;
+
+// get the node uptime
+$data->nodeUptime = getNodeUptime($uptimerobotApiKey);
 
 // close curl handle
 curl_close($ch);
