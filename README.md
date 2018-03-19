@@ -33,7 +33,9 @@ If you want it to run a subdirectory remove the `.` at the end.
 
 In the `modules` folder, create your own config file by executing:
 
+
     cp config.sample.php config.php
+
 
 If you run a standalone node you might need to modify the IP-address and the port for the RPC in the file `config.php`. It should match the corresponding entries in `~/RaiBlocks/config.json`, e.g.
 

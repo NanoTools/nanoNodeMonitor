@@ -27,6 +27,9 @@ $cmcMarketcap = FALSE;
 $cmcVolume = FALSE;
 $cmcStatsticker = FALSE;
 
+// choice of Nano block explorer ('nanode', 'nanoexplorer', 'nano')
+$blockExplorer = 'nanode';
+
 // ----------- Nano Node Variables -----------
 
 // ip address for RPC (default: 127.0.0.1)
@@ -51,3 +54,6 @@ $uptimerobotApiKey = '';
 
 // ----------- Social -----------
 $socials = array();
+
+
+

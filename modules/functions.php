@@ -16,7 +16,7 @@ function phpCurlAvailable()
 // raw to Mnano
 function rawToMnano($raw, $precision)
 {
-  return round(($raw / 1000000000000000000000000000000.0), $precision);
+  return number_format(($raw / 1000000000000000000000000000000.0), $precision,'.',',');
 }
 
 // get system load average
@@ -120,7 +120,6 @@ function getLatestReleaseVersion()
 
 // get a string with information about the 
 // current version and possible updates
-
 function getVersionInformation()
 {
   $currentVersion = PROJECT_VERSION;
@@ -140,11 +139,11 @@ function getVersionInformation()
 }
 
 // info about operating system
-
 function getUname()
 {
   return php_uname();
 }
+
 
 // get Node Uptime
 function getNodeUptime($apiKey, $uptimeRatio = 30)
@@ -180,3 +179,31 @@ function getNodeUptime($apiKey, $uptimeRatio = 30)
   
   return $response->monitors[0]->custom_uptime_ratio;
 }
+
+
+// truncate long Nano addresses to display the first and 
+// last characaters with ellipsis in the center
+function truncateAddress($addr)
+{
+  $totalNumChar = NANO_ADDR_NUM_CHAR;
+  $numEllipsis  = 3; // ...
+  $numPrefix    = 4; // xrb_
+  $numAddrParts  = floor(($totalNumChar-$numEllipsis-$numPrefix) / 2.0);
+
+  return strlen($addr) > $totalNumChar ? substr($addr,0,$numPrefix+$numAddrParts)."...".substr($addr,-$numAddrParts) : $addr;
+}
+
+// get a block explorer URL from an account
+function getAccountUrl($account, $blockExplorer)
+{
+  switch ($blockExplorer)
+  {
+    case 'nano':
+      return "https://nano.org/en/explore/account/" . $account;
+    case 'nanoexplorer':
+      return "https://nanoexplorer.io/accounts/" . $account;
+    default:
+      return "https://www.nanode.co/account/" . $account;
+  }
+}
+
