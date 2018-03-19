@@ -29,6 +29,9 @@
 // $cmcVolume = FALSE;
 // $cmcStatsticker = FALSE;
 
+// choice of Nano block explorer ('nanode', 'nanoexplorer', 'nano')
+// $blockExplorer = 'nanode';
+
 // ----------- Nano Node Variables -----------
 
 // ip address for RPC (default: [::1])
