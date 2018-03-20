@@ -26,7 +26,7 @@ Here is what it looks like on a desktop computer ...
 
 In your empty webserver directory, e.g. `/var/www/html`, execute:
 
-    git clone https://github.com/dbachm123/nanoNodeMonitor .
+    git clone https://github.com/nanotools/nanoNodeMonitor .
 
  
 If you want it to run a subdirectory remove the `.` at the end.
@@ -57,7 +57,7 @@ Switch to your installation directory and execute `git pull`.
 
 ## Support
 
-Feel free to change your representative to my Nano node `xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj` to support further decentralization within the Nano network. In case of problems, please send an [issue](https://github.com/dbachm123/nanoNodeMonitor/issues). You might also find me on [r/nanocurrency](https://www.reddit.com/r/nanocurrency/) and [r/nanodev](https://www.reddit.com/r/NanoDev/comments/7x87tu/phpnodexrai_node_monitor_tool_now_with_nano/) on reddit. 
+Feel free to change your representative to my Nano node `xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj` to support further decentralization within the Nano network. In case of problems, please send an [issue](https://github.com/nanotools/nanoNodeMonitor/issues). You might also find me on [r/nanocurrency](https://www.reddit.com/r/nanocurrency/) and [r/nanodev](https://www.reddit.com/r/NanoDev/comments/7x87tu/phpnodexrai_node_monitor_tool_now_with_nano/) on reddit. 
 
 Donations are welcome to: [xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj](https://www.nanode.co/account/xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj)
 
