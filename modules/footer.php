@@ -9,7 +9,6 @@
 <script src="static/js/bootstrap.min.js"></script>
 <script src="static/js/handlebars-v4.0.11.js"></script>
 <script src="static/js/fontawesome-all.min.js"></script>
-<script src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
 <script src="static/js/main.js?v=<?php echo PROJECT_VERSION; ?>"></script>
 
 </body>
