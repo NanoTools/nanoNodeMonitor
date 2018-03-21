@@ -29,6 +29,7 @@ include 'modules/header.php';
 <!-- main content -->
 <div id="content"><i class="fas fa-spinner fa-spin fa-3x"></i></div>
 
+<script src="static/js/clipboard.min.js" async></script>
 <script src="static/js/index.js?v=<?php echo PROJECT_VERSION; ?>"></script>
 <!--- add the footer -->
 <?php include 'modules/footer.php'; ?>
