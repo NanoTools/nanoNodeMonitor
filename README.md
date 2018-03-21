@@ -1,6 +1,6 @@
 # Nano Node Monitor
 
-[![StyleCI](https://styleci.io/repos/124749081/shield?branch=master)](https://styleci.io/repos/124749081)
+![GitHub release](https://img.shields.io/github/release/nanotools/nanoNodeMonitor.svg?style=flat-square) [![StyleCI](https://styleci.io/repos/124749081/shield?branch=master)](https://styleci.io/repos/124749081)
 
 Nano Node Monitor is a server-side PHP-based monitor for a Nano node. It connects to a running node via RPC and displays it's status on a simple webpage. Being server-side, it does not expose the RPC interface of the Nano node to the public. 
 
