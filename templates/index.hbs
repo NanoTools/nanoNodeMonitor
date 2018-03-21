@@ -1,4 +1,19 @@
 <div class="row">
+  <div class="col">
+    <h2>Node Account</h2>
+    <ul class="list-group">
+      <li class="list-group-item active d-flex justify-content-between align-items-center">
+        <span class="mr-3">Address</span>
+        <a href="https://www.nanode.co/account/{{nanoNodeAccount}}" target="_blank" class="truncate">{{nanoNodeAccount}}</a>
+        <button id="copyAccount" class="btn btn-sm btn-link" data-clipboard-text="{{nanoNodeAccount}}" title="Copy"><i class="fas fa-clipboard fa-lg"></i></button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script src="static/js/clipboard.min.js" async></script>
+
+<div class="row">
 
 <div class="col-lg-4">
  <h2>Node Info</h2>
@@ -27,16 +42,24 @@
  <h2>Node Account Info</h2>    
  <ul class="list-group">
   <li class="list-group-item active">
-     Address
-     <span class="float-right"><a href="https://www.nanode.co/account/{{nanoNodeAccount}}" target="_blank" class="truncate">{{nanoNodeAccount}}</a></span>
-  </li> 
-  <li class="list-group-item active">
      Balance
      <span class="float-right">{{accBalanceMnano}} Nano</span>
   </li>
   <li class="list-group-item active">
-    Representative
-    <span class="float-right"><a href="https://www.nanode.co/account/{{repAccount}}" target="_blank" class="truncate">{{repAccount}}</a></span>
+     Pending
+     <span class="float-right">{{accPendingMnano}} Nano</span>
+  </li>
+  <li class="list-group-item active">
+    <div class="row">
+      <div class="col-6">Representative</div>
+      <div class="col-6 truncate">
+        {{#if repAccount}}
+        <a href="https://www.nanode.co/account/{{repAccount}}" target="_blank">{{repAccount}}</a>
+        {{else}}
+        Account not opened
+        {{/if}}
+      </div>
+     </div>      
   </li>
   <li class="list-group-item active">
     Voting Weight

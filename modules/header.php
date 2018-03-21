@@ -9,6 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="robots" content="noindex" />
     <link rel="stylesheet" href="static/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="static/css/fontawesome-all.min.css" media="screen">
     <link rel="stylesheet" href="static/css/custom.css?v=<?php echo PROJECT_VERSION; ?>" media="screen">
     <link rel="icon" href="static/img/logo-only-white.svg">
   </head>
