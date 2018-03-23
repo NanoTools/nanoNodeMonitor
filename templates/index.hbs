@@ -4,7 +4,7 @@
     <ul class="list-group">
       <li class="list-group-item active d-flex justify-content-between align-items-center">
         <span class="mr-3">Address</span>
-        <a href="https://www.nanode.co/account/{{nanoNodeAccount}}" target="_blank" class="truncate">{{nanoNodeAccount}}</a>
+        <a href="{{nanoNodeAccountUrl}}" target="_blank" class="truncate">{{nanoNodeAccount}}</a>
         <button id="copyAccount" class="btn btn-sm btn-link" data-clipboard-text="{{nanoNodeAccount}}" title="Copy"><i class="fas fa-clipboard fa-lg"></i></button>
       </li>
     </ul>
@@ -52,7 +52,7 @@
       <div class="col-6">Representative</div>
       <div class="col-6 truncate">
         {{#if repAccount}}
-        <a href="https://www.nanode.co/account/{{repAccount}}" target="_blank">{{repAccount}}</a>
+        <a href="{{repAccountUrl}}" target="_blank">{{repAccount}}</a>
         {{else}}
         Account not opened
         {{/if}}
