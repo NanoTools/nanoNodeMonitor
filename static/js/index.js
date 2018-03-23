@@ -13,6 +13,7 @@ function updateStats(){
     $.get('api.php')
     .done(function (apidata) {
         $('#content').html(template(apidata));
+        new ClipboardJS('#copyAccount');
     })
     .fail(function (apidata) {
         $('#content').html(apidata.responseText);

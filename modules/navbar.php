@@ -17,7 +17,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/dbachm123/nanoNodeMonitor" target="_blank">Source on GitHub</a>
+          <a class="nav-link" href="<?php echo PROJECT_URL; ?>" target="_blank">Source on GitHub</a>
         </li>
       </ul>
 

@@ -56,7 +56,7 @@ $systemUptimeStr = $systemUptime['days'].' days, '.$systemUptime['hours'].' hrs,
 $data->systemUptime = $systemUptimeStr;
 $data->usedMem = getSystemUsedMem();
 $data->totalMem = getSystemTotalMem();
-$data->uname = getUname();
+//$data->uname = getUname();
 $data->nanoNodeName = $nanoNodeName;
 
 // get the node uptime
