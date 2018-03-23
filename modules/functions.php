@@ -16,7 +16,7 @@ function phpCurlAvailable()
 // raw to Mnano
 function rawToMnano($raw, $precision)
 {
-  return round(($raw / 1000000000000000000000000000000.0), $precision);
+  return number_format(($raw / 1000000000000000000000000000000.0), $precision,'.',',');
 }
 
 // get system load average
@@ -120,7 +120,6 @@ function getLatestReleaseVersion()
 
 // get a string with information about the 
 // current version and possible updates
-
 function getVersionInformation()
 {
   $currentVersion = PROJECT_VERSION;
@@ -140,8 +139,71 @@ function getVersionInformation()
 }
 
 // info about operating system
-
 function getUname()
 {
   return php_uname();
 }
+
+
+// get Node Uptime
+function getNodeUptime($apiKey, $uptimeRatio = 30)
+{
+  $curl = curl_init();
+  
+  curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://api.uptimerobot.com/v2/getMonitors",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 5,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => "api_key=$apiKey&format=json&custom_uptime_ratios=$uptimeRatio",
+    CURLOPT_HTTPHEADER => array(
+      "cache-control: no-cache",
+      "content-type: application/x-www-form-urlencoded"
+    ),
+  ));
+  
+  $response = curl_exec($curl);
+  $err = curl_error($curl);
+  
+  curl_close($curl);
+  
+  if ($err) {
+    return "API error";
+  }
+
+  // decode JSON response
+  $response = json_decode($response);
+  
+  return $response->monitors[0]->custom_uptime_ratio;
+}
+
+
+// truncate long Nano addresses to display the first and 
+// last characaters with ellipsis in the center
+function truncateAddress($addr)
+{
+  $totalNumChar = NANO_ADDR_NUM_CHAR;
+  $numEllipsis  = 3; // ...
+  $numPrefix    = 4; // xrb_
+  $numAddrParts  = floor(($totalNumChar-$numEllipsis-$numPrefix) / 2.0);
+
+  return strlen($addr) > $totalNumChar ? substr($addr,0,$numPrefix+$numAddrParts)."...".substr($addr,-$numAddrParts) : $addr;
+}
+
+// get a block explorer URL from an account
+function getAccountUrl($account, $blockExplorer)
+{
+  switch ($blockExplorer)
+  {
+    case 'nano':
+      return "https://nano.org/en/explore/account/" . $account;
+    case 'nanoexplorer':
+      return "https://nanoexplorer.io/accounts/" . $account;
+    default:
+      return "https://www.nanode.co/account/" . $account;
+  }
+}
+
