@@ -1,6 +1,6 @@
 # Nano Node Monitor
 
-![GitHub release](https://img.shields.io/github/release/nanotools/nanoNodeMonitor.svg?style=flat-square) [![StyleCI](https://styleci.io/repos/124749081/shield?branch=master)](https://styleci.io/repos/124749081)
+![GitHub release](https://img.shields.io/github/release/nanotools/nanoNodeMonitor.svg?style=flat-square) [![StyleCI](https://styleci.io/repos/118352667/shield?branch=master)](https://styleci.io/repos/118352667)
 
 Nano Node Monitor is a server-side PHP-based monitor for a Nano node. It connects to a running node via RPC and displays it's status on a simple webpage. Being server-side, it does not expose the RPC interface of the Nano node to the public. 
 
@@ -59,7 +59,7 @@ Switch to your installation directory and execute `git pull`.
 
 ## Support
 
-Feel free to change your representative to my Nano node `xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj` to support further decentralization within the Nano network. In case of problems, please send an [issue](https://github.com/nanotools/nanoNodeMonitor/issues). You might also find me on [r/nanocurrency](https://www.reddit.com/r/nanocurrency/) and [r/nanodev](https://www.reddit.com/r/NanoDev/comments/7x87tu/phpnodexrai_node_monitor_tool_now_with_nano/) on reddit. 
+Feel free to change your representative to my Nano node `xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj` to support further decentralization within the Nano network. In case of problems, please send an [issue](https://github.com/nanotools/nanoNodeMonitor/issues). 
 
 Donations are welcome to: [xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj](https://www.nanode.co/account/xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj)
 
