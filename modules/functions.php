@@ -40,14 +40,14 @@ function getSystemMemInfo()
 // get system total memory in MB
 function getSystemTotalMem()
 {
-    return intval(getSystemMemInfo()["MemTotal"] / 1024);
+    return intval((int)getSystemMemInfo()["MemTotal"] / 1024);
 }
 
 // get system used memory in MB
 function getSystemUsedMem()
 {
     $meminfo = getSystemMemInfo();
-    return intval(($meminfo["MemTotal"] - $meminfo["MemAvailable"]) / 1024);
+    return intval(((int)$meminfo["MemTotal"] - (int)$meminfo["MemAvailable"]) / 1024);
 }
 
 // get system uptime array with secs, mins, hours and days
@@ -83,30 +83,39 @@ function bool2string($boolean)
 // get version of latest release from github
 function getLatestReleaseVersion()
 {
-
   // get release tag of "latest" from github
-  $ch = curl_init();
-  curl_setopt_array($ch, [
-    CURLOPT_URL => GITHUB_LATEST_API_URL,
-    CURLOPT_HTTPHEADER => [
-        "Accept: application/vnd.github.v3+json",
-        "Content-Type: text/plain",
-        "User-Agent: Chrome/47.0.2526.111"
-    ],
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_FOLLOWLOCATION => false,
-    CURLOPT_GET => true
-  ]);
-  $output = curl_exec($ch);      
-  curl_close($ch);
+  $curl = curl_init();
 
-  // decode json
-  $decoded = json_decode($output);
+  curl_setopt_array($curl, array(
+    CURLOPT_URL => GITHUB_LATEST_API_URL,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_HTTPHEADER => array(
+      "cache-control: no-cache",
+      "User-Agent: NanoNodeMonitor"
+    ),
+  ));
+
+  $response = curl_exec($curl);
+  $err = curl_error($curl);
+
+  curl_close($curl);
+  
+  if ($err) {
+    return "API error";
+  }
+
+  // decode JSON response
+  $response = json_decode($response);
 
   // tag string
-  if (array_key_exists("tag_name", $decoded))
+  if (property_exists($response, "tag_name"))
   {
-      $tagString = $decoded->tag_name;
+      $tagString = $response->tag_name;
   
     // search for version name x.x.x 
     if (0 != preg_match('/(\d+\.?)+$/', $tagString, $versionString))
