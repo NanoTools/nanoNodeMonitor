@@ -211,6 +211,8 @@ function getAccountUrl($account, $blockExplorer)
       return "https://nano.org/en/explore/account/" . $account;
     case 'nanoexplorer':
       return "https://nanoexplorer.io/accounts/" . $account;
+    case 'nanowatch':
+      return "https://nanowat.ch/account/" . $account;
     default:
       return "https://www.nanode.co/account/" . $account;
   }
