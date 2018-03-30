@@ -139,7 +139,7 @@ function getVersionInformation()
   if ( version_compare($currentVersion, $latestVersion) < 0 )
   {
     $versionInfo .= "<br>A new version " . $latestVersion;
-    $versionInfo .= " is available at ";
+    $versionInfo .= " is available on ";
     $versionInfo .= "<a href=\"" . PROJECT_URL . "\" target=\"_blank\">GitHub.</a>";
   }
 
