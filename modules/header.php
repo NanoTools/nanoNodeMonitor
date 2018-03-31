@@ -14,8 +14,8 @@
     <link rel="icon" href="static/img/logo-only-white.svg">
   </head>
   <body>
-    <script>var init = []; var GLOBAL_REFRESH = <?php echo $autoRefreshInSeconds; ?></script>
-
+    <!--<script>var init = []; var GLOBAL_REFRESH = <?php echo $autoRefreshInSeconds; ?></script> -->
+    <script type="text/javascript" src="static/js/start.php?autoRefresh=<?php echo $autoRefreshInSeconds; ?>"></script>
 
     <!--- add the navbar -->
     <?php include __DIR__ . '/navbar.php'; ?>
