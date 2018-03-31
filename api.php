@@ -28,12 +28,12 @@ $data->version = $rpcVersion->{'node_vendor'};
 // -- Get get current block from nano_node
 $rpcBlockCount = getBlockCount($ch);
 $data->currentBlock = number_format($rpcBlockCount->{'count'});
-$data->uncheckedBlocks = $rpcBlockCount->{'unchecked'};
+$data->uncheckedBlocks = number_format($rpcBlockCount->{'unchecked'});
 
 // -- Get number of peers from nano_node
 $rpcPeers = getPeers($ch);
 $peers = (array) $rpcPeers->{'peers'};
-$data->numPeers = count($peers);
+$data->numPeers = number_format(count($peers));
 
 // -- Get node account balance from nano_node
 $rpcNodeAccountBalance = getAccountBalance($ch, $nanoNodeAccount);
@@ -54,8 +54,8 @@ $data->systemLoad = getSystemLoadAvg();
 $systemUptime = getSystemUptime();
 $systemUptimeStr = $systemUptime['days'].' days, '.$systemUptime['hours'].' hrs, '.$systemUptime['mins'].' mins';
 $data->systemUptime = $systemUptimeStr;
-$data->usedMem = getSystemUsedMem();
-$data->totalMem = getSystemTotalMem();
+$data->usedMem = number_format(getSystemUsedMem());
+$data->totalMem = number_format(getSystemTotalMem());
 //$data->uname = getUname();
 $data->nanoNodeName = $nanoNodeName;
 
