@@ -3,14 +3,14 @@ var template;
 init.push(function(){
   Handlebars.registerHelper('formatNumber', function (number, digits) {
     if (Number.isInteger(digits)) {
-      return number.toLocaleString(undefined, {minimumFractionDigits: digits, maximumFractionDigits: digits});
+      return number.toLocaleString('en-US', {minimumFractionDigits: digits, maximumFractionDigits: digits});
     }
 
-    return number.toLocaleString();
+    return number.toLocaleString('en-US');
   });
 
   Handlebars.registerHelper('formatNano', function (number) {
-    return number.toLocaleString(undefined, {minimumFractionDigits: GLOBAL_DIGITS, maximumFractionDigits: GLOBAL_DIGITS});
+    return number.toLocaleString('en-US', {minimumFractionDigits: GLOBAL_DIGITS, maximumFractionDigits: GLOBAL_DIGITS});
   });
 
   $.get('templates/index.hbs', function (data) {
