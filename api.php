@@ -44,10 +44,13 @@ $data->accPendingRaw = (int) $rpcNodeAccountBalance->{'pending'};
 
 // -- Get representative info for current node from nano_node
 $rpcNodeRepInfo = getRepresentativeInfo($ch, $nanoNodeAccount);
-$data->votingWeight = rawToMnano($rpcNodeRepInfo->{'weight'}, $nanoNumDecimalPlaces);
 $data->repAccount = $rpcNodeRepInfo->{'representative'} ?: '';
 $data->repAccountShort = truncateAddress($data->repAccount);
 $data->repAccountUrl = getAccountUrl($data->repAccount, $blockExplorer);
+
+// get the account weight
+$rpcNodeAccountWeight = getAccountWeight($ch, $nanoNodeAccount);
+$data->votingWeight = rawToMnano($rpcNodeAccountWeight->{'weight'}, $nanoNumDecimalPlaces);
 
 // -- System uptime & memory info --
 $data->systemLoad = getSystemLoadAvg();

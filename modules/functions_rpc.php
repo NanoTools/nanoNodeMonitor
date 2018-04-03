@@ -65,7 +65,6 @@ function getAccountBalance($ch, $account)
   return postCurl($ch, $data);
 }
 
-
 // get representative info for nano_node account
 function getRepresentativeInfo($ch, $account) 
 {
@@ -74,6 +73,19 @@ function getRepresentativeInfo($ch, $account)
                 "account" => $account, 
                 "representative" => "true", 
                 "weight" => "true");
+
+  // post curl
+  return postCurl($ch, $data);
+}
+
+// get representative info for nano_node account
+function getAccountWeight($ch, $account) 
+{
+  // get block count
+  $data = array(
+    "action" => "account_weight", 
+    "account" => $account
+  );
 
   // post curl
   return postCurl($ch, $data);
