@@ -22,15 +22,15 @@
   </li>
   <li class="list-group-item active">
      Current Block
-     <span class="float-right">{{currentBlock}}</span>
+     <span class="float-right">{{formatNumber currentBlock}}</span>
   </li>
   <li class="list-group-item active">
     Unchecked Blocks
-    <span class="float-right">{{uncheckedBlocks}}</span>
+    <span class="float-right">{{formatNumber uncheckedBlocks}}</span>
   </li>
   <li class="list-group-item active">
     Peers
-    <span class="float-right">{{numPeers}}</span>
+    <span class="float-right">{{formatNumber numPeers}}</span>
   </li>
  </ul>
 </div>  
@@ -41,11 +41,11 @@
  <ul class="list-group">
   <li class="list-group-item active">
      Balance
-     <span class="float-right">{{accBalanceMnano}} Nano</span>
+     <span class="float-right">{{formatNano accBalanceMnano}} Nano</span>
   </li>
   <li class="list-group-item active">
      Pending
-     <span class="float-right">{{accPendingMnano}} Nano</span>
+     <span class="float-right">{{formatNano accPendingMnano 6}} Nano</span>
   </li>
   <li class="list-group-item active">
     <div class="row">
@@ -61,7 +61,7 @@
   </li>
   <li class="list-group-item active">
     Voting Weight
-    <span class="float-right">{{votingWeight}} Nano</span>
+    <span class="float-right">{{formatNano votingWeight 6}} Nano</span>
   </li>
  </ul>
 </div> 
@@ -78,7 +78,7 @@
   {{#if nodeUptime}}
   <li class="list-group-item active">
      Node Uptime
-     <span class="float-right">{{nodeUptime}} %</span>
+     <span class="float-right">{{formatNumber nodeUptime}} %</span>
   </li>
   {{else}}
   <li class="list-group-item active">
@@ -88,11 +88,11 @@
   {{/if}}
   <li class="list-group-item active">
      Load
-     <span class="float-right">{{systemLoad}}</span>
+     <span class="float-right">{{formatNumber systemLoad}}</span>
   </li>
   <li class="list-group-item active">
     Memory Usage
-    <span class="float-right">{{usedMem}} / {{totalMem}} MB</span>
+    <span class="float-right">{{formatNumber usedMem}} / {{formatNumber totalMem}} MB</span>
   </li>  
  </ul>
 </div>  
