@@ -1,23 +1,35 @@
 var template;
 
 init.push(function(){
-    $.get('templates/index.hbs', function (data) {
-        template=Handlebars.compile(data);
+  Handlebars.registerHelper('formatNumber', function (number, digits) {
+    if (Number.isInteger(digits)) {
+      return number.toLocaleString('en-US', {minimumFractionDigits: digits, maximumFractionDigits: digits});
+    }
 
-        updateStats();
-    }, 'html');
+    return number.toLocaleString('en-US');
+  });
+
+  Handlebars.registerHelper('formatNano', function (number) {
+    return number.toLocaleString('en-US', {minimumFractionDigits: GLOBAL_DIGITS, maximumFractionDigits: GLOBAL_DIGITS});
+  });
+
+  $.get('templates/index.hbs', function (data) {
+    template=Handlebars.compile(data);
+
+    updateStats();
+  }, 'html');
 });
 
 function updateStats(){
-    $.get('api.php')
-    .done(function (apidata) {
-        $('#content').html(template(apidata));
-        new ClipboardJS('#copyAccount');
-        setTimeout(updateStats, GLOBAL_REFRESH * 1000);
-    })
-    .fail(function (apidata) {
-        $('#content').html(apidata.responseText);
-        console.log('FAIL', apidata.responseText);
-        setTimeout(updateStats, GLOBAL_REFRESH * 1000);
-    });
+  $.get('api.php')
+  .done(function (apidata) {
+    $('#content').html(template(apidata));
+    new ClipboardJS('#copyAccount');
+    setTimeout(updateStats, GLOBAL_REFRESH * 1000);
+  })
+  .fail(function (apidata) {
+    $('#content').html(apidata.responseText);
+    console.log('FAIL', apidata.responseText);
+    setTimeout(updateStats, GLOBAL_REFRESH * 1000);
+  });
 }

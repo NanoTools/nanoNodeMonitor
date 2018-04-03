@@ -27,8 +27,8 @@ $data->version = $rpcVersion->{'node_vendor'};
 
 // -- Get get current block from nano_node
 $rpcBlockCount = getBlockCount($ch);
-$data->currentBlock = $rpcBlockCount->{'count'};
-$data->uncheckedBlocks = $rpcBlockCount->{'unchecked'};
+$data->currentBlock = (int)$rpcBlockCount->{'count'};
+$data->uncheckedBlocks = (int)$rpcBlockCount->{'unchecked'};
 
 // -- Get number of peers from nano_node
 $rpcPeers = getPeers($ch);

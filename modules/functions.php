@@ -16,7 +16,7 @@ function phpCurlAvailable()
 // raw to Mnano
 function rawToMnano($raw, $precision)
 {
-  return number_format(($raw / 1000000000000000000000000000000.0), $precision,'.',',');
+  return (float)number_format(($raw / 1000000000000000000000000000000.0), $precision);
 }
 
 // get system load average
@@ -186,7 +186,7 @@ function getNodeUptime($apiKey, $uptimeRatio = 30)
   // decode JSON response
   $response = json_decode($response);
   
-  return $response->monitors[0]->custom_uptime_ratio;
+  return (float)$response->monitors[0]->custom_uptime_ratio;
 }
 
 
