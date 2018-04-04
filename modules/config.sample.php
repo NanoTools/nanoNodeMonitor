@@ -49,6 +49,9 @@
 // number of decimal places to display Nano balances, i.e. 
 // $nanoNumDecimalPlaces = 2;
 
+// URL of our representative's node monitor
+// $repMonitorUrl = 'http://138.197.179.164/'; 
+
 // ----------- Monitoring -----------
 
 // Uptimerobot.com API key for external monitoring
