@@ -49,7 +49,13 @@
   </li>
   <li class="list-group-item active">
     <div class="row">
-      <div class="col-6">Representative</div>
+      <div class="col-6">
+        {{#if repMonitorUrl}}
+        <a href="{{repMonitorUrl}}" target="_blank">Representative</a>
+        {{else}}
+        Representative
+        {{/if}}
+      </div>
       <div class="col-6 truncate">
         {{#if repAccount}}
         <a href="{{repAccountUrl}}" target="_blank">{{repAccount}}</a>
