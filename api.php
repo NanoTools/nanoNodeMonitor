@@ -3,6 +3,9 @@
 // include required files
 require_once __DIR__.'/modules/includes.php';
 
+// set default locale
+setlocale(LC_ALL, 'en_US');
+
 // get curl handle
 $ch = curl_init();
 

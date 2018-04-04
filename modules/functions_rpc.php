@@ -48,7 +48,7 @@ function getBlockCount($ch)
 // get number of peers
 function getPeers($ch) 
 {
-  // get block count
+  // get peers
   $data = array("action" => "peers");
 
   // post curl
@@ -58,7 +58,7 @@ function getPeers($ch)
 // get account balance for nano_node account
 function getAccountBalance($ch, $account) 
 {
-  // get block count
+  // get account balance
   $data = array("action" => "account_balance", "account" => $account);
 
   // post curl
@@ -68,7 +68,7 @@ function getAccountBalance($ch, $account)
 // get representative info for nano_node account
 function getRepresentativeInfo($ch, $account) 
 {
-  // get block count
+  // get account info
   $data = array("action" => "account_info", 
                 "account" => $account, 
                 "representative" => "true", 
@@ -78,10 +78,10 @@ function getRepresentativeInfo($ch, $account)
   return postCurl($ch, $data);
 }
 
-// get representative info for nano_node account
+// get account weight nano_node account
 function getAccountWeight($ch, $account) 
 {
-  // get block count
+  // get account weight
   $data = array(
     "action" => "account_weight", 
     "account" => $account
