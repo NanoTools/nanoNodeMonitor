@@ -50,10 +50,9 @@ $rpcNodeRepInfo = getRepresentativeInfo($ch, $nanoNodeAccount);
 $data->repAccount = $rpcNodeRepInfo->{'representative'} ?: '';
 $data->repAccountShort = truncateAddress($data->repAccount);
 $data->repAccountUrl = getAccountUrl($data->repAccount, $blockExplorer);
-if (isset($repMonitorUrl))
-{
-	// add URL of our representative's node monitor
-	$data->repMonitorUrl = $repMonitorUrl;
+if (isset($repMonitorUrl)) {
+    // add URL of our representative's node monitor
+    $data->repMonitorUrl = $repMonitorUrl;
 }
 
 // get the account weight
