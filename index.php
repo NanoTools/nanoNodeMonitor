@@ -15,7 +15,7 @@ include 'modules/header.php';
 
       <div class="btn-group mb-3">
       <?php foreach ($socials as $socialkey => $socialvalue): ?>
-        <a href="<?php echo $socialvalue; ?>" target="_blank" class="btn btn-secondary"><i class="fab fa-<?php echo $socialkey; ?>"></i></a>
+        <a href="<?php echo $socialvalue; ?>" target="_blank" class="btn btn-secondary"><i class="fab fa-2x<?php echo $socialkey; ?>"></i></a>
       <?php endforeach; ?>
       </div>
 
