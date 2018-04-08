@@ -29,7 +29,7 @@
 // $cmcVolume = FALSE;
 // $cmcStatsticker = FALSE;
 
-// choice of Nano block explorer ('nanode', 'nanoexplorer', 'nano')
+// choice of Nano block explorer ('nanode', 'nanoexplorer', 'nano', 'nanowatch')
 // $blockExplorer = 'nanode';
 
 // ----------- Nano Node Variables -----------
@@ -52,11 +52,11 @@
 // ----------- Monitoring -----------
 
 // Uptimerobot.com API key for external monitoring
-// Tutorial: https://github.com/nanotools/nanoNodeMonitor/wiki/Uptimerobot-Node-Monitoring
+// Tutorial: https://github.com/NanoTools/nanoNodeMonitor/wiki/Uptimerobot-Node-Monitoring
 // $uptimerobotApiKey = '';
 
 // ----------- Social -----------
 
 // Add your social accounts
-// Tutorial: https://github.com/nanotools/nanoNodeMonitor/wiki/Social-Accounts
+// Tutorial: https://github.com/NanoTools/nanoNodeMonitor/wiki/Social-Accounts
 // $socials['reddit'] = 'https://www.reddit.com/user/NANOFAN1337/';

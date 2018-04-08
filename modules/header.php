@@ -14,7 +14,11 @@
     <link rel="icon" href="static/img/logo-only-white.svg">
   </head>
   <body>
-    <script>var init = []; var GLOBAL_REFRESH = <?php echo $autoRefreshInSeconds; ?></script>
+    <script>
+    var init = []; 
+    var GLOBAL_REFRESH = <?php echo $autoRefreshInSeconds; ?>; 
+    var GLOBAL_DIGITS = <?php echo $nanoNumDecimalPlaces; ?>;
+    </script>
 
 
     <!--- add the navbar -->

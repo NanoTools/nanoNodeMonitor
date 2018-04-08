@@ -5,6 +5,7 @@ function postCurl($ch, $data)
 {
   $data_string = json_encode($data);
   curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+  curl_setopt($ch, CURLOPT_TIMEOUT, 5);
   curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     'Content-Type: application/json',
     'Content-Length: ' . strlen($data_string))
@@ -47,7 +48,7 @@ function getBlockCount($ch)
 // get number of peers
 function getPeers($ch) 
 {
-  // get block count
+  // get peers
   $data = array("action" => "peers");
 
   // post curl
@@ -57,22 +58,34 @@ function getPeers($ch)
 // get account balance for nano_node account
 function getAccountBalance($ch, $account) 
 {
-  // get block count
+  // get account balance
   $data = array("action" => "account_balance", "account" => $account);
 
   // post curl
   return postCurl($ch, $data);
 }
 
-
 // get representative info for nano_node account
 function getRepresentativeInfo($ch, $account) 
 {
-  // get block count
+  // get account info
   $data = array("action" => "account_info", 
                 "account" => $account, 
                 "representative" => "true", 
                 "weight" => "true");
+
+  // post curl
+  return postCurl($ch, $data);
+}
+
+// get account weight nano_node account
+function getAccountWeight($ch, $account) 
+{
+  // get account weight
+  $data = array(
+    "action" => "account_weight", 
+    "account" => $account
+  );
 
   // post curl
   return postCurl($ch, $data);

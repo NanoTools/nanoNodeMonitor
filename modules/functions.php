@@ -16,7 +16,11 @@ function phpCurlAvailable()
 // raw to Mnano
 function rawToMnano($raw, $precision)
 {
-  return number_format(($raw / 1000000000000000000000000000000.0), $precision,'.',',');
+  $locale = localeconv();
+  return (float) number_format($raw / 1000000000000000000000000000000.0,
+                               $precision,
+                               $locale['decimal_point'],
+                               $locale['thousands_sep']);
 }
 
 // get system load average
@@ -139,7 +143,7 @@ function getVersionInformation()
   if ( version_compare($currentVersion, $latestVersion) < 0 )
   {
     $versionInfo .= "<br>A new version " . $latestVersion;
-    $versionInfo .= " is available at ";
+    $versionInfo .= " is available on ";
     $versionInfo .= "<a href=\"" . PROJECT_URL . "\" target=\"_blank\">GitHub.</a>";
   }
 
@@ -186,7 +190,7 @@ function getNodeUptime($apiKey, $uptimeRatio = 30)
   // decode JSON response
   $response = json_decode($response);
   
-  return $response->monitors[0]->custom_uptime_ratio;
+  return (float)$response->monitors[0]->custom_uptime_ratio;
 }
 
 
@@ -211,6 +215,8 @@ function getAccountUrl($account, $blockExplorer)
       return "https://nano.org/en/explore/account/" . $account;
     case 'nanoexplorer':
       return "https://nanoexplorer.io/accounts/" . $account;
+    case 'nanowatch':
+      return "https://nanowat.ch/account/" . $account;
     default:
       return "https://www.nanode.co/account/" . $account;
   }
