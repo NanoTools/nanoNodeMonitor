@@ -3,6 +3,9 @@
 // include required files
 require_once __DIR__.'/modules/includes.php';
 
+// set default locale
+setlocale(LC_ALL, 'en_US');
+
 // get curl handle
 $ch = curl_init();
 
@@ -27,8 +30,8 @@ $data->version = $rpcVersion->{'node_vendor'};
 
 // -- Get get current block from nano_node
 $rpcBlockCount = getBlockCount($ch);
-$data->currentBlock = $rpcBlockCount->{'count'};
-$data->uncheckedBlocks = $rpcBlockCount->{'unchecked'};
+$data->currentBlock = (int) $rpcBlockCount->{'count'};
+$data->uncheckedBlocks = (int) $rpcBlockCount->{'unchecked'};
 
 // -- Get number of peers from nano_node
 $rpcPeers = getPeers($ch);
@@ -44,10 +47,13 @@ $data->accPendingRaw = (int) $rpcNodeAccountBalance->{'pending'};
 
 // -- Get representative info for current node from nano_node
 $rpcNodeRepInfo = getRepresentativeInfo($ch, $nanoNodeAccount);
-$data->votingWeight = rawToMnano($rpcNodeRepInfo->{'weight'}, $nanoNumDecimalPlaces);
 $data->repAccount = $rpcNodeRepInfo->{'representative'} ?: '';
 $data->repAccountShort = truncateAddress($data->repAccount);
 $data->repAccountUrl = getAccountUrl($data->repAccount, $blockExplorer);
+
+// get the account weight
+$rpcNodeAccountWeight = getAccountWeight($ch, $nanoNodeAccount);
+$data->votingWeight = rawToMnano($rpcNodeAccountWeight->{'weight'}, $nanoNumDecimalPlaces);
 
 // -- System uptime & memory info --
 $data->systemLoad = getSystemLoadAvg();
