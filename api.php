@@ -66,7 +66,9 @@ $data->totalMem = getSystemTotalMem();
 $data->nanoNodeName = $nanoNodeName;
 
 // get the node uptime
-$data->nodeUptime = getNodeUptime($uptimerobotApiKey);
+$nodeUptime = getNodeUptime($uptimerobotApiKey);
+if ($nodeUptime >= 0)
+	$data->nodeUptime = $nodeUptime;
 
 // close curl handle
 curl_close($ch);
