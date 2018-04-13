@@ -67,8 +67,9 @@ $data->nanoNodeName = $nanoNodeName;
 
 // get the node uptime
 $nodeUptime = getNodeUptime($uptimerobotApiKey);
-if ($nodeUptime >= 0)
-	$data->nodeUptime = $nodeUptime;
+if ($nodeUptime >= 0) {
+    $data->nodeUptime = $nodeUptime;
+}
 
 // close curl handle
 curl_close($ch);
