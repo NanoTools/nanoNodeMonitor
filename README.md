@@ -36,8 +36,15 @@ In the `modules` folder, create your own config file by executing:
 
     cp config.sample.php config.php
 
+You will have to add your node's account to the config file `config.php` by modifying the following lines. Make sure to remove the `//` in front of `$nanoNodeAccount`:
 
-If you run a standalone node you might need to modify the IP-address and the port for the RPC in the file `config.php`. It should match the corresponding entries in `~/RaiBlocks/config.json`, e.g.
+```
+// account of this node 
+$nanoNodeAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj'; 
+```
+
+
+If you are running a standalone node you might need to modify the IP-address and the port for the RPC in the file `config.php`. It should match the corresponding entries in `~/RaiBlocks/config.json`, e.g.
 
 ```
 // ip address for RPC (default: [::1])
@@ -48,6 +55,7 @@ $nanoNodeRPCPort = '7076';
 ```
 
 ## Updating
+
 Switch to your installation directory and execute `git pull`.
 
 ## Links
@@ -59,7 +67,7 @@ Switch to your installation directory and execute `git pull`.
 
 Feel free to change your representative to my Nano node `xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj` to support further decentralization within the Nano network. In case of problems, please send an [issue](https://github.com/NanoTools/nanoNodeMonitor/issues). 
 
-Donations are welcome to: [xrb_1nanomon9uycemhgonue4twmcqmsu7oxw43maro8amj751ozpus8r8gsic48](https://www.nanode.co/account/xrb_1nanomon9uycemhgonue4twmcqmsu7oxw43maro8amj751ozpus8r8gsic48)
+Donations to the development of Nano Node Monitor are very welcome to: [xrb_1nanomon9uycemhgonue4twmcqmsu7oxw43maro8amj751ozpus8r8gsic48](https://www.nanode.co/account/xrb_1nanomon9uycemhgonue4twmcqmsu7oxw43maro8amj751ozpus8r8gsic48)
 
 Have fun! :)
 
