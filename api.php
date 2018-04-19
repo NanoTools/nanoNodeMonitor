@@ -43,6 +43,9 @@ $data->nanoNodeAccountUrl = getAccountUrl($data->nanoNodeAccount, $blockExplorer
 $data->version = getVersionFormatted($ch);
 $data->newNodeVersionAvailable = isNewNodeVersionAvailable($data->version);
 
+// -- Get node monitor version
+$data->nodeMonVersion = PROJECT_VERSION;
+
 // -- Get get current block from nano_node
 $rpcBlockCount = getBlockCount($ch);
 $data->currentBlock = (int) $rpcBlockCount->{'count'};
