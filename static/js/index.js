@@ -9,7 +9,6 @@ init.push(function(){
     if (Number.isInteger(digits)) {
       return number.toLocaleString('en-US', {minimumFractionDigits: digits, maximumFractionDigits: digits});
     }
-
     return number.toLocaleString('en-US');
   });
 
@@ -17,7 +16,7 @@ init.push(function(){
     if(typeof number === 'undefined'){
       return 0;
     }
-    
+
     return number.toLocaleString('en-US', {minimumFractionDigits: GLOBAL_DIGITS, maximumFractionDigits: GLOBAL_DIGITS});
   });
 

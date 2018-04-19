@@ -3,6 +3,7 @@
 // include required files
 require_once __DIR__.'/modules/includes.php';
 
+// setup file cache
 $cache = new FileCache();
 
 // set default locale

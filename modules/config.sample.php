@@ -49,6 +49,13 @@
 // number of decimal places to display Nano balances, i.e. 
 // $nanoNumDecimalPlaces = 2;
 
+// ----------- Monitoring -----------
+
+// Uptimerobot.com API key for external monitoring
+// Tutorial: https://github.com/NanoTools/nanoNodeMonitor/wiki/Uptimerobot-Node-Monitoring
+// If $uptimerobotApiKey is not set, monitoring via https://nanonode.ninja/ is used
+// $uptimerobotApiKey = '';
+
 // ----------- Social -----------
 
 // Add your social accounts
