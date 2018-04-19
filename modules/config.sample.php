@@ -4,7 +4,7 @@
 // Please copy this file as config.php
 
 // To edit a config uncomment the line, otherwise
-// defaults will be used for each variable. 
+// defaults will be used for each variable.
 
 // ----------- General Variables -----------
 
@@ -32,6 +32,17 @@
 // choice of Nano block explorer ('nanode', 'ninja', 'nanoexplorer', 'nano', 'nanowatch')
 // $blockExplorer = 'nanode';
 
+// Cache engine, which allows for caching of RPC calls to reduce load on your Nano node.
+// Possible options are:
+//    - NULL (no caching)
+//    - "files" (caches to file; kind of slow)
+//    - "apc" (APC cache; requires extension; fast)
+//    - "apcu" (APCu cache; requires extension; fast)
+// $cache = [
+//   "engine" => "files",
+//   "options" => []
+// ];
+
 // ----------- Nano Node Variables -----------
 
 // ip address for RPC (default: [::1])
@@ -40,13 +51,13 @@
 // ip address for RPC (default: 7076)
 // $nanoNodeRPCPort = '7076';
 
-// account of this node 
-// $nanoNodeAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj'; 
+// account of this node
+// $nanoNodeAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj';
 
 // donation account for maintaining this node
 // $nanoDonationAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj';
 
-// number of decimal places to display Nano balances, i.e. 
+// number of decimal places to display Nano balances, i.e.
 // $nanoNumDecimalPlaces = 2;
 
 // ----------- Social -----------

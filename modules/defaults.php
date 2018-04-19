@@ -30,6 +30,14 @@ $cmcStatsticker = FALSE;
 // choice of Nano block explorer ('nanode', 'nanoexplorer', 'nano')
 $blockExplorer = 'nanode';
 
+// Cache engine, which allows for caching of RPC calls to reduce load on your Nano node.
+// Possible options are:
+//    - NULL (no caching)
+//    - "files" (caches to file; kind of slow)
+//    - "apc" (APC cache; requires extension; fast)
+//      - Options: 'ttl' => cache time in seconds
+//    - "apcu" (APCu cache; requires extension; fast)
+//      - Options: 'ttl' => cache time in seconds
 $cache = [
   "engine" => "files",
   "options" => []
