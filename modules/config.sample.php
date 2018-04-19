@@ -29,7 +29,7 @@
 // $cmcVolume = FALSE;
 // $cmcStatsticker = FALSE;
 
-// choice of Nano block explorer ('nanode', 'nanoexplorer', 'nano', 'nanowatch')
+// choice of Nano block explorer ('nanode', 'ninja', 'nanoexplorer', 'nano', 'nanowatch')
 // $blockExplorer = 'nanode';
 
 // ----------- Nano Node Variables -----------
@@ -48,12 +48,6 @@
 
 // number of decimal places to display Nano balances, i.e. 
 // $nanoNumDecimalPlaces = 2;
-
-// ----------- Monitoring -----------
-
-// Uptimerobot.com API key for external monitoring
-// Tutorial: https://github.com/NanoTools/nanoNodeMonitor/wiki/Uptimerobot-Node-Monitoring
-// $uptimerobotApiKey = '';
 
 // ----------- Social -----------
 

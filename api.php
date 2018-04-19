@@ -38,14 +38,15 @@ $data->nanoNodeAccount = $nanoNodeAccount;
 $data->nanoNodeAccountShort = truncateAddress($data->nanoNodeAccount);
 $data->nanoNodeAccountUrl = getAccountUrl($data->nanoNodeAccount, $blockExplorer);
 
-// -- Get Version String from nano_node ---------------
-$rpcVersion = getVersion($ch);
-$data->version = $rpcVersion->{'node_vendor'};
+// -- Get Version String from nano_node
+$data->version = getVersionFormatted($ch);
+$data->newNodeVersionAvailable = isNewNodeVersionAvailable($data->version);
 
 // -- Get get current block from nano_node
 $rpcBlockCount = getBlockCount($ch);
 $data->currentBlock = (int) $rpcBlockCount->{'count'};
 $data->uncheckedBlocks = (int) $rpcBlockCount->{'unchecked'};
+$data->blockSync = getSyncStatus($data->currentBlock);
 
 // -- Get number of peers from nano_node
 $rpcPeers = getPeers($ch);
@@ -79,14 +80,19 @@ $data->totalMem = getSystemTotalMem();
 //$data->uname = getUname();
 $data->nanoNodeName = $nanoNodeName;
 
-// get the node uptime
-$data->nodeUptime = getNodeUptime($uptimerobotApiKey);
+// get the node uptime (if we have a api key)
+if ($uptimerobotApiKey) {
+    $data->nodeUptime = getNodeUptime($uptimerobotApiKey);
+}
+
+// get info from Nano Node Ninja
+$data->nodeNinja = getNodeNinja($nanoNodeAccount);
 
 // close curl handle
 curl_close($ch);
 
 // save the api response for 30 seconds
-$cache->save('api', $data, 30);
+$cache->save('api', $data, 3);
 
 $data->fromCache = false;
 
