@@ -38,9 +38,9 @@ $data->nanoNodeAccount = $nanoNodeAccount;
 $data->nanoNodeAccountShort = truncateAddress($data->nanoNodeAccount);
 $data->nanoNodeAccountUrl = getAccountUrl($data->nanoNodeAccount, $blockExplorer);
 
-// -- Get Version String from nano_node ---------------
-$rpcVersion = getVersion($ch);
-$data->version = $rpcVersion->{'node_vendor'};
+// -- Get Version String from nano_node
+$data->version = getVersionFormatted($ch);
+$data->newNodeVersionAvailable = isNewNodeVersionAvailable($data->version);
 
 // -- Get get current block from nano_node
 $rpcBlockCount = getBlockCount($ch);
@@ -79,8 +79,13 @@ $data->totalMem = getSystemTotalMem();
 //$data->uname = getUname();
 $data->nanoNodeName = $nanoNodeName;
 
-// get the node uptime
-$data->nodeUptime = getNodeUptime($uptimerobotApiKey);
+// get the node uptime (if we have a api key)
+if($uptimerobotApiKey){
+    $data->nodeUptime = getNodeUptime($uptimerobotApiKey);
+}
+
+// get info from Nano Node Ninja
+$data->nodeNinja = getNodeNinja($nanoNodeAccount);
 
 // close curl handle
 curl_close($ch);

@@ -1,3 +1,10 @@
+{{#if newNodeVersionAvailable}}
+<div class="alert alert-dismissible alert-warning">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Heads up!</strong> A new Nano Node version <strong>{{newNodeVersionAvailable}}</strong> is available. <a href="https://github.com/nanocurrency/raiblocks/releases/latest" target="_blank">Download it here!</a>
+</div>
+{{/if}}
+
 <div class="row">
   <div class="col">
     <h2>Node Account</h2>
@@ -44,10 +51,6 @@
      <span class="float-right">{{formatNano accBalanceMnano}} Nano</span>
   </li>
   <li class="list-group-item active">
-     Pending
-     <span class="float-right">{{formatNano accPendingMnano 6}} Nano</span>
-  </li>
-  <li class="list-group-item active">
     <div class="row">
       <div class="col-6">Representative</div>
       <div class="col-6 truncate">
@@ -58,6 +61,10 @@
         {{/if}}
       </div>
      </div>      
+  </li>
+  <li class="list-group-item active">
+     Delegators
+     <span class="float-right">{{formatNumber nodeNinja.delegators}}</span>
   </li>
   <li class="list-group-item active">
     Voting Weight
@@ -79,6 +86,11 @@
   <li class="list-group-item active">
      Node Uptime
      <span class="float-right">{{formatNumber nodeUptime}} %</span>
+  </li>
+  {{else if nodeNinja.uptime}}
+  <li class="list-group-item active">
+     Node Uptime
+     <span class="float-right">{{formatNumber nodeNinja.uptime}} %</span>
   </li>
   {{else}}
   <li class="list-group-item active">

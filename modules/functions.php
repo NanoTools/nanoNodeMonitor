@@ -151,6 +151,63 @@ function getVersionInformation()
 
 }
 
+// get version of latest release from github
+function getLatestNodeReleaseVersion()
+{
+  // get release tag of "latest" from github
+  $curl = curl_init();
+
+  curl_setopt_array($curl, array(
+    CURLOPT_URL => 'https://api.github.com/repos/nanocurrency/raiblocks/releases/latest',
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_HTTPHEADER => array(
+      "cache-control: no-cache",
+      "User-Agent: NanoNodeMonitor"
+    ),
+  ));
+
+  $response = curl_exec($curl);
+  $err = curl_error($curl);
+
+  curl_close($curl);
+  
+  if ($err) {
+    return "API error";
+  }
+
+  // decode JSON response
+  $response = json_decode($response);
+
+  // tag string
+  if (property_exists($response, "tag_name"))
+  {
+    return substr($response->tag_name, 1); //delete the V at the beginning
+  }
+
+  return '';
+}
+
+// get a string with information about the 
+// current version and possible updates
+function isNewNodeVersionAvailable($currentVersion)
+{
+  $currentVersion = $currentVersion;
+  $latestVersion  = getLatestNodeReleaseVersion();
+
+  return '12.0';
+
+  if ( version_compare($currentVersion, $latestVersion) < 0 ){
+    return $latestVersion;
+  } else {
+    return false;
+  }
+}
+
 // info about operating system
 function getUname()
 {
@@ -193,6 +250,38 @@ function getNodeUptime($apiKey, $uptimeRatio = 30)
   return (float)$response->monitors[0]->custom_uptime_ratio;
 }
 
+function getNodeNinja($account)
+{
+  $curl = curl_init();
+  
+  curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://nanonode.ninja/api/accounts/$account",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 5,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1
+  ));
+  
+  $response = curl_exec($curl);
+  $err = curl_error($curl);
+  
+  curl_close($curl);
+  
+  if ($err) {
+    return "API error";
+  }
+
+  // decode JSON response
+  $response = json_decode($response);
+
+  if (isset($response->error)) {
+    return false;
+  }
+  
+  return $response;
+}
+
 
 // truncate long Nano addresses to display the first and 
 // last characaters with ellipsis in the center
@@ -217,6 +306,8 @@ function getAccountUrl($account, $blockExplorer)
       return "https://nanoexplorer.io/accounts/" . $account;
     case 'nanowatch':
       return "https://nanowat.ch/account/" . $account;
+    case 'ninja':
+      return "https://nanonode.ninja/account/" . $account;
     default:
       return "https://www.nanode.co/account/" . $account;
   }
