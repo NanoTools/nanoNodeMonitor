@@ -17,13 +17,13 @@ abstract class Cache {
   }
 
   abstract public function read($key);
-  abstract public function write($key, $data, $options = []);
+  abstract public function write($key, $data);
 
-  public function fetch($key, $callback, $options = []) {
+  public function fetch($key, $callback) {
     $data = $this->read($key);
     if (is_null($data)) {
       $data = $callback();
-      $this->write($key, $data, $options);
+      $this->write($key, $data);
     }
 
     return $data;

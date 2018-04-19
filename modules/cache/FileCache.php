@@ -23,13 +23,18 @@ class FileCache extends Cache
     private $cache_dir = '/tmp/cache';
 
     /**
+     * The cache time in seconds.
+     */
+    private $ttl = 30;
+
+    /**
      * Creates a FileCache object
      *
      * @param array $options
      */
     public function __construct(array $options = array())
     {
-        $available_options = array('cache_dir');
+        $available_options = array('cache_dir', 'ttl');
         foreach ($available_options as $name) {
             if (isset($options[$name])) {
                 $this->$name = $options[$name];
@@ -81,11 +86,10 @@ class FileCache extends Cache
      *
      * @param string $id
      * @param mixed  $data
-     * @param int    $lifetime
      *
      * @return bool
      */
-    public function write($id, $data, $lifetime = 3600)
+    public function write($id, $data)
     {
         $dir = $this->getDirectory($id);
         if (!is_dir($dir)) {
@@ -94,7 +98,7 @@ class FileCache extends Cache
             }
         }
         $file_name  = $this->getFileName($id);
-        $lifetime   = time() + $lifetime;
+        $lifetime   = time() + $this->ttl;
         $serialized = serialize($data);
         $result     = file_put_contents($file_name, $lifetime . PHP_EOL . $serialized);
         if ($result === false) {

@@ -85,6 +85,6 @@ $data = $cache->fetch('api', function () use(
   curl_close($ch);
 
   return $data;
-}, 30);
+});
 
 returnJson($data);

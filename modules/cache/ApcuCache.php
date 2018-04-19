@@ -13,7 +13,7 @@ class ApcuCache extends Cache {
     return NULL;
   }
 
-  public function write($key, $data, $options = []) {
+  public function write($key, $data) {
     return apcu_store($key, $data, $this->ttl);
   }
 }

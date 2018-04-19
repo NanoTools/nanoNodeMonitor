@@ -5,7 +5,7 @@ class NullCache extends Cache {
     return NULL;
   }
 
-  public function write($key, $data, $options = []) {
+  public function write($key, $data) {
     return NULL;
   }
 }
