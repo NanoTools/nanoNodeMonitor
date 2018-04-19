@@ -30,8 +30,9 @@ function getSystemLoadAvg()
 }
 
 // get system memory info
-function getSystemMemInfo() 
-{       
+function getSystemMemInfo()
+{
+    if (!file_exists("/proc/meminfo")) return NULL;
     $data = explode("\n", file_get_contents("/proc/meminfo"));
     $meminfo = array();
     foreach ($data as $line) {
@@ -57,6 +58,7 @@ function getSystemUsedMem()
 // get system uptime array with secs, mins, hours and days
 function getSystemUptime()
 {
+    if (!file_exists('/proc/uptime')) return NULL;
     $str   = file_get_contents('/proc/uptime');
     $num   = intval($str);
     $array = array();
@@ -108,7 +110,7 @@ function getLatestReleaseVersion()
   $err = curl_error($curl);
 
   curl_close($curl);
-  
+
   if ($err) {
     return "API error";
   }
@@ -120,8 +122,8 @@ function getLatestReleaseVersion()
   if (property_exists($response, "tag_name"))
   {
       $tagString = $response->tag_name;
-  
-    // search for version name x.x.x 
+
+    // search for version name x.x.x
     if (0 != preg_match('/(\d+\.?)+$/', $tagString, $versionString))
     {
         return $versionString[0];
@@ -131,7 +133,7 @@ function getLatestReleaseVersion()
   return "";
 }
 
-// get a string with information about the 
+// get a string with information about the
 // current version and possible updates
 function getVersionInformation()
 {
@@ -175,7 +177,7 @@ function getLatestNodeReleaseVersion()
   $err = curl_error($curl);
 
   curl_close($curl);
-  
+
   if ($err) {
     return "API error";
   }
@@ -192,7 +194,7 @@ function getLatestNodeReleaseVersion()
   return '';
 }
 
-// get a string with information about the 
+// get a string with information about the
 // current version and possible updates
 function isNewNodeVersionAvailable($currentVersion)
 {
@@ -217,7 +219,7 @@ function getUname()
 function getNodeUptime($apiKey, $uptimeRatio = 30)
 {
   $curl = curl_init();
-  
+
   curl_setopt_array($curl, array(
     CURLOPT_URL => "https://api.uptimerobot.com/v2/getMonitors",
     CURLOPT_RETURNTRANSFER => true,
@@ -232,13 +234,13 @@ function getNodeUptime($apiKey, $uptimeRatio = 30)
       "content-type: application/x-www-form-urlencoded"
     ),
   ));
-  
+
   $response = curl_exec($curl);
   $err = curl_error($curl);
   $errCode = -1;
-  
+
   curl_close($curl);
-  
+
   if ($err) {
     return $errCode;
   }
@@ -260,7 +262,7 @@ function getNodeUptime($apiKey, $uptimeRatio = 30)
 function getNodeNinja($account)
 {
   $curl = curl_init();
-  
+
   curl_setopt_array($curl, array(
     CURLOPT_URL => "https://nanonode.ninja/api/accounts/$account",
     CURLOPT_RETURNTRANSFER => true,
@@ -269,12 +271,12 @@ function getNodeNinja($account)
     CURLOPT_TIMEOUT => 5,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1
   ));
-  
+
   $response = curl_exec($curl);
   $err = curl_error($curl);
-  
+
   curl_close($curl);
-  
+
   if ($err) {
     return "API error";
   }
@@ -285,11 +287,11 @@ function getNodeNinja($account)
   if (isset($response->error)) {
     return false;
   }
-  
+
   return $response;
 }
 
-// truncate long Nano addresses to display the first and 
+// truncate long Nano addresses to display the first and
 // last characaters with ellipsis in the center
 function truncateAddress($addr)
 {
@@ -322,7 +324,7 @@ function getAccountUrl($account, $blockExplorer)
 function getNodeNinjaBlockcount()
 {
   $curl = curl_init();
-  
+
   curl_setopt_array($curl, array(
     CURLOPT_URL => "https://nanonode.ninja/api/blockcount",
     CURLOPT_RETURNTRANSFER => true,
@@ -331,12 +333,12 @@ function getNodeNinjaBlockcount()
     CURLOPT_TIMEOUT => 5,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1
   ));
-  
+
   $response = curl_exec($curl);
   $err = curl_error($curl);
-  
+
   curl_close($curl);
-  
+
   if ($err) {
     return "API error";
   }
@@ -347,7 +349,7 @@ function getNodeNinjaBlockcount()
   if (isset($response->error)) {
     return false;
   }
-  
+
   return $response->count;
 }
 

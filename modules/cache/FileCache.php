@@ -13,9 +13,9 @@
  * @author  Taiji Inoue <inudog@gmail.com>
  */
 
-class FileCache
+class FileCache extends Cache
 {
-    
+
     /**
      * The root cache directory.
      * @var string
@@ -42,12 +42,12 @@ class FileCache
      *
      * @param string $id
      */
-    public function get($id)
+    public function read($id)
     {
         $file_name = $this->getFileName($id);
 
         if (!is_file($file_name) || !is_readable($file_name)) {
-            return false;
+            return NULL;
         }
 
         $lines    = file($file_name);
@@ -56,7 +56,7 @@ class FileCache
 
         if ($lifetime !== 0 && $lifetime < time()) {
             @unlink($file_name);
-            return false;
+            return NULL;
         }
         $serialized = join('', $lines);
         $data       = unserialize($serialized);
@@ -85,7 +85,7 @@ class FileCache
      *
      * @return bool
      */
-    public function save($id, $data, $lifetime = 3600)
+    public function write($id, $data, $lifetime = 3600)
     {
         $dir = $this->getDirectory($id);
         if (!is_dir($dir)) {
