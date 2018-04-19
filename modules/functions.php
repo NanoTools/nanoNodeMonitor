@@ -235,16 +235,25 @@ function getNodeUptime($apiKey, $uptimeRatio = 30)
   
   $response = curl_exec($curl);
   $err = curl_error($curl);
+  $errCode = -1;
   
   curl_close($curl);
   
   if ($err) {
-    return "API error";
+    return $errCode;
   }
 
   // decode JSON response
   $response = json_decode($response);
-  
+
+  if (json_last_error() != JSON_ERROR_NONE) {
+    return $errCode;
+  }
+
+  if (! array_key_exists('monitors', $response)) {
+    return $errCode;
+  }
+
   return (float)$response->monitors[0]->custom_uptime_ratio;
 }
 
