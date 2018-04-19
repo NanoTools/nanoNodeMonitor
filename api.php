@@ -46,6 +46,7 @@ $data->newNodeVersionAvailable = isNewNodeVersionAvailable($data->version);
 $rpcBlockCount = getBlockCount($ch);
 $data->currentBlock = (int) $rpcBlockCount->{'count'};
 $data->uncheckedBlocks = (int) $rpcBlockCount->{'unchecked'};
+$data->blockSync = getSyncStatus($data->currentBlock);
 
 // -- Get number of peers from nano_node
 $rpcPeers = getPeers($ch);
@@ -91,7 +92,7 @@ $data->nodeNinja = getNodeNinja($nanoNodeAccount);
 curl_close($ch);
 
 // save the api response for 30 seconds
-$cache->save('api', $data, 30);
+$cache->save('api', $data, 3);
 
 $data->fromCache = false;
 

@@ -289,7 +289,6 @@ function getNodeNinja($account)
   return $response;
 }
 
-
 // truncate long Nano addresses to display the first and 
 // last characaters with ellipsis in the center
 function truncateAddress($addr)
@@ -320,3 +319,45 @@ function getAccountUrl($account, $blockExplorer)
   }
 }
 
+function getNodeNinjaBlockcount()
+{
+  $curl = curl_init();
+  
+  curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://nanonode.ninja/api/blockcount",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 5,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1
+  ));
+  
+  $response = curl_exec($curl);
+  $err = curl_error($curl);
+  
+  curl_close($curl);
+  
+  if ($err) {
+    return "API error";
+  }
+
+  // decode JSON response
+  $response = json_decode($response);
+
+  if (isset($response->error)) {
+    return false;
+  }
+  
+  return $response->count;
+}
+
+function getSyncStatus($blockcount){
+  $ninjablocks = getNodeNinjaBlockcount();
+
+  $sync = round(($blockcount / $ninjablocks) * 100, 1);
+
+  if($sync > 100){
+    return 100;
+  }
+  return $sync;
+}
