@@ -199,8 +199,6 @@ function isNewNodeVersionAvailable($currentVersion)
   $currentVersion = $currentVersion;
   $latestVersion  = getLatestNodeReleaseVersion();
 
-  return '12.0';
-
   if ( version_compare($currentVersion, $latestVersion) < 0 ){
     return $latestVersion;
   } else {
