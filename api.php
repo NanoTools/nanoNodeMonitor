@@ -12,10 +12,10 @@ setlocale(LC_ALL, 'en_US');
 $data = $cache->get('api');
 
 // check if we already have a cache
-if($data !== false){
+if ($data !== false) {
 
     // yes we have, output that instead
-    $data->fromCache = TRUE;
+    $data->fromCache = true;
     returnJson($data);
     exit;
 }
@@ -93,6 +93,6 @@ curl_close($ch);
 // save the api response for 30 seconds
 $cache->save('api', $data, 30);
 
-$data->fromCache = FALSE;
+$data->fromCache = false;
 
 returnJson($data);
