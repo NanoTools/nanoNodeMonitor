@@ -92,7 +92,7 @@ $data->nodeNinja = getNodeNinja($nanoNodeAccount);
 // close curl handle
 curl_close($ch);
 
-// save the api response for 30 seconds
+// save the api response for 3 seconds
 $cache->save('api', $data, 3);
 
 $data->fromCache = false;
