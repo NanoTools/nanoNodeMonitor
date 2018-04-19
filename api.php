@@ -81,7 +81,7 @@ $data->totalMem = getSystemTotalMem();
 $data->nanoNodeName = $nanoNodeName;
 
 // get the node uptime (if we have a api key)
-if($uptimerobotApiKey){
+if ($uptimerobotApiKey) {
     $data->nodeUptime = getNodeUptime($uptimerobotApiKey);
 }
 
