@@ -3,8 +3,22 @@
 // include required files
 require_once __DIR__.'/modules/includes.php';
 
+$cache = new FileCache();
+
 // set default locale
 setlocale(LC_ALL, 'en_US');
+
+// get cached response
+$data = $cache->get('api');
+
+// check if we already have a cache
+if($data !== false){
+
+    // yes we have, output that instead
+    $data->fromCache = TRUE;
+    returnJson($data);
+    exit;
+}
 
 // get curl handle
 $ch = curl_init();
@@ -70,5 +84,10 @@ $data->nodeUptime = getNodeUptime($uptimerobotApiKey);
 
 // close curl handle
 curl_close($ch);
+
+// save the api response for 30 seconds
+$cache->save('api', $data, 30);
+
+$data->fromCache = FALSE;
 
 returnJson($data);
