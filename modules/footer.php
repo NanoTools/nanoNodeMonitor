@@ -3,7 +3,7 @@
   Source available on <a href="<?php echo PROJECT_URL; ?>" target="_blank">GitHub</a>.</p>
   <br>
   <p class=small>Made by <a href="https://github.com/NanoTools" target="_blank">Nano Tools</a>.</p>
-  <p class=small>Donations: <a href="<?php echo getAccountUrl(NODEMON_DON_ACCOUNT, $blockExplorer); ?>" target="_blank"><?php echo NODEMON_DON_ACCOUNT; ?></a></p>
+  <p class=small>Donations to Nano Node Monitor: <a href="<?php echo getAccountUrl(NODEMON_DON_ACCOUNT, $blockExplorer); ?>" target="_blank"><?php echo NODEMON_DON_ACCOUNT; ?></a></p>
 </footer>
 
 </div><!-- /container -->
