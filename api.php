@@ -5,9 +5,6 @@ require_once __DIR__.'/modules/includes.php';
 
 $cache = Cache::factory();
 
-// set default locale
-setlocale(LC_ALL, 'en_US');
-
 // get cached response
 $data = $cache->fetch('api', function () use (
   &$nanoNodeRPCIP, &$nanoNodeRPCPort, &$nanoNodeAccount, &$blockExplorer,
