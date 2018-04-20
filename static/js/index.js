@@ -2,14 +2,21 @@ var template;
 
 init.push(function(){
   Handlebars.registerHelper('formatNumber', function (number, digits) {
+    if(typeof number === 'undefined'){
+      return 0;
+    }
+
     if (Number.isInteger(digits)) {
       return number.toLocaleString('en-US', {minimumFractionDigits: digits, maximumFractionDigits: digits});
     }
-
     return number.toLocaleString('en-US');
   });
 
   Handlebars.registerHelper('formatNano', function (number) {
+    if(typeof number === 'undefined'){
+      return 0;
+    }
+
     return number.toLocaleString('en-US', {minimumFractionDigits: GLOBAL_DIGITS, maximumFractionDigits: GLOBAL_DIGITS});
   });
 

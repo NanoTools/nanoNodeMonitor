@@ -14,13 +14,9 @@ function phpCurlAvailable()
 }
 
 // raw to Mnano
-function rawToMnano($raw, $precision)
+function rawToMnano($raw)
 {
-  $locale = localeconv();
-  return (float) number_format($raw / 1000000000000000000000000000000.0,
-                               $precision,
-                               $locale['decimal_point'],
-                               $locale['thousands_sep']);
+  return (float) ($raw / 1000000000000000000000000000000.0);
 }
 
 // get system load average
@@ -30,8 +26,9 @@ function getSystemLoadAvg()
 }
 
 // get system memory info
-function getSystemMemInfo() 
-{       
+function getSystemMemInfo()
+{
+    if (!file_exists("/proc/meminfo")) return NULL;
     $data = explode("\n", file_get_contents("/proc/meminfo"));
     $meminfo = array();
     foreach ($data as $line) {
@@ -57,6 +54,7 @@ function getSystemUsedMem()
 // get system uptime array with secs, mins, hours and days
 function getSystemUptime()
 {
+    if (!file_exists('/proc/uptime')) return NULL;
     $str   = file_get_contents('/proc/uptime');
     $num   = intval($str);
     $array = array();
@@ -108,7 +106,7 @@ function getLatestReleaseVersion()
   $err = curl_error($curl);
 
   curl_close($curl);
-  
+
   if ($err) {
     return "API error";
   }
@@ -120,8 +118,8 @@ function getLatestReleaseVersion()
   if (property_exists($response, "tag_name"))
   {
       $tagString = $response->tag_name;
-  
-    // search for version name x.x.x 
+
+    // search for version name x.x.x
     if (0 != preg_match('/(\d+\.?)+$/', $tagString, $versionString))
     {
         return $versionString[0];
@@ -131,7 +129,7 @@ function getLatestReleaseVersion()
   return "";
 }
 
-// get a string with information about the 
+// get a string with information about the
 // current version and possible updates
 function getVersionInformation()
 {
@@ -151,6 +149,61 @@ function getVersionInformation()
 
 }
 
+// get version of latest release from github
+function getLatestNodeReleaseVersion()
+{
+  // get release tag of "latest" from github
+  $curl = curl_init();
+
+  curl_setopt_array($curl, array(
+    CURLOPT_URL => 'https://api.github.com/repos/nanocurrency/raiblocks/releases/latest',
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_HTTPHEADER => array(
+      "cache-control: no-cache",
+      "User-Agent: NanoNodeMonitor"
+    ),
+  ));
+
+  $response = curl_exec($curl);
+  $err = curl_error($curl);
+
+  curl_close($curl);
+
+  if ($err) {
+    return "API error";
+  }
+
+  // decode JSON response
+  $response = json_decode($response);
+
+  // tag string
+  if (property_exists($response, "tag_name"))
+  {
+    return substr($response->tag_name, 1); //delete the V at the beginning
+  }
+
+  return '';
+}
+
+// get a string with information about the
+// current version and possible updates
+function isNewNodeVersionAvailable($currentVersion)
+{
+  $currentVersion = $currentVersion;
+  $latestVersion  = getLatestNodeReleaseVersion();
+
+  if ( version_compare($currentVersion, $latestVersion) < 0 ){
+    return $latestVersion;
+  } else {
+    return false;
+  }
+}
+
 // info about operating system
 function getUname()
 {
@@ -162,7 +215,7 @@ function getUname()
 function getNodeUptime($apiKey, $uptimeRatio = 30)
 {
   $curl = curl_init();
-  
+
   curl_setopt_array($curl, array(
     CURLOPT_URL => "https://api.uptimerobot.com/v2/getMonitors",
     CURLOPT_RETURNTRANSFER => true,
@@ -177,24 +230,64 @@ function getNodeUptime($apiKey, $uptimeRatio = 30)
       "content-type: application/x-www-form-urlencoded"
     ),
   ));
-  
+
   $response = curl_exec($curl);
   $err = curl_error($curl);
-  
+  $errCode = -1;
+
   curl_close($curl);
-  
+
+  if ($err) {
+    return $errCode;
+  }
+
+  // decode JSON response
+  $response = json_decode($response);
+
+  if (json_last_error() != JSON_ERROR_NONE) {
+    return $errCode;
+  }
+
+  if (! array_key_exists('monitors', $response)) {
+    return $errCode;
+  }
+
+  return (float)$response->monitors[0]->custom_uptime_ratio;
+}
+
+function getNodeNinja($account)
+{
+  $curl = curl_init();
+
+  curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://nanonode.ninja/api/accounts/$account",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 5,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1
+  ));
+
+  $response = curl_exec($curl);
+  $err = curl_error($curl);
+
+  curl_close($curl);
+
   if ($err) {
     return "API error";
   }
 
   // decode JSON response
   $response = json_decode($response);
-  
-  return (float)$response->monitors[0]->custom_uptime_ratio;
+
+  if (isset($response->error)) {
+    return false;
+  }
+
+  return $response;
 }
 
-
-// truncate long Nano addresses to display the first and 
+// truncate long Nano addresses to display the first and
 // last characaters with ellipsis in the center
 function truncateAddress($addr)
 {
@@ -217,8 +310,52 @@ function getAccountUrl($account, $blockExplorer)
       return "https://nanoexplorer.io/accounts/" . $account;
     case 'nanowatch':
       return "https://nanowat.ch/account/" . $account;
+    case 'ninja':
+      return "https://nanonode.ninja/account/" . $account;
     default:
       return "https://www.nanode.co/account/" . $account;
   }
 }
 
+function getNodeNinjaBlockcount()
+{
+  $curl = curl_init();
+
+  curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://nanonode.ninja/api/blockcount",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 5,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1
+  ));
+
+  $response = curl_exec($curl);
+  $err = curl_error($curl);
+
+  curl_close($curl);
+
+  if ($err) {
+    return "API error";
+  }
+
+  // decode JSON response
+  $response = json_decode($response);
+
+  if (isset($response->error)) {
+    return false;
+  }
+
+  return $response->count;
+}
+
+function getSyncStatus($blockcount){
+  $ninjablocks = getNodeNinjaBlockcount();
+
+  $sync = round(($blockcount / $ninjablocks) * 100, 1);
+
+  if($sync > 100){
+    return 100;
+  }
+  return $sync;
+}

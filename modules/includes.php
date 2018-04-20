@@ -3,7 +3,7 @@
 // checks if the config file got edited
 if(!file_exists(__DIR__ . '/config.php')) {
 	require_once(__DIR__ . '/functions.php');
-    myError('Please edit the config file first! Go to the <i>modules</i> folder, ' . 
+    myError('Please edit the config file first! Go to the <i>modules</i> folder, ' .
     	    ' execute <i>cp config.sample.php config.php</i> and modify <i>config.php</i> ' .
     	    ' according to your needs.');
 }
@@ -22,6 +22,9 @@ require_once(__DIR__ . '/functions_rpc.php');
 
 // load all other required functions
 require_once(__DIR__ . '/functions.php');
+
+// load file caching lib
+require_once(__DIR__ . '/Cache.php');
 
 // check for curl package (needs functions)
 if (!phpCurlAvailable()) {

@@ -30,6 +30,19 @@ $cmcStatsticker = FALSE;
 // choice of Nano block explorer ('nanode', 'nanoexplorer', 'nano')
 $blockExplorer = 'nanode';
 
+// Cache engine, which allows for caching of RPC calls to reduce load on your Nano node.
+// Possible options are:
+//    - NULL (no caching)
+//    - "files" (caches to file; kind of slow)
+//    - "apc" (APC cache; requires extension; fast)
+//      - Options: 'ttl' => cache time in seconds
+//    - "apcu" (APCu cache; requires extension; fast)
+//      - Options: 'ttl' => cache time in seconds
+$cache = [
+  "engine" => "files",
+  "options" => []
+];
+
 // ----------- Nano Node Variables -----------
 
 // ip address for RPC (default: 127.0.0.1)
@@ -38,13 +51,13 @@ $nanoNodeRPCIP   = '[::1]';
 // ip address for RPC (default: 7076)
 $nanoNodeRPCPort = '7076';
 
-// account of this node 
-$nanoNodeAccount = ''; 
+// account of this node
+$nanoNodeAccount = '';
 
 // donation account for maintaining this node
 $nanoDonationAccount = $nanoNodeAccount;
 
-// number of decimal places to display Nano balances, i.e. 
+// number of decimal places to display Nano balances, i.e.
 $nanoNumDecimalPlaces = 6;
 
 // ----------- Monitoring -----------
