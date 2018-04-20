@@ -13,14 +13,19 @@
  * @author  Taiji Inoue <inudog@gmail.com>
  */
 
-class FileCache
+class FileCache extends Cache
 {
-    
+
     /**
      * The root cache directory.
      * @var string
      */
     private $cache_dir = '/tmp/cache';
+
+    /**
+     * The cache time in seconds.
+     */
+    private $ttl = 30;
 
     /**
      * Creates a FileCache object
@@ -29,7 +34,7 @@ class FileCache
      */
     public function __construct(array $options = array())
     {
-        $available_options = array('cache_dir');
+        $available_options = array('cache_dir', 'ttl');
         foreach ($available_options as $name) {
             if (isset($options[$name])) {
                 $this->$name = $options[$name];
@@ -42,12 +47,12 @@ class FileCache
      *
      * @param string $id
      */
-    public function get($id)
+    public function read($id)
     {
         $file_name = $this->getFileName($id);
 
         if (!is_file($file_name) || !is_readable($file_name)) {
-            return false;
+            return NULL;
         }
 
         $lines    = file($file_name);
@@ -56,7 +61,7 @@ class FileCache
 
         if ($lifetime !== 0 && $lifetime < time()) {
             @unlink($file_name);
-            return false;
+            return NULL;
         }
         $serialized = join('', $lines);
         $data       = unserialize($serialized);
@@ -81,11 +86,10 @@ class FileCache
      *
      * @param string $id
      * @param mixed  $data
-     * @param int    $lifetime
      *
      * @return bool
      */
-    public function save($id, $data, $lifetime = 3600)
+    public function write($id, $data)
     {
         $dir = $this->getDirectory($id);
         if (!is_dir($dir)) {
@@ -94,7 +98,7 @@ class FileCache
             }
         }
         $file_name  = $this->getFileName($id);
-        $lifetime   = time() + $lifetime;
+        $lifetime   = time() + $this->ttl;
         $serialized = serialize($data);
         $result     = file_put_contents($file_name, $lifetime . PHP_EOL . $serialized);
         if ($result === false) {
