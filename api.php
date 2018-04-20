@@ -6,9 +6,6 @@ require_once __DIR__.'/modules/includes.php';
 // setup file cache
 $cache = new FileCache();
 
-// set default locale
-setlocale(LC_ALL, 'en_US');
-
 // get cached response
 $data = $cache->get('api');
 
@@ -59,9 +56,9 @@ $data->numPeers = count($peers);
 
 // -- Get node account balance from nano_node
 $rpcNodeAccountBalance = getAccountBalance($ch, $nanoNodeAccount);
-$data->accBalanceMnano = rawToMnano($rpcNodeAccountBalance->{'balance'}, $nanoNumDecimalPlaces);
+$data->accBalanceMnano = rawToMnano($rpcNodeAccountBalance->{'balance'});
 $data->accBalanceRaw = (int) $rpcNodeAccountBalance->{'balance'};
-$data->accPendingMnano = rawToMnano($rpcNodeAccountBalance->{'pending'}, $nanoNumDecimalPlaces);
+$data->accPendingMnano = rawToMnano($rpcNodeAccountBalance->{'pending'});
 $data->accPendingRaw = (int) $rpcNodeAccountBalance->{'pending'};
 
 // -- Get representative info for current node from nano_node
@@ -72,7 +69,7 @@ $data->repAccountUrl = getAccountUrl($data->repAccount, $blockExplorer);
 
 // get the account weight
 $rpcNodeAccountWeight = getAccountWeight($ch, $nanoNodeAccount);
-$data->votingWeight = rawToMnano($rpcNodeAccountWeight->{'weight'}, $nanoNumDecimalPlaces);
+$data->votingWeight = rawToMnano($rpcNodeAccountWeight->{'weight'});
 
 // -- System uptime & memory info --
 $data->systemLoad = getSystemLoadAvg();

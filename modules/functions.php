@@ -14,13 +14,9 @@ function phpCurlAvailable()
 }
 
 // raw to Mnano
-function rawToMnano($raw, $precision)
+function rawToMnano($raw)
 {
-  $locale = localeconv();
-  return (float) number_format($raw / 1000000000000000000000000000000.0,
-                               $precision,
-                               $locale['decimal_point'],
-                               $locale['thousands_sep']);
+  return (float) ($raw / 1000000000000000000000000000000.0);
 }
 
 // get system load average
