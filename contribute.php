@@ -6,13 +6,13 @@ include 'modules/header.php';
 ?>
 
 
-<h2>Contribute</h2>
+<h2>Contribute to Nano Node Monitor</h2>
 <p>
   If you want to contribute to Nano Node Monitor and further improve it, your help is very welcome. Have a look at its <a href="https://github.com/NanoTools/nanoNodeMonitor" target="_blank">GitHub page</a>, browse through open issues, check out the source code, create a branch, develop features, fix some bugs, and open pull requests. Development follows the standard <a href="https://guides.github.com/introduction/flow/" target="_blank">GitHub Flow</a> method.  
 </p>
 
 
-<h2>Donate</h2>
+<h2>Donate to the Maintainer of This Node</h2>
 
 <p>
   Donations support the efforts of the Nano community to further decentralize the Nano network by running representative nodes.
