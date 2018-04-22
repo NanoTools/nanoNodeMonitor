@@ -14,16 +14,12 @@
     <link rel="icon" href="static/img/logo-only-white.svg">
   </head>
   <body>
-<<<<<<< HEAD
-    <script type="text/javascript" src="static/js/start.php?autoRefresh=<?php echo $autoRefreshInSeconds; ?>"></script>
-=======
     <script>
     var init = []; 
     var GLOBAL_REFRESH = <?php echo $autoRefreshInSeconds; ?>; 
     var GLOBAL_DIGITS = <?php echo $nanoNumDecimalPlaces; ?>;
     </script>
 
->>>>>>> upstream/master
 
     <!--- add the navbar -->
     <?php include __DIR__ . '/navbar.php'; ?>
