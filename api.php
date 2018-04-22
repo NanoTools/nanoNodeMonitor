@@ -3,66 +3,85 @@
 // include required files
 require_once __DIR__.'/modules/includes.php';
 
-// get curl handle
-$ch = curl_init();
+$cache = Cache::factory();
 
-if (!$ch) {
-    myError('Could not initialize curl!');
-}
+// get cached response
+$data = $cache->fetch('api', function () use (
+  &$nanoNodeRPCIP, &$nanoNodeRPCPort, &$nanoNodeAccount, &$blockExplorer,
+  &$nanoNodeName, &$nanoNumDecimalPlaces, &$uptimerobotApiKey
+) {
+    // get curl handle
+    $ch = curl_init();
 
-// we have a valid curl handle here
-// set some curl options
-curl_setopt($ch, CURLOPT_URL, 'http://'.$nanoNodeRPCIP.':'.$nanoNodeRPCPort);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    if (!$ch) {
+        myError('Could not initialize curl!');
+    }
 
-$data = new stdClass();
-$data->nanoNodeAccount = $nanoNodeAccount;
-$data->nanoNodeAccountShort = truncateAddress($data->nanoNodeAccount);
-$data->nanoNodeAccountUrl = getAccountUrl($data->nanoNodeAccount, $blockExplorer);
+    // we have a valid curl handle here
+    // set some curl options
+    curl_setopt($ch, CURLOPT_URL, 'http://'.$nanoNodeRPCIP.':'.$nanoNodeRPCPort);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-// -- Get Version String from nano_node ---------------
-$rpcVersion = getVersion($ch);
-$data->version = $rpcVersion->{'node_vendor'};
+    $data = new stdClass();
+    $data->nanoNodeAccount = $nanoNodeAccount;
+    $data->nanoNodeAccountShort = truncateAddress($data->nanoNodeAccount);
+    $data->nanoNodeAccountUrl = getAccountUrl($data->nanoNodeAccount, $blockExplorer);
 
-// -- Get get current block from nano_node
-$rpcBlockCount = getBlockCount($ch);
-$data->currentBlock = $rpcBlockCount->{'count'};
-$data->uncheckedBlocks = $rpcBlockCount->{'unchecked'};
+    // -- Get Version String from nano_node
+    $data->version = getVersionFormatted($ch);
+    $data->newNodeVersionAvailable = isNewNodeVersionAvailable($data->version);
 
-// -- Get number of peers from nano_node
-$rpcPeers = getPeers($ch);
-$peers = (array) $rpcPeers->{'peers'};
-$data->numPeers = count($peers);
+    // -- Get get current block from nano_node
+    $rpcBlockCount = getBlockCount($ch);
+    $data->currentBlock = (int) $rpcBlockCount->{'count'};
+    $data->uncheckedBlocks = (int) $rpcBlockCount->{'unchecked'};
+    $data->blockSync = getSyncStatus($data->currentBlock);
 
-// -- Get node account balance from nano_node
-$rpcNodeAccountBalance = getAccountBalance($ch, $nanoNodeAccount);
-$data->accBalanceMnano = rawToMnano($rpcNodeAccountBalance->{'balance'}, $nanoNumDecimalPlaces);
-$data->accBalanceRaw = (int) $rpcNodeAccountBalance->{'balance'};
-$data->accPendingMnano = rawToMnano($rpcNodeAccountBalance->{'pending'}, $nanoNumDecimalPlaces);
-$data->accPendingRaw = (int) $rpcNodeAccountBalance->{'pending'};
+    // -- Get number of peers from nano_node
+    $rpcPeers = getPeers($ch);
+    $peers = (array) $rpcPeers->{'peers'};
+    $data->numPeers = count($peers);
 
-// -- Get representative info for current node from nano_node
-$rpcNodeRepInfo = getRepresentativeInfo($ch, $nanoNodeAccount);
-$data->votingWeight = rawToMnano($rpcNodeRepInfo->{'weight'}, $nanoNumDecimalPlaces);
-$data->repAccount = $rpcNodeRepInfo->{'representative'} ?: '';
-$data->repAccountShort = truncateAddress($data->repAccount);
-$data->repAccountUrl = getAccountUrl($data->repAccount, $blockExplorer);
+    // -- Get node account balance from nano_node
+    $rpcNodeAccountBalance = getAccountBalance($ch, $nanoNodeAccount);
+    $data->accBalanceMnano = rawToMnano($rpcNodeAccountBalance->{'balance'}, $nanoNumDecimalPlaces);
+    $data->accBalanceRaw = (int) $rpcNodeAccountBalance->{'balance'};
+    $data->accPendingMnano = rawToMnano($rpcNodeAccountBalance->{'pending'}, $nanoNumDecimalPlaces);
+    $data->accPendingRaw = (int) $rpcNodeAccountBalance->{'pending'};
 
-// -- System uptime & memory info --
-$data->systemLoad = getSystemLoadAvg();
-$systemUptime = getSystemUptime();
-$systemUptimeStr = $systemUptime['days'].' days, '.$systemUptime['hours'].' hrs, '.$systemUptime['mins'].' mins';
-$data->systemUptime = $systemUptimeStr;
-$data->usedMem = getSystemUsedMem();
-$data->totalMem = getSystemTotalMem();
-//$data->uname = getUname();
-$data->nanoNodeName = $nanoNodeName;
+    // -- Get representative info for current node from nano_node
+    $rpcNodeRepInfo = getRepresentativeInfo($ch, $nanoNodeAccount);
+    $data->repAccount = $rpcNodeRepInfo->{'representative'} ?: '';
+    $data->repAccountShort = truncateAddress($data->repAccount);
+    $data->repAccountUrl = getAccountUrl($data->repAccount, $blockExplorer);
 
-// get the node uptime
-$data->nodeUptime = getNodeUptime($uptimerobotApiKey);
+    // get the account weight
+    $rpcNodeAccountWeight = getAccountWeight($ch, $nanoNodeAccount);
+    $data->votingWeight = rawToMnano($rpcNodeAccountWeight->{'weight'}, $nanoNumDecimalPlaces);
 
-// close curl handle
-curl_close($ch);
+    // -- System uptime & memory info --
+    $data->systemLoad = getSystemLoadAvg();
+    $systemUptime = getSystemUptime();
+    $systemUptimeStr = $systemUptime['days'].' days, '.$systemUptime['hours'].' hrs, '.$systemUptime['mins'].' mins';
+    $data->systemUptime = $systemUptimeStr;
+    $data->usedMem = getSystemUsedMem();
+    $data->totalMem = getSystemTotalMem();
+    //$data->uname = getUname();
+    $data->nanoNodeName = $nanoNodeName;
+
+    // get the node uptime (if we have a api key)
+    if ($uptimerobotApiKey) {
+        $data->nodeUptime = getNodeUptime($uptimerobotApiKey);
+    }
+
+    // get info from Nano Node Ninja
+    $data->nodeNinja = getNodeNinja($nanoNodeAccount);
+
+    // close curl handle
+    curl_close($ch);
+
+    return $data;
+});
 
 returnJson($data);
