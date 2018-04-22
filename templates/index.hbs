@@ -50,7 +50,6 @@
     </ul>
   </div>
 
-
   <div class="col-lg-4">
     <h2>Node Account Info</h2>
     <ul class="list-group">
@@ -83,8 +82,6 @@
     </ul>
   </div>
 
-
-
   <div class="col-lg-4">
     <h2>System Info</h2>
     <ul class="list-group">
@@ -100,7 +97,7 @@
       {{else if nodeNinja.uptime}}
       <li class="list-group-item active">
         Node Uptime
-        <span class="float-right">{{formatNumber nodeNinja.uptime}} %</span>
+        <span class="float-right"><a href="https://nanonode.ninja/account/{{nanoNodeAccount}}">{{formatNumber nodeNinja.uptime}} %</a></span>
       </li>
       {{else}}
       <li class="list-group-item active">
@@ -113,7 +110,7 @@
         <span class="float-right">{{formatNumber systemLoad}}</span>
       </li>
       <li class="list-group-item active">
-        Memory Free
+        Memory Used
         <span class="float-right">{{formatNumber usedMem}} MB</span>
       </li>
       <li class="list-group-item active">
