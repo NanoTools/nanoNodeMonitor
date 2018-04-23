@@ -17,7 +17,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo PROJECT_URL; ?>" target="_blank">Source on GitHub</a>
+          <a class="nav-link" href="<?php echo PROJECT_URL; ?>" target="_blank">GitHub Project</a>
         </li>
       </ul>
 

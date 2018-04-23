@@ -1,6 +1,6 @@
 <footer id="footer">
   <p><?php echo getVersionInformation(); ?><br>
-  Source available on <a href="<?php echo PROJECT_URL; ?>" target="_blank">GitHub</a>.</p>
+  GitHub: <a href="<?php echo PROJECT_URL; ?>" target="_blank">Source</a> | <a href="<?php echo PROJECT_URL . '/wiki'; ?>" target="_blank">Wiki</a> | <a href="<?php echo PROJECT_URL . '/wiki/API-Description'; ?>" target="_blank">API</a></p>
   <br>
   <p class=small>Made by <a href="https://github.com/NanoTools" target="_blank">Nano Tools</a>.</p>
   <p class=small>Donations to Nano Node Monitor: <a href="<?php echo getAccountUrl(NODEMON_DON_ACCOUNT, $blockExplorer); ?>" target="_blank"><?php echo NODEMON_DON_ACCOUNT; ?></a></p>
