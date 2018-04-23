@@ -312,6 +312,8 @@ function getAccountUrl($account, $blockExplorer)
       return "https://nanowat.ch/account/" . $account;
     case 'ninja':
       return "https://nanonode.ninja/account/" . $account;
+    case 'meltingice':
+      return "https://nano.meltingice.net/explorer/account/" . $account;
     default:
       return "https://www.nanode.co/account/" . $account;
   }

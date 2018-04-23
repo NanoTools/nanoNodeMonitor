@@ -29,7 +29,7 @@
 // $cmcVolume = FALSE;
 // $cmcStatsticker = FALSE;
 
-// choice of Nano block explorer ('nanode', 'ninja', 'nanoexplorer', 'nano', 'nanowatch')
+// choice of Nano block explorer ('nanode', 'ninja', 'nanoexplorer', 'nano', 'nanowatch', 'meltingice')
 // $blockExplorer = 'nanode';
 
 // ----------- Cache Engine ----------- 
