@@ -29,18 +29,27 @@
 // $cmcVolume = FALSE;
 // $cmcStatsticker = FALSE;
 
-// choice of Nano block explorer ('nanode', 'ninja', 'nanoexplorer', 'nano', 'nanowatch')
+// choice of Nano block explorer ('nanode', 'ninja', 'nanoexplorer', 'nano', 'nanowatch', 'meltingice')
 // $blockExplorer = 'nanode';
 
-// Cache engine, which allows for caching of RPC calls to reduce load on your Nano node.
-// Possible options are:
+// ----------- Cache Engine ----------- 
+
+// The cache engine allows for caching of RPC calls to reduce load on your Nano node.
+
+// Duration in seconds between cache invalidation, i.e. RPC calls to the node
+// $cacheTimeToLive = 30;
+
+// Possible options for "engine" are:
 //    - NULL (no caching)
 //    - "files" (caches to file; kind of slow)
 //    - "apc" (APC cache; requires extension; fast)
+//      - Options: 'ttl' => cache time in seconds
 //    - "apcu" (APCu cache; requires extension; fast)
+//      - Options: 'ttl' => cache time in seconds
+
 // $cache = [
 //   "engine" => "files",
-//   "options" => []
+//   "options" => ["ttl" => $cacheTimeToLive]
 // ];
 
 // ----------- Nano Node Variables -----------
