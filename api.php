@@ -28,9 +28,10 @@ $data = $cache->fetch('api', function () use (
     $data->nanoNodeAccountShort = truncateAddress($data->nanoNodeAccount);
     $data->nanoNodeAccountUrl = getAccountUrl($data->nanoNodeAccount, $blockExplorer);
 
-    // -- Get Version String from nano_node
+    // -- Get Version String from nano node and node monitor
     $data->version = getVersionFormatted($ch);
     $data->newNodeVersionAvailable = isNewNodeVersionAvailable($data->version);
+    $data->nodeMonitorVersion = PROJECT_VERSION;
 
     // -- Get get current block from nano_node
     $rpcBlockCount = getBlockCount($ch);
