@@ -46,9 +46,9 @@ $data = $cache->fetch('api', function () use (
 
     // -- Get node account balance from nano_node
     $rpcNodeAccountBalance = getAccountBalance($ch, $nanoNodeAccount);
-    $data->accBalanceMnano = rawToMnano($rpcNodeAccountBalance->{'balance'}, $nanoNumDecimalPlaces);
+    $data->accBalanceMnano = rawToMnano($rpcNodeAccountBalance->{'balance'});
     $data->accBalanceRaw = (int) $rpcNodeAccountBalance->{'balance'};
-    $data->accPendingMnano = rawToMnano($rpcNodeAccountBalance->{'pending'}, $nanoNumDecimalPlaces);
+    $data->accPendingMnano = rawToMnano($rpcNodeAccountBalance->{'pending'});
     $data->accPendingRaw = (int) $rpcNodeAccountBalance->{'pending'};
 
     // -- Get representative info for current node from nano_node
@@ -59,7 +59,7 @@ $data = $cache->fetch('api', function () use (
 
     // get the account weight
     $rpcNodeAccountWeight = getAccountWeight($ch, $nanoNodeAccount);
-    $data->votingWeight = rawToMnano($rpcNodeAccountWeight->{'weight'}, $nanoNumDecimalPlaces);
+    $data->votingWeight = rawToMnano($rpcNodeAccountWeight->{'weight'});
 
     // -- System uptime & memory info --
     $data->systemLoad = getSystemLoadAvg();
