@@ -160,7 +160,7 @@ function getLatestNodeReleaseVersion()
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 30,
+    CURLOPT_TIMEOUT => 1,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_HTTPHEADER => array(
@@ -221,7 +221,7 @@ function getNodeUptime($apiKey, $uptimeRatio = 30)
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 5,
+    CURLOPT_TIMEOUT => 1,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "POST",
     CURLOPT_POSTFIELDS => "api_key=$apiKey&format=json&custom_uptime_ratios=$uptimeRatio",
@@ -264,7 +264,7 @@ function getNodeNinja($account)
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 5,
+    CURLOPT_TIMEOUT => 1,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1
   ));
 
@@ -274,7 +274,7 @@ function getNodeNinja($account)
   curl_close($curl);
 
   if ($err) {
-    return "API error";
+    return false;
   }
 
   // decode JSON response
@@ -328,7 +328,7 @@ function getNodeNinjaBlockcount()
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 5,
+    CURLOPT_TIMEOUT => 1,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1
   ));
 
@@ -338,7 +338,7 @@ function getNodeNinjaBlockcount()
   curl_close($curl);
 
   if ($err) {
-    return "API error";
+    return false;
   }
 
   // decode JSON response
@@ -353,6 +353,11 @@ function getNodeNinjaBlockcount()
 
 function getSyncStatus($blockcount){
   $ninjablocks = getNodeNinjaBlockcount();
+
+  if($ninjablocks === false){
+    // if we can't get an error output 100%
+    return 100;
+  }
 
   $sync = round(($blockcount / $ninjablocks) * 100, 1);
 
