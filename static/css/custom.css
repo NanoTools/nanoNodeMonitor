@@ -165,8 +165,3 @@ input[type=number] { /* Nano orange */
     background: #3e444c;
 }
 
-.truncate { 
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}

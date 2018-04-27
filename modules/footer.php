@@ -1,9 +1,10 @@
 <footer id="footer">
-  <p><?php echo getVersionInformation(); ?><br>
-  Source available on <a href="<?php echo PROJECT_URL; ?>" target="_blank">GitHub</a>.</p>
-  <br>
-  <p class=small>Made by <a href="https://github.com/NanoTools" target="_blank">Nano Tools</a>.</p>
-  <p class=small>Donations: <a href="<?php echo getAccountUrl(NODEMON_DON_ACCOUNT, $blockExplorer); ?>" target="_blank"><?php echo NODEMON_DON_ACCOUNT; ?></a></p>
+    <br />
+    <p><?php echo getVersionInformation(); ?><br>
+    Source available on <a href="<?php echo PROJECT_URL; ?>" target="_blank">GitHub</a>.</p>
+    <br>
+    <p class=small>Core by <a href="https://github.com/NanoTools" target="_blank">Nano Tools</a>, themes by <a href="https://github.com/iamreyne" target="_blank">Alex Reyne</a>.</p>
+    <p class=small>Donate to Node Host: <a href="<?php echo getAccountUrl(NODEMON_DON_ACCOUNT, $blockExplorer); ?>" target="_blank"><?php echo NODEMON_DON_ACCOUNT; ?></a></p>
 </footer>
 
 </div><!-- /container -->
