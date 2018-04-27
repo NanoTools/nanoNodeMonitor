@@ -3,6 +3,7 @@
 require_once __DIR__.'/cache/ApcCache.php';
 require_once __DIR__.'/cache/ApcuCache.php';
 require_once __DIR__.'/cache/FileCache.php';
+require_once __DIR__.'/cache/RedisCache.php';
 require_once __DIR__.'/cache/NullCache.php';
 
 abstract class Cache {
@@ -12,6 +13,7 @@ abstract class Cache {
       case 'apc': return new ApcCache($cache['options']);
       case 'apcu': return new ApcuCache($cache['options']);
       case 'files': return new FileCache($cache['options']);
+      case 'redis': return new RedisCache($cache['options']);
       default: return new NullCache();
     }
   }
