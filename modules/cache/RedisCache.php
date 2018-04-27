@@ -11,7 +11,7 @@ class RedisCache extends Cache {
     } else {
       $this->redis = new Redis();
       $this->redis->connect(
-        $options['host'],
+        array_key_exists('host', $options) ? $options['host'] : '127.0.0.1',
         array_key_exists('port', $options) ? $options['port'] : 6379
       );
     }
