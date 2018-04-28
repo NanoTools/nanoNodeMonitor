@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="static/css/fontawesome-all.min.css" media="screen">
         <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800,900" rel="stylesheet"> <!-- Nunito Font - Icarus -->
         <link rel="stylesheet" href="static/css/<?php echo $themeChoice; ?>.css?v=<?php echo PROJECT_VERSION; ?>" media="screen">
+        <link rel="stylesheet" href="static/css/util.css">
         <link rel="icon" href="static/img/logo-only-white.svg">
     </head>
     <body>
