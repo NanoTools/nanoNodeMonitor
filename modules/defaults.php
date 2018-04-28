@@ -16,7 +16,7 @@ $autoRefreshInSeconds = 5;
 $nanoNodeName = gethostname();
 
 // a welcome message shown on top
-$welcomeMsg = '';
+$welcomeMsg = 'Welcome to Nano Node Monitor';
 
 // coinmarketcap widget
 // market data base and second currency e.g. USD, EUR, BTC, ETH
