@@ -7,7 +7,7 @@
 // ----------- General Variables -----------
 
 // Theme of your Node Monitor (dark or light)
-$themeChoice = 'light';
+$themeChoice = 'dark';
 
 // autorefresh interval for the status webpage in seconds
 $autoRefreshInSeconds = 5;
@@ -16,7 +16,7 @@ $autoRefreshInSeconds = 5;
 $nanoNodeName = gethostname();
 
 // a welcome message shown on top
-$welcomeMsg = 'Welcome to Nano Node Monitor';
+$welcomeMsg = '';
 
 // coinmarketcap widget
 // market data base and second currency e.g. USD, EUR, BTC, ETH
