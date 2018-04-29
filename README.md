@@ -60,9 +60,8 @@ Switch to your installation directory and execute `git pull`.
 
 ## Creating a Theme
 
-If you're interested in creating your own theme in addition to the official Light and Dark themes, we've made it very simple for you to do so.
+If you're interested in creating your own theme in addition to the official Light and Dark themes, we've made it very simple for you to do so. Check out the [Wiki](https://github.com/NanoTools/nanoNodeMonitor/wiki/Create-a-theme) for more info.
 
-Check out [THEMEDOCS.md](https://github.com/iamreyne/nanoNodeMonitor/blob/master/THEMEDOCS.md) for more info.
 
 ## Links
 
