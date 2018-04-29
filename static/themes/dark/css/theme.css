@@ -1,0 +1,118 @@
+/* Load Font */
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400');
+
+/**
+
+ -- Body CSS
+
+ */
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: #272B30;
+    color: #fff;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 800px auto;
+    padding-top: 145px;
+}
+
+/*
+
+ -- Navigation Menu CSS
+
+ */
+
+
+.navbar {
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+    letter-spacing: 0.02rem;
+    font-weight: 400;
+    background-color: #3A3F44;
+    padding:1.5% 4%;
+    border-bottom: 1px solid #242a38;
+}
+
+
+.n-logo-theme {
+    color: #ffffff;
+    padding-left:12px;
+}
+
+.nav-link:hover {
+    color: #c8d6e5;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: #272B30;
+    opacity: 1;
+    transition: all 0s;
+}
+
+/*
+
+ -- Body Content CSS
+
+ */
+
+.list-group-item {
+    color: #ffffff!important;
+}
+
+h2 {
+    font-size: 2.5rem;
+    line-height: 2.9rem;
+    font-weight: 400;
+    max-width: 930px;
+    color: #ea882e;
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    max-width: 930px;
+    color: #ea882e;
+}
+
+p {
+    font-size: 0.9rem;
+    line-height: 1.6rem;
+    letter-spacing: 0.02em;
+}
+
+.n-address-theme {
+    background-color: #3A3F44!important;
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,0.4);
+    border-radius: 0rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.card {
+    background-color: #3A3F44!important;
+}
+
+.list-group-item {
+    background-color: #3A3F44!important;
+    border: 1px solid rgba(0,0,0,0.4);
+}
+
+a {
+    color: #fff;
+}
+
+a:hover {
+    color: #ea882e;
+}
+
+.btn-clipboard {
+    color: #ffffff;
+}
+

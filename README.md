@@ -6,12 +6,12 @@ Nano Node Monitor is a server-side PHP-based monitor for a Nano node. It connect
 
 Here is what it looks like on a desktop computer ...
 
-![Desktop screenshot](https://i.imgur.com/1k5BCfc.png)
+![Desktop screenshot](https://i.imgur.com/15izp38.png)
 
 
-... and on a mobile device: 
+... and on a mobile device (iPhone 7 Plus): 
 
-![Mobile screenshot](https://i.imgur.com/PTSwL69.jpg)
+![Mobile screenshot](https://i.imgur.com/oesBBPG.png)
 
 
 ## Prerequisites
@@ -57,6 +57,12 @@ $nanoNodeRPCPort = '7076';
 ## Updating
 
 Switch to your installation directory and execute `git pull`.
+
+## Creating a Theme
+
+If you're interested in creating your own theme in addition to the official Light and Dark themes, we've made it very simple for you to do so.
+
+Check out [THEMEDOCS.md](https://github.com/iamreyne/nanoNodeMonitor/blob/master/THEMEDOCS.md) for more info.
 
 ## Links
 
