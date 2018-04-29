@@ -4,7 +4,7 @@
   <br>
   <p class=small>Made by <a href="https://github.com/NanoTools" target="_blank">Nano Tools</a>.</p>
   <p class=small>Donations to Nano Node Monitor: <a href="<?php echo getAccountUrl(NODEMON_DON_ACCOUNT, $blockExplorer); ?>" target="_blank"><?php echo NODEMON_DON_ACCOUNT; ?></a>
-  <button id="copyAccount" class="btn btn-sm btn-link" data-clipboard-text="<?php echo NODEMON_DON_ACCOUNT; ?>" title="Copy"><i class="fas fa-clipboard fa-lg"></i></button>
+  <button id="copyAccount" class="btn btn-sm btn-link btn-clipboard" data-clipboard-text="<?php echo NODEMON_DON_ACCOUNT; ?>" title="Copy"><i class="fas fa-clipboard fa-lg"></i></button>
   </p>
 </footer>
 

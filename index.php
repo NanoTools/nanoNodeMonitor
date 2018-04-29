@@ -8,7 +8,7 @@ include 'modules/header.php';
   <div class="row">
     <div class="col-lg-8 col-md-6 col-sm-6">
       <a href="https://nano.org" target="_blank">
-        <img src="static/img/logo-white.svg" width="220" alt="Nano Logo"/>
+        <img src="static/img/nano-full-<?php echo $themeChoice; ?>.svg" width="220" alt="Nano Logo"/>
       </a>
       <p class="lead mt-2">Nano Node Monitor</p>
       <p><?php echo $welcomeMsg; ?></p>

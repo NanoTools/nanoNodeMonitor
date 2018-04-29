@@ -32,7 +32,7 @@ function updateStats(){
   .done(function (apidata) {
     $('#content').html(template(apidata));
     new ClipboardJS('#copyAccount');
-    setTimeout(updateStats, GLOBAL_REFRESH * 1000);
+    //setTimeout(updateStats, GLOBAL_REFRESH * 1000);
   })
   .fail(function (apidata) {
     $('#content').html(apidata.responseText);

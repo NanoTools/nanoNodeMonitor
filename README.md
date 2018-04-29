@@ -4,14 +4,9 @@
 
 Nano Node Monitor is a server-side PHP-based monitor for a Nano node. It connects to a running node via RPC and displays it's status on a simple webpage. Being server-side, it does not expose the RPC interface of the Nano node to the public. 
 
-Here is what it looks like on a desktop computer ...
+![Light](https://i.imgur.com/fbaAFvC.png)
 
-![Desktop screenshot](https://i.imgur.com/1k5BCfc.png)
-
-
-... and on a mobile device: 
-
-![Mobile screenshot](https://i.imgur.com/PTSwL69.jpg)
+![Dark](https://i.imgur.com/1Gu9ohX.png)
 
 
 ## Prerequisites
@@ -57,6 +52,11 @@ $nanoNodeRPCPort = '7076';
 ## Updating
 
 Switch to your installation directory and execute `git pull`.
+
+## Creating a Theme
+
+If you're interested in creating your own theme in addition to the official Light and Dark themes, we've made it very simple for you to do so. Check out the [Wiki](https://github.com/NanoTools/nanoNodeMonitor/wiki/Create-a-theme) for more info.
+
 
 ## Links
 

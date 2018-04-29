@@ -3,19 +3,18 @@
   <button type="button" class="close" data-dismiss="alert">&times;</button>
   <strong>Heads up!</strong> A new Nano Node version
   <strong>{{newNodeVersionAvailable}}</strong> is available.
-  <a href="https://github.com/nanocurrency/raiblocks/releases/latest"
-    target="_blank">Download it here!</a>
+  <a href="https://github.com/nanocurrency/raiblocks/releases/latest" target="_blank">Download it here!</a>
 </div>
 {{/if}}
 
 <div class="row">
   <div class="col">
-    <h2>Node Account</h2>
-    <ul class="list-group">
-      <li class="list-group-item active d-flex justify-content-between align-items-center">
-        <span class="mr-3">Address</span>
+    <h3>Node Account</h3>
+    <ul class="list-group mb-4">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span class="mr-3 pl-2">Address</span>
         <a href="{{nanoNodeAccountUrl}}" target="_blank" class="truncate">{{nanoNodeAccount}}</a>
-        <button id="copyAccount" class="btn btn-sm btn-link" data-clipboard-text="{{nanoNodeAccount}}" title="Copy">
+        <button id="copyAccount" class="btn btn-sm btn-link btn-clipboard" data-clipboard-text="{{nanoNodeAccount}}" title="Copy">
           <i class="fas fa-clipboard fa-lg"></i>
         </button>
       </li>
@@ -25,43 +24,45 @@
 
 <div class="row">
   <div class="col-lg-4">
-    <h2>Node Info</h2>
-    <ul class="list-group">
-      <li class="list-group-item active">
-        Version
-        <span class="float-right">{{version}}</span>
-      </li>
-      <li class="list-group-item active">
-        Current Block
-        <span class="float-right" title="{{formatNumber blockSync}} %">{{formatNumber currentBlock}}</span>
-      </li>
-      <li class="list-group-item active">
-        Unchecked Blocks
-        <span class="float-right">{{formatNumber uncheckedBlocks}}</span>
-      </li>
-      <li class="list-group-item active">
-        Peers
-        <span class="float-right">{{formatNumber numPeers}}</span>
-      </li>
-      <li class="list-group-item active">
-        Sync Status
-        <span class="float-right">{{formatNumber blockSync}} %</span>
-      </li>
-    </ul>
+    <h3>Node Info</h3>
+    <div class="card mb-4">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          Version
+          <span class="float-right">{{version}}</span>
+        </li>
+        <li class="list-group-item">
+          Current Block
+          <span class="float-right" title="{{formatNumber blockSync}} %">{{formatNumber currentBlock}}</span>
+        </li>
+        <li class="list-group-item">
+          Unchecked Blocks
+          <span class="float-right">{{formatNumber uncheckedBlocks}}</span>
+        </li>
+        <li class="list-group-item">
+          Peers
+          <span class="float-right">{{formatNumber numPeers}}</span>
+        </li>
+        <li class="list-group-item">
+          Sync Status
+          <span class="float-right">{{formatNumber blockSync}} %</span>
+        </li>
+      </ul>
+    </div>
   </div>
 
   <div class="col-lg-4">
-    <h2>Node Account Info</h2>
-    <ul class="list-group">
-      <li class="list-group-item active">
+    <h3>Node Account Info</h3>
+    <ul class="list-group mb-4">
+      <li class="list-group-item">
         Balance
         <span class="float-right">{{formatNano accBalanceMnano}} NANO</span>
       </li>
-      <li class="list-group-item active">
+      <li class="list-group-item">
         Pending
         <span class="float-right">{{formatNano accPendingMnano 6}} NANO</span>
       </li>
-      <li class="list-group-item active">
+      <li class="list-group-item">
         <div class="row">
           <div class="col-6">Representative</div>
           <div class="col-6 truncate">
@@ -71,11 +72,11 @@
           </div>
         </div>
       </li>
-      <li class="list-group-item active">
+      <li class="list-group-item">
         Delegators
         <span class="float-right">{{formatNumber nodeNinja.delegators}}</span>
       </li>
-      <li class="list-group-item active">
+      <li class="list-group-item">
         Voting Weight
         <span class="float-right">{{formatNano votingWeight 6}} NANO</span>
       </li>
@@ -83,37 +84,39 @@
   </div>
 
   <div class="col-lg-4">
-    <h2>System Info</h2>
-    <ul class="list-group">
-      <li class="list-group-item active">
+    <h3>System Info</h3>
+    <ul class="list-group mb-4">
+      <li class="list-group-item">
         Hostname
         <span class="float-right">{{nanoNodeName}}</span>
       </li>
       {{#if nodeUptime}}
-      <li class="list-group-item active">
+      <li class="list-group-item">
         Node Uptime
         <span class="float-right">{{formatNumber nodeUptime}} %</span>
       </li>
       {{else if nodeNinja.uptime}}
-      <li class="list-group-item active">
+      <li class="list-group-item">
         Node Uptime
-        <span class="float-right"><a href="https://nanonode.ninja/account/{{nanoNodeAccount}}">{{formatNumber nodeNinja.uptime}} %</a></span>
+        <span class="float-right">
+          <a href="https://nanonode.ninja/account/{{nanoNodeAccount}}">{{formatNumber nodeNinja.uptime}} %</a>
+        </span>
       </li>
       {{else}}
-      <li class="list-group-item active">
+      <li class="list-group-item">
         Uptime
         <span class="float-right">{{systemUptime}}</span>
       </li>
       {{/if}}
-      <li class="list-group-item active">
+      <li class="list-group-item">
         Load
         <span class="float-right">{{formatNumber systemLoad}}</span>
       </li>
-      <li class="list-group-item active">
+      <li class="list-group-item">
         Memory Used
         <span class="float-right">{{formatNumber usedMem}} MB</span>
       </li>
-      <li class="list-group-item active">
+      <li class="list-group-item">
         Memory Total
         <span class="float-right">{{formatNumber totalMem}} MB</span>
       </li>
