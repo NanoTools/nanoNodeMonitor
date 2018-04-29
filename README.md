@@ -4,14 +4,9 @@
 
 Nano Node Monitor is a server-side PHP-based monitor for a Nano node. It connects to a running node via RPC and displays it's status on a simple webpage. Being server-side, it does not expose the RPC interface of the Nano node to the public. 
 
-Here is what it looks like on a desktop computer ...
+![Light](https://i.imgur.com/fbaAFvC.png)
 
-![Desktop screenshot](https://i.imgur.com/15izp38.png)
-
-
-... and on a mobile device (iPhone 7 Plus): 
-
-![Mobile screenshot](https://i.imgur.com/oesBBPG.png)
+![Dark](https://i.imgur.com/1Gu9ohX.png)
 
 
 ## Prerequisites
