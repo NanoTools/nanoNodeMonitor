@@ -1,3 +1,7 @@
+/* Load Font */
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400');
+
 /**
 
  -- Body CSS
@@ -5,7 +9,8 @@
  */
 
 body {
-    background: #0f1121 url(bg-logo-dark.png) center right no-repeat fixed;
+    font-family: 'Nunito', sans-serif;
+    background: #0f1121 url(../img/bg-logo-dark.png) center right no-repeat fixed;
     color: #fff;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -20,22 +25,25 @@ body {
 
  */
 
-.n-navbar-theme {
-    font-family: 'Nunito', sans-serif;
+.navbar {
     font-size: 1.1rem;
     line-height: 1.6rem;
     letter-spacing: 0.02rem;
     font-weight: 400;
     background-color: #ffffff;
-    padding:1.5% 4%;
+    padding: 1.5% 4%;
 }
 
 .n-logo-theme {
     color: #0f1121;
-    padding-left:12px;
+    padding-left: 12px;
 }
 
-.n-pullUp:hover {
+.nav-link {
+    color: #0f1121;
+}
+
+.nav-link:hover {
     color: #ffffff;
     width: 100%;
     height: 100%;
@@ -51,34 +59,31 @@ body {
 
  */
 
-.n-text-theme {
-    color: #0f1121!important;
+.list-group-item {
+    color: #0f1121 !important;
 }
 
-.n-h2-theme {
-    font-family: 'Nunito', sans-serif;
+h2 {
     font-size: 2.5rem;
     line-height: 2.9rem;
     font-weight: 400;
     max-width: 930px;
 }
 
-.n-h3-theme {
-    font-family: 'Nunito', sans-serif;
+h3 {
     font-size: 1.4rem;
     font-weight: 400;
     max-width: 930px;
- }
+}
 
-.n-p-theme {
-    font-family: 'Nunito', sans-serif;
+p {
     font-size: 0.9rem;
     line-height: 1.6rem;
     letter-spacing: 0.02em;
 }
 
 .n-address-theme {
-    background-color: #ffffff!important;
+    background-color: #ffffff !important;
     display: block;
     width: 100%;
     padding: .375rem .75rem;
@@ -87,9 +92,21 @@ body {
     background-clip: padding-box;
     border: 1px solid #000034;
     border-radius: 0rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-.n-card-theme {
+.card {
     background-color: #fff;
+}
+
+.list-group-item a {
+    color: #0f1121;
+}
+
+a:hover {
+    color: #007bff;
+}
+
+.btn-clipboard {
+    color: #0f1121;
 }
