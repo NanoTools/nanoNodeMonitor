@@ -1,3 +1,6 @@
+/* Load Font */
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400');
+
 /**
 
  -- Body CSS
@@ -5,6 +8,7 @@
  */
 
 body {
+    font-family: 'Nunito', sans-serif;
     background: #272B30;
     color: #fff;
     -webkit-background-size: cover;
@@ -20,8 +24,8 @@ body {
 
  */
 
-.n-navbar-theme {
-    font-family: 'Nunito', sans-serif;
+
+.navbar {
     font-size: 1.1rem;
     line-height: 1.6rem;
     letter-spacing: 0.02rem;
@@ -31,17 +35,18 @@ body {
     border-bottom: 1px solid #242a38;
 }
 
+
 .n-logo-theme {
     color: #ffffff;
     padding-left:12px;
 }
 
-.n-pullUp:hover {
+.nav-link:hover {
     color: #c8d6e5;
     width: 100%;
     height: 100%;
     content: '';
-    background: #222f3e;
+    background: #272B30;
     opacity: 1;
     transition: all 0s;
 }
@@ -52,12 +57,11 @@ body {
 
  */
 
-.n-text-theme {
+.list-group-item {
     color: #ffffff!important;
 }
 
-.n-h2-theme {
-    font-family: 'Nunito', sans-serif;
+h2 {
     font-size: 2.5rem;
     line-height: 2.9rem;
     font-weight: 400;
@@ -65,16 +69,14 @@ body {
     color: #ea882e;
 }
 
-.n-h3-theme {
-    font-family: 'Nunito', sans-serif;
+h3 {
     font-size: 1.4rem;
     font-weight: 400;
     max-width: 930px;
     color: #ea882e;
 }
 
-.n-p-theme {
-    font-family: 'Nunito', sans-serif;
+p {
     font-size: 0.9rem;
     line-height: 1.6rem;
     letter-spacing: 0.02em;
@@ -93,7 +95,7 @@ body {
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.n-card-theme {
+.card {
     background-color: #3A3F44!important;
 }
 
@@ -103,5 +105,14 @@ body {
 }
 
 a {
+    color: #fff;
+}
+
+a:hover {
     color: #ea882e;
 }
+
+.btn-clipboard {
+    color: #ffffff;
+}
+
