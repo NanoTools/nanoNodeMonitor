@@ -61,6 +61,7 @@ body {
 
 .list-group-item {
     color: #0f1121 !important;
+    font-size: 0.9rem;
 }
 
 h2 {
@@ -78,9 +79,10 @@ h3 {
 
 p {
     font-size: 0.9rem;
-    line-height: 1.6rem;
+    line-height: 1.3rem;
     letter-spacing: 0.02em;
 }
+
 
 .n-address-theme {
     background-color: #ffffff !important;
@@ -97,16 +99,35 @@ p {
 
 .card {
     background-color: #fff;
+    font-size: 0.9rem;
 }
 
 .list-group-item a {
     color: #0f1121;
 }
 
-a:hover {
-    color: #007bff;
+a {
+    color: #4a90e2
 }
+
+a:hover {
+    color: #4a90e2
+}
+
 
 .btn-clipboard {
     color: #0f1121;
+}
+
+
+.btn-clipboard:hover{
+    color: #4a90e2;
+}
+
+.btn-clipboard-light {
+    color: #ffffff;
+}
+
+.btn-clipboard-light:hover {
+    color: #4a90e2;
 }

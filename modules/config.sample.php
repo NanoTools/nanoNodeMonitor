@@ -35,7 +35,7 @@
 // choice of Nano block explorer ('nanode', 'ninja', 'nanoexplorer', 'nano', 'nanowatch', 'meltingice')
 // $blockExplorer = 'nanode';
 
-// ----------- Cache Engine ----------- 
+// ----------- Cache Engine -----------
 
 // The cache engine allows for caching of RPC calls to reduce load on your Nano node.
 
@@ -49,6 +49,12 @@
 //      - Options: 'ttl' => cache time in seconds
 //    - "apcu" (APCu cache; requires extension; fast)
 //      - Options: 'ttl' => cache time in seconds
+//    - "redis" (Redis cache; requires extension; fast)
+//      - Options:
+//        - 'host' => optional; address of the Redis host (defaults to localhost)
+//        - 'port' => optional; port for the Redis host (defaults to 6379)
+//        - 'redis' => optional; an instantiated Redis instance (replaces use of host/port)
+//        - 'ttl' => optional; cache time in seconds
 
 // $cache = [
 //   "engine" => "files",
