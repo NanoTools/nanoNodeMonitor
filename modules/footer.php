@@ -11,10 +11,10 @@
 
 </div><!-- /container -->
 
-<script src="static/js/jquery-3.3.1.min.js"></script>
-<script src="static/js/popper.min.js"></script>
-<script src="static/js/bootstrap.min.js"></script>
-<script src="static/js/handlebars-v4.0.11.js"></script>
+<script src="static/js/jquery-3.3.1.min.js?v=<?php echo PROJECT_VERSION; ?>"></script>
+<script src="static/js/popper.min.js?v=<?php echo PROJECT_VERSION; ?>"></script>
+<script src="static/js/bootstrap.min.js?v=<?php echo PROJECT_VERSION; ?>"></script>
+<script src="static/js/handlebars-v4.0.11.js?v=<?php echo PROJECT_VERSION; ?>"></script>
 <script src="static/js/main.js?v=<?php echo PROJECT_VERSION; ?>"></script>
 
 </body>
