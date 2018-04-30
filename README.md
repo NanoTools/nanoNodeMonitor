@@ -4,14 +4,9 @@
 
 Nano Node Monitor is a server-side PHP-based monitor for a Nano node. It connects to a running node via RPC and displays it's status on a simple webpage. Being server-side, it does not expose the RPC interface of the Nano node to the public. 
 
-Here is what it looks like on a desktop computer ...
+![Light](https://i.imgur.com/fbaAFvC.png)
 
-![Desktop screenshot](https://i.imgur.com/1k5BCfc.png)
-
-
-... and on a mobile device: 
-
-![Mobile screenshot](https://i.imgur.com/PTSwL69.jpg)
+![Dark](https://i.imgur.com/1Gu9ohX.png)
 
 
 ## Prerequisites
@@ -58,6 +53,11 @@ $nanoNodeRPCPort = '7076';
 
 Switch to your installation directory and execute `git pull`.
 
+## Creating a Theme
+
+If you're interested in creating your own theme in addition to the official Light and Dark themes, we've made it very simple for you to do so. Check out the [Wiki](https://github.com/NanoTools/nanoNodeMonitor/wiki/Create-a-theme) for more info.
+
+
 ## Links
 
 * [Installation Official Nano Node with Docker (Official Nano Repo Wiki)](https://github.com/nanocurrency/raiblocks/wiki/Docker-node)
@@ -65,7 +65,7 @@ Switch to your installation directory and execute `git pull`.
 
 ## Support
 
-Feel free to change your representative to my Nano node `xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj` to support further decentralization within the Nano network. In case of problems, please send an [issue](https://github.com/NanoTools/nanoNodeMonitor/issues). 
+Feel free to change your representative to the [Nano Node Monitor Rep](https://nanonode.ninja/account/xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj) `xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj` to support further decentralization within the Nano network. In case of problems, please send an [issue](https://github.com/NanoTools/nanoNodeMonitor/issues). 
 
 Donations to the development of Nano Node Monitor are very welcome to: [xrb_1nanomon9uycemhgonue4twmcqmsu7oxw43maro8amj751ozpus8r8gsic48](https://www.nanode.co/account/xrb_1nanomon9uycemhgonue4twmcqmsu7oxw43maro8amj751ozpus8r8gsic48)
 
