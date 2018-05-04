@@ -8,4 +8,4 @@ data-marketcap="<?php echo bool2string($cmcMarketcap); ?>"
 data-volume="<?php echo bool2string($cmcVolume); ?>" 
 data-stats="<?php echo $cmcBaseCurrency; ?>" 
 data-statsticker="<?php echo bool2string($cmcStatsticker); ?>"></div>
-<script src="https://files.coinmarketcap.com/static/widget/currency.js" async></script>
+<script data-cfasync="false" src="https://files.coinmarketcap.com/static/widget/currency.js" async></script>
