@@ -19,6 +19,24 @@ function rawToMnano($raw)
   return (float) ($raw / 1000000000000000000000000000000.0);
 }
 
+// raw to banano
+function rawToBanano($raw)
+{
+  return rawToMnano($raw) * 10.;
+}
+
+// raw to theme currency
+function rawToThemeCurrency($raw, $themeChoice)
+{
+  switch ($themeChoice)
+  {
+    case 'banano':
+      return rawToBanano($raw);
+    default:
+      return rawToMnano($raw);
+  }
+}
+
 // get system load average
 function getSystemLoadAvg()
 {
@@ -318,6 +336,8 @@ function getAccountUrl($account, $blockExplorer)
       return "https://nanonode.ninja/account/" . $account;
     case 'meltingice':
       return "https://nano.meltingice.net/explorer/account/" . $account;
+    case 'banano':
+      return "https://banano.meltingice.net/explorer/account/" . $account;
     default:
       return "https://www.nanode.co/account/" . $account;
   }

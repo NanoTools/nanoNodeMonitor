@@ -77,8 +77,10 @@
         <span class="float-right">{{formatNumber nodeNinja.delegators}}</span>
       </li>
       <li class="list-group-item">
-        Voting Weight
-        <span class="float-right">{{formatNano votingWeight 6}} {{currencySymbol}}</span>
+        <div class="row">
+         <div class="col-6">Voting Weight</div>
+         <div class="col-6 truncate">{{formatNano votingWeight 6}} {{currencySymbol}}</div>
+        </div>
       </li>
     </ul>
   </div>
@@ -87,8 +89,10 @@
     <h3>System Info</h3>
     <ul class="list-group mb-4">
       <li class="list-group-item">
-        Hostname
-        <span class="float-right">{{nanoNodeName}}</span>
+        <div class="row">
+         <div class="col-6">Host</div>
+         <div class="col-6 truncate">{{nanoNodeName}}</span></div>
+        </div>
       </li>
       {{#if nodeUptime}}
       <li class="list-group-item">
