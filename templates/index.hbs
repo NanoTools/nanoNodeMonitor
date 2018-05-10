@@ -43,9 +43,13 @@
           <span class="float-left-truncate">Peers</span>
           <span class="float-right-truncate">{{formatNumber numPeers}}</span>
         </li>
-        <li class="list-group-item">
+        <li class="list-group-item">         
           <span class="float-left-truncate">Sync Status</span>
-          <span class="float-right-truncate">{{formatNumber blockSync}} %</span>
+          <span class="float-right-truncate">
+            {{#if blockSync}}
+            {{formatNumber blockSync}} %
+            {{else}} N/A {{/if}}
+            </span>
         </li>
       </ul>
     </div>
@@ -72,7 +76,11 @@
       </li>
       <li class="list-group-item">
         <span class="float-left-truncate">Delegators</span>
-        <span class="float-right-truncate">{{formatNumber nodeNinja.delegators}}</span>
+        <span class="float-right-truncate">
+        {{#if nodeNinja}}
+        {{formatNumber nodeNinja.delegators}}
+        {{else}} N/A {{/if}}
+        </span>
       </li>
       <li class="list-group-item">
         <span class="float-left-truncate">Voting Weight</span>

@@ -38,9 +38,7 @@ $data = $cache->fetch('api', function () use (
     $data->currentBlock = (int) $rpcBlockCount->{'count'};
     $data->uncheckedBlocks = (int) $rpcBlockCount->{'unchecked'};
 
-    if ($themeChoice == 'banano') {
-        $data->blockSync = 100;
-    } else {
+    if ($themeChoice != 'banano') {
         $data->blockSync = getSyncStatus($data->currentBlock);
     }
 
