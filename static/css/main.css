@@ -3,3 +3,15 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+
+.float-right-truncate
+{
+    float: right;
+    margin-left: auto;  
+    text-align: right;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 60%;
+}
