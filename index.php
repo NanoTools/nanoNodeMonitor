@@ -3,12 +3,19 @@
 require_once __DIR__.'/modules/includes.php';
 
 include 'modules/header.php';
+
+$coinURL = 'https://nano.org';
+if ($themeChoice == banano)
+{
+  $coinURL = 'https://banano.co.in/';
+}
+
 ?>
 <div class="page-header mb-3" id="banner">
   <div class="row">
     <div class="col-lg-8 col-md-6 col-sm-6">
-      <a href="https://nano.org" target="_blank">
-        <img src="static/img/nano-full-<?php echo $themeChoice; ?>.svg" width="220" alt="Nano Logo"/>
+      <a href="<?php echo $coinURL; ?>" target="_blank">
+        <img src="static/img/nano-full-<?php echo $themeChoice; ?>.svg" width="220" alt="Logo"/>
       </a>
       <p class="lead mt-2"><?php echo currencyNameFromTheme($themeChoice); ?> Node Monitor</p>
       <p><?php echo $welcomeMsg; ?></p>
