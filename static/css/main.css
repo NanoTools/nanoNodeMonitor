@@ -4,6 +4,17 @@
     text-overflow: ellipsis;
 }
 
+.float-left-truncate
+{
+    float: left;
+    margin-right: auto;  
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 50%;
+}
+
 
 .float-right-truncate
 {
@@ -13,5 +24,5 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 60%;
+    width: 50%;
 }
