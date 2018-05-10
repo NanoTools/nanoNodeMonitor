@@ -5,9 +5,8 @@ require_once __DIR__.'/modules/includes.php';
 include 'modules/header.php';
 
 $coinURL = 'https://nano.org';
-if ($themeChoice == banano)
-{
-  $coinURL = 'https://banano.co.in/';
+if ($themeChoice == banano) {
+    $coinURL = 'https://banano.co.in/';
 }
 
 ?>
