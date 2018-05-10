@@ -316,6 +316,14 @@ function truncateAddress($addr)
   $totalNumChar = NANO_ADDR_NUM_CHAR;
   $numEllipsis  = 3; // ...
   $numPrefix    = 4; // xrb_
+
+  // handle nano_ prefix of addresses
+
+  if (substr($addr, 0, 5) === "nano_")
+  {
+    $numPrefix = 5;
+  }
+
   $numAddrParts  = floor(($totalNumChar-$numEllipsis-$numPrefix) / 2.0);
 
   return strlen($addr) > $totalNumChar ? substr($addr,0,$numPrefix+$numAddrParts)."...".substr($addr,-$numAddrParts) : $addr;
