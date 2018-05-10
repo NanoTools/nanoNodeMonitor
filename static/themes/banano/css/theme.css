@@ -1,0 +1,146 @@
+/* Load Font */
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400');
+
+/**
+
+ -- Body CSS
+
+ */
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: #ffffff ;
+    color: #222629;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 800px auto;
+    padding-top: 145px;
+}
+
+/*
+
+ -- Navigation Menu CSS
+
+ */
+
+.navbar {
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+    letter-spacing: 0.02rem;
+    font-weight: 400;
+    background-color: #56be4f;
+    padding: 1.5% 4%;
+}
+
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(74,144,226, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+
+.n-logo-theme {
+    color: #ffffff;
+    padding-left: 12px;
+}
+
+.nav-link {
+    color: #ffffff;
+}
+
+
+.nav-link:hover {
+    color: #fada40;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: #56be4f;
+    opacity: 1;
+    transition: all 0s;
+}
+
+/*
+
+ -- Body Content CSS
+
+ */
+
+
+
+h2 {
+    font-size: 2.5rem;
+    line-height: 2.9rem;
+    font-weight: 400;
+    max-width: 930px;    
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    max-width: 930px;
+    color: #56be4f;
+}
+
+p {
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+    letter-spacing: 0.02em;
+}
+
+
+.n-address-theme {
+    background-color: #ffffff !important;
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-clip: padding-box;
+    border: 1px solid #000034;
+    border-radius: 0rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.card {
+    background-color: #fff;
+    font-size: 0.9rem;
+}
+
+
+.list-group-item {
+    background-color: #fffef7;
+    color: #222629 !important;
+    font-size: 0.9rem;
+}
+
+.list-group-item a {
+    color: #222629;
+}
+
+a {
+    color: #56be4f
+}
+
+a:hover {
+    color: #fada40
+}
+
+
+.btn-clipboard {
+    color: #56be4f;
+}
+
+
+.btn-clipboard:hover{
+    color: #fada40;
+}
+
+.btn-clipboard-light {
+    color: #56be4f;
+}
+
+.btn-clipboard-light:hover {
+    color: #fada40;
+}
+

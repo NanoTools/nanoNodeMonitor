@@ -1,3 +1,8 @@
+<?php
+if ($themeChoice != 'banano')
+{
+?>
+
 <div class="coinmarketcap-currency-widget" 
 data-currencyid="1567" 
 data-base="<?php echo $cmcBaseCurrency; ?>" 
@@ -9,3 +14,8 @@ data-volume="<?php echo bool2string($cmcVolume); ?>"
 data-stats="<?php echo $cmcBaseCurrency; ?>" 
 data-statsticker="<?php echo bool2string($cmcStatsticker); ?>"></div>
 <script src="https://files.coinmarketcap.com/static/widget/currency.js" async></script>
+
+
+<?php
+} // end if not banano
+?>

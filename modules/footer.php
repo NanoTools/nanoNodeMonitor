@@ -17,7 +17,7 @@
    <button id="copyAccount" class="btn btn-sm btn-link btn-clipboard-light" data-clipboard-text="<?php echo NODEMON_REP_ACCOUNT; ?>" title="Copy"><i class="fas fa-clipboard fa-lg"></i></button>
    <br>
    <small>
-    Donations to Nano Node Monitor: <a href="<?php echo getAccountUrl(NODEMON_DON_ACCOUNT, $blockExplorer); ?>" target="_blank"><?php echo NODEMON_DON_ACCOUNT; ?></a>
+    Donations to <?php echo currencyNameFromTheme($themeChoice); ?> Node Monitor: <a href="<?php echo getAccountUrl(NODEMON_DON_ACCOUNT, $blockExplorer); ?>" target="_blank"><?php echo NODEMON_DON_ACCOUNT; ?></a>
    </small>
    <button id="copyAccount" class="btn btn-sm btn-link btn-clipboard-light" data-clipboard-text="<?php echo NODEMON_DON_ACCOUNT; ?>" title="Copy"><i class="fas fa-clipboard fa-lg"></i></button>
   </p>

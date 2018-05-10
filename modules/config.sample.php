@@ -8,7 +8,7 @@
 
 // ----------- General Variables -----------
 
-// Theme of your Node Monitor (dark or light)
+// Theme of your Node Monitor (dark, light, or banano)
 // $themeChoice = 'light';
 
 // autorefresh interval for the status webpage in seconds

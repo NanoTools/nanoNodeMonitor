@@ -8,7 +8,7 @@ $cache = Cache::factory();
 // get cached response
 $data = $cache->fetch('api', function () use (
   &$nanoNodeRPCIP, &$nanoNodeRPCPort, &$nanoNodeAccount, &$blockExplorer,
-  &$nanoNodeName, &$nanoNumDecimalPlaces, &$uptimerobotApiKey
+  &$nanoNodeName, &$nanoNumDecimalPlaces, &$uptimerobotApiKey, &$themeChoice
 ) {
     // get curl handle
     $ch = curl_init();
@@ -78,6 +78,9 @@ $data = $cache->fetch('api', function () use (
 
     // get info from Nano Node Ninja
     $data->nodeNinja = getNodeNinja($nanoNodeAccount);
+
+    // currency symbol
+    $data->currencySymbol = currencySymbolFromTheme($themeChoice);
 
     // close curl handle
     curl_close($ch);

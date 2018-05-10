@@ -10,7 +10,7 @@ include 'modules/header.php';
       <a href="https://nano.org" target="_blank">
         <img src="static/img/nano-full-<?php echo $themeChoice; ?>.svg" width="220" alt="Nano Logo"/>
       </a>
-      <p class="lead mt-2">Nano Node Monitor</p>
+      <p class="lead mt-2"><?php echo currencyNameFromTheme($themeChoice); ?> Node Monitor</p>
       <p><?php echo $welcomeMsg; ?></p>
 
       <div class="btn-group mb-3">

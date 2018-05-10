@@ -56,11 +56,11 @@
     <ul class="list-group mb-4">
       <li class="list-group-item">
         Balance
-        <span class="float-right">{{formatNano accBalanceMnano}} NANO</span>
+        <span class="float-right">{{formatNano accBalanceMnano}} {{currencySymbol}}</span>
       </li>
       <li class="list-group-item">
         Pending
-        <span class="float-right">{{formatNano accPendingMnano 6}} NANO</span>
+        <span class="float-right">{{formatNano accPendingMnano 6}} {{currencySymbol}}</span>
       </li>
       <li class="list-group-item">
         <div class="row">
@@ -78,7 +78,7 @@
       </li>
       <li class="list-group-item">
         Voting Weight
-        <span class="float-right">{{formatNano votingWeight 6}} NANO</span>
+        <span class="float-right">{{formatNano votingWeight 6}} {{currencySymbol}}</span>
       </li>
     </ul>
   </div>

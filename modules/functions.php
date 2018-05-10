@@ -371,3 +371,30 @@ function getSyncStatus($blockcount){
   }
   return $sync;
 }
+
+// get currency name from theme
+function currencyNameFromTheme($themeChoice) 
+{
+  switch ($themeChoice) {
+    case 'banano':
+      return "Banano";
+    
+    default:
+      return "Nano";
+  }
+
+}
+
+
+// get currency symbol from theme
+function currencySymbolFromTheme($themeChoice) 
+{
+  switch ($themeChoice) {
+    case 'banano':
+      return "BANANO";
+    
+    default:
+      return "NANO";
+  }
+
+}
