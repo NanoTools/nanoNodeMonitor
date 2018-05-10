@@ -126,11 +126,20 @@ a:hover {
     color: #fada40
 }
 
+hr.light {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #56be4f;
+    margin: 1em 0;
+    padding: 0;    
+    opacity: 0.2;
+}
+
 
 .btn-clipboard {
     color: #56be4f;
 }
-
 
 .btn-clipboard:hover{
     color: #fada40;

@@ -8,10 +8,10 @@
     GitHub: <a href="<?php echo PROJECT_URL; ?>" target="_blank">Source</a> | <a href="<?php echo PROJECT_URL . '/wiki'; ?>" target="_blank">Wiki</a> | <a href="<?php echo PROJECT_URL . '/wiki/API-Description'; ?>" target="_blank">API</a>  
   </p>
   
+  <hr class=light>
 
   <p class=truncate>
    <small>
-    <br>   
 
 <?php
   // switch Nano / Banano rep accounts & explorer
