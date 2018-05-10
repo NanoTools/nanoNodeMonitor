@@ -10,7 +10,7 @@
 
 body {
     font-family: 'Nunito', sans-serif;
-    background: #ffffff ;
+    background: #f8fbff ;
     color: #222629;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -109,7 +109,7 @@ p {
 
 
 .list-group-item {
-    background-color: #fffef7;
+    background-color: #f9f9f9;
     color: #222629 !important;
     font-size: 0.9rem;
 }
