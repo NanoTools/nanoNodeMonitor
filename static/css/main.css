@@ -26,3 +26,11 @@
     text-overflow: ellipsis;
     width: 50%;
 }
+
+.myError
+{   
+    padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-bottom: 30px;
+}
