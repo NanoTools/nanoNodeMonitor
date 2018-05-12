@@ -28,24 +28,28 @@
     <div class="card mb-4">
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-          Version
-          <span class="float-right">{{version}}</span>
+          <span class="float-left-truncate">Version</span>
+          <span class="float-right-truncate">{{version}}</span>
         </li>
         <li class="list-group-item">
-          Current Block
-          <span class="float-right" title="{{formatNumber blockSync}} %">{{formatNumber currentBlock}}</span>
+          <span class="float-left-truncate">Current Block</span>
+          <span class="float-right-truncate" title="{{formatNumber blockSync}} %">{{formatNumber currentBlock}}</span>
         </li>
         <li class="list-group-item">
-          Unchecked Blocks
-          <span class="float-right">{{formatNumber uncheckedBlocks}}</span>
+          <span class="float-left-truncate">Unchecked Blocks</span>
+          <span class="float-right-truncate">{{formatNumber uncheckedBlocks}}</span>
         </li>
         <li class="list-group-item">
-          Peers
-          <span class="float-right">{{formatNumber numPeers}}</span>
+          <span class="float-left-truncate">Peers</span>
+          <span class="float-right-truncate">{{formatNumber numPeers}}</span>
         </li>
-        <li class="list-group-item">
-          Sync Status
-          <span class="float-right">{{formatNumber blockSync}} %</span>
+        <li class="list-group-item">         
+          <span class="float-left-truncate">Sync Status</span>
+          <span class="float-right-truncate">
+            {{#if blockSync}}
+            {{formatNumber blockSync}} %
+            {{else}} N/A {{/if}}
+            </span>
         </li>
       </ul>
     </div>
@@ -55,30 +59,32 @@
     <h3>Node Account Info</h3>
     <ul class="list-group mb-4">
       <li class="list-group-item">
-        Balance
-        <span class="float-right">{{formatNano accBalanceMnano}} NANO</span>
+        <span class="float-left-truncate">Balance</span>
+        <span class="float-right-truncate">{{formatNano accBalanceMnano}} {{currencySymbol}}</span>
       </li>
       <li class="list-group-item">
-        Pending
-        <span class="float-right">{{formatNano accPendingMnano 6}} NANO</span>
+        <span class="float-left-truncate">Pending</span>
+        <span class="float-right-truncate">{{formatNano accPendingMnano 6}} {{currencySymbol}}</span>
       </li>
       <li class="list-group-item">
-        <div class="row">
-          <div class="col-6">Representative</div>
-          <div class="col-6 truncate">
-            {{#if repAccount}}
-            <a href="{{repAccountUrl}}" target="_blank">{{repAccount}}</a>
-            {{else}} Account not opened {{/if}}
-          </div>
-        </div>
+        <span class="float-left-truncate">Representative</span>
+        <span class="float-right-truncate">
+           {{#if repAccount}}
+           <a href="{{repAccountUrl}}" target="_blank">{{repAccount}}</a>
+           {{else}} Account not opened {{/if}}
+        </span>
       </li>
       <li class="list-group-item">
-        Delegators
-        <span class="float-right">{{formatNumber nodeNinja.delegators}}</span>
+        <span class="float-left-truncate">Delegators</span>
+        <span class="float-right-truncate">
+        {{#if nodeNinja}}
+        {{formatNumber nodeNinja.delegators}}
+        {{else}} N/A {{/if}}
+        </span>
       </li>
       <li class="list-group-item">
-        Voting Weight
-        <span class="float-right">{{formatNano votingWeight 6}} NANO</span>
+        <span class="float-left-truncate">Voting Weight</span>
+        <span class="float-right-truncate">{{formatNano votingWeight 6}} {{currencySymbol}}</span>       
       </li>
     </ul>
   </div>
@@ -87,38 +93,38 @@
     <h3>System Info</h3>
     <ul class="list-group mb-4">
       <li class="list-group-item">
-        Hostname
-        <span class="float-right">{{nanoNodeName}}</span>
+        <span class="float-left-truncate">Host</span>
+        <span class="float-right-truncate">{{nanoNodeName}}</span>        
       </li>
       {{#if nodeUptime}}
       <li class="list-group-item">
-        Node Uptime
-        <span class="float-right">{{formatNumber nodeUptime}} %</span>
+        <span class="float-left-truncate">Node Uptime</span>
+        <span class="float-right-truncate">{{formatNumber nodeUptime}} %</span>
       </li>
       {{else if nodeNinja.uptime}}
       <li class="list-group-item">
-        Node Uptime
-        <span class="float-right">
+        <span class="float-left-truncate">Node Uptime</span>
+        <span class="float-right-truncate">
           <a href="https://nanonode.ninja/account/{{nanoNodeAccount}}">{{formatNumber nodeNinja.uptime}} %</a>
         </span>
       </li>
       {{else}}
       <li class="list-group-item">
-        Uptime
-        <span class="float-right">{{systemUptime}}</span>
+        <span class="float-left-truncate">Uptime</span>
+        <span class="float-right-truncate">{{systemUptime}}</span>
       </li>
       {{/if}}
       <li class="list-group-item">
-        Load
-        <span class="float-right">{{formatNumber systemLoad}}</span>
+        <span class="float-left-truncate">Load</span>
+        <span class="float-right-truncate">{{formatNumber systemLoad}}</span>
       </li>
       <li class="list-group-item">
-        Memory Used
-        <span class="float-right">{{formatNumber usedMem}} MB</span>
+        <span class="float-left-truncate">Memory Used</span>
+        <span class="float-right-truncate">{{formatNumber usedMem}} MB</span>
       </li>
       <li class="list-group-item">
-        Memory Total
-        <span class="float-right">{{formatNumber totalMem}} MB</span>
+        <span class="float-left-truncate">Memory Total</span>
+        <span class="float-right-truncate">{{formatNumber totalMem}} MB</span>
       </li>
     </ul>
   </div>

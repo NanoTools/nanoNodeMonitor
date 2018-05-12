@@ -51,11 +51,11 @@ body {
 
 
 .nav-link:hover {
-    color: #ffffff;
+    color: #4a90e2;
     width: 100%;
     height: 100%;
     content: '';
-    background: #0f1121;
+    background: #ffffff;
     opacity: 1;
     transition: all 0s;
 }
@@ -121,6 +121,15 @@ a:hover {
     color: #4a90e2
 }
 
+hr.light {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #4a90e2;
+    margin: 1em 0;
+    padding: 0;    
+    opacity: 0.2;
+}
 
 .btn-clipboard {
     color: #0f1121;

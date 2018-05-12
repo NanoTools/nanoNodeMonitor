@@ -68,7 +68,7 @@ $nanoNodeAccount = '';
 $nanoDonationAccount = $nanoNodeAccount;
 
 // number of decimal places to display Nano balances, i.e.
-$nanoNumDecimalPlaces = 6;
+$nanoNumDecimalPlaces = 0;
 
 // ----------- Monitoring -----------
 

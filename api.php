@@ -8,7 +8,7 @@ $cache = Cache::factory();
 // get cached response
 $data = $cache->fetch('api', function () use (
   &$nanoNodeRPCIP, &$nanoNodeRPCPort, &$nanoNodeAccount, &$blockExplorer,
-  &$nanoNodeName, &$nanoNumDecimalPlaces, &$uptimerobotApiKey
+  &$nanoNodeName, &$nanoNumDecimalPlaces, &$uptimerobotApiKey, &$themeChoice
 ) {
     // get curl handle
     $ch = curl_init();
@@ -37,7 +37,10 @@ $data = $cache->fetch('api', function () use (
     $rpcBlockCount = getBlockCount($ch);
     $data->currentBlock = (int) $rpcBlockCount->{'count'};
     $data->uncheckedBlocks = (int) $rpcBlockCount->{'unchecked'};
-    $data->blockSync = getSyncStatus($data->currentBlock);
+
+    if ($themeChoice != 'banano') {
+        $data->blockSync = getSyncStatus($data->currentBlock);
+    }
 
     // -- Get number of peers from nano_node
     $rpcPeers = getPeers($ch);
@@ -46,9 +49,9 @@ $data = $cache->fetch('api', function () use (
 
     // -- Get node account balance from nano_node
     $rpcNodeAccountBalance = getAccountBalance($ch, $nanoNodeAccount);
-    $data->accBalanceMnano = rawToMnano($rpcNodeAccountBalance->{'balance'});
+    $data->accBalanceMnano = rawToThemeCurrency($rpcNodeAccountBalance->{'balance'}, $themeChoice);
     $data->accBalanceRaw = (int) $rpcNodeAccountBalance->{'balance'};
-    $data->accPendingMnano = rawToMnano($rpcNodeAccountBalance->{'pending'});
+    $data->accPendingMnano = rawToThemeCurrency($rpcNodeAccountBalance->{'pending'}, $themeChoice);
     $data->accPendingRaw = (int) $rpcNodeAccountBalance->{'pending'};
 
     // -- Get representative info for current node from nano_node
@@ -59,7 +62,7 @@ $data = $cache->fetch('api', function () use (
 
     // get the account weight
     $rpcNodeAccountWeight = getAccountWeight($ch, $nanoNodeAccount);
-    $data->votingWeight = rawToMnano($rpcNodeAccountWeight->{'weight'});
+    $data->votingWeight = rawToThemeCurrency($rpcNodeAccountWeight->{'weight'}, $themeChoice);
 
     // -- System uptime & memory info --
     $data->systemLoad = getSystemLoadAvg();
@@ -78,6 +81,9 @@ $data = $cache->fetch('api', function () use (
 
     // get info from Nano Node Ninja
     $data->nodeNinja = getNodeNinja($nanoNodeAccount);
+
+    // currency symbol
+    $data->currencySymbol = currencySymbolFromTheme($themeChoice);
 
     // close curl handle
     curl_close($ch);

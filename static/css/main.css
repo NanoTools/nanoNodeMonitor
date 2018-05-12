@@ -3,3 +3,34 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.float-left-truncate
+{
+    float: left;
+    margin-right: auto;  
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 50%;
+}
+
+
+.float-right-truncate
+{
+    float: right;
+    margin-left: auto;  
+    text-align: right;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 50%;
+}
+
+.myError
+{   
+    padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-bottom: 30px;
+}

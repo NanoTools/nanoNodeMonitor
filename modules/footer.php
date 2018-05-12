@@ -8,18 +8,33 @@
     GitHub: <a href="<?php echo PROJECT_URL; ?>" target="_blank">Source</a> | <a href="<?php echo PROJECT_URL . '/wiki'; ?>" target="_blank">Wiki</a> | <a href="<?php echo PROJECT_URL . '/wiki/API-Description'; ?>" target="_blank">API</a>  
   </p>
   
+  <hr class=light>
 
   <p class=truncate>
    <small>
-    <br>
-    Representative: <a href="<?php echo getAccountUrl(NODEMON_REP_ACCOUNT, 'ninja'); ?>" target="_blank"><?php echo NODEMON_REP_ACCOUNT; ?></a>
+
+<?php
+  // switch Nano / Banano rep accounts & explorer
+  $repAccount = NODEMON_REP_ACCOUNT;
+  $donAccount = NODEMON_DON_ACCOUNT;
+  $repExplorer = 'ninja';
+
+  if ($themeChoice == "banano")
+  {
+    $repAccount = NODEMON_BAN_REP_ACCOUNT;
+    $donAccount = NODEMON_BAN_DON_ACCOUNT;
+    $repExplorer = 'banano';
+  }
+?>
+
+   <?php echo currencyNameFromTheme($themeChoice) ?> Representative: <a href="<?php echo getAccountUrl($repAccount, $repExplorer); ?>" target="_blank"><?php echo $repAccount; ?></a>
    </small>
-   <button id="copyAccount" class="btn btn-sm btn-link btn-clipboard-light" data-clipboard-text="<?php echo NODEMON_REP_ACCOUNT; ?>" title="Copy"><i class="fas fa-clipboard fa-lg"></i></button>
+   <button id="copyAccount" class="btn btn-sm btn-link btn-clipboard-light" data-clipboard-text="<?php echo $repAccount; ?>" title="Copy"><i class="fas fa-clipboard fa-lg"></i></button>
    <br>
    <small>
-    Donations to Nano Node Monitor: <a href="<?php echo getAccountUrl(NODEMON_DON_ACCOUNT, $blockExplorer); ?>" target="_blank"><?php echo NODEMON_DON_ACCOUNT; ?></a>
+    Donations to <?php echo currencyNameFromTheme($themeChoice); ?> Node Monitor: <a href="<?php echo getAccountUrl($donAccount, $blockExplorer); ?>" target="_blank"><?php echo $donAccount; ?></a>
    </small>
-   <button id="copyAccount" class="btn btn-sm btn-link btn-clipboard-light" data-clipboard-text="<?php echo NODEMON_DON_ACCOUNT; ?>" title="Copy"><i class="fas fa-clipboard fa-lg"></i></button>
+   <button id="copyAccount" class="btn btn-sm btn-link btn-clipboard-light" data-clipboard-text="<?php echo $donAccount; ?>" title="Copy"><i class="fas fa-clipboard fa-lg"></i></button>
   </p>
 </footer>
 

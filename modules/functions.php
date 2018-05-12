@@ -4,7 +4,7 @@
 function myError($errorMsg)
 {
   header("HTTP/1.1 503 Service Unavailable");
-  die($errorMsg);
+  die('<div class="myError">' . $errorMsg . '</div>');
 }
 
 // check whether php-curl is installed
@@ -17,6 +17,24 @@ function phpCurlAvailable()
 function rawToMnano($raw)
 {
   return (float) ($raw / 1000000000000000000000000000000.0);
+}
+
+// raw to banano
+function rawToBanano($raw)
+{
+  return rawToMnano($raw) * 10.;
+}
+
+// raw to theme currency
+function rawToThemeCurrency($raw, $themeChoice)
+{
+  switch ($themeChoice)
+  {
+    case 'banano':
+      return rawToBanano($raw);
+    default:
+      return rawToMnano($raw);
+  }
 }
 
 // get system load average
@@ -298,6 +316,14 @@ function truncateAddress($addr)
   $totalNumChar = NANO_ADDR_NUM_CHAR;
   $numEllipsis  = 3; // ...
   $numPrefix    = 4; // xrb_
+
+  // handle nano_ prefix of addresses
+
+  if (substr($addr, 0, 5) === "nano_")
+  {
+    $numPrefix = 5;
+  }
+
   $numAddrParts  = floor(($totalNumChar-$numEllipsis-$numPrefix) / 2.0);
 
   return strlen($addr) > $totalNumChar ? substr($addr,0,$numPrefix+$numAddrParts)."...".substr($addr,-$numAddrParts) : $addr;
@@ -318,6 +344,8 @@ function getAccountUrl($account, $blockExplorer)
       return "https://nanonode.ninja/account/" . $account;
     case 'meltingice':
       return "https://nano.meltingice.net/explorer/account/" . $account;
+    case 'banano':
+      return "https://banano.meltingice.net/explorer/account/" . $account;
     default:
       return "https://www.nanode.co/account/" . $account;
   }
@@ -370,4 +398,31 @@ function getSyncStatus($blockcount){
     return 100;
   }
   return $sync;
+}
+
+// get currency name from theme
+function currencyNameFromTheme($themeChoice) 
+{
+  switch ($themeChoice) {
+    case 'banano':
+      return "Banano";
+    
+    default:
+      return "Nano";
+  }
+
+}
+
+
+// get currency symbol from theme
+function currencySymbolFromTheme($themeChoice) 
+{
+  switch ($themeChoice) {
+    case 'banano':
+      return "BANANO";
+    
+    default:
+      return "NANO";
+  }
+
 }

@@ -8,7 +8,7 @@
 
 // ----------- General Variables -----------
 
-// Theme of your Node Monitor (dark or light)
+// Theme of your Node Monitor ('dark', 'light', or 'banano')
 // $themeChoice = 'light';
 
 // autorefresh interval for the status webpage in seconds
@@ -32,7 +32,7 @@
 // $cmcVolume = FALSE;
 // $cmcStatsticker = FALSE;
 
-// choice of Nano block explorer ('nanode', 'ninja', 'nanoexplorer', 'nano', 'nanowatch', 'meltingice')
+// choice of Nano block explorer ('nanode', 'ninja', 'nanoexplorer', 'nano', 'nanowatch', 'meltingice', 'banano')
 // $blockExplorer = 'nanode';
 
 // ----------- Cache Engine -----------
