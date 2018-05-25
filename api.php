@@ -8,7 +8,7 @@ $cache = Cache::factory();
 // get cached response
 $data = $cache->fetch('api', function () use (
   &$nanoNodeRPCIP, &$nanoNodeRPCPort, &$nanoNodeAccount, &$blockExplorer,
-  &$nanoNodeName, &$nanoNumDecimalPlaces, &$uptimerobotApiKey, &$currency, 
+  &$nanoNodeName, &$nanoNumDecimalPlaces, &$uptimerobotApiKey, &$currency,
   &$nodeLocation
 ) {
     // get curl handle
@@ -86,7 +86,7 @@ $data = $cache->fetch('api', function () use (
     // get node location
     // 1) If location is set by user, we use it.
     // 2) If location not set by user, we try to get if from ninja.
-    $data->nodeLocation = getNodeLocation($nodeLocation, $data->nodeNinja);    
+    $data->nodeLocation = getNodeLocation($nodeLocation, $data->nodeNinja);
 
     // currency and currency symbol
     $data->currency = $currency;
