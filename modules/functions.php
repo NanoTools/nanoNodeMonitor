@@ -382,6 +382,7 @@ function getNodeNinjaBlockcount()
   return $response->count;
 }
 
+// get sync status
 function getSyncStatus($blockcount){
   $ninjablocks = getNodeNinjaBlockcount();
 
@@ -397,6 +398,22 @@ function getSyncStatus($blockcount){
   }
   return $sync;
 }
+
+// get node location
+// 1) If location is set by user, we use it.
+// 2) If location not set by user, we try to get if from ninja.
+function getNodeLocation($nodeLocationByUser, $nodeNinja) {
+    if ($nodeLocationByUser) {
+        return $nodeLocationByUser;
+    }
+    elseif ($nodeNinja) {
+        return $nodeNinja->{'location'};
+    }
+    else {
+        return "N/A";
+    }
+}
+
 
 // get currency name from currency
 function currencyName($currency) 

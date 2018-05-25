@@ -96,6 +96,10 @@
         <span class="float-left-truncate">Host</span>
         <span class="float-right-truncate">{{nanoNodeName}}</span>        
       </li>
+      <li class="list-group-item">
+        <span class="float-left-truncate">Location</span>
+        <span class="float-right-truncate">{{nodeLocation}}</span>        
+      </li>
       {{#if nodeUptime}}
       <li class="list-group-item">
         <span class="float-left-truncate">Node Uptime</span>
@@ -120,11 +124,7 @@
       </li>
       <li class="list-group-item">
         <span class="float-left-truncate">Memory Used</span>
-        <span class="float-right-truncate">{{formatNumber usedMem}} MB</span>
-      </li>
-      <li class="list-group-item">
-        <span class="float-left-truncate">Memory Total</span>
-        <span class="float-right-truncate">{{formatNumber totalMem}} MB</span>
+        <span class="float-right-truncate">{{formatNumber usedMem}} / {{formatNumber totalMem}} MB</span>
       </li>
     </ul>
   </div>

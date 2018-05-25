@@ -32,6 +32,10 @@
 // Name of your node (default: your hostname)
 // $nanoNodeName = '';
 
+// Location of your node 
+// If left empty, we try to get it from Nano Node Ninja.
+// $nodeLocation = ''
+
 // A welcome message shown on top
 // $welcomeMsg = 'Welcome to Nano Node Monitor';
 
