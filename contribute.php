@@ -6,9 +6,9 @@ include 'modules/header.php';
 ?>
 
 
-<h3>Contribute to <?php echo currencyNameFromTheme($themeChoice); ?> Node Monitor</h3>
+<h3>Contribute to <?php echo currencyName($currency); ?> Node Monitor</h3>
 <p>
-  If you want to contribute to <?php echo currencyNameFromTheme($themeChoice); ?> Node Monitor and further improve it, your help is very welcome. Have a look at its <a href="https://github.com/NanoTools/nanoNodeMonitor" target="_blank">GitHub page</a>, browse through open issues, check out the source code, create a branch, develop features, fix some bugs, and open pull requests. Development follows the standard <a href="https://guides.github.com/introduction/flow/" target="_blank">GitHub Flow</a> method.  
+  If you want to contribute to <?php echo currencyName($currency); ?> Node Monitor and further improve it, your help is very welcome. Have a look at its <a href="https://github.com/NanoTools/nanoNodeMonitor" target="_blank">GitHub page</a>, browse through open issues, check out the source code, create a branch, develop features, fix some bugs, and open pull requests. Development follows the standard <a href="https://guides.github.com/introduction/flow/" target="_blank">GitHub Flow</a> method.  
 </p>
 
 <br>
@@ -16,8 +16,8 @@ include 'modules/header.php';
 <h3>Donate to the Maintainer of This Node</h3>
 
 <p>
-  Donations support the efforts of the <?php echo currencyNameFromTheme($themeChoice); ?> community to further decentralize the <?php echo currencyNameFromTheme($themeChoice); ?> network by running representative nodes.
-  Please consider donating to the maintainer of this <?php echo currencyNameFromTheme($themeChoice); ?> node to help cover some of its costs. Simply click the BrainBlocks button below.
+  Donations support the efforts of the <?php echo currencyName($currency); ?> community to further decentralize the <?php echo currencyName($currency); ?> network by running representative nodes.
+  Please consider donating to the maintainer of this <?php echo currencyName($currency); ?> node to help cover some of its costs. Simply click the BrainBlocks button below.
 </p>
 
 

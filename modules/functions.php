@@ -25,10 +25,10 @@ function rawToBanano($raw)
   return rawToMnano($raw) * 10.;
 }
 
-// raw to theme currency
-function rawToThemeCurrency($raw, $themeChoice)
+// raw to currency
+function rawToCurrency($raw, $currency)
 {
-  switch ($themeChoice)
+  switch ($currency)
   {
     case 'banano':
       return rawToBanano($raw);
@@ -400,10 +400,10 @@ function getSyncStatus($blockcount){
   return $sync;
 }
 
-// get currency name from theme
-function currencyNameFromTheme($themeChoice) 
+// get currency name from currency
+function currencyName($currency) 
 {
-  switch ($themeChoice) {
+  switch ($currency) {
     case 'banano':
       return "Banano";
     
@@ -414,10 +414,10 @@ function currencyNameFromTheme($themeChoice)
 }
 
 
-// get currency symbol from theme
-function currencySymbolFromTheme($themeChoice) 
+// get currency symbol from currency
+function currencySymbol($currency) 
 {
-  switch ($themeChoice) {
+  switch ($currency) {
     case 'banano':
       return "BANANO";
     

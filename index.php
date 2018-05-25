@@ -5,7 +5,7 @@ require_once __DIR__.'/modules/includes.php';
 include 'modules/header.php';
 
 $coinURL = 'https://nano.org';
-if ($themeChoice == banano) {
+if ($currency == 'banano') {
     $coinURL = 'https://banano.co.in/';
 }
 
@@ -16,7 +16,7 @@ if ($themeChoice == banano) {
       <a href="<?php echo $coinURL; ?>" target="_blank">
         <img src="static/img/nano-full-<?php echo $themeChoice; ?>.svg" width="220" alt="Logo"/>
       </a>
-      <p class="lead mt-2"><?php echo currencyNameFromTheme($themeChoice); ?> Node Monitor</p>
+      <p class="lead mt-2"><?php echo currencyName($currency); ?> Node Monitor</p>
       <p><?php echo $welcomeMsg; ?></p>
 
       <div class="btn-group mb-3">

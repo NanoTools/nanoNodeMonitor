@@ -1,5 +1,5 @@
 <?php
-if ($themeChoice != 'banano')
+if ($currency == 'nano')
 {
 ?>
 

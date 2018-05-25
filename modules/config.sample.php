@@ -8,32 +8,44 @@
 
 // ----------- General Variables -----------
 
-// Theme of your Node Monitor ('dark', 'light', or 'banano')
+// To switch between monitoring Nano / Banano nodes, 
+// set $currency, $themeChoice, and $blockExplorer to
+// corresponding Nano / Banano values.
+
+// Currency 'nano' or 'banano'
+// $currency = 'nano';
+
+// Theme of your Node Monitor
+// Nano Themes:   'dark' or 'light'
+// Banano Themes: 'banano'
 // $themeChoice = 'light';
 
-// autorefresh interval for the status webpage in seconds
+// Choice of block explorer 
+// Nano Explorers:   'nanode', 'ninja', 'nanoexplorer', 'nanowatch', or 'meltingice'
+// Banano Explorers: 'banano'
+// $blockExplorer = 'nanode';
+
+
+// Autorefresh interval for the status webpage in seconds
 // $autoRefreshInSeconds = 5;
 
 // Name of your node (default: your hostname)
 // $nanoNodeName = '';
 
-// a welcome message shown on top
+// A welcome message shown on top
 // $welcomeMsg = 'Welcome to Nano Node Monitor';
 
-// coinmarketcap widget
+// Coinmarketcap widget
 // market data base and second currency e.g. USD, EUR, BTC, ETH
 // $cmcBaseCurrency = 'USD';
 // $cmcSecondaryCurrency = 'BTC';
 
-// other widget panels (TRUE / FALSE)
+// Other widget panels (TRUE / FALSE)
 // $cmcTicker = FALSE;
 // $cmcRank = FALSE;
 // $cmcMarketcap = FALSE;
 // $cmcVolume = FALSE;
 // $cmcStatsticker = FALSE;
-
-// choice of Nano block explorer ('nanode', 'ninja', 'nanoexplorer', 'nano', 'nanowatch', 'meltingice', 'banano')
-// $blockExplorer = 'nanode';
 
 // ----------- Cache Engine -----------
 
@@ -61,21 +73,23 @@
 //   "options" => ["ttl" => $cacheTimeToLive]
 // ];
 
-// ----------- Nano Node Variables -----------
+// ----------- Node Variables -----------
 
-// ip address for RPC (default: [::1])
+// IP address for RPC (default: [::1])
 // $nanoNodeRPCIP   = '[::1]';
 
-// ip address for RPC (default: 7076)
+// IP address for RPC (default: 7076)
+// Nano nodes typically use port 7076.
+// Banano nodes typically use port 7072.
 // $nanoNodeRPCPort = '7076';
 
-// account of this node
+// Account of this node
 // $nanoNodeAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj';
 
-// donation account for maintaining this node
+// Donation account for maintaining this node
 // $nanoDonationAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj';
 
-// number of decimal places to display Nano balances, i.e.
+// Number of decimal places to display Nano balances, i.e.
 // $nanoNumDecimalPlaces = 2;
 
 // ----------- Monitoring -----------
