@@ -23,3 +23,9 @@ define ('NODEMON_BAN_DON_ACCOUNT', 'ban_1kxnxi5zurj6h7dfb87ik6hhu9yo63miyg6q1fja
 
 // total number of characters for displaying Nano addresses including ellipsis
 define ('NANO_ADDR_NUM_CHAR', 17);
+
+// curl timeout in seconds to receive data from ninja (max delay is NINJA_TIMEOUT + NINJA_CONECTTIMEOUT)
+define ('NINJA_TIMEOUT', 3);
+
+// curl timeout in seconds to connect to ninja (max delay is NINJA_TIMEOUT + NINJA_CONECTTIMEOUT)
+define ('NINJA_CONECTTIMEOUT', 2);
