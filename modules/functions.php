@@ -334,8 +334,6 @@ function getAccountUrl($account, $blockExplorer)
 {
   switch ($blockExplorer)
   {
-    case 'nano':
-      return "https://nano.org/en/explore/account/" . $account;
     case 'nanoexplorer':
       return "https://nanoexplorer.io/accounts/" . $account;
     case 'nanowatch':
@@ -345,7 +343,7 @@ function getAccountUrl($account, $blockExplorer)
     case 'meltingice':
       return "https://nano.meltingice.net/explorer/account/" . $account;
     case 'banano':
-      return "https://banano.meltingice.net/explorer/account/" . $account;
+      return "https://creeper.banano.cc/explorer/account/" . $account;
     default:
       return "https://www.nanode.co/account/" . $account;
   }
