@@ -6,8 +6,18 @@
 
 // ----------- General Variables -----------
 
-// Theme of your Node Monitor (dark or light)
+// Currency 'nano' or 'banano'
+$currency = 'nano';
+
+// Theme of your Node Monitor
+// Nano Themes:   'dark' or 'light'
+// Banano Themes: 'banano'
 $themeChoice = 'light';
+
+// Choice of block explorer 
+// Nano Explorers:   'nanode', 'ninja', 'nanoexplorer', 'nanowatch', or 'meltingice'
+// Banano Explorers: 'banano'
+$blockExplorer = 'nanode';
 
 // autorefresh interval for the status webpage in seconds
 $autoRefreshInSeconds = 5;
@@ -15,23 +25,25 @@ $autoRefreshInSeconds = 5;
 // Name of your node (default: your hostname)
 $nanoNodeName = gethostname();
 
-// a welcome message shown on top
+// Location of your node 
+// If left empty, we try to get it from Nano Node Ninja.
+$nodeLocation = '';
+
+// A welcome message shown on top
 $welcomeMsg = '';
 
-// coinmarketcap widget
+// Coinmarketcap widget
 // market data base and second currency e.g. USD, EUR, BTC, ETH
 $cmcBaseCurrency = 'USD';
 $cmcSecondaryCurrency = 'BTC';
 
-// other widget panels (TRUE / FALSE)
+// Other widget panels (TRUE / FALSE)
 $cmcTicker = FALSE;
 $cmcRank = FALSE;
 $cmcMarketcap = FALSE;
 $cmcVolume = FALSE;
 $cmcStatsticker = FALSE;
 
-// choice of Nano block explorer ('nanode', 'nanoexplorer', 'nano')
-$blockExplorer = 'nanode';
 
 // ----------- Cache Engine ----------- 
 
@@ -55,20 +67,22 @@ $cache = [
 
 // ----------- Nano Node Variables -----------
 
-// ip address for RPC (default: 127.0.0.1)
+// IP address for RPC (default: 127.0.0.1)
 $nanoNodeRPCIP   = '[::1]';
 
-// ip address for RPC (default: 7076)
+// IP address for RPC (default: 7076)
+// Nano nodes typically use port 7076.
+// Banano nodes typically use port 7072.
 $nanoNodeRPCPort = '7076';
 
-// account of this node
+// Account of this node
 $nanoNodeAccount = '';
 
-// donation account for maintaining this node
+// Donation account for maintaining this node
 $nanoDonationAccount = $nanoNodeAccount;
 
-// number of decimal places to display Nano balances, i.e.
-$nanoNumDecimalPlaces = 6;
+// Number of decimal places to display Nano balances, i.e.
+$nanoNumDecimalPlaces = 0;
 
 // ----------- Monitoring -----------
 

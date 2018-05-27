@@ -4,7 +4,7 @@
 function myError($errorMsg)
 {
   header("HTTP/1.1 503 Service Unavailable");
-  die($errorMsg);
+  die('<div class="myError">' . $errorMsg . '</div>');
 }
 
 // check whether php-curl is installed
@@ -17,6 +17,24 @@ function phpCurlAvailable()
 function rawToMnano($raw)
 {
   return (float) ($raw / 1000000000000000000000000000000.0);
+}
+
+// raw to banano
+function rawToBanano($raw)
+{
+  return rawToMnano($raw) * 10.;
+}
+
+// raw to currency
+function rawToCurrency($raw, $currency)
+{
+  switch ($currency)
+  {
+    case 'banano':
+      return rawToBanano($raw);
+    default:
+      return rawToMnano($raw);
+  }
 }
 
 // get system load average
@@ -161,8 +179,8 @@ function getLatestNodeReleaseVersion()
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 2,
-    CURLOPT_CONNECTTIMEOUT => 1,
+    CURLOPT_TIMEOUT => NINJA_TIMEOUT,
+    CURLOPT_CONNECTTIMEOUT => NINJA_CONECTTIMEOUT,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_HTTPHEADER => array(
@@ -223,8 +241,8 @@ function getNodeUptime($apiKey, $uptimeRatio = 30)
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 2,
-    CURLOPT_CONNECTTIMEOUT => 1,
+    CURLOPT_TIMEOUT => NINJA_TIMEOUT,
+    CURLOPT_CONNECTTIMEOUT => NINJA_CONECTTIMEOUT,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "POST",
     CURLOPT_POSTFIELDS => "api_key=$apiKey&format=json&custom_uptime_ratios=$uptimeRatio",
@@ -267,8 +285,8 @@ function getNodeNinja($account)
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 2,
-    CURLOPT_CONNECTTIMEOUT => 1,
+    CURLOPT_TIMEOUT => NINJA_TIMEOUT,
+    CURLOPT_CONNECTTIMEOUT => NINJA_CONECTTIMEOUT,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1
   ));
 
@@ -298,6 +316,14 @@ function truncateAddress($addr)
   $totalNumChar = NANO_ADDR_NUM_CHAR;
   $numEllipsis  = 3; // ...
   $numPrefix    = 4; // xrb_
+
+  // handle nano_ prefix of addresses
+
+  if (substr($addr, 0, 5) === "nano_")
+  {
+    $numPrefix = 5;
+  }
+
   $numAddrParts  = floor(($totalNumChar-$numEllipsis-$numPrefix) / 2.0);
 
   return strlen($addr) > $totalNumChar ? substr($addr,0,$numPrefix+$numAddrParts)."...".substr($addr,-$numAddrParts) : $addr;
@@ -308,8 +334,6 @@ function getAccountUrl($account, $blockExplorer)
 {
   switch ($blockExplorer)
   {
-    case 'nano':
-      return "https://nano.org/en/explore/account/" . $account;
     case 'nanoexplorer':
       return "https://nanoexplorer.io/accounts/" . $account;
     case 'nanowatch':
@@ -318,6 +342,8 @@ function getAccountUrl($account, $blockExplorer)
       return "https://nanonode.ninja/account/" . $account;
     case 'meltingice':
       return "https://nano.meltingice.net/explorer/account/" . $account;
+    case 'banano':
+      return "https://creeper.banano.cc/explorer/account/" . $account;
     default:
       return "https://www.nanode.co/account/" . $account;
   }
@@ -332,8 +358,8 @@ function getNodeNinjaBlockcount()
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 2,
-    CURLOPT_CONNECTTIMEOUT => 1,
+    CURLOPT_TIMEOUT => NINJA_TIMEOUT,
+    CURLOPT_CONNECTTIMEOUT => NINJA_CONECTTIMEOUT,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1
   ));
 
@@ -356,6 +382,7 @@ function getNodeNinjaBlockcount()
   return $response->count;
 }
 
+// get sync status
 function getSyncStatus($blockcount){
   $ninjablocks = getNodeNinjaBlockcount();
 
@@ -370,4 +397,47 @@ function getSyncStatus($blockcount){
     return 100;
   }
   return $sync;
+}
+
+// get node location
+// 1) If location is set by user, we use it.
+// 2) If location not set by user, we try to get if from ninja.
+function getNodeLocation($nodeLocationByUser, $nodeNinja) {
+    if ($nodeLocationByUser) {
+        return $nodeLocationByUser;
+    }
+    elseif ($nodeNinja) {
+        return $nodeNinja->{'location'};
+    }
+    else {
+        return "N/A";
+    }
+}
+
+
+// get currency name from currency
+function currencyName($currency) 
+{
+  switch ($currency) {
+    case 'banano':
+      return "Banano";
+    
+    default:
+      return "Nano";
+  }
+
+}
+
+
+// get currency symbol from currency
+function currencySymbol($currency) 
+{
+  switch ($currency) {
+    case 'banano':
+      return "BANANO";
+    
+    default:
+      return "NANO";
+  }
+
 }

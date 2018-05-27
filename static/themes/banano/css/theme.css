@@ -1,4 +1,5 @@
 /* Load Font */
+
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,400');
 
 /**
@@ -9,8 +10,8 @@
 
 body {
     font-family: 'Nunito', sans-serif;
-    background: #272B30;
-    color: #cccccc;
+    background: #f8fbff ;
+    color: #222629;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -24,34 +25,37 @@ body {
 
  */
 
-
 .navbar {
     font-size: 1.1rem;
     line-height: 1.6rem;
     letter-spacing: 0.02rem;
     font-weight: 400;
-    background-color: #3A3F44;
-    padding:1.5% 4%;
-    border-bottom: 1px solid #242a38;
+    background-color: #56be4f;
+    padding: 1.5% 4%;
 }
+
 
 .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(243,136,46, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(251,221,17, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
-
 
 
 .n-logo-theme {
     color: #ffffff;
-    padding-left:12px;
+    padding-left: 12px;
 }
 
+.nav-link {
+    color: #ffffff;
+}
+
+
 .nav-link:hover {
-    color: #c8d6e5;
+    color: #fada40;
     width: 100%;
     height: 100%;
     content: '';
-    background: #272B30;
+    background: #56be4f;
     opacity: 1;
     transition: all 0s;
 }
@@ -62,23 +66,20 @@ body {
 
  */
 
-.list-group-item {
-    color: #ffffff!important;
-}
+
 
 h2 {
     font-size: 2.5rem;
     line-height: 2.9rem;
     font-weight: 400;
-    max-width: 930px;
-    color: #ea882e;
+    max-width: 930px;    
 }
 
 h3 {
     font-size: 1.4rem;
     font-weight: 400;
     max-width: 930px;
-    color: #ea882e;
+    color: #56be4f;
 }
 
 p {
@@ -87,62 +88,68 @@ p {
     letter-spacing: 0.02em;
 }
 
+
 .n-address-theme {
-    background-color: #3A3F44!important;
+    background-color: #ffffff !important;
     display: block;
     width: 100%;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
     background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,0.4);
+    border: 1px solid #000034;
     border-radius: 0rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
 .card {
-    background-color: #3A3F44!important;
+    background-color: #fff;
     font-size: 0.9rem;
 }
 
+
 .list-group-item {
-    background-color: #3A3F44!important;
-    border: 1px solid rgba(0,0,0,0.4);
+    background-color: #f9f9f9;
+    color: #222629 !important;
     font-size: 0.9rem;
+}
+
+.list-group-item a {
+    color: #222629;
 }
 
 a {
-    color: #ffffff;
+    color: #56be4f
 }
 
 a:hover {
-    color: #ea882e;
+    color: #fada40
 }
 
 hr.light {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #ea882e;
+    border-top: 1px solid #56be4f;
     margin: 1em 0;
     padding: 0;    
     opacity: 0.2;
 }
 
+
 .btn-clipboard {
-    color: #ffffff;
+    color: #56be4f;
 }
 
 .btn-clipboard:hover{
-    color: #ea882e;
+    color: #fada40;
 }
 
 .btn-clipboard-light {
-    color: #ffffff;
+    color: #56be4f;
 }
 
 .btn-clipboard-light:hover {
-    color: #ea882e;
+    color: #fada40;
 }
-
 

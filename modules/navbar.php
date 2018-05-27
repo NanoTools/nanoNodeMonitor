@@ -2,7 +2,7 @@
   <div class="container">
     <a href="index.php" class="navbar-brand">
       <img src="static/img/nano-mark-<?php echo $themeChoice; ?>.svg" alt="Nano Logo" style="height: 1em;"/>
-      <span class="n-logo-theme">Nano Node Monitor</span>
+      <span class="n-logo-theme"><?php echo currencyName($currency); ?> Node Monitor</span>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

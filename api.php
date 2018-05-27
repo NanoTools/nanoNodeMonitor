@@ -8,7 +8,8 @@ $cache = Cache::factory();
 // get cached response
 $data = $cache->fetch('api', function () use (
   &$nanoNodeRPCIP, &$nanoNodeRPCPort, &$nanoNodeAccount, &$blockExplorer,
-  &$nanoNodeName, &$nanoNumDecimalPlaces, &$uptimerobotApiKey
+  &$nanoNodeName, &$nanoNumDecimalPlaces, &$uptimerobotApiKey, &$currency,
+  &$nodeLocation
 ) {
     // get curl handle
     $ch = curl_init();
@@ -37,7 +38,10 @@ $data = $cache->fetch('api', function () use (
     $rpcBlockCount = getBlockCount($ch);
     $data->currentBlock = (int) $rpcBlockCount->{'count'};
     $data->uncheckedBlocks = (int) $rpcBlockCount->{'unchecked'};
-    $data->blockSync = getSyncStatus($data->currentBlock);
+
+    if ($currency == 'nano') {
+        $data->blockSync = getSyncStatus($data->currentBlock);
+    }
 
     // -- Get number of peers from nano_node
     $rpcPeers = getPeers($ch);
@@ -46,9 +50,9 @@ $data = $cache->fetch('api', function () use (
 
     // -- Get node account balance from nano_node
     $rpcNodeAccountBalance = getAccountBalance($ch, $nanoNodeAccount);
-    $data->accBalanceMnano = rawToMnano($rpcNodeAccountBalance->{'balance'});
+    $data->accBalanceMnano = rawToCurrency($rpcNodeAccountBalance->{'balance'}, $currency);
     $data->accBalanceRaw = (int) $rpcNodeAccountBalance->{'balance'};
-    $data->accPendingMnano = rawToMnano($rpcNodeAccountBalance->{'pending'});
+    $data->accPendingMnano = rawToCurrency($rpcNodeAccountBalance->{'pending'}, $currency);
     $data->accPendingRaw = (int) $rpcNodeAccountBalance->{'pending'};
 
     // -- Get representative info for current node from nano_node
@@ -59,7 +63,7 @@ $data = $cache->fetch('api', function () use (
 
     // get the account weight
     $rpcNodeAccountWeight = getAccountWeight($ch, $nanoNodeAccount);
-    $data->votingWeight = rawToMnano($rpcNodeAccountWeight->{'weight'});
+    $data->votingWeight = rawToCurrency($rpcNodeAccountWeight->{'weight'}, $currency);
 
     // -- System uptime & memory info --
     $data->systemLoad = getSystemLoadAvg();
@@ -78,6 +82,15 @@ $data = $cache->fetch('api', function () use (
 
     // get info from Nano Node Ninja
     $data->nodeNinja = getNodeNinja($nanoNodeAccount);
+
+    // get node location
+    // 1) If location is set by user, we use it.
+    // 2) If location not set by user, we try to get if from ninja.
+    $data->nodeLocation = getNodeLocation($nodeLocation, $data->nodeNinja);
+
+    // currency and currency symbol
+    $data->currency = $currency;
+    $data->currencySymbol = currencySymbol($currency);
 
     // close curl handle
     curl_close($ch);
