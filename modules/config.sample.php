@@ -8,7 +8,7 @@
 
 // ----------- General Variables -----------
 
-// To switch between monitoring Nano / Banano nodes, 
+// To switch between monitoring Nano / Banano nodes,
 // set $currency, $themeChoice, and $blockExplorer to
 // corresponding Nano / Banano values.
 
@@ -20,7 +20,7 @@
 // Banano Themes: 'banano'
 // $themeChoice = 'light';
 
-// Choice of block explorer 
+// Choice of block explorer
 // Nano Explorers:   'nanode', 'ninja', 'nanoexplorer', 'nanowatch', or 'meltingice'
 // Banano Explorers: 'banano'
 // $blockExplorer = 'nanode';
@@ -32,7 +32,7 @@
 // Name of your node (default: your hostname)
 // $nanoNodeName = '';
 
-// Location of your node 
+// Location of your node
 // If left empty, we try to get it from Nano Node Ninja.
 // $nodeLocation = ''
 
@@ -102,6 +102,9 @@
 // Tutorial: https://github.com/NanoTools/nanoNodeMonitor/wiki/Uptimerobot-Node-Monitoring
 // If $uptimerobotApiKey is not set, monitoring via https://nanonode.ninja/ is used
 // $uptimerobotApiKey = '';
+
+// Google Analytics Tracking ID, leave blank to disable Google Analytics.
+// $googleAnalyticsId = '';
 
 // ----------- Social -----------
 

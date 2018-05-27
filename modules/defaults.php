@@ -14,7 +14,7 @@ $currency = 'nano';
 // Banano Themes: 'banano'
 $themeChoice = 'light';
 
-// Choice of block explorer 
+// Choice of block explorer
 // Nano Explorers:   'nanode', 'ninja', 'nanoexplorer', 'nanowatch', or 'meltingice'
 // Banano Explorers: 'banano'
 $blockExplorer = 'nanode';
@@ -25,7 +25,7 @@ $autoRefreshInSeconds = 5;
 // Name of your node (default: your hostname)
 $nanoNodeName = gethostname();
 
-// Location of your node 
+// Location of your node
 // If left empty, we try to get it from Nano Node Ninja.
 $nodeLocation = '';
 
@@ -45,7 +45,7 @@ $cmcVolume = FALSE;
 $cmcStatsticker = FALSE;
 
 
-// ----------- Cache Engine ----------- 
+// ----------- Cache Engine -----------
 
 // The cache engine allows for caching of RPC calls to reduce load on your Nano node.
 
@@ -89,8 +89,8 @@ $nanoNumDecimalPlaces = 0;
 // Uptimerobot.com API key for external monitoring
 $uptimerobotApiKey = '';
 
+// Google Analytics Tracking ID.
+$googleAnalyticsId = '';
+
 // ----------- Social -----------
 $socials = array();
-
-
-
