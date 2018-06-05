@@ -403,15 +403,23 @@ function getSyncStatus($blockcount){
 // 1) If location is set by user, we use it.
 // 2) If location not set by user, we try to get if from ninja.
 function getNodeLocation($nodeLocationByUser, $nodeNinja) {
+
+    $locationDefault = "N/A";
+    $location = $locationDefault;
+
     if ($nodeLocationByUser) {
-        return $nodeLocationByUser;
+        $location = $nodeLocationByUser;
     }
-    elseif ($nodeNinja) {
-        return $nodeNinja->{'location'};
+    elseif ($nodeNinja && array_key_exists('location', $nodeNinja)) {
+        $location = $nodeNinja->{'location'};
     }
-    else {
-        return "N/A";
+   
+    // run some final checks on location
+    if (is_null($location) || empty($location)) {
+      $location = $locationDefault;
     }
+
+    return $location;
 }
 
 

@@ -5,9 +5,9 @@
    <br>
     Made by <a href="https://github.com/NanoTools" target="_blank">Nano Tools</a>.
    <br>
-    GitHub: <a href="<?php echo PROJECT_URL; ?>" target="_blank">Source</a> | <a href="<?php echo PROJECT_URL . '/wiki'; ?>" target="_blank">Wiki</a> | <a href="<?php echo PROJECT_URL . '/wiki/API-Description'; ?>" target="_blank">API</a>  
+    GitHub: <a href="<?php echo PROJECT_URL; ?>" target="_blank">Source</a> | <a href="<?php echo PROJECT_URL . '/wiki'; ?>" target="_blank">Wiki</a> | <a href="<?php echo PROJECT_URL . '/wiki/API-Description'; ?>" target="_blank">API</a>
   </p>
-  
+
   <hr class=light>
 
   <p class=truncate>
@@ -45,6 +45,22 @@
 <script src="static/js/bootstrap.min.js?v=<?php echo PROJECT_VERSION; ?>"></script>
 <script src="static/js/handlebars-v4.0.11.js?v=<?php echo PROJECT_VERSION; ?>"></script>
 <script src="static/js/main.js?v=<?php echo PROJECT_VERSION; ?>"></script>
+
+<?php
+  if (strlen($googleAnalyticsId))
+  {
+?>
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $googleAnalyticsId; ?>"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '<?php echo $googleAnalyticsId; ?>');
+</script>
+<?php
+  }
+?>
 
 
 
