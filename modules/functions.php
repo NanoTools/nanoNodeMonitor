@@ -212,8 +212,14 @@ function getLatestNodeReleaseVersion()
 
 // get a string with information about the
 // current version and possible updates
-function isNewNodeVersionAvailable($currentVersion)
+function isNewNodeVersionAvailable($currentVersion, $currency)
 {
+
+  // for now, we can only check nano reliably
+  if ($currency != "nano") {
+    return false;
+  } 
+
   $currentVersion = $currentVersion;
   $latestVersion  = getLatestNodeReleaseVersion();
 
