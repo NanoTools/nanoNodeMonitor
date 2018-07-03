@@ -34,3 +34,18 @@
     color: white;
     margin-bottom: 30px;
 }
+
+.coinmarketcap-currency-widget div > span 
+{ 
+    color: white; 
+} 
+
+.coinmarketcap-currency-widget div > span:last-child
+{   
+    color: #7c7c7e !important; 
+}
+
+.coinmarketcap-currency-widget > div > div:nth-child(2) > div
+{
+    color: #dddddd;
+}
