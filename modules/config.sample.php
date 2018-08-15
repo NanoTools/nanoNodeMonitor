@@ -12,7 +12,7 @@
 // set $currency, $themeChoice, and $blockExplorer to
 // corresponding Nano / Banano values.
 
-// Currency 'nano' or 'banano'
+// Currency 'nano' or 'banano' or 'nano-beta'
 // $currency = 'nano';
 
 // Theme of your Node Monitor
@@ -21,8 +21,9 @@
 // $themeChoice = 'light';
 
 // Choice of block explorer
-// Nano Explorers:   'nanode', 'ninja', 'nanoexplorer', 'nanowatch', or 'meltingice'
-// Banano Explorers: 'banano'
+// Nano Explorers:      'nanode', 'ninja', 'nanoexplorer', 'nanowatch', or 'meltingice'
+// Nano Beta Explorers: 'meltingice-beta', 'nano-beta'
+// Banano Explorers:    'banano'
 // $blockExplorer = 'nanode';
 
 
