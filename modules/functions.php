@@ -348,6 +348,10 @@ function getAccountUrl($account, $blockExplorer)
       return "https://nanonode.ninja/account/" . $account;
     case 'meltingice':
       return "https://nano.meltingice.net/explorer/account/" . $account;
+    case 'meltingice-beta':
+      return "https://beta.nano.meltingice.net/explorer/account/" . $account;
+    case 'nano-beta':
+      return "https://beta.nano.org/account/index.php?acc=" . $account;
     case 'banano':
       return "https://creeper.banano.cc/explorer/account/" . $account;
     default:
@@ -436,6 +440,9 @@ function currencyName($currency)
     case 'banano':
       return "Banano";
     
+    case 'nano-beta':
+      return "Nano BETA";
+    
     default:
       return "Nano";
   }
@@ -449,6 +456,9 @@ function currencySymbol($currency)
   switch ($currency) {
     case 'banano':
       return "BANANO";
+    
+    case 'nano-beta':
+      return "\u{3B2}NANO";
     
     default:
       return "NANO";
