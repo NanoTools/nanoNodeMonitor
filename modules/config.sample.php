@@ -21,7 +21,7 @@
 // $themeChoice = 'light';
 
 // Choice of block explorer
-// Nano Explorers:      'nanode', 'ninja', 'nanoexplorer', 'nanowatch', or 'meltingice'
+// Nano Explorers:      'nanode', 'ninja', 'nanoexplorer', 'nanowatch', 'meltingice' or 'nifni'
 // Nano Beta Explorers: 'meltingice-beta', 'nano-beta'
 // Banano Explorers:    'banano'
 // $blockExplorer = 'nanode';
