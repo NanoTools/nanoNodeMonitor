@@ -26,7 +26,6 @@
 // Banano Explorers:    'banano'
 // $blockExplorer = 'nanode';
 
-
 // Autorefresh interval for the status webpage in seconds
 // $autoRefreshInSeconds = 5;
 
@@ -34,7 +33,7 @@
 // $nanoNodeName = '';
 
 // Location of your node
-// If left empty, we try to get it from Nano Node Ninja.
+// If left empty, we try to get it from My Nano Ninja.
 // $nodeLocation = '';
 
 // A welcome message shown on top
@@ -97,12 +96,7 @@
 // Number of decimal places to display Nano balances, i.e.
 // $nanoNumDecimalPlaces = 2;
 
-// ----------- Monitoring -----------
-
-// Uptimerobot.com API key for external monitoring
-// Tutorial: https://github.com/NanoTools/nanoNodeMonitor/wiki/Uptimerobot-Node-Monitoring
-// If $uptimerobotApiKey is not set, monitoring via https://nanonode.ninja/ is used
-// $uptimerobotApiKey = '';
+// ----------- Analytics -----------
 
 // Google Analytics Tracking ID, leave blank to disable Google Analytics.
 // $googleAnalyticsId = '';
