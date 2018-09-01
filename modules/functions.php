@@ -287,7 +287,7 @@ function getNodeNinja($account)
   $curl = curl_init();
 
   curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://nanonode.ninja/api/accounts/$account",
+    CURLOPT_URL => "https://mynano.ninja/api/accounts/$account",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -345,7 +345,7 @@ function getAccountUrl($account, $blockExplorer)
     case 'nanowatch':
       return "https://nanowat.ch/account/" . $account;
     case 'ninja':
-      return "https://nanonode.ninja/account/" . $account;
+      return "https://mynano.ninja/account/" . $account;
     case 'meltingice':
       return "https://nano.meltingice.net/explorer/account/" . $account;
     case 'meltingice-beta':
@@ -364,7 +364,7 @@ function getNodeNinjaBlockcount()
   $curl = curl_init();
 
   curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://nanonode.ninja/api/blockcount",
+    CURLOPT_URL => "https://mynano.ninja/api/blockcount",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,

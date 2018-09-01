@@ -80,7 +80,7 @@ $data = $cache->fetch('api', function () use (
         $data->nodeUptime = getNodeUptime($uptimerobotApiKey);
     }
 
-    // get info from Nano Node Ninja
+    // get info from My Nano Ninja
     $data->nodeNinja = getNodeNinja($nanoNodeAccount);
 
     // get node location
