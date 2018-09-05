@@ -347,9 +347,13 @@ function getAccountUrl($account, $blockExplorer)
     case 'ninja':
       return "https://mynano.ninja/account/" . $account;
     case 'meltingice':
-      return "https://nano.meltingice.net/explorer/account/" . $account;
+      return "https://nanocrawler.cc/explorer/account/" . $account;
     case 'meltingice-beta':
-      return "https://beta.nano.meltingice.net/explorer/account/" . $account;
+      return "https://beta.nanocrawler.cc/explorer/account/" . $account;
+    case 'nanocrawler':
+      return "https://nanocrawler.cc/explorer/account/" . $account;
+    case 'nanocrawler-beta':
+      return "https://beta.nanocrawler.cc/explorer/account/" . $account;
     case 'nano-beta':
       return "https://beta.nano.org/account/index.php?acc=" . $account;
     case 'banano':
