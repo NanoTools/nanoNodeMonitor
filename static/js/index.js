@@ -27,11 +27,19 @@ init.push(function(){
   }, 'html');
 });
 
+var lastRepAccount = '';
+
 function updateStats(){
   $.get('api.php')
   .done(function (apidata) {
     $('#content').html(template(apidata));
     new ClipboardJS('#copyAccount');
+    if (apidata.currency == 'banano' && lastRepAccount != apidata.repAccount) {
+      $('#monkey')
+          .attr('src', 'http://www.monkeygen.com/image?address=' + apidata.repAccount)
+          .attr('title', 'monKey for ' + apidata.repAccount);
+      lastRepAccount = apidata.repAccount;
+    }
     setTimeout(updateStats, GLOBAL_REFRESH * 1000);
   })
   .fail(function (apidata) {
