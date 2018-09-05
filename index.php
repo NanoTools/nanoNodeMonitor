@@ -28,7 +28,6 @@ if ($currency == 'banano') {
     </div>
     <div class="col-lg-4 col-md-6 col-sm-6">
       <?php include 'modules/cmc_widget.php'; ?>
-      <img id="monkey" style="max-width:250px; display:block; margin:0 auto;" />
     </div>
   </div>
 </div>
