@@ -356,6 +356,8 @@ function getAccountUrl($account, $blockExplorer)
       return "https://beta.nanocrawler.cc/explorer/account/" . $account;
     case 'nano-beta':
       return "https://beta.nano.org/account/index.php?acc=" . $account;
+    case 'nifni':
+      return "https://nano.nifni.net/explorer.php?s=" . $account;
     case 'banano':
       return "https://creeper.banano.cc/explorer/account/" . $account;
     default:
