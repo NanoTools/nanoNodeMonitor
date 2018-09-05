@@ -26,7 +26,7 @@ $autoRefreshInSeconds = 5;
 $nanoNodeName = gethostname();
 
 // Location of your node
-// If left empty, we try to get it from Nano Node Ninja.
+// If left empty, we try to get it from My Nano Ninja.
 $nodeLocation = '';
 
 // A welcome message shown on top
