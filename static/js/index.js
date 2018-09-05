@@ -27,6 +27,8 @@ init.push(function(){
   }, 'html');
 });
 
+var lastRepAccount = '';
+
 function updateStats(){
   $.get('api.php')
   .done(function (apidata) {
