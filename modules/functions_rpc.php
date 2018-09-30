@@ -35,15 +35,6 @@ function getVersion($ch)
   return postCurl($ch, $data)->{'node_vendor'};
 }
 
-// gets the version from RPC but only the version number
-function getVersionFormatted($ch){
-  $rpcVersion = getVersion($ch);
-  $formattedVersion = explode(' ', $rpcVersion);
-
-  return $formattedVersion[1];
-}
-
-
 // get block count from nano_node
 function getBlockCount($ch)
 {

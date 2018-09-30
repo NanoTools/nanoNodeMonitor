@@ -210,6 +210,13 @@ function getLatestNodeReleaseVersion()
   return '';
 }
 
+// gets the number from the version string
+function formatVersion($rawversion){
+  $formattedVersion = explode(' ', $rawversion);
+
+  return $formattedVersion[1];
+}
+
 // get a string with information about the
 // current version and possible updates
 function isNewNodeVersionAvailable($currentVersion, $currency)
