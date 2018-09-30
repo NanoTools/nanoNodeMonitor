@@ -39,18 +39,6 @@
 // A welcome message shown on top
 // $welcomeMsg = 'Welcome to Nano Node Monitor';
 
-// Coinmarketcap widget
-// market data base and second currency e.g. USD, EUR, BTC, ETH
-// $cmcBaseCurrency = 'USD';
-// $cmcSecondaryCurrency = 'BTC';
-
-// Other widget panels (TRUE / FALSE)
-// $cmcTicker = FALSE;
-// $cmcRank = FALSE;
-// $cmcMarketcap = FALSE;
-// $cmcVolume = FALSE;
-// $cmcStatsticker = FALSE;
-
 // ----------- Cache Engine -----------
 
 // The cache engine allows for caching of RPC calls to reduce load on your Nano node.
