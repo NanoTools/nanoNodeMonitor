@@ -30,7 +30,7 @@ $data = $cache->fetch('api', function () use (
     $data->nanoNodeAccountUrl = getAccountUrl($data->nanoNodeAccount, $blockExplorer);
 
     // -- Get Version String from nano node and node monitor
-    $data->version = getVersionFormatted($ch);
+    $data->version = getVersion($ch);
     $data->newNodeVersionAvailable = isNewNodeVersionAvailable($data->version, $currency);
     $data->nodeMonitorVersion = PROJECT_VERSION;
 
