@@ -5,8 +5,11 @@ require_once __DIR__.'/modules/includes.php';
 
 $cache = Cache::factory();
 
+// set an API name so multiple monitors don't mix
+$apiName = "api-$nanoNodeAccount";
+
 // get cached response
-$data = $cache->fetch('api', function () use (
+$data = $cache->fetch($apiName, function () use (
   &$nanoNodeRPCIP, &$nanoNodeRPCPort, &$nanoNodeAccount, &$blockExplorer,
   &$nanoNodeName, &$nanoNumDecimalPlaces, &$uptimerobotApiKey, &$currency,
   &$nodeLocation
