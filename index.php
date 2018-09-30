@@ -27,7 +27,7 @@ if ($currency == 'banano') {
 
     </div>
     <div class="col-lg-4 col-md-6 col-sm-6">
-      <?php include 'modules/cmc_widget.php'; ?>
+      <?php include 'modules/widget.php'; ?>
     </div>
   </div>
 </div>

@@ -210,6 +210,13 @@ function getLatestNodeReleaseVersion()
   return '';
 }
 
+// gets the number from the version string
+function formatVersion($rawversion){
+  $formattedVersion = explode(' ', $rawversion);
+
+  return $formattedVersion[1];
+}
+
 // get a string with information about the
 // current version and possible updates
 function isNewNodeVersionAvailable($currentVersion, $currency)
@@ -347,11 +354,17 @@ function getAccountUrl($account, $blockExplorer)
     case 'ninja':
       return "https://mynano.ninja/account/" . $account;
     case 'meltingice':
-      return "https://nano.meltingice.net/explorer/account/" . $account;
+      return "https://nanocrawler.cc/explorer/account/" . $account;
     case 'meltingice-beta':
-      return "https://beta.nano.meltingice.net/explorer/account/" . $account;
+      return "https://beta.nanocrawler.cc/explorer/account/" . $account;
+    case 'nanocrawler':
+      return "https://nanocrawler.cc/explorer/account/" . $account;
+    case 'nanocrawler-beta':
+      return "https://beta.nanocrawler.cc/explorer/account/" . $account;
     case 'nano-beta':
       return "https://beta.nano.org/account/index.php?acc=" . $account;
+    case 'nifni':
+      return "https://nano.nifni.net/explorer.php?s=" . $account;
     case 'banano':
       return "https://creeper.banano.cc/explorer/account/" . $account;
     default:

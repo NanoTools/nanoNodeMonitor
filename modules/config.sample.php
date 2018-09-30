@@ -21,8 +21,8 @@
 // $themeChoice = 'light';
 
 // Choice of block explorer
-// Nano Explorers:      'nanode', 'ninja', 'nanoexplorer', 'nanowatch', or 'meltingice'
-// Nano Beta Explorers: 'meltingice-beta', 'nano-beta'
+// Nano Explorers:      'nanode', 'ninja', 'nanoexplorer', 'nanowatch', 'nanocrawler', 'nifni'
+// Nano Beta Explorers: 'nanocrawler-beta', 'nano-beta'
 // Banano Explorers:    'banano'
 // $blockExplorer = 'nanode';
 
@@ -38,18 +38,6 @@
 
 // A welcome message shown on top
 // $welcomeMsg = 'Welcome to Nano Node Monitor';
-
-// Coinmarketcap widget
-// market data base and second currency e.g. USD, EUR, BTC, ETH
-// $cmcBaseCurrency = 'USD';
-// $cmcSecondaryCurrency = 'BTC';
-
-// Other widget panels (TRUE / FALSE)
-// $cmcTicker = FALSE;
-// $cmcRank = FALSE;
-// $cmcMarketcap = FALSE;
-// $cmcVolume = FALSE;
-// $cmcStatsticker = FALSE;
 
 // ----------- Cache Engine -----------
 
