@@ -145,16 +145,14 @@ function getLatestReleaseVersion()
     }
   }
 
-  return "";
+  return PROJECT_VERSION;
 }
 
 // get a string with information about the
 // current version and possible updates
-function getVersionInformation()
+function getVersionInformation($latestVersion)
 {
   $currentVersion = PROJECT_VERSION;
-  $latestVersion  = getLatestReleaseVersion();
-
   $versionInfo = "Version: " . $currentVersion;
 
   if ( version_compare($currentVersion, $latestVersion) < 0 )
