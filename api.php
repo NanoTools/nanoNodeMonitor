@@ -37,18 +37,19 @@ $data = $cache->fetch($apiName, function () use (
 
     // Cache the github query for latest node version
     global $nodeVersionCache;
-    $nodeVersionCache = new FileCache(["ttl" => 10*60]); // cache for 10 minutes
+    $nodeVersionCache = new FileCache(['ttl' => 10 * 60]); // cache for 10 minutes
 
     // set a cache name so multiple monitors don't mix
     $cacheName = "nodeVersionCache-$nanoNodeAccount";
 
-     // get cached response
+    // get cached response
     $nodeVersionData = $nodeVersionCache->fetch($cacheName, function () {
         $nodeVersionData = new stdClass();
-        $nodeVersionData->latestNodeReleaseVersion  = getLatestNodeReleaseVersion();
+        $nodeVersionData->latestNodeReleaseVersion = getLatestNodeReleaseVersion();
+
         return $nodeVersionData;
     });
-    $latestVersion  = $nodeVersionData->latestNodeReleaseVersion;
+    $latestVersion = $nodeVersionData->latestNodeReleaseVersion;
     $data->newNodeVersionAvailable = isNewNodeVersionAvailable(formatVersion($data->version), $latestVersion, $currency);
     $data->nodeMonitorVersion = PROJECT_VERSION;
 
