@@ -169,6 +169,7 @@ function getVersionInformation($latestVersion)
 // get version of latest release from github
 function getLatestNodeReleaseVersion()
 {
+
   // get release tag of "latest" from github
   $curl = curl_init();
 
@@ -217,7 +218,7 @@ function formatVersion($rawversion){
 
 // get a string with information about the
 // current version and possible updates
-function isNewNodeVersionAvailable($currentVersion, $currency)
+function isNewNodeVersionAvailable($currentVersion, $latestVersion, $currency)
 {
 
   // for now, we can only check nano reliably
@@ -226,7 +227,6 @@ function isNewNodeVersionAvailable($currentVersion, $currency)
   } 
 
   $currentVersion = $currentVersion;
-  $latestVersion  = getLatestNodeReleaseVersion();
 
   if ( version_compare($currentVersion, $latestVersion) < 0 ){
     return $latestVersion;
