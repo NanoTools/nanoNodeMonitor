@@ -90,3 +90,15 @@ function getAccountWeight($ch, $account)
   // post curl
   return postCurl($ch, $data);
 }
+
+// get number of peers
+function getStats($ch, $type = "counters")
+{
+  // get peers
+  $data = array(
+    "action" => "stats", 
+    "type" => $type);
+
+  // post curl
+  return postCurl($ch, $data);
+}
