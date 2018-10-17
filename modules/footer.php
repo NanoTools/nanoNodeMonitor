@@ -42,11 +42,6 @@
   }
 ?>
 
-   <?php echo currencyName($currency) ?> Representative: <a href="<?php echo getAccountUrl($repAccount, $repExplorer); ?>" target="_blank"><?php echo $repAccount; ?></a>
-   </small>
-   <button id="copyAccount" class="btn btn-sm btn-link btn-clipboard-light" data-clipboard-text="<?php echo $repAccount; ?>" title="Copy"><i class="fas fa-clipboard fa-lg"></i></button>
-   <br>
-   <small>
     Donations to <?php echo currencyName($currency); ?> Node Monitor: <a href="<?php echo getAccountUrl($donAccount, $blockExplorer); ?>" target="_blank"><?php echo $donAccount; ?></a>
    </small>
    <button id="copyAccount" class="btn btn-sm btn-link btn-clipboard-light" data-clipboard-text="<?php echo $donAccount; ?>" title="Copy"><i class="fas fa-clipboard fa-lg"></i></button>
