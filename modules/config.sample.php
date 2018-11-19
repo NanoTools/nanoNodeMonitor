@@ -70,8 +70,9 @@
 // IP address for RPC (default: [::1])
 // $nanoNodeRPCIP   = '[::1]';
 
-// IP address for RPC (default: 7076)
+// Port for RPC (default: 7076)
 // Nano nodes typically use port 7076.
+// Nano Beta nodes typically use port 55000.
 // Banano nodes typically use port 7072.
 // $nanoNodeRPCPort = '7076';
 
