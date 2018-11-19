@@ -1,7 +1,22 @@
 <footer id="footer">
 
   <p>
-   <?php echo getVersionInformation(); ?>
+   <?php
+    global $versionCache;
+    $versionCache = new FileCache(["ttl" => 10*60]); // cache for 10 minutes
+
+    // set an API name so multiple monitors don't mix
+    $apiName = "footer-$nanoNodeAccount";
+
+     // get cached response
+    $versionData = $versionCache->fetch($apiName, function () {
+        $versionData = new stdClass();
+        $versionData->latestVersion  = getLatestReleaseVersion();
+        return $versionData;
+    });
+    echo getVersionInformation($versionData->latestVersion);
+   ?>
+
    <br>
     Made by <a href="https://github.com/NanoTools" target="_blank">Nano Tools</a>.
    <br>
@@ -27,11 +42,6 @@
   }
 ?>
 
-   <?php echo currencyName($currency) ?> Representative: <a href="<?php echo getAccountUrl($repAccount, $repExplorer); ?>" target="_blank"><?php echo $repAccount; ?></a>
-   </small>
-   <button id="copyAccount" class="btn btn-sm btn-link btn-clipboard-light" data-clipboard-text="<?php echo $repAccount; ?>" title="Copy"><i class="fas fa-clipboard fa-lg"></i></button>
-   <br>
-   <small>
     Donations to <?php echo currencyName($currency); ?> Node Monitor: <a href="<?php echo getAccountUrl($donAccount, $blockExplorer); ?>" target="_blank"><?php echo $donAccount; ?></a>
    </small>
    <button id="copyAccount" class="btn btn-sm btn-link btn-clipboard-light" data-clipboard-text="<?php echo $donAccount; ?>" title="Copy"><i class="fas fa-clipboard fa-lg"></i></button>

@@ -34,7 +34,23 @@ $data = $cache->fetch($apiName, function () use (
 
     // -- Get Version String from nano node and node monitor
     $data->version = getVersion($ch);
-    $data->newNodeVersionAvailable = isNewNodeVersionAvailable(formatVersion($data->version), $currency);
+
+    // Cache the github query for latest node version
+    global $nodeVersionCache;
+    $nodeVersionCache = new FileCache(['ttl' => 10 * 60]); // cache for 10 minutes
+
+    // set a cache name so multiple monitors don't mix
+    $cacheName = "nodeVersionCache-$nanoNodeAccount";
+
+    // get cached response
+    $nodeVersionData = $nodeVersionCache->fetch($cacheName, function () {
+        $nodeVersionData = new stdClass();
+        $nodeVersionData->latestNodeReleaseVersion = getLatestNodeReleaseVersion();
+
+        return $nodeVersionData;
+    });
+    $latestVersion = $nodeVersionData->latestNodeReleaseVersion;
+    $data->newNodeVersionAvailable = isNewNodeVersionAvailable(formatVersion($data->version), $latestVersion, $currency);
     $data->nodeMonitorVersion = PROJECT_VERSION;
 
     // -- Get get current block from nano_node
@@ -94,6 +110,14 @@ $data = $cache->fetch($apiName, function () use (
     // currency and currency symbol
     $data->currency = $currency;
     $data->currencySymbol = currencySymbol($currency);
+
+    // node statistics
+    // maybe we get more stats later
+    // so this is seperate object
+    $data->stats = new stdClass();
+
+    // get the counters
+    $data->stats->counters = getStats($ch, 'counters');
 
     // close curl handle
     curl_close($ch);
