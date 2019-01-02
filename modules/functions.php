@@ -429,10 +429,44 @@ function getNodeLocation($nodeLocationByUser, $nodeNinja) {
     $location = $locationDefault;
 
     if ($nodeLocationByUser) {
+        // location set by user
         $location = $nodeLocationByUser;
     }
     elseif ($nodeNinja && array_key_exists('location', $nodeNinja)) {
-        $location = $nodeNinja->{'location'};
+
+        // location taken from ninja's location object
+        $locationObj = $nodeNinja->{'location'};
+
+        $locCity = '';
+        $locCountry = '';
+
+        // get city from ninja's location object
+        if ($locationObj && isset($locationObj->city)) {
+          $locCity = $locationObj->city;
+        }
+
+        // get country from ninja's location object
+        if ($locationObj && isset($locationObj->country)) {
+          $locCountry = $locationObj->country;
+        }
+
+        // city and country available
+        if (! empty($locCity) && ! empty($locCountry)) {
+          $location = $locCity . ', ' . $locCountry;
+        }
+        elseif (! empty($locCity)) {
+          // only city
+          $location = $locCity;
+        }
+        elseif (! empty($locCountry)) {
+          // only country
+          $location = $locCountry;
+        }
+        else
+        {
+          // nothing given
+          $location = $locationDefault;
+        }
     }
    
     // run some final checks on location
