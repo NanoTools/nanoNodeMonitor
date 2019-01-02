@@ -1,7 +1,7 @@
 <?php
 
 // the project version
-define('PROJECT_VERSION', '1.4.12');
+define('PROJECT_VERSION', '1.4.13');
 
 // project URL
 define('PROJECT_URL', 'https://github.com/NanoTools/nanoNodeMonitor');
