@@ -407,7 +407,7 @@ function getNodeNinjaBlockcount()
 function getSyncStatus($blockcount){
   $ninjablocks = getNodeNinjaBlockcount();
 
-  if($ninjablocks === false){
+  if($ninjablocks === false || $ninjablocks === 0){
     // if we can't get an error output 100%
     return 100;
   }

@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="static/css/fontawesome-all.min.css?v=<?php echo PROJECT_VERSION; ?>" media="screen">
         <link rel="stylesheet" href="static/css/main.css?v=<?php echo PROJECT_VERSION; ?>" media="screen">
         <link rel="stylesheet" href="static/themes/<?php echo $themeChoice; ?>/css/theme.css?v=<?php echo PROJECT_VERSION; ?>" media="screen">
-        <link rel="icon" href="static/img/nano-mark-light.svg">
+        <link rel="icon" href="static/img/nano-mark-light.png">
     </head>
     <body>
     <script>
