@@ -67,7 +67,8 @@ $data = $cache->fetch($apiName, function () use (
     $peers = (array) $rpcPeers->{'peers'};
     $data->numPeers = count($peers);
 
-    // -- Get confirmation info from nano_node. Average time, blocks used, time span  and percentiles over last 5min or max 2048 blocks
+    // -- Get confirmation info from nano_node. Average time, blocks used, time span  and percentiles 
+    // -- over last X min (set by CONFIRMATION_TIME_LIMIT) or max 2048 blocks which is a node limitation
     //$timeStampBefore = microtime(true);
     $rpcConfHistory = getConfirmationHistory($ch);
     $confirmations = $rpcConfHistory->{'confirmations'}; // a list of last X confirmations {hash,duration,time,tally}
