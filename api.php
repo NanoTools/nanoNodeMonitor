@@ -167,6 +167,9 @@ $data = $cache->fetch($apiName, function () use (
     // close curl handle
     curl_close($ch);
 
+    // calculate total script execution time
+    $data->apiProcTime = round((microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"]) * 1000);
+
     return $data;
 });
 
