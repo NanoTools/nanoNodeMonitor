@@ -102,3 +102,13 @@ function getStats($ch, $type = "counters")
   // post curl
   return postCurl($ch, $data);
 }
+
+// get confirmation history from nano_node
+function getConfirmationHistory($ch)
+{
+  // get confirmation history of latest 2048 elections
+  $data = array("action" => "confirmation_history");
+
+  // post curl
+  return postCurl($ch, $data);
+}

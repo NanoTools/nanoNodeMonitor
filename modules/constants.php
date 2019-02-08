@@ -29,3 +29,6 @@ define ('NINJA_TIMEOUT', 3);
 
 // curl timeout in seconds to connect to ninja (max delay is NINJA_TIMEOUT + NINJA_CONECTTIMEOUT)
 define ('NINJA_CONECTTIMEOUT', 2);
+
+// maximum allowed age of data to be part of the block confirmation time percentiles calculation (milliseconds)
+define ('CONFIRMATION_TIME_LIMIT', 600000);
