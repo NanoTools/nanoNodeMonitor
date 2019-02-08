@@ -67,7 +67,7 @@ $data = $cache->fetch($apiName, function () use (
     $peers = (array) $rpcPeers->{'peers'};
     $data->numPeers = count($peers);
 
-    // -- Get confirmation info from nano_node. Average time, blocks used, time span  and percentiles 
+    // -- Get confirmation info from nano_node. Average time, blocks used, time span  and percentiles
     // -- over last X min (set by CONFIRMATION_TIME_LIMIT) or max 2048 blocks which is a node limitation
     //$timeStampBefore = microtime(true); // measure execution time
     $rpcConfHistory = getConfirmationHistory($ch);
@@ -76,8 +76,8 @@ $data = $cache->fetch($apiName, function () use (
     //$confCount = $rpcConfHistory->{'confirmation_stats'}->{'count'}; // number of confirmations retrieved from the node
 
     // remove data older than $timeLimit
-    usort($confirmations, "cmpByTime"); // sort array by time value [ms unix time]
-    $confCompact = array(); // new filtered array
+    usort($confirmations, 'cmpByTime'); // sort array by time value [ms unix time]
+    $confCompact = []; // new filtered array
     $durationTotal = 0; // for average calc
     $confAverage = 0; // average confirmation duration
     $timeSpan = 0; // full time span of the data [ms]
@@ -86,8 +86,7 @@ $data = $cache->fetch($apiName, function () use (
         if ($confirmation->{'time'} >= $confirmations[0]->{'time'} - CONFIRMATION_TIME_LIMIT) {
             array_push($confCompact, $confirmation); // add new data
             $durationTotal += $confirmation->{'duration'};
-        }
-        else {
+        } else {
             break; // stop iterating once we pass that limit to save time
         }
     }
@@ -96,11 +95,11 @@ $data = $cache->fetch($apiName, function () use (
     // calculate duration average and time span, avoid dividing by zero
     if ($confCount > 0) {
         $confAverage = round($durationTotal / $confCount);
-        $timeSpan = $confCompact[0]->{'time'} - $confCompact[$confCount-1]->{'time'}; // first minus last
+        $timeSpan = $confCompact[0]->{'time'} - $confCompact[$confCount - 1]->{'time'}; // first minus last
     }
 
     // get percentiles directly from the filtered array
-    usort($confCompact, "cmpByDuration"); // sort array by duration value
+    usort($confCompact, 'cmpByDuration'); // sort array by duration value
     $percentile50 = getConfirmationsDurationPercentile(50, $confCompact); // 50 percentile also called median
     $percentile75 = getConfirmationsDurationPercentile(75, $confCompact);
     $percentile90 = getConfirmationsDurationPercentile(90, $confCompact);
@@ -108,8 +107,8 @@ $data = $cache->fetch($apiName, function () use (
     $percentile99 = getConfirmationsDurationPercentile(99, $confCompact);
 
     // combine an array with all confirmation info
-    $confSummary = array('count' => $confCount, 'timeSpan' => $timeSpan, 'average' => $confAverage, 'percentile50' => $percentile50,
-    'percentile75' => $percentile75, 'percentile90' => $percentile90, 'percentile95' => $percentile95, 'percentile99' => $percentile99);
+    $confSummary = ['count' => $confCount, 'timeSpan' => $timeSpan, 'average' => $confAverage, 'percentile50' => $percentile50,
+    'percentile75'          => $percentile75, 'percentile90' => $percentile90, 'percentile95' => $percentile95, 'percentile99' => $percentile99, ];
     $data->confirmationInfo = $confSummary;
     //$data->apiProcTimeConf = round((microtime(true) - $timeStampBefore) * 1000);
 
@@ -169,7 +168,7 @@ $data = $cache->fetch($apiName, function () use (
     curl_close($ch);
 
     // calculate total script execution time
-    $data->apiProcTime = round((microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"]) * 1000);
+    $data->apiProcTime = round((microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']) * 1000);
 
     return $data;
 });
