@@ -69,7 +69,7 @@ $data = $cache->fetch($apiName, function () use (
 
     // -- Get confirmation info from nano_node. Average time, blocks used, time span  and percentiles 
     // -- over last X min (set by CONFIRMATION_TIME_LIMIT) or max 2048 blocks which is a node limitation
-    //$timeStampBefore = microtime(true);
+    //$timeStampBefore = microtime(true); // measure execution time
     $rpcConfHistory = getConfirmationHistory($ch);
     $confirmations = $rpcConfHistory->{'confirmations'}; // a list of last X confirmations {hash,duration,time,tally}
     //$confAverage = $rpcConfHistory->{'confirmation_stats'}->{'average'}; // average time [ms] of all confirmations
