@@ -510,3 +510,29 @@ function currencySymbol($currency)
   }
 
 }
+
+// sort array by 'duration' sub value
+function cmpByDuration($a, $b) {
+  return $a->{'duration'} - $b->{'duration'};
+}
+
+// sort array by 'time' sub value (largest first)
+function cmpByTime($a, $b) {
+  return $b->{'time'} - $a->{'time'};
+}
+
+// get a percentile from a sorted json structure which contains sub element values with the name 'duration'
+// ex: get_percentile(75, $arr) to get the 75th percentile
+function getConfirmationsDurationPercentile($percentile, $array) {
+    if (empty($array)) {
+        return 0;
+    }
+    $index = ($percentile/100) * count($array);
+    if (floor($index) == $index) {
+         $result = ($array[$index-1]->{'duration'} + $array[$index]->{'duration'})/2;
+    }
+    else {
+        $result = $array[floor($index)]->{'duration'};
+    }
+    return $result;
+}
