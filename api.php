@@ -33,7 +33,10 @@ $data = $cache->fetch($apiName, function () use (
     $data->nanoNodeAccountUrl = getAccountUrl($data->nanoNodeAccount, $blockExplorer);
 
     // -- Get Version String from nano node and node monitor
-    $data->version = getVersion($ch);
+    $version = getVersion($ch);
+    $data->version = $version->{'node_vendor'};
+    $data->store_version = (int) $version->{'store_version'} ?: 0;
+    $data->protocol_version = (int) $version->{'protocol_version'} ?: 0;
 
     // Cache the github query for latest node version
     global $nodeVersionCache;

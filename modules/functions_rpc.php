@@ -32,7 +32,7 @@ function getVersion($ch)
   $data = array("action" => "version");
 
   // post curl
-  return postCurl($ch, $data)->{'node_vendor'};
+  return postCurl($ch, $data);
 }
 
 // get block count from nano_node
