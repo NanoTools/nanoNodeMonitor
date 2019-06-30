@@ -142,7 +142,7 @@ $data = $cache->fetch($apiName, function () use (
     $data->totalMem = getSystemTotalMem();
     //$data->uname = getUname();
     $data->nanoNodeName = $nanoNodeName;
-    $data->nodeUptime = (int) getUptime($ch)->{'seconds'} ?: 0;
+    $data->nodeUptimeStartup = (int) getUptime($ch)->{'seconds'} ?: 0;
 
     // get the node uptime (if we have a api key)
     if ($uptimerobotApiKey) {
