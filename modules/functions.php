@@ -534,5 +534,5 @@ function getConfirmationsDurationPercentile($percentile, $array) {
     else {
         $result = $array[floor($index)]->{'duration'};
     }
-    return $result;
+    return (int) $result;
 }
