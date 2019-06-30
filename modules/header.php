@@ -13,6 +13,11 @@
         <link rel="stylesheet" href="static/css/main.css?v=<?php echo PROJECT_VERSION; ?>" media="screen">
         <link rel="stylesheet" href="static/themes/<?php echo $themeChoice; ?>/css/theme.css?v=<?php echo PROJECT_VERSION; ?>" media="screen">
         <link rel="icon" href="static/img/nano-mark-light.png">
+        <meta property="og:title" content="<?php echo currencyName($currency); ?> Node Monitor - <?php echo $nanoNodeName; ?>">
+        <meta property="og:description" content="Nano Node Monitor">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="static/img/nano-mark-light.png">
+        <meta name="nano" content="<?php echo $nanoDonationAccount; ?>">
     </head>
     <body>
     <script>
