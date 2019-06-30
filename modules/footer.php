@@ -18,9 +18,9 @@
    ?>
 
    <br>
-    Made by <a href="https://github.com/NanoTools" target="_blank">Nano Tools</a>.
+    Made by <a href="https://github.com/NanoTools" target="_blank" rel="noopener">Nano Tools</a>.
    <br>
-    GitHub: <a href="<?php echo PROJECT_URL; ?>" target="_blank">Source</a> | <a href="<?php echo PROJECT_URL . '/wiki'; ?>" target="_blank">Wiki</a> | <a href="<?php echo PROJECT_URL . '/wiki/API-Description'; ?>" target="_blank">API</a>
+    GitHub: <a href="<?php echo PROJECT_URL; ?>" target="_blank" rel="noopener">Source</a> | <a href="<?php echo PROJECT_URL . '/wiki'; ?>" target="_blank" rel="noopener">Wiki</a> | <a href="<?php echo PROJECT_URL . '/wiki/API-Description'; ?>" target="_blank" rel="noopener">API</a>
   </p>
 
   <hr class=light>
@@ -42,7 +42,7 @@
   }
 ?>
 
-    Donations to <?php echo currencyName($currency); ?> Node Monitor: <a href="<?php echo getAccountUrl($donAccount, $blockExplorer); ?>" target="_blank"><?php echo $donAccount; ?></a>
+    Donations to <?php echo currencyName($currency); ?> Node Monitor: <a href="<?php echo getAccountUrl($donAccount, $blockExplorer); ?>" target="_blank" rel="noopener"><?php echo $donAccount; ?></a>
    </small>
    <button id="copyAccount" class="btn btn-sm btn-link btn-clipboard-light" data-clipboard-text="<?php echo $donAccount; ?>" title="Copy"><i class="fas fa-clipboard fa-lg"></i></button>
   </p>
@@ -50,10 +50,9 @@
 
 </div><!-- /container -->
 
-<script src="static/js/jquery-3.3.1.min.js?v=<?php echo PROJECT_VERSION; ?>"></script>
-<script src="static/js/popper.min.js?v=<?php echo PROJECT_VERSION; ?>"></script>
-<script src="static/js/bootstrap.min.js?v=<?php echo PROJECT_VERSION; ?>"></script>
-<script src="static/js/handlebars-v4.0.11.js?v=<?php echo PROJECT_VERSION; ?>"></script>
+<script src="static/js/axios.min.js?v=<?php echo PROJECT_VERSION; ?>"></script>
+<script src="static/js/bootstrap-native-v4.min.js?v=<?php echo PROJECT_VERSION; ?>"></script>
+<script src="static/js/handlebars-v4.1.2.js?v=<?php echo PROJECT_VERSION; ?>"></script>
 <script src="static/js/main.js?v=<?php echo PROJECT_VERSION; ?>"></script>
 
 <?php

@@ -20,7 +20,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo PROJECT_URL; ?>" target="_blank">GitHub Project</a>
+          <a class="nav-link" href="<?php echo PROJECT_URL; ?>" target="_blank" rel="noopener">GitHub Project</a>
         </li>
       </ul>
 

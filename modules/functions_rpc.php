@@ -122,3 +122,13 @@ function getUptime($ch)
   // post curl
   return postCurl($ch, $data);
 }
+
+// get active difficulty
+function getActiveDifficulty($ch)
+{
+  // get uptime
+  $data = array("action" => "active_difficulty");
+
+  // post curl
+  return postCurl($ch, $data);
+}

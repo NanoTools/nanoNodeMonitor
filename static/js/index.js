@@ -20,23 +20,40 @@ init.push(function(){
     return number.toLocaleString('en-US', {minimumFractionDigits: GLOBAL_DIGITS, maximumFractionDigits: GLOBAL_DIGITS});
   });
 
-  $.get('templates/index.hbs', function (data) {
-    template=Handlebars.compile(data);
+  Handlebars.registerHelper('formatSeconds', function (number) {
+    if(typeof number === 'undefined'){
+      return 0;
+    }
+
+    var hours   = Math.floor(number / 3600);
+    var minutes = Math.floor((number - (hours * 3600)) / 60);
+    var seconds = number - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return hours+':'+minutes+':'+seconds;
+  });
+
+  axios.get('templates/index.hbs')
+  .then(function (response) {
+    template=Handlebars.compile(response.data);
 
     updateStats();
-  }, 'html');
+  });
 });
 
 function updateStats(){
-  $.get('api.php')
-  .done(function (apidata) {
-    $('#content').html(template(apidata));
+  axios.get('api.php')
+  .then(function (response) {
+    document.getElementById("content").innerHTML = template(response.data);
     new ClipboardJS('#copyAccount');
-    setTimeout(updateStats, GLOBAL_REFRESH * 1000);
   })
-  .fail(function (apidata) {
-    $('#content').html(apidata.responseText);
-    console.log('FAIL', apidata.responseText);
+  .catch(function (error) {
+    console.log('FAIL', error);
+    document.getElementById("content").innerHTML = apidata.responseText;
+  })
+  .finally(function () {
     setTimeout(updateStats, GLOBAL_REFRESH * 1000);
   });
 }
