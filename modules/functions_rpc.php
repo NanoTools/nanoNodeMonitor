@@ -32,14 +32,14 @@ function getVersion($ch)
   $data = array("action" => "version");
 
   // post curl
-  return postCurl($ch, $data)->{'node_vendor'};
+  return postCurl($ch, $data);
 }
 
 // get block count from nano_node
 function getBlockCount($ch)
 {
   // get block count
-  $data = array("action" => "block_count");
+  $data = array("action" => "block_count", "include_cemented" => "true");
 
   // post curl
   return postCurl($ch, $data);
@@ -108,6 +108,26 @@ function getConfirmationHistory($ch)
 {
   // get confirmation history of latest 2048 elections
   $data = array("action" => "confirmation_history");
+
+  // post curl
+  return postCurl($ch, $data);
+}
+
+// get node uptime
+function getUptime($ch)
+{
+  // get uptime
+  $data = array("action" => "uptime");
+
+  // post curl
+  return postCurl($ch, $data);
+}
+
+// get active difficulty
+function getActiveDifficulty($ch)
+{
+  // get uptime
+  $data = array("action" => "active_difficulty");
 
   // post curl
   return postCurl($ch, $data);

@@ -13,7 +13,7 @@ if ($currency == 'banano') {
 <div class="page-header mb-3" id="banner">
   <div class="row">
     <div class="col-lg-8 col-md-6 col-sm-6">
-      <a href="<?php echo $coinURL; ?>" target="_blank">
+      <a href="<?php echo $coinURL; ?>" target="_blank" rel="noopener">
         <img src="static/img/nano-full-<?php echo $themeChoice; ?>.svg" width="220" alt="Logo"/>
       </a>
       <p class="lead mt-2"><?php echo currencyName($currency); ?> Node Monitor</p>
@@ -21,7 +21,9 @@ if ($currency == 'banano') {
 
       <div class="btn-group mb-3">
       <?php foreach ($socials as $socialkey => $socialvalue): ?>
-        <a href="<?php echo $socialvalue; ?>" target="_blank" class="btn btn-secondary"><i class="fab fa-<?php echo $socialkey; ?>"></i></a>
+      <a href="<?php echo $socialvalue; ?>" target="_blank" rel="noopener" class="btn btn-secondary" aria-label="Social Media">
+        <i class="fab fa-<?php echo $socialkey; ?>"></i>
+      </a>
       <?php endforeach; ?>
       </div>
 

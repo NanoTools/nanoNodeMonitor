@@ -33,7 +33,10 @@ $data = $cache->fetch($apiName, function () use (
     $data->nanoNodeAccountUrl = getAccountUrl($data->nanoNodeAccount, $blockExplorer);
 
     // -- Get Version String from nano node and node monitor
-    $data->version = getVersion($ch);
+    $version = getVersion($ch);
+    $data->version = $version->{'node_vendor'};
+    $data->store_version = (int) $version->{'store_version'} ?: 0;
+    $data->protocol_version = (int) $version->{'protocol_version'} ?: 0;
 
     // Cache the github query for latest node version
     global $nodeVersionCache;
@@ -57,6 +60,7 @@ $data = $cache->fetch($apiName, function () use (
     $rpcBlockCount = getBlockCount($ch);
     $data->currentBlock = (int) $rpcBlockCount->{'count'};
     $data->uncheckedBlocks = (int) $rpcBlockCount->{'unchecked'};
+    $data->cementedBlocks = (int) $rpcBlockCount->{'cemented'} ?: 0;
 
     if ($currency == 'nano') {
         $data->blockSync = getSyncStatus($data->currentBlock);
@@ -138,6 +142,7 @@ $data = $cache->fetch($apiName, function () use (
     $data->totalMem = getSystemTotalMem();
     //$data->uname = getUname();
     $data->nanoNodeName = $nanoNodeName;
+    $data->nodeUptimeStartup = (int) getUptime($ch)->{'seconds'} ?: 0;
 
     // get the node uptime (if we have a api key)
     if ($uptimerobotApiKey) {

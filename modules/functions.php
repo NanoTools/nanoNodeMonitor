@@ -159,7 +159,7 @@ function getVersionInformation($latestVersion)
   {
     $versionInfo .= "<br>A new version " . $latestVersion;
     $versionInfo .= " is available on ";
-    $versionInfo .= "<a href=\"" . PROJECT_URL . "\" target=\"_blank\">GitHub.</a>";
+    $versionInfo .= "<a href=\"" . PROJECT_URL . "\" target=\"_blank\" rel=\"noopener\">GitHub.</a>";
   }
 
   return $versionInfo;
@@ -534,5 +534,5 @@ function getConfirmationsDurationPercentile($percentile, $array) {
     else {
         $result = $array[floor($index)]->{'duration'};
     }
-    return $result;
+    return (int) $result;
 }
