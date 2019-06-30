@@ -57,6 +57,7 @@ $data = $cache->fetch($apiName, function () use (
     $rpcBlockCount = getBlockCount($ch);
     $data->currentBlock = (int) $rpcBlockCount->{'count'};
     $data->uncheckedBlocks = (int) $rpcBlockCount->{'unchecked'};
+    $data->cementedBlocks = (int) $rpcBlockCount->{'cemented'} ?: 0;
 
     if ($currency == 'nano') {
         $data->blockSync = getSyncStatus($data->currentBlock);
@@ -138,6 +139,7 @@ $data = $cache->fetch($apiName, function () use (
     $data->totalMem = getSystemTotalMem();
     //$data->uname = getUname();
     $data->nanoNodeName = $nanoNodeName;
+    $data->nodeUptime = getUptime($ch)->{'seconds'} ?: '0';
 
     // get the node uptime (if we have a api key)
     if ($uptimerobotApiKey) {

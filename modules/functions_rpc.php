@@ -39,7 +39,7 @@ function getVersion($ch)
 function getBlockCount($ch)
 {
   // get block count
-  $data = array("action" => "block_count");
+  $data = array("action" => "block_count", "include_cemented" => "true");
 
   // post curl
   return postCurl($ch, $data);
@@ -108,6 +108,16 @@ function getConfirmationHistory($ch)
 {
   // get confirmation history of latest 2048 elections
   $data = array("action" => "confirmation_history");
+
+  // post curl
+  return postCurl($ch, $data);
+}
+
+// get node uptime
+function getUptime($ch)
+{
+  // get uptime
+  $data = array("action" => "uptime");
 
   // post curl
   return postCurl($ch, $data);
