@@ -21,10 +21,10 @@
 // $themeChoice = 'light';
 
 // Choice of block explorer
-// Nano Explorers:      'nanode', 'ninja', 'nanoexplorer', 'nanoodle', 'nanocrawler', 'nifni'
+// Nano Explorers:      'ninja', 'nanoodle', 'nanocrawler', 'nifni'
 // Nano Beta Explorers: 'nanocrawler-beta', 'nano-beta'
 // Banano Explorers:    'banano'
-// $blockExplorer = 'nanode';
+// $blockExplorer = 'nanocrawler';
 
 // Autorefresh interval for the status webpage in seconds
 // $autoRefreshInSeconds = 5;
@@ -77,10 +77,10 @@
 // $nanoNodeRPCPort = '7076';
 
 // Account of this node
-// $nanoNodeAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj';
+// $nanoNodeAccount = 'nano_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj';
 
 // Donation account for maintaining this node
-// $nanoDonationAccount = 'xrb_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj';
+// $nanoDonationAccount = 'nano_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj';
 
 // Number of decimal places to display Nano balances, i.e.
 // $nanoNumDecimalPlaces = 2;
