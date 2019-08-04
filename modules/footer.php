@@ -1,51 +1,49 @@
 <footer id="footer">
 
-  <p>
-   <?php
-    global $versionCache;
-    $versionCache = new FileCache(["ttl" => 10*60]); // cache for 10 minutes
+  <hr class="light">
 
-    // set an API name so multiple monitors don't mix
-    $apiName = "footer-$nanoNodeAccount";
+  <small>
 
-     // get cached response
-    $versionData = $versionCache->fetch($apiName, function () {
-        $versionData = new stdClass();
-        $versionData->latestVersion  = getLatestReleaseVersion();
-        return $versionData;
-    });
-    echo getVersionInformation($versionData->latestVersion);
-   ?>
+    <?php
+      // switch Nano / Banano rep accounts & explorer
+      $repAccount = NODEMON_REP_ACCOUNT;
+      $donAccount = NODEMON_DON_ACCOUNT;
+      $repExplorer = 'ninja';
 
-   <br>
-    Made by <a href="https://github.com/NanoTools" target="_blank" rel="noopener">Nano Tools</a>.
-   <br>
-    GitHub: <a href="<?php echo PROJECT_URL; ?>" target="_blank" rel="noopener">Source</a> | <a href="<?php echo PROJECT_URL . '/wiki'; ?>" target="_blank" rel="noopener">Wiki</a> | <a href="<?php echo PROJECT_URL . '/wiki/API-Description'; ?>" target="_blank" rel="noopener">API</a>
-  </p>
+      if ($currency == "banano")
+      {
+        $repAccount = NODEMON_BAN_REP_ACCOUNT;
+        $donAccount = NODEMON_BAN_DON_ACCOUNT;
+        $repExplorer = 'banano';
+      }
+    ?>
 
-  <hr class=light>
+    <ul>
+      <li>
+         <?php
+         global $versionCache;
+         $versionCache = new FileCache(["ttl" => 10*60]); // cache for 10 minutes
 
-  <p class=truncate>
-   <small>
+         // set an API name so multiple monitors don't mix
+         $apiName = "footer-$nanoNodeAccount";
 
-<?php
-  // switch Nano / Banano rep accounts & explorer
-  $repAccount = NODEMON_REP_ACCOUNT;
-  $donAccount = NODEMON_DON_ACCOUNT;
-  $repExplorer = 'ninja';
-
-  if ($currency == "banano")
-  {
-    $repAccount = NODEMON_BAN_REP_ACCOUNT;
-    $donAccount = NODEMON_BAN_DON_ACCOUNT;
-    $repExplorer = 'banano';
-  }
-?>
-
-    Donations to <?php echo currencyName($currency); ?> Node Monitor: <a href="<?php echo getAccountUrl($donAccount, $blockExplorer); ?>" target="_blank" rel="noopener"><?php echo $donAccount; ?></a>
-   </small>
-   <button id="copyAccount" class="btn btn-sm btn-link btn-clipboard-light" data-clipboard-text="<?php echo $donAccount; ?>" title="Copy"><i class="fas fa-clipboard fa-lg"></i></button>
-  </p>
+         // get cached response
+         $versionData = $versionCache->fetch($apiName, function () {
+             $versionData = new stdClass();
+             $versionData->latestVersion  = getLatestReleaseVersion();
+             return $versionData;
+         });
+         echo getVersionInformation($versionData->latestVersion);
+         ?>
+      </li>
+      <li>Powered by <a href="<?php echo PROJECT_URL ?>" target="_blank" rel="noopener">Nano Node Monitor</a></li>
+      <li>GitHub: <a href="<?php echo PROJECT_URL; ?>" target="_blank" rel="noopener">Source</a> | <a href="<?php echo PROJECT_URL . '/wiki'; ?>" target="_blank" rel="noopener">Wiki</a> | <a href="<?php echo PROJECT_URL . '/wiki/API-Description'; ?>" target="_blank" rel="noopener">API</a></li>
+      <li>
+        Donate: <a href="<?php echo getAccountUrl($donAccount, $blockExplorer); ?>" target="_blank" rel="noopener"><?php echo truncateAddress($donAccount); ?></a>
+      </li>
+      <li>Made by <a href="https://github.com/NanoTools" target="_blank" rel="noopener">Nano Tools</a></li>
+    </ul>
+  </small>
 </footer>
 
 </div><!-- /container -->
