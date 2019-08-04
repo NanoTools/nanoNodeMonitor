@@ -321,7 +321,7 @@ function getNodeNinja($account)
 }
 
 // truncate long Nano addresses to display the first and
-// last characaters with ellipsis in the center
+// last characters with ellipsis in the center
 function truncateAddress($addr)
 {
   $totalNumChar = NANO_ADDR_NUM_CHAR;
