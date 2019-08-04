@@ -78,7 +78,9 @@
         <span class="float-left-truncate">Delegators</span>
         <span class="float-right-truncate">
         {{#if nodeNinja}}
-        {{formatNumber nodeNinja.delegators}}
+          {{#ifCond nodeNinja.delegators '>' 0}}
+            {{formatNumber nodeNinja.delegators}}
+          {{else}} N/A {{/ifCond}}
         {{else}} N/A {{/if}}
         </span>
       </li>
