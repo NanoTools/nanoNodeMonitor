@@ -347,8 +347,8 @@ function getAccountUrl($account, $blockExplorer)
   {
     case 'nanoexplorer':
       return "https://nanoexplorer.io/accounts/" . $account;
-    case 'nanowatch':
-      return "https://nanowat.ch/account/" . $account;
+    case 'nanoodle':
+      return "https://nanoodle.io/account/" . $account;
     case 'ninja':
       return "https://mynano.ninja/account/" . $account;
     case 'meltingice':
