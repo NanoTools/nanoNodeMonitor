@@ -321,7 +321,7 @@ function getNodeNinja($account)
 }
 
 // truncate long Nano addresses to display the first and
-// last characaters with ellipsis in the center
+// last characters with ellipsis in the center
 function truncateAddress($addr)
 {
   $totalNumChar = NANO_ADDR_NUM_CHAR;
@@ -345,18 +345,10 @@ function getAccountUrl($account, $blockExplorer)
 {
   switch ($blockExplorer)
   {
-    case 'nanoexplorer':
-      return "https://nanoexplorer.io/accounts/" . $account;
-    case 'nanowatch':
-      return "https://nanowat.ch/account/" . $account;
+    case 'nanoodle':
+      return "https://nanoodle.io/account/" . $account;
     case 'ninja':
       return "https://mynano.ninja/account/" . $account;
-    case 'meltingice':
-      return "https://nanocrawler.cc/explorer/account/" . $account;
-    case 'meltingice-beta':
-      return "https://beta.nanocrawler.cc/explorer/account/" . $account;
-    case 'nanocrawler':
-      return "https://nanocrawler.cc/explorer/account/" . $account;
     case 'nanocrawler-beta':
       return "https://beta.nanocrawler.cc/explorer/account/" . $account;
     case 'nano-beta':
@@ -366,7 +358,7 @@ function getAccountUrl($account, $blockExplorer)
     case 'banano':
       return "https://creeper.banano.cc/explorer/account/" . $account;
     default:
-      return "https://www.nanode.co/account/" . $account;
+      return "https://nanocrawler.cc/explorer/account/" . $account;
   }
 }
 
