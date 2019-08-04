@@ -161,6 +161,9 @@ $data = $cache->fetch($apiName, function () use (
     $data->currency = $currency;
     $data->currencySymbol = currencySymbol($currency);
 
+    // active_difficulty
+    $data->active_difficulty = getActiveDifficulty($ch);
+
     // node statistics
     // maybe we get more stats later
     // so this is seperate object
