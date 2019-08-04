@@ -1,6 +1,6 @@
 <footer id="footer">
 
-  <hr class=light>
+  <hr class="light">
 
   <small>
 
@@ -36,7 +36,7 @@
          echo getVersionInformation($versionData->latestVersion);
          ?>
       </li>
-      <li>Powered by <a href="<?php echo PROJECT_URL ?>">Nano Node Monitor</a></li>
+      <li>Powered by <a href="<?php echo PROJECT_URL ?>" target="_blank" rel="noopener">Nano Node Monitor</a></li>
       <li>GitHub: <a href="<?php echo PROJECT_URL; ?>" target="_blank" rel="noopener">Source</a> | <a href="<?php echo PROJECT_URL . '/wiki'; ?>" target="_blank" rel="noopener">Wiki</a> | <a href="<?php echo PROJECT_URL . '/wiki/API-Description'; ?>" target="_blank" rel="noopener">API</a></li>
       <li>
         Donate: <a href="<?php echo getAccountUrl($donAccount, $blockExplorer); ?>" target="_blank" rel="noopener"><?php echo truncateAddress($donAccount); ?></a>
