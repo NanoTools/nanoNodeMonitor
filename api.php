@@ -80,7 +80,7 @@ $data = $cache->fetch($apiName, function () use (
     //$confCount = $rpcConfHistory->{'confirmation_stats'}->{'count'}; // number of confirmations retrieved from the node
 
     // check if we have confirmations, otherwise skip
-    if(!empty($confirmations)){
+    if (!empty($confirmations)) {
         // remove data older than $timeLimit
         usort($confirmations, 'cmpByTime'); // sort array by time value [ms unix time]
         $confCompact = []; // new filtered array
