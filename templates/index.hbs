@@ -30,10 +30,12 @@
         <li class="list-group-item">
           <span class="float-left-truncate">Version</span>
           <span class="float-right-truncate">{{version}}</span>
+        {{#if store_vendor}} <!--Node V21-->
         <li class="list-group-item">
           <span class="float-left-truncate">Database</span>
           <span class="float-right-truncate">{{store_vendor}}</span>
         </li>
+        {{/if}}
         </li>
         <li class="list-group-item">
           <span class="float-left-truncate">Current Block</span>
