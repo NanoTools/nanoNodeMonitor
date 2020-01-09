@@ -37,6 +37,7 @@ $data = $cache->fetch($apiName, function () use (
     $data->version = $version->{'node_vendor'};
     $data->store_version = (int) $version->{'store_version'} ?: 0;
     $data->protocol_version = (int) $version->{'protocol_version'} ?: 0;
+    $data->store_vendor = (string) $version->{'store_vendor'} ?: '';
 
     // Cache the github query for latest node version
     global $nodeVersionCache;
