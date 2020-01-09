@@ -114,8 +114,8 @@ $data = $cache->fetch($apiName, function () use (
         $percentile99 = getConfirmationsDurationPercentile(99, $confCompact);
 
         // combine an array with all confirmation info
-        $confSummary = ['count' => $confCount, 'timeSpan' => $timeSpan, 'average' => $confAverage, 'percentile50' => $percentile50,
-        'percentile75'          => $percentile75, 'percentile90' => $percentile90, 'percentile95' => $percentile95, 'percentile99' => $percentile99, ];
+        $confSummary = ['count'     => $confCount, 'timeSpan' => $timeSpan, 'average' => $confAverage, 'percentile50' => $percentile50,
+            'percentile75'          => $percentile75, 'percentile90' => $percentile90, 'percentile95' => $percentile95, 'percentile99' => $percentile99, ];
         $data->confirmationInfo = $confSummary;
         //$data->apiProcTimeConf = round((microtime(true) - $timeStampBefore) * 1000);
     }

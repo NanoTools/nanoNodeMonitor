@@ -20,11 +20,11 @@ if ($currency == 'banano') {
       <p><?php echo $welcomeMsg; ?></p>
 
       <div class="btn-group mb-3">
-      <?php foreach ($socials as $socialkey => $socialvalue): ?>
+      <?php foreach ($socials as $socialkey => $socialvalue) { ?>
       <a href="<?php echo $socialvalue; ?>" target="_blank" rel="noopener" class="btn btn-secondary" aria-label="Social Media">
         <i class="fab fa-<?php echo $socialkey; ?>"></i>
       </a>
-      <?php endforeach; ?>
+      <?php } ?>
       </div>
 
     </div>
