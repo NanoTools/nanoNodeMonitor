@@ -79,7 +79,7 @@ function updateStats(){
   })
   .catch(function (error) {
     console.log('FAIL', error);
-    document.getElementById("content").innerHTML = apidata.responseText;
+    document.getElementById("content").innerHTML = error.response;
   })
   .finally(function () {
     setTimeout(updateStats, GLOBAL_REFRESH * 1000);
