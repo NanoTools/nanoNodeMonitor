@@ -32,12 +32,15 @@ $data = $cache->fetch($apiName, function () use (
     $data->nanoNodeAccountShort = truncateAddress($data->nanoNodeAccount);
     $data->nanoNodeAccountUrl = getAccountUrl($data->nanoNodeAccount, $blockExplorer);
 
+    // -- Get Telemetry from nano node
+    $telemetry = getTelemetry($ch);
+
     // -- Get Version String from nano node and node monitor
-    $version = getVersion($ch);
-    $data->version = $version->{'node_vendor'};
-    $data->store_version = (int) $version->{'store_version'} ?: 0;
-    $data->protocol_version = (int) $version->{'protocol_version'} ?: 0;
-    $data->store_vendor = (string) $version->{'store_vendor'} ?: '';
+    $majorVersion = (int) $telemetry->{'major_version'};
+    $minorVersion = (int) $telemetry->{'minor_version'};
+    $patchVersion = (int) $telemetry->{'patch_version'};
+    $data->version = 'Nano v'.$majorVersion.'.'.$minorVersion.'.'.$patchVersion;
+    $data->protocol_version = (int) $telemetry->{'protocol_version'} ?: 0;
 
     // Cache the github query for latest node version
     global $nodeVersionCache;
@@ -54,23 +57,20 @@ $data = $cache->fetch($apiName, function () use (
         return $nodeVersionData;
     });
     $latestVersion = $nodeVersionData->latestNodeReleaseVersion;
-    $data->newNodeVersionAvailable = isNewNodeVersionAvailable(formatVersion($data->version), $latestVersion, $currency);
+    $data->newNodeVersionAvailable = isNewNodeVersionAvailable($majorVersion.'.'.$minorVersion, $latestVersion, $currency);
     $data->nodeMonitorVersion = PROJECT_VERSION;
 
-    // -- Get get current block from nano_node
-    $rpcBlockCount = getBlockCount($ch);
-    $data->currentBlock = (int) $rpcBlockCount->{'count'};
-    $data->uncheckedBlocks = (int) $rpcBlockCount->{'unchecked'};
-    $data->cementedBlocks = (int) $rpcBlockCount->{'cemented'} ?: 0;
+    // -- Get current block from nano_node
+    $data->currentBlock = (int) $telemetry->{'block_count'};
+    $data->uncheckedBlocks = (int) $telemetry->{'unchecked_count'};
+    $data->cementedBlocks = (int) $telemetry->{'cemented_count'} ?: 0;
 
     if ($currency == 'nano') {
         $data->blockSync = getSyncStatus($data->currentBlock);
     }
 
     // -- Get number of peers from nano_node
-    $rpcPeers = getPeers($ch);
-    $peers = (array) $rpcPeers->{'peers'};
-    $data->numPeers = count($peers);
+    $data->numPeers = (int) $telemetry->{'peer_count'};
 
     // -- Get confirmation info from nano_node. Average time, blocks used, time span  and percentiles
     // -- over last X min (set by CONFIRMATION_TIME_LIMIT) or max 2048 blocks which is a node limitation
@@ -166,7 +166,7 @@ $data = $cache->fetch($apiName, function () use (
     $data->currencySymbol = currencySymbol($currency);
 
     // active_difficulty
-    $data->active_difficulty = getActiveDifficulty($ch);
+    $data->active_difficulty = (string) $telemetry->{'active_difficulty'};
 
     // node statistics
     // maybe we get more stats later

@@ -174,7 +174,7 @@ function getLatestNodeReleaseVersion()
   $curl = curl_init();
 
   curl_setopt_array($curl, array(
-    CURLOPT_URL => 'https://api.github.com/repos/nanocurrency/raiblocks/releases/latest',
+    CURLOPT_URL => 'https://api.github.com/repos/nanocurrency/nano-node/releases/latest',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
@@ -207,13 +207,6 @@ function getLatestNodeReleaseVersion()
   }
 
   return '';
-}
-
-// gets the number from the version string
-function formatVersion($rawversion){
-  $formattedVersion = explode(' ', $rawversion);
-
-  return $formattedVersion[1];
 }
 
 // get a string with information about the
