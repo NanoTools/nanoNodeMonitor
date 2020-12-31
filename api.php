@@ -10,9 +10,15 @@ $apiName = "api-$nanoNodeAccount";
 
 // get cached response
 $data = $cache->fetch($apiName, function () use (
-  &$nanoNodeRPCIP, &$nanoNodeRPCPort, &$nanoNodeAccount, &$blockExplorer,
-  &$nanoNodeName, &$nanoNumDecimalPlaces, &$uptimerobotApiKey, &$currency,
-  &$nodeLocation
+    &$nanoNodeRPCIP,
+    &$nanoNodeRPCPort,
+    &$nanoNodeAccount,
+    &$blockExplorer,
+    &$nanoNodeName,
+    &$nanoNumDecimalPlaces,
+    &$uptimerobotApiKey,
+    &$currency,
+    &$nodeLocation
 ) {
     // get curl handle
     $ch = curl_init();
