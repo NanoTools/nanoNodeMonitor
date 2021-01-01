@@ -174,12 +174,12 @@ function getLatestNodeReleaseVersion()
   $curl = curl_init();
 
   curl_setopt_array($curl, array(
-    CURLOPT_URL => 'https://api.github.com/repos/nanocurrency/raiblocks/releases/latest',
+    CURLOPT_URL => 'https://api.github.com/repos/nanocurrency/nano-node/releases/latest',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => NINJA_TIMEOUT,
-    CURLOPT_CONNECTTIMEOUT => NINJA_CONECTTIMEOUT,
+    CURLOPT_TIMEOUT => EXTERNAL_TIMEOUT,
+    CURLOPT_CONNECTTIMEOUT => EXTERNAL_CONECTTIMEOUT,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "GET",
     CURLOPT_HTTPHEADER => array(
@@ -211,9 +211,10 @@ function getLatestNodeReleaseVersion()
 
 // gets the number from the version string
 function formatVersion($rawversion){
-  $formattedVersion = explode(' ', $rawversion);
+  $formattedVersionArray = explode(' ', $rawversion);
+  $formattedVersion = ltrim($formattedVersionArray[1], 'V');
 
-  return $formattedVersion[1];
+  return $formattedVersion;
 }
 
 // get a string with information about the
@@ -252,8 +253,8 @@ function getNodeUptime($apiKey, $uptimeRatio = 30)
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => NINJA_TIMEOUT,
-    CURLOPT_CONNECTTIMEOUT => NINJA_CONECTTIMEOUT,
+    CURLOPT_TIMEOUT => EXTERNAL_TIMEOUT,
+    CURLOPT_CONNECTTIMEOUT => EXTERNAL_CONECTTIMEOUT,
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_CUSTOMREQUEST => "POST",
     CURLOPT_POSTFIELDS => "api_key=$apiKey&format=json&custom_uptime_ratios=$uptimeRatio",
@@ -287,39 +288,6 @@ function getNodeUptime($apiKey, $uptimeRatio = 30)
   return (float)$response->monitors[0]->custom_uptime_ratio;
 }
 
-function getNodeNinja($account)
-{
-  $curl = curl_init();
-
-  curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://mynano.ninja/api/accounts/$account",
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => NINJA_TIMEOUT,
-    CURLOPT_CONNECTTIMEOUT => NINJA_CONECTTIMEOUT,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1
-  ));
-
-  $response = curl_exec($curl);
-  $err = curl_error($curl);
-
-  curl_close($curl);
-
-  if ($err) {
-    return false;
-  }
-
-  // decode JSON response
-  $response = json_decode($response);
-
-  if (isset($response->error)) {
-    return false;
-  }
-
-  return $response;
-}
-
 // truncate long Nano addresses to display the first and
 // last characters with ellipsis in the center
 function truncateAddress($addr)
@@ -345,16 +313,10 @@ function getAccountUrl($account, $blockExplorer)
 {
   switch ($blockExplorer)
   {
-    case 'nanoodle':
-      return "https://nanoodle.io/account/" . $account;
     case 'ninja':
       return "https://mynano.ninja/account/" . $account;
     case 'nanocrawler-beta':
       return "https://beta.nanocrawler.cc/explorer/account/" . $account;
-    case 'nano-beta':
-      return "https://beta.nano.org/account/index.php?acc=" . $account;
-    case 'nifni':
-      return "https://nano.nifni.net/explorer.php?s=" . $account;
     case 'banano':
       return "https://creeper.banano.cc/explorer/account/" . $account;
     default:
@@ -362,49 +324,9 @@ function getAccountUrl($account, $blockExplorer)
   }
 }
 
-function getNodeNinjaBlockcount()
-{
-  $curl = curl_init();
-
-  curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://mynano.ninja/api/blockcount",
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => NINJA_TIMEOUT,
-    CURLOPT_CONNECTTIMEOUT => NINJA_CONECTTIMEOUT,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1
-  ));
-
-  $response = curl_exec($curl);
-  $err = curl_error($curl);
-
-  curl_close($curl);
-
-  if ($err) {
-    return false;
-  }
-
-  // decode JSON response
-  $response = json_decode($response);
-
-  if (isset($response->error)) {
-    return false;
-  }
-
-  return $response->count;
-}
-
 // get sync status
-function getSyncStatus($blockcount){
-  $ninjablocks = getNodeNinjaBlockcount();
-
-  if($ninjablocks === false || $ninjablocks === 0){
-    // if we can't get an error output 100%
-    return 100;
-  }
-
-  $sync = round(($blockcount / $ninjablocks) * 100, 1);
+function getSyncStatus($node_blockcount, $telemetry_blockcount){
+  $sync = round(($node_blockcount / $telemetry_blockcount) * 100, 1);
 
   if($sync > 100){
     return 100;

@@ -10,9 +10,15 @@ $apiName = "api-$nanoNodeAccount";
 
 // get cached response
 $data = $cache->fetch($apiName, function () use (
-  &$nanoNodeRPCIP, &$nanoNodeRPCPort, &$nanoNodeAccount, &$blockExplorer,
-  &$nanoNodeName, &$nanoNumDecimalPlaces, &$uptimerobotApiKey, &$currency,
-  &$nodeLocation
+    &$nanoNodeRPCIP,
+    &$nanoNodeRPCPort,
+    &$nanoNodeAccount,
+    &$blockExplorer,
+    &$nanoNodeName,
+    &$nanoNumDecimalPlaces,
+    &$uptimerobotApiKey,
+    &$currency,
+    &$nodeLocation
 ) {
     // get curl handle
     $ch = curl_init();
@@ -62,10 +68,6 @@ $data = $cache->fetch($apiName, function () use (
     $data->currentBlock = (int) $rpcBlockCount->{'count'};
     $data->uncheckedBlocks = (int) $rpcBlockCount->{'unchecked'};
     $data->cementedBlocks = (int) $rpcBlockCount->{'cemented'} ?: 0;
-
-    if ($currency == 'nano') {
-        $data->blockSync = getSyncStatus($data->currentBlock);
-    }
 
     // -- Get number of peers from nano_node
     $rpcPeers = getPeers($ch);
@@ -132,6 +134,7 @@ $data = $cache->fetch($apiName, function () use (
     $data->repAccount = $rpcNodeRepInfo->{'representative'} ?: '';
     $data->repAccountShort = truncateAddress($data->repAccount);
     $data->repAccountUrl = getAccountUrl($data->repAccount, $blockExplorer);
+    // $data->repDelegatorsCount = getDelegatorsCount($ch, $nanoNodeAccount)->count; // disabled (poor performance)
 
     // get the account weight
     $rpcNodeAccountWeight = getAccountWeight($ch, $nanoNodeAccount);
@@ -153,13 +156,8 @@ $data = $cache->fetch($apiName, function () use (
         $data->nodeUptime = getNodeUptime($uptimerobotApiKey);
     }
 
-    // get info from My Nano Ninja
-    $data->nodeNinja = getNodeNinja($nanoNodeAccount);
-
     // get node location
-    // 1) If location is set by user, we use it.
-    // 2) If location not set by user, we try to get if from ninja.
-    $data->nodeLocation = getNodeLocation($nodeLocation, $data->nodeNinja);
+    $data->nodeLocation = $nodeLocation;
 
     // currency and currency symbol
     $data->currency = $currency;
@@ -175,6 +173,16 @@ $data = $cache->fetch($apiName, function () use (
 
     // get the counters
     $data->stats->counters = getStats($ch, 'counters');
+
+    // get telemetry data from other nodes
+    $data->telemetry = getTelemetry($ch);
+
+    // sync status in %
+    if ($data->telemetry->block_count) {
+        $data->blockSync = getSyncStatus($data->currentBlock, $data->telemetry->block_count);
+    } else {
+        $data->blockSync = null;
+    }
 
     // close curl handle
     curl_close($ch);

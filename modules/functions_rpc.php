@@ -132,3 +132,23 @@ function getActiveDifficulty($ch)
   // post curl
   return postCurl($ch, $data);
 }
+
+// get telemetry data from other nodes
+function getTelemetry($ch)
+{
+  // get uptime
+  $data = array("action" => "telemetry");
+
+  // post curl
+  return postCurl($ch, $data);
+}
+
+// get telemetry data from other nodes
+function getDelegatorsCount($ch, $account)
+{
+  // get uptime
+  $data = array("action" => "delegators_count", "account" => $account);
+
+  // post curl
+  return postCurl($ch, $data);
+}

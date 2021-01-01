@@ -15,9 +15,10 @@ $currency = 'nano';
 $themeChoice = 'light';
 
 // Choice of block explorer
-// Nano Explorers:   'nanode', 'ninja', 'nanoexplorer', 'nanowatch', or 'meltingice'
-// Banano Explorers: 'banano'
-$blockExplorer = 'nanode';
+// Nano Explorers:      'ninja', 'nanocrawler'
+// Nano Beta Explorers: 'nanocrawler-beta'
+// Banano Explorers:    'banano'
+$blockExplorer = 'nanocrawler';
 
 // autorefresh interval for the status webpage in seconds
 $autoRefreshInSeconds = 5;
@@ -26,8 +27,7 @@ $autoRefreshInSeconds = 5;
 $nanoNodeName = gethostname();
 
 // Location of your node
-// If left empty, we try to get it from My Nano Ninja.
-$nodeLocation = '';
+$nodeLocation = NULL;
 
 // A welcome message shown on top
 $welcomeMsg = '';
