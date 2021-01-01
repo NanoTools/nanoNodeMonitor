@@ -25,31 +25,11 @@ function postCurl($ch, $data)
   return json_decode($resp);
 }
 
-// get version string from nano_node
-function getVersion($ch)
+// get telemetry from nano_node
+function getTelemetry($ch)
 {
   // get version string
-  $data = array("action" => "version");
-
-  // post curl
-  return postCurl($ch, $data);
-}
-
-// get block count from nano_node
-function getBlockCount($ch)
-{
-  // get block count
-  $data = array("action" => "block_count", "include_cemented" => "true");
-
-  // post curl
-  return postCurl($ch, $data);
-}
-
-// get number of peers
-function getPeers($ch)
-{
-  // get peers
-  $data = array("action" => "peers");
+  $data = array("action" => "telemetry");
 
   // post curl
   return postCurl($ch, $data);
@@ -118,16 +98,6 @@ function getUptime($ch)
 {
   // get uptime
   $data = array("action" => "uptime");
-
-  // post curl
-  return postCurl($ch, $data);
-}
-
-// get active difficulty
-function getActiveDifficulty($ch)
-{
-  // get uptime
-  $data = array("action" => "active_difficulty");
 
   // post curl
   return postCurl($ch, $data);
