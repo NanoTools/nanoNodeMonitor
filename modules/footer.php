@@ -37,11 +37,10 @@
          ?>
       </li>
       <li>Powered by <a href="<?php echo PROJECT_URL ?>" target="_blank" rel="noopener">Nano Node Monitor</a></li>
-      <li>GitHub: <a href="<?php echo PROJECT_URL; ?>" target="_blank" rel="noopener">Source</a> | <a href="<?php echo PROJECT_URL . '/wiki'; ?>" target="_blank" rel="noopener">Wiki</a> | <a href="<?php echo PROJECT_URL . '/wiki/API-Description'; ?>" target="_blank" rel="noopener">API</a></li>
+      <li>GitHub: <a href="<?php echo PROJECT_URL; ?>" target="_blank" rel="noopener">Source</a></li>
       <li>
         Donate: <a href="<?php echo getAccountUrl($donAccount, $blockExplorer); ?>" target="_blank" rel="noopener"><?php echo truncateAddress($donAccount); ?></a>
       </li>
-      <li>Made by <a href="https://github.com/NanoTools" target="_blank" rel="noopener">Nano Tools</a></li>
     </ul>
   </small>
 </footer>
@@ -50,7 +49,7 @@
 
 <script src="static/js/axios.min.js?v=<?php echo PROJECT_VERSION; ?>"></script>
 <script src="static/js/bootstrap-native-v4.min.js?v=<?php echo PROJECT_VERSION; ?>"></script>
-<script src="static/js/handlebars-v4.1.2.js?v=<?php echo PROJECT_VERSION; ?>"></script>
+<script src="static/js/handlebars.min-v4.7.6.js?v=<?php echo PROJECT_VERSION; ?>"></script>
 <script src="static/js/main.js?v=<?php echo PROJECT_VERSION; ?>"></script>
 
 <?php

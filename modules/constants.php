@@ -1,7 +1,7 @@
 <?php
 
 // the project version
-define('PROJECT_VERSION', '1.5.5');
+define('PROJECT_VERSION', '1.5.6');
 
 // project URL
 define('PROJECT_URL', 'https://github.com/NanoTools/nanoNodeMonitor');
@@ -16,19 +16,19 @@ define ('NODEMON_REP_ACCOUNT', 'nano_1f56swb9qtpy3yoxiscq9799nerek153w43yjc9atoa
 define ('NODEMON_BAN_REP_ACCOUNT', 'ban_1kxnxi5zurj6h7dfb87ik6hhu9yo63miyg6q1fjaxgnd1kknr5y5md4xwxoj');
 
 // nano donation account for Nano Node Monitor development
-define ('NODEMON_DON_ACCOUNT', 'nano_1nanomon9uycemhgonue4twmcqmsu7oxw43maro8amj751ozpus8r8gsic48');
+define ('NODEMON_DON_ACCOUNT', 'nano_1ninja7rh37ehfp9utkor5ixmxyg8kme8fnzc4zty145ibch8kf5jwpnzr3r');
 
 // baano donation account for Nano Node Monitor development
-define ('NODEMON_BAN_DON_ACCOUNT', 'ban_1kxnxi5zurj6h7dfb87ik6hhu9yo63miyg6q1fjaxgnd1kknr5y5md4xwxoj');
+define ('NODEMON_BAN_DON_ACCOUNT', 'ban_1ninja7rh37ehfp9utkor5ixmxyg8kme8fnzc4zty145ibch8kf5jwpnzr3r');
 
 // total number of characters for displaying Nano addresses including ellipsis
 define ('NANO_ADDR_NUM_CHAR', 17);
 
-// curl timeout in seconds to receive data from ninja (max delay is NINJA_TIMEOUT + NINJA_CONECTTIMEOUT)
-define ('NINJA_TIMEOUT', 3);
+// curl timeout in seconds to receive data from external services (max delay is EXTERNAL_TIMEOUT + EXTERNAL_CONECTTIMEOUT)
+define ('EXTERNAL_TIMEOUT', 3);
 
-// curl timeout in seconds to connect to ninja (max delay is NINJA_TIMEOUT + NINJA_CONECTTIMEOUT)
-define ('NINJA_CONECTTIMEOUT', 2);
+// curl timeout in seconds to connect to external services (max delay is EXTERNAL_TIMEOUT + EXTERNAL_CONECTTIMEOUT)
+define ('EXTERNAL_CONECTTIMEOUT', 2);
 
 // maximum allowed age of data to be part of the block confirmation time percentiles calculation (milliseconds)
 define ('CONFIRMATION_TIME_LIMIT', 600000);
