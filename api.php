@@ -10,9 +10,15 @@ $apiName = "api-$nanoNodeAccount";
 
 // get cached response
 $data = $cache->fetch($apiName, function () use (
-  &$nanoNodeRPCIP, &$nanoNodeRPCPort, &$nanoNodeAccount, &$blockExplorer,
-  &$nanoNodeName, &$nanoNumDecimalPlaces, &$uptimerobotApiKey, &$currency,
-  &$nodeLocation
+    &$nanoNodeRPCIP,
+    &$nanoNodeRPCPort,
+    &$nanoNodeAccount,
+    &$blockExplorer,
+    &$nanoNodeName,
+    &$nanoNumDecimalPlaces,
+    &$uptimerobotApiKey,
+    &$currency,
+    &$nodeLocation
 ) {
     // get curl handle
     $ch = curl_init();
@@ -172,10 +178,10 @@ $data = $cache->fetch($apiName, function () use (
     $data->telemetry = getTelemetry($ch);
 
     // sync status in %
-    if($data->telemetry->block_count){
+    if ($data->telemetry->block_count) {
         $data->blockSync = getSyncStatus($data->currentBlock, $data->telemetry->block_count);
     } else {
-        $data->blockSync = NULL;
+        $data->blockSync = null;
     }
 
     // close curl handle
