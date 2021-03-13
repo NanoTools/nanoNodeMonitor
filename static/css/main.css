@@ -57,3 +57,17 @@
     list-style: none;
     padding-right: 10px;
 }
+
+/* overload css */
+.float-left-truncate {
+  width: 100%;
+  font-size: 80%;
+  margin-left: -1rem;
+  margin-top: -0.7rem;
+}
+
+.float-right-truncate {
+  width: 100%;
+  margin-right: -0.7rem;
+  margin-bottom: -0.4rem;
+}
