@@ -1,6 +1,6 @@
 <?php if ($currency == 'nano'): ?>
 
-<img id="monkey" src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=xrb:<?php echo $nanoNodeAccount; ?>&choe=UTF-8" 
+<img id="monkey" src="https://natricon.com/api/v1/nano?address=<?php echo $nanoNodeAccount; ?>&choe=UTF-8"
 title="QR code for <?php echo $nanoNodeAccount; ?>"
 style="max-width:250px; display:block; margin: 0 0 0 auto;" />
 
