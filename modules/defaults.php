@@ -63,7 +63,7 @@ $nanoNodeRPCIP   = '[::1]';
 $nanoNodeRPCPort = '7076';
 
 // Account of this node
-$nanoNodeAccount = '';
+$nanoNodeAccount = NULL;
 
 // Donation account for maintaining this node
 $nanoDonationAccount = $nanoNodeAccount;

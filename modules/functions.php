@@ -311,6 +311,8 @@ function truncateAddress($addr)
 // get a block explorer URL from an account
 function getAccountUrl($account, $blockExplorer)
 {
+  if(is_null($account)) return NULL;
+
   switch ($blockExplorer)
   {
     case 'ninja':

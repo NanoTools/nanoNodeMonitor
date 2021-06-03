@@ -30,8 +30,3 @@ require_once(__DIR__ . '/Cache.php');
 if (!phpCurlAvailable()) {
     myError('Curl not available. Please install the php-curl package!');
 }
-
-// check for curl package (needs functions)
-if (empty($nanoNodeAccount)) {
-    myError('Node Account not set up. Please edit your config!');
-}
