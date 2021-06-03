@@ -68,7 +68,7 @@
 // ----------- Node Variables -----------
 
 // IP address for RPC (default: [::1])
-$nanoNodeRPCIP   = '207.148.105.76';
+$nanoNodeRPCIP = '207.148.105.76';
 
 // Port for RPC (default: 7076)
 // Nano nodes typically use port 7076.
