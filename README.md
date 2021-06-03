@@ -2,7 +2,7 @@
 
 ![GitHub release](https://img.shields.io/github/release/NanoTools/nanoNodeMonitor.svg?style=flat-square) [![StyleCI](https://styleci.io/repos/118352667/shield?branch=master)](https://styleci.io/repos/118352667) [![Docker Pulls](https://img.shields.io/docker/pulls/nanotools/nanonodemonitor.svg?style=flat-square)](https://hub.docker.com/r/nanotools/nanonodemonitor/)
 
-Nano Node Monitor is a server-side PHP-based monitor for Nano and Banano nodes. It connects to a running node via RPC and displays it's status on a simple webpage. Being server-side, it does not expose the RPC interface of the Nano node to the public. 
+Nano Node Monitor is a server-side PHP-based monitor for Nano and Banano nodes. It connects to a running node via RPC and displays it's status on a simple webpage. Being server-side, it does not expose the RPC interface of the Nano node to the public.
 
 ![Light](https://i.imgur.com/fbaAFvC.png)
 
@@ -57,7 +57,7 @@ services:
 
 5. You will have to change the node IP to the name of the nodes Docker container e.g. `nano_node_1`. Edit the other things as well if you want to.
 
-6. Done! 
+6. Done!
 
 ## Manual Installation
 
@@ -86,10 +86,13 @@ In the `modules` folder, create your own config file by executing:
 You will have to add your node's account to the config file `config.php` by modifying the following lines. Make sure to remove the `//` in front of `$nanoNodeAccount`:
 
 ```
-// account of this node 
+// account of this node
 $nanoNodeAccount = 'nano_1youraccountname24cq9799nerek153w43yjc9atoaeg3e91cc9zfr89ehj';
 ```
 
+Official documentation for creating an account on the node via RPC can be found at the following URL:
+
+https://docs.nano.org/running-a-node/voting-as-a-representative/#step-2-setup-representative-account
 
 If you are running a standalone node you might need to modify the IP-address and the port for the RPC in the file `config.php`. It should match the corresponding entries in `~/Nano/config.json`, e.g.
 
@@ -107,7 +110,7 @@ If you're interested in creating your own theme in addition to the official Ligh
 
 ## Support
 
-Donations to the development of Nano Node Monitor are very welcome to: 
+Donations to the development of Nano Node Monitor are very welcome to:
 
     nano_1ninja7rh37ehfp9utkor5ixmxyg8kme8fnzc4zty145ibch8kf5jwpnzr3r
 
