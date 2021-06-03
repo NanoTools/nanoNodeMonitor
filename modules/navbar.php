@@ -10,11 +10,6 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
 
       <ul class="nav navbar-nav ml-auto">
-
-        <li class="nav-item">
-          <a class="nav-link" href="index.php" target="_self">Node Monitor</a>
-        </li>
-
         <li class="nav-item">
           <a class="nav-link" href="<?php echo PROJECT_URL; ?>" target="_blank" rel="noopener">GitHub Project</a>
         </li>
