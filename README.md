@@ -30,20 +30,20 @@ Edit it according to your needs and you're good to go!
 
 1. Create a directory called _nano_ and go inside it: `mkdir nano && cd nano`
 
-2. Create a new file called _docker-compose.yml_ with the following contents:
+2. Create a new file called _docker-compose.yml_ with the following contents (but replace the TAG with a proper version):
 
 ```
 version: '3'
 services:
   monitor:
-    image: "nanotools/nanonodemonitor"
+    image: "nanotools/nanonodemonitor:TAG"
     restart: "unless-stopped"
     ports:
      - "80:80"
     volumes:
      - "~:/opt"
   node:
-    image: "nanocurrency/nano"
+    image: "nanocurrency/nano:TAG"
     restart: "unless-stopped"
     ports:
      - "7075:7075"
@@ -64,7 +64,7 @@ services:
 ### Prerequisites
 
 - Running Nano Node with RPC enabled ([Tutorial](https://docs.nano.org/running-a-node/node-setup/))
-- Webserver with PHP 7.2
+- Webserver with PHP 8.0
 - PHP-Curl Module
 
     `sudo apt-get install php-curl`
