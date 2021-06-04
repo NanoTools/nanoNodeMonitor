@@ -20,6 +20,10 @@ $themeChoice = 'light';
 // Banano Explorers:    'banano'
 $blockExplorer = 'nanocrawler';
 
+// Choice of widget
+// Options: 'qr', 'natricon', 'monkey'
+$widgetType = 'qr';
+
 // autorefresh interval for the status webpage in seconds
 $autoRefreshInSeconds = 5;
 
