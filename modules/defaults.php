@@ -21,8 +21,8 @@ $themeChoice = 'light';
 $blockExplorer = 'nanocrawler';
 
 // Choice of widget
-// 'natricon', 'qr'
-$widgetChoice = 'qr';
+// Options: 'qr', 'natricon', 'monkey'
+$widgetType = 'qr';
 
 // autorefresh interval for the status webpage in seconds
 $autoRefreshInSeconds = 5;
