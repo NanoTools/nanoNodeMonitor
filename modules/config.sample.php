@@ -26,6 +26,10 @@
 // Banano Explorers:    'banano'
 // $blockExplorer = 'nanocrawler';
 
+// Choice of widget
+// 'natricon', 'qr'
+// $widgetChoice = 'qr';
+
 // Autorefresh interval for the status webpage in seconds
 // $autoRefreshInSeconds = 5;
 
