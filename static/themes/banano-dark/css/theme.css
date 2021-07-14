@@ -45,6 +45,10 @@ body {
     padding-left: 12px;
 }
 
+.n-logo-theme:hover {
+    color: #fada40;
+}
+
 .nav-link {
     color: #fafafa;
 }
