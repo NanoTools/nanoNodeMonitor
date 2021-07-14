@@ -102,7 +102,7 @@ p {
     font-size: 1rem;
     line-height: 1.5;
     background-clip: padding-box;
-    border: 1px solid #000034;
+    border: 1px solid #333333;
     border-radius: 0rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
@@ -114,7 +114,7 @@ p {
 
 
 .list-group-item {
-    background-color: #111111 !important;
+    background-color: #333333 !important;
     color: #fafafa !important;
     font-size: 0.9rem;
 }
@@ -141,6 +141,9 @@ hr.light {
     opacity: 0.2;
 }
 
+.card {
+    border: none !important;
+}
 
 .btn-clipboard {
     color: #fafafa;
