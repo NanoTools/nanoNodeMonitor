@@ -23,7 +23,7 @@
 // Choice of block explorer
 // Nano Explorers:      'ninja', 'nanocrawler'
 // Nano Beta Explorers: 'nanocrawler-beta'
-// Banano Explorers:    'banano'
+// Banano Explorers:    'bananocreeper', 'bananolooker', 'yellowspyglass'
 // $blockExplorer = 'nanocrawler';
 
 // Choice of widget
