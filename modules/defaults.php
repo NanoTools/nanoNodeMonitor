@@ -11,13 +11,13 @@ $currency = 'nano';
 
 // Theme of your Node Monitor
 // Nano Themes:   'dark' or 'light'
-// Banano Themes: 'banano'
+// Banano Themes: 'banano' or 'banano-dark'
 $themeChoice = 'light';
 
 // Choice of block explorer
 // Nano Explorers:      'ninja', 'nanocrawler'
 // Nano Beta Explorers: 'nanocrawler-beta'
-// Banano Explorers:    'banano'
+// Banano Explorers:    'bananocreeper', 'bananolooker', 'yellowspyglass'
 $blockExplorer = 'nanocrawler';
 
 // Choice of widget
