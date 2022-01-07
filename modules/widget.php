@@ -11,5 +11,9 @@
 
 <img src="https://bananomonkeys.herokuapp.com/image?address=<?php echo $nanoNodeAccount; ?>" style="max-width:250px; display:block; margin: 0 0 0 auto;" />
 
+<?php elseif($widgetType == 'paw'): ?>
+
+<img src="https://pawnimal.paw.digital/api/v1/nano?address=<?php echo $nanoNodeAccount; ?>" style="max-width:250px; display:block; margin: 0 0 0 auto;" />
+
 <?php endif; ?>
 <?php endif; ?>
