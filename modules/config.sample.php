@@ -12,22 +12,24 @@
 // set $currency, $themeChoice, and $blockExplorer to
 // corresponding Nano / Banano values.
 
-// Currency 'nano' or 'banano' or 'nano-beta'
+// Currency 'nano' or 'banano' or 'nano-beta' or 'paw'
 // $currency = 'nano';
 
 // Theme of your Node Monitor
 // Nano Themes:   'dark' or 'light'
 // Banano Themes: 'banano'
+// PAW Themes: 'paw'
 // $themeChoice = 'light';
 
 // Choice of block explorer
 // Nano Explorers:      'ninja', 'nanocrawler'
 // Nano Beta Explorers: 'nanocrawler-beta'
 // Banano Explorers:    'banano'
+// PAW Explorers:       'tracker'
 // $blockExplorer = 'nanocrawler';
 
 // Choice of widget
-// Options: 'qr', 'natricon', 'monkey'
+// Options: 'qr', 'natricon', 'monkey', 'paw'
 // $widgetType = 'qr';
 
 // Autorefresh interval for the status webpage in seconds
