@@ -17,14 +17,14 @@
 
 // Theme of your Node Monitor
 // Nano Themes:   'dark' or 'light'
-// Banano Themes: 'banano'
+// Banano Themes: 'banano' or 'banano-dark'
 // PAW Themes: 'paw'
 // $themeChoice = 'light';
 
 // Choice of block explorer
 // Nano Explorers:      'ninja', 'nanocrawler'
 // Nano Beta Explorers: 'nanocrawler-beta'
-// Banano Explorers:    'banano'
+// Banano Explorers:    'bananocreeper', 'bananolooker', 'yellowspyglass'
 // PAW Explorers:       'tracker'
 // $blockExplorer = 'nanocrawler';
 

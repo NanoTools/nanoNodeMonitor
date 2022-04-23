@@ -1,0 +1,173 @@
+/* Load Font */
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400');
+
+/**
+
+ -- Body CSS
+
+ */
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: #222222 ;
+    color: #fafafa;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 800px auto;
+    padding-top: 145px;
+}
+
+/*
+
+ -- Navigation Menu CSS
+
+ */
+
+.navbar {
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+    letter-spacing: 0.02rem;
+    font-weight: 400;
+    background-color: #222222;
+    padding: 1.5% 4%;
+}
+
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(251,221,17, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+
+.n-logo-theme {
+    color: #ffffff;
+    padding-left: 12px;
+}
+
+.n-logo-theme:hover {
+    color: #fada40;
+}
+
+.nav-link {
+    color: #fafafa;
+}
+
+
+.nav-link:hover {
+    color: #fada40;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: #222222;
+    opacity: 1;
+    transition: all 0s;
+}
+
+/*
+
+ -- Body Content CSS
+
+ */
+
+
+
+h2 {
+    font-size: 2.5rem;
+    line-height: 2.9rem;
+    font-weight: 400;
+    max-width: 930px; 
+    color: #fada40;   
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    max-width: 930px;
+    color: #fada40;
+}
+
+p {
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+    letter-spacing: 0.02em;
+}
+
+
+.n-address-theme {
+    background-color: #111111 !important;
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-clip: padding-box;
+    border: 1px solid #333333;
+    border-radius: 0rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.card {
+    background-color: #111111;
+    font-size: 0.9rem;
+}
+
+
+.list-group-item {
+    background-color: #333333 !important;
+    color: #fafafa !important;
+    font-size: 0.9rem;
+}
+
+.list-group-item a {
+    color: #fafafa;
+}
+
+a {
+    color: #fafafa;
+}
+
+a:hover {
+    color: #fada40;
+}
+
+hr.light {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #fada40;
+    margin: 1em 0;
+    padding: 0;    
+    opacity: 0.2;
+}
+
+.card {
+    border: none !important;
+}
+
+.btn-clipboard {
+    color: #fafafa;
+}
+
+.btn-clipboard:hover{
+    color: #fada40;
+}
+
+.btn-clipboard-light {
+    color: #fafafa;
+}
+
+.btn-clipboard-light:hover {
+    color: #fada40;
+}
+
+.btn-secondary {
+    background: #333333;
+    color: #fafafa;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background: #333333;
+    color: #fada40;
+}

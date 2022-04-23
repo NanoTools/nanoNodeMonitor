@@ -10,6 +10,7 @@ Nano Node Monitor is a server-side PHP-based monitor for Nano and Banano nodes. 
 
 ![Banano](https://i.imgur.com/FMO8H9u.png)
 
+![Banano Dark](https://i.imgur.com/0lVdKWM.png)
 
 ## Docker Installation
 

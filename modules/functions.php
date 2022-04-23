@@ -327,10 +327,14 @@ function getAccountUrl($account, $blockExplorer)
       return "https://mynano.ninja/account/" . $account;
     case 'nanocrawler-beta':
       return "https://beta.nanocrawler.cc/explorer/account/" . $account;
-    case 'banano':
+    case 'bananocreeper':
       return "https://creeper.banano.cc/explorer/account/" . $account;
     case 'tracker':
       return "https://tracker.paw.digital/account/" . $account;
+    case 'bananolooker':
+      return "https://bananolooker.com/account/" . $account;
+    case 'yellowspyglass':
+      return "https://yellowspyglass.com/search?address=" .$account;
     default:
       return "https://nanocrawler.cc/explorer/account/" . $account;
   }
