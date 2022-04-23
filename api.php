@@ -124,21 +124,21 @@ $data = $cache->fetch($apiName, function () use (
 
     // -- Get node account balance from nano_node
     $rpcNodeAccountBalance = getAccountBalance($ch, $nanoNodeAccount);
-    $data->accBalanceMnano = rawToCurrency($rpcNodeAccountBalance->{'balance'}, $currency);
-    $data->accBalanceRaw = (int) $rpcNodeAccountBalance->{'balance'};
-    $data->accPendingMnano = rawToCurrency($rpcNodeAccountBalance->{'pending'}, $currency);
-    $data->accPendingRaw = (int) $rpcNodeAccountBalance->{'pending'};
+    $data->accBalanceMnano = rawToCurrency($rpcNodeAccountBalance->{'balance'} ?? 0, $currency);
+    $data->accBalanceRaw = (int) ($rpcNodeAccountBalance->{'balance'} ?? 0);
+    $data->accPendingMnano = rawToCurrency($rpcNodeAccountBalance->{'pending'} ?? 0, $currency);
+    $data->accPendingRaw = (int) ($rpcNodeAccountBalance->{'pending'} ?? 0);
 
     // -- Get representative info for current node from nano_node
     $rpcNodeRepInfo = getRepresentativeInfo($ch, $nanoNodeAccount);
-    $data->repAccount = $rpcNodeRepInfo->{'representative'} ?: '';
+    $data->repAccount = $rpcNodeRepInfo->{'representative'} ?? '';
     $data->repAccountShort = truncateAddress($data->repAccount);
     $data->repAccountUrl = getAccountUrl($data->repAccount, $blockExplorer);
     // $data->repDelegatorsCount = getDelegatorsCount($ch, $nanoNodeAccount)->count; // disabled (poor performance)
 
     // get the account weight
     $rpcNodeAccountWeight = getAccountWeight($ch, $nanoNodeAccount);
-    $data->votingWeight = rawToCurrency($rpcNodeAccountWeight->{'weight'}, $currency);
+    $data->votingWeight = rawToCurrency($rpcNodeAccountWeight->{'weight'} ?? 0, $currency);
 
     // -- System uptime & memory info --
     $data->systemLoad = getSystemLoadAvg();
