@@ -49,7 +49,7 @@
 
 <script src="static/js/axios.min.js?v=<?php echo PROJECT_VERSION; ?>"></script>
 <script src="static/js/bootstrap-native-v4.min.js?v=<?php echo PROJECT_VERSION; ?>"></script>
-<script src="static/js/handlebars.min-v4.7.6.js?v=<?php echo PROJECT_VERSION; ?>"></script>
+<script src="static/js/handlebars.min-v4.7.7.js?v=<?php echo PROJECT_VERSION; ?>"></script>
 <script src="static/js/main.js?v=<?php echo PROJECT_VERSION; ?>"></script>
 
 <?php
