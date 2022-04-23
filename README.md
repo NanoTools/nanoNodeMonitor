@@ -4,13 +4,9 @@
 
 Nano Node Monitor is a server-side PHP-based monitor for Nano and Banano nodes. It connects to a running node via RPC and displays it's status on a simple webpage. Being server-side, it does not expose the RPC interface of the Nano node to the public.
 
-![Light](https://i.imgur.com/fbaAFvC.png)
-
-![Dark](https://i.imgur.com/1Gu9ohX.png)
-
-![Banano](https://i.imgur.com/FMO8H9u.png)
-
-![Banano Dark](https://i.imgur.com/0lVdKWM.png)
+|Nano Light|Nano Dark|Banano Light|Banano Dark|
+|-|-|-|-|
+|![Light](.github/theme-preview/nano-light.png)|![Dark](.github/theme-preview/nano-dark.png)|![Banano](.github/theme-preview/banano-light.png)|![Banano Dark](.github/theme-preview/banano-dark.png)|
 
 ## Docker Installation
 
