@@ -334,7 +334,7 @@ function getAccountUrl($account, $blockExplorer)
     case 'bananolooker':
       return "https://bananolooker.com/account/" . $account;
     case 'yellowspyglass':
-      return "https://yellowspyglass.com/search?address=" .$account;
+      return "https://yellowspyglass.com/account/" .$account;
     default:
       return "https://nanocrawler.cc/explorer/account/" . $account;
   }
