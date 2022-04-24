@@ -333,6 +333,10 @@ function getAccountUrl($account, $blockExplorer)
       return "https://tracker.paw.digital/account/" . $account;
     case 'bananolooker':
       return "https://bananolooker.com/account/" . $account;
+    case 'nanolooker':
+      return "https://nanolooker.com/account/" . $account;
+    case 'tribes':
+      return "https://tribes.paw.digital/account/" . $account;
     case 'yellowspyglass':
       return "https://yellowspyglass.com/account/" .$account;
     default:
