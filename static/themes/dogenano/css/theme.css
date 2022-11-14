@@ -1,0 +1,165 @@
+/* Load Font */
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400');
+
+/**
+
+ -- Body CSS
+
+ */
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: #746F15;
+    color: #455F63;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 800px auto;
+    padding-top: 145px;
+}
+
+/*
+
+ -- Navigation Menu CSS
+
+ */
+
+.navbar {
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+    letter-spacing: 0.02rem;
+    font-weight: 400;
+    background-color: #F6CC8A;
+    padding: 1.5% 4%;
+}
+
+footer {
+    color: #ababc4;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#00A99D' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+
+.n-logo-theme {
+    color: #00a99d;
+    padding-left: 12px;
+}
+
+.nav-link {
+    color: #00a99d;
+}
+
+
+.nav-link:hover {
+    color: #33ccc2;
+}
+
+/*
+
+ -- Body Content CSS
+
+ */
+ 
+.card {
+    border: none;
+    background-color: transparent;
+}
+
+.list-group-item {
+    color: #ababc4 !important;
+    background-color: #222a2a !important;
+    font-size: 0.9rem;
+}
+
+.float-right-truncate {
+    color: #d5af4e;
+}
+
+h2 {
+    font-size: 2.5rem;
+    line-height: 2.9rem;
+    font-weight: 400;
+    max-width: 930px;
+}
+
+h3 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    max-width: 930px;
+}
+
+p {
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+    letter-spacing: 0.02em;
+}
+
+.btn-secondary {
+    color: #ababc4;
+    background-color: #222a2a;
+    border-color: #222a2a;
+}
+
+.btn-secondary:hover {
+    color: #33ccc2;
+    background-color: #222a2a;
+    border-color: #222a2a;
+}
+
+.n-address-theme {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-clip: padding-box;
+    border: 1px solid #000034;
+    border-radius: 0rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.list-group-item a {
+    color: #d5af4e;
+}
+
+.list-group-item a:hover {
+    color: #d5af4e;
+}
+
+a {
+    color: #00A99D;
+}
+
+a:hover {
+    color: #33ccc2;
+}
+
+hr.light {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #0A6EBD;
+    margin: 1em 0;
+    padding: 0;
+    opacity: 0.2;
+}
+
+.btn-clipboard {
+    color: #d5af4e;
+}
+
+
+.btn-clipboard:hover{
+    color: #d5af4e;
+}
+
+.btn-clipboard-light {
+    color: #d5af4e;
+}
+
+.btn-clipboard-light:hover {
+    color: #d5af4e;
+}

@@ -7,6 +7,10 @@ include 'modules/header.php';
 $coinURL = 'https://nano.org';
 if ($currency == 'banano') {
     $coinURL = 'https://banano.cc/';
+} elseif ($currency == 'paw') {
+    $coinURL = 'https://paw.digital/';
+} else {
+    $coinURL = 'https://dogenano.io/';
 }
 
 ?>
