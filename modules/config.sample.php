@@ -12,13 +12,14 @@
 // set $currency, $themeChoice, and $blockExplorer to
 // corresponding Nano / Banano values.
 
-// Currency 'nano' or 'banano' or 'nano-beta' or 'paw'
+// Currency 'nano' or 'banano' or 'nano-beta' or 'paw' or 'dogenano'
 // $currency = 'nano';
 
 // Theme of your Node Monitor
 // Nano Themes:   'dark' or 'light'
 // Banano Themes: 'banano' or 'banano-dark'
 // PAW Themes: 'paw'
+// DogeNano Themes: 'dogenano'
 // $themeChoice = 'light';
 
 // Choice of block explorer
@@ -26,6 +27,7 @@
 // Nano Beta Explorers: 'nanocrawler-beta'
 // Banano Explorers:    'bananocreeper', 'bananolooker', 'yellowspyglass'
 // PAW Explorers:       'tracker'
+// DogeNano Explorers: 'dogelooker'
 // $blockExplorer = 'nanocrawler';
 
 // Choice of widget
@@ -80,6 +82,7 @@
 // Nano nodes typically use port 7076.
 // Nano Beta nodes typically use port 55000.
 // Banano nodes typically use port 7072.
+// DogeNano nodes typically use port 7030.
 // $nanoNodeRPCPort = '7076';
 
 // Account of this node
